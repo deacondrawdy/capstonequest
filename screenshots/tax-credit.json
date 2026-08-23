@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/tax-credit",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 1911,
+      "bodyTextHash": "2440938345f860f06245076261a1925cd1d591695f4657f28d9c422ad1d75bfe",
+      "bodyTextPrefix": "Now Enrolling 26–27 School Year! See how my child is doing | Sea",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/tax-credit.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 1808,
+      "bodyTextHash": "4d5e514c50082973901d0ed8055ce794c9f61c93cc7b6a23a41d46f1b301c52f",
+      "bodyTextPrefix": "Now Enrolling 26–27 School Year! CAPSTONE QUEST ACADEMY Enroll T",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/tax-credit-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/tax-credit.json"
+}

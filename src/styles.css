@@ -1,0 +1,168 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-navy: #0d2c6b;
+  --color-navy-deep: #0a214f;
+  --color-navy-mid: #163a8a;
+  --color-brand: #1a4db8;
+  --color-gold: #f0c014;
+  --color-gold-deep: #d9a80a;
+  --color-ink: #14233f;
+  --color-muted: #5a6a82;
+  --color-paper: #ffffff;
+  --color-paper-soft: #f6f8fc;
+  --color-cream: #fff8ee;
+  --color-line: #e4eaf4;
+  --color-ring: #1a4db8;
+  --color-success: #2f9e5f;
+  --color-icon-green: #2ea44f;
+  --color-icon-orange: #f08a24;
+  --color-icon-purple: #8b4ccf;
+  --color-icon-blue: #2b7de9;
+  --color-icon-pink: #e85d8a;
+  --color-rainbow-a: #2b7de9;
+  --color-rainbow-c: #e53935;
+  --color-rainbow-a2: #43a047;
+  --color-rainbow-d: #ff9800;
+  --color-rainbow-e: #8e24aa;
+  --color-rainbow-m: #f4c400;
+  --color-rainbow-y: #f9a825;
+  --color-background: #ffffff;
+  --color-foreground: #14233f;
+  --color-card: #ffffff;
+  --color-card-foreground: #14233f;
+  --color-primary: #0d2c6b;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f6f8fc;
+  --color-secondary-foreground: #14233f;
+  --color-accent: #f0c014;
+  --color-accent-foreground: #14233f;
+  --color-destructive: #c62828;
+  --color-border: #e4eaf4;
+  --color-input: #e4eaf4;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #14233f;
+  --color-muted-foreground: #5a6a82;
+
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius: 12px;
+
+  --shadow-card:
+    0 0 0 1px rgb(20 35 63 / 0.06),
+    0 10px 30px -12px rgb(13 44 107 / 0.18);
+  --shadow-card-hover:
+    0 0 0 1px rgb(20 35 63 / 0.08),
+    0 16px 40px -12px rgb(13 44 107 / 0.22);
+  --shadow-nav: 0 1px 0 rgb(20 35 63 / 0.06);
+
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    outline: 1px solid rgb(20 35 63 / 0.08);
+    outline-offset: -1px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-gold) 55%, white);
+    color: var(--color-ink);
+  }
+}
+
+@layer utilities {
+  .font-script {
+    font-family: var(--font-script);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-stagger,
+  .hero-stagger > * {
+    animation: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-stagger > * {
+  opacity: 0;
+  animation: fade-up 500ms var(--ease-out-smooth) forwards;
+}
+.hero-stagger > *:nth-child(1) {
+  animation-delay: 40ms;
+}
+.hero-stagger > *:nth-child(2) {
+  animation-delay: 90ms;
+}
+.hero-stagger > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+.hero-stagger > *:nth-child(4) {
+  animation-delay: 190ms;
+}
+.hero-stagger > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+.hero-stagger > *:nth-child(6) {
+  animation-delay: 290ms;
+}
+.hero-stagger > *:nth-child(7) {
+  animation-delay: 340ms;
+}

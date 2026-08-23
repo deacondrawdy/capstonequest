@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/clever",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 1433,
+      "bodyTextHash": "8c88089d72ead89747f02ec547dcf6582a6c0a1e9bb58d53718d36a768ca8339",
+      "bodyTextPrefix": "Now Enrolling 26–27 School Year! See how my child is doing | Sea",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/clever.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 1330,
+      "bodyTextHash": "c5d6a4365d97ddd9679f70f9f41f685007ea81ca5e1f4a675ce7bce0cc05a4a4",
+      "bodyTextPrefix": "Now Enrolling 26–27 School Year! CAPSTONE QUEST ACADEMY Enroll C",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/clever-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/clever.json"
+}

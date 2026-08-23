@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/parents",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 2380,
+      "bodyTextHash": "4d0f6141fcb5000ffe9bf1f88a154197d05deaeb9d12fe7f695d4ed46e24885a",
+      "bodyTextPrefix": "Now Enrolling 26–27 School Year! See how my child is doing | Sea",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/parents.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 2277,
+      "bodyTextHash": "908afc5f6e95a149ea826a7842d9c983f5367e19f2bfca009af9917ac2601412",
+      "bodyTextPrefix": "Now Enrolling 26–27 School Year! CAPSTONE QUEST ACADEMY Enroll P",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/parents-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/parents.json"
+}

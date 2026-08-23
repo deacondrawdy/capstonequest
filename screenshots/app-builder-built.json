@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 4486,
+      "bodyTextHash": "ebb6d9c68b2652b3f42dd20239effb1865f709ad0193ce6de6a5a375f1cb0c1e",
+      "bodyTextPrefix": "Only a few spots left in Tucson & Yuma See how my child is doing",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Capstone Quest Academy",
+      "hasCanvas": false,
+      "bodyTextLen": 4394,
+      "bodyTextHash": "78900416e5d56638fb9edff87c62685247cdb8119edb8fce61e0e66dff336dfc",
+      "bodyTextPrefix": "Only a few spots left in Tucson & Yuma CAPSTONE QUEST ACADEMY En",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
