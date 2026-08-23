@@ -35,6 +35,14 @@ export function SiteFooter() {
                     {c.cityState}
                   </span>
                 </p>
+                {/* Each campus shows its own local number so the footer NAP on
+                    every page matches that campus's Google Business Profile. */}
+                <p className="mt-1 flex gap-2">
+                  <Phone className="mt-0.5 size-3.5 shrink-0" />
+                  <a href={c.phoneHref} className="hover:text-gold">
+                    {c.phone}
+                  </a>
+                </p>
               </li>
             ))}
           </ul>

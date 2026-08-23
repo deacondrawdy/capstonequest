@@ -5,31 +5,40 @@ import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { campuses, programs } from "@/data/school";
+import { campuses, programs, school } from "@/data/school";
 import { saveEnroll } from "@/lib/inquiries";
 
 export const Route = createFileRoute("/enroll")({ component: EnrollPage });
 
 function EnrollPage() {
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    saveEnroll({
-      childFirst: String(fd.get("childFirst") ?? ""),
-      childLast: String(fd.get("childLast") ?? ""),
-      dob: String(fd.get("dob") ?? ""),
-      campus: String(fd.get("campus") ?? ""),
-      program: String(fd.get("program") ?? ""),
-      parentName: String(fd.get("parentName") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? ""),
-      des: String(fd.get("des") ?? ""),
-      start: String(fd.get("start") ?? ""),
-    });
-    setDone(true);
-    toast.success("Enrollment started — we will follow up within one business day.");
+    const picked = campuses.find((c) => c.slug === String(fd.get("campus") ?? ""));
+    setSending(true);
+    try {
+      await saveEnroll({
+        childFirst: String(fd.get("childFirst") ?? ""),
+        childLast: String(fd.get("childLast") ?? ""),
+        dob: String(fd.get("dob") ?? ""),
+        campus: String(fd.get("campus") ?? ""),
+        program: String(fd.get("program") ?? ""),
+        parentName: String(fd.get("parentName") ?? ""),
+        email: String(fd.get("email") ?? ""),
+        phone: String(fd.get("phone") ?? ""),
+        des: String(fd.get("des") ?? ""),
+        start: String(fd.get("start") ?? ""),
+      });
+      setDone(true);
+      toast.success("Enrollment started — we will follow up within one business day.");
+    } catch {
+      toast.error(`We could not send this. Please call ${picked?.phone ?? school.phone}.`);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -40,13 +49,15 @@ function EnrollPage() {
           Start in as little as one day
         </h1>
         <p className="mt-3 text-muted">
-          Tell us about your child. If a seat is open, many families finish the packet the same day they tour.
+          Tell us about your child. If a seat is open, many families finish the packet the same day
+          they tour.
         </p>
         {done ? (
           <div className="mt-10 rounded-[28px] bg-paper-soft p-8">
             <h2 className="text-2xl font-bold text-navy">Application received</h2>
             <p className="mt-2 text-muted">
-              A director will call to confirm campus, start date, and any DES paperwork. Keep an eye on your email.
+              A director will call to confirm campus, start date, and any DES paperwork. Keep an eye
+              on your email.
             </p>
           </div>
         ) : (
@@ -57,7 +68,12 @@ function EnrollPage() {
             <Field label="Preferred start" name="start" type="date" />
             <div className="grid gap-1.5">
               <Label htmlFor="campus">Campus</Label>
-              <select id="campus" name="campus" className="h-11 rounded-md border border-input bg-paper px-3 text-sm" defaultValue="tucson">
+              <select
+                id="campus"
+                name="campus"
+                className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
+                defaultValue="tucson"
+              >
                 {campuses.map((c) => (
                   <option key={c.slug} value={c.slug}>
                     {c.name}
@@ -67,7 +83,11 @@ function EnrollPage() {
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="program">Program</Label>
-              <select id="program" name="program" className="h-11 rounded-md border border-input bg-paper px-3 text-sm">
+              <select
+                id="program"
+                name="program"
+                className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
+              >
                 {programs.map((p) => (
                   <option key={p.slug} value={p.slug}>
                     {p.name}
@@ -80,15 +100,19 @@ function EnrollPage() {
             <Field label="Phone" name="phone" type="tel" required />
             <div className="grid gap-1.5 sm:col-span-2">
               <Label htmlFor="des">Will you use a DES child care subsidy?</Label>
-              <select id="des" name="des" className="h-11 rounded-md border border-input bg-paper px-3 text-sm">
+              <select
+                id="des"
+                name="des"
+                className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
+              >
                 <option value="not-sure">Not sure yet</option>
                 <option value="yes">Yes</option>
                 <option value="no">No — private pay</option>
               </select>
             </div>
             <div className="sm:col-span-2">
-              <Button type="submit" size="lg">
-                Submit enrollment
+              <Button type="submit" size="lg" disabled={sending}>
+                {sending ? "Sending…" : "Submit enrollment"}
               </Button>
             </div>
           </form>

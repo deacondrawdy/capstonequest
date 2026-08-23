@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { campuses } from "@/data/school";
+import { campuses, school } from "@/data/school";
 import { saveTour } from "@/lib/inquiries";
 
 type Search = { campus?: string };
@@ -20,23 +20,32 @@ export const Route = createFileRoute("/tour")({
 
 function TourPage() {
   const { campus: preset } = Route.useSearch();
-  const [done, setDone] = useState<string | null>(null);
+  const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const row = saveTour({
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? ""),
-      campus: String(fd.get("campus") ?? ""),
-      childAge: String(fd.get("childAge") ?? ""),
-      date: String(fd.get("date") ?? ""),
-      time: String(fd.get("time") ?? ""),
-      notes: String(fd.get("notes") ?? ""),
-    });
-    setDone(row.id);
-    toast.success("Tour requested — we will confirm by email.");
+    const picked = campuses.find((c) => c.slug === String(fd.get("campus") ?? ""));
+    setSending(true);
+    try {
+      await saveTour({
+        name: String(fd.get("name") ?? ""),
+        email: String(fd.get("email") ?? ""),
+        phone: String(fd.get("phone") ?? ""),
+        campus: String(fd.get("campus") ?? ""),
+        childAge: String(fd.get("childAge") ?? ""),
+        date: String(fd.get("date") ?? ""),
+        time: String(fd.get("time") ?? ""),
+        notes: String(fd.get("notes") ?? ""),
+      });
+      setDone(true);
+      toast.success("Tour requested — we will confirm by email.");
+    } catch {
+      toast.error(`We could not send your request. Please call ${picked?.phone ?? school.phone}.`);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -46,9 +55,14 @@ function TourPage() {
           <p className="text-sm font-bold tracking-[0.14em] text-brand uppercase">Visit</p>
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">Schedule a tour</h1>
           <p className="mt-3 text-muted">
-            Walk the classrooms, meet a lead teacher, and see a real morning. Most tours last about 40 minutes. We can often confirm the same day.
+            Walk the classrooms, meet a lead teacher, and see a real morning. Most tours last about
+            40 minutes. We can often confirm the same day.
           </p>
-          <img src="/images/circle-time.jpg" alt="" className="mt-8 hidden h-64 w-full rounded-[28px] object-cover lg:block" />
+          <img
+            src="/images/circle-time.jpg"
+            alt=""
+            className="mt-8 hidden h-64 w-full rounded-[28px] object-cover lg:block"
+          />
         </div>
         <div className="rounded-[28px] bg-paper-soft p-6 sm:p-8">
           {done ? (
@@ -85,7 +99,12 @@ function TourPage() {
               <Field label="Preferred date" name="date" type="date" required />
               <div className="grid gap-1.5">
                 <Label htmlFor="time">Preferred time</Label>
-                <select id="time" name="time" className="h-11 rounded-md border border-input bg-paper px-3 text-sm" defaultValue="9:00 AM">
+                <select
+                  id="time"
+                  name="time"
+                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
+                  defaultValue="9:00 AM"
+                >
                   {["8:30 AM", "9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM"].map((t) => (
                     <option key={t}>{t}</option>
                   ))}
@@ -96,8 +115,8 @@ function TourPage() {
                 <Textarea id="notes" name="notes" placeholder="Sibling, DES voucher, allergies…" />
               </div>
               <div className="sm:col-span-2">
-                <Button type="submit" size="lg">
-                  Request this tour
+                <Button type="submit" size="lg" disabled={sending}>
+                  {sending ? "Sending…" : "Request this tour"}
                 </Button>
               </div>
             </form>

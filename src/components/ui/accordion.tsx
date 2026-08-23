@@ -9,12 +9,7 @@ function AccordionItem({
   className,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
-  return (
-    <AccordionPrimitive.Item
-      className={cn("border-b border-line", className)}
-      {...props}
-    />
-  );
+  return <AccordionPrimitive.Item className={cn("border-b border-line", className)} {...props} />;
 }
 
 function AccordionTrigger({
@@ -44,8 +39,12 @@ function AccordionContent({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Content>) {
   return (
+    // forceMount keeps collapsed answers in the server-rendered HTML. Without it
+    // Radix omits them entirely, and AI crawlers (which don't run JS) see the
+    // questions with no answers.
     <AccordionPrimitive.Content
-      className="overflow-hidden text-sm text-muted data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+      forceMount
+      className="overflow-hidden text-sm text-muted data-[state=closed]:hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
       {...props}
     >
       <div className={cn("pb-4 leading-relaxed", className)}>{children}</div>

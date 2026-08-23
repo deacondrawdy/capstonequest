@@ -7,40 +7,76 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { campuses } from "@/data/school";
+import { campuses, school } from "@/data/school";
 import { saveJobApp } from "@/lib/inquiries";
 
 export const Route = createFileRoute("/careers")({ component: CareersPage });
 
 const perks = [
-  { icon: Users, title: "Small classes", text: "Teach ten children, not thirty. You will actually know every family." },
-  { icon: Wallet, title: "Real benefits", text: "Insurance, retirement contributions, tuition reimbursement, extra-income incentives." },
-  { icon: Sparkles, title: "Room to invent", text: "Studios, outdoor play, and a curriculum that still lets teachers be creative." },
-  { icon: Heart, title: "A family shop", text: "Pre-K campuses in Tucson and Yuma with the same calm, DES-approved culture." },
+  {
+    icon: Users,
+    title: "Small classes",
+    text: "Teach ten children, not thirty. You will actually know every family.",
+  },
+  {
+    icon: Wallet,
+    title: "Real benefits",
+    text: "Insurance, retirement contributions, tuition reimbursement, extra-income incentives.",
+  },
+  {
+    icon: Sparkles,
+    title: "Room to invent",
+    text: "Studios, outdoor play, and a curriculum that still lets teachers be creative.",
+  },
+  {
+    icon: Heart,
+    title: "A family shop",
+    text: "Pre-K campuses in Tucson and Yuma with the same calm, DES-approved culture.",
+  },
 ];
 
 const openings = [
-  { role: "Lead Pre-K Teacher", campus: "Tucson or Yuma", req: "Fingerprint clearance, bachelor’s degree, AEPA or NES preferred." },
-  { role: "Assistant Teacher", campus: "Tucson or Yuma", req: "Love of three-to-five-year-olds, classroom experience a plus." },
-  { role: "Before & After Care Lead", campus: "Either campus", req: "7:00 AM start or 3:30–6:00 PM close. Reliable, warm, certified." },
+  {
+    role: "Lead Pre-K Teacher",
+    campus: "Tucson or Yuma",
+    req: "Fingerprint clearance, bachelor’s degree, AEPA or NES preferred.",
+  },
+  {
+    role: "Assistant Teacher",
+    campus: "Tucson or Yuma",
+    req: "Love of three-to-five-year-olds, classroom experience a plus.",
+  },
+  {
+    role: "Before & After Care Lead",
+    campus: "Either campus",
+    req: "7:00 AM start or 3:30–6:00 PM close. Reliable, warm, certified.",
+  },
 ];
 
 function CareersPage() {
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    saveJobApp({
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? ""),
-      role: String(fd.get("role") ?? ""),
-      campus: String(fd.get("campus") ?? ""),
-      message: String(fd.get("message") ?? ""),
-    });
-    setDone(true);
-    toast.success("Application received.");
+    setSending(true);
+    try {
+      await saveJobApp({
+        name: String(fd.get("name") ?? ""),
+        email: String(fd.get("email") ?? ""),
+        phone: String(fd.get("phone") ?? ""),
+        role: String(fd.get("role") ?? ""),
+        campus: String(fd.get("campus") ?? ""),
+        message: String(fd.get("message") ?? ""),
+      });
+      setDone(true);
+      toast.success("Application received.");
+    } catch {
+      toast.error(`We could not send this. Please call ${school.phone}.`);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -48,10 +84,13 @@ function CareersPage() {
       <div className="bg-navy py-14 text-paper">
         <div className="mx-auto max-w-[800px] px-5 sm:px-8">
           <p className="text-sm font-bold tracking-[0.14em] text-gold uppercase">Careers</p>
-          <h1 className="mt-2 text-4xl font-extrabold tracking-tight">Come teach the year that matters</h1>
+          <h1 className="mt-2 text-4xl font-extrabold tracking-tight">
+            Come teach the year that matters
+          </h1>
           <p className="mt-3 text-paper/80">
-            Capstone Quest hires people who like small rooms, real play, and parents who want to be partners. Fingerprint
-            clearance is required. A bachelor’s degree and AEPA or NES are expected for lead roles.
+            Capstone Quest hires people who like small rooms, real play, and parents who want to be
+            partners. Fingerprint clearance is required. A bachelor’s degree and AEPA or NES are
+            expected for lead roles.
           </p>
         </div>
       </div>
@@ -79,7 +118,9 @@ function CareersPage() {
         </div>
         <div className="rounded-[28px] bg-paper-soft p-6 sm:p-8">
           {done ? (
-            <p className="text-lg font-semibold text-navy">Thank you — a director will write back if there’s a match.</p>
+            <p className="text-lg font-semibold text-navy">
+              Thank you — a director will write back if there’s a match.
+            </p>
           ) : (
             <form className="grid gap-4" onSubmit={onSubmit}>
               <h2 className="text-xl font-bold text-navy">Apply</h2>
@@ -97,7 +138,11 @@ function CareersPage() {
               </div>
               <div className="grid gap-1.5">
                 <Label htmlFor="role">Role</Label>
-                <select id="role" name="role" className="h-11 rounded-md border border-input bg-paper px-3 text-sm">
+                <select
+                  id="role"
+                  name="role"
+                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
+                >
                   {openings.map((o) => (
                     <option key={o.role}>{o.role}</option>
                   ))}
@@ -105,7 +150,11 @@ function CareersPage() {
               </div>
               <div className="grid gap-1.5">
                 <Label htmlFor="campus">Campus</Label>
-                <select id="campus" name="campus" className="h-11 rounded-md border border-input bg-paper px-3 text-sm">
+                <select
+                  id="campus"
+                  name="campus"
+                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
+                >
                   {campuses.map((c) => (
                     <option key={c.slug}>{c.name}</option>
                   ))}
@@ -116,8 +165,8 @@ function CareersPage() {
                 <Label htmlFor="message">Why this work</Label>
                 <Textarea id="message" name="message" required />
               </div>
-              <Button type="submit" size="lg">
-                Submit application
+              <Button type="submit" size="lg" disabled={sending}>
+                {sending ? "Sending…" : "Submit application"}
               </Button>
             </form>
           )}

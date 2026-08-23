@@ -22,6 +22,7 @@ import { Route as PortalRouteImport } from './routes/portal'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as TourRouteImport } from './routes/tour'
 import { Route as WhyUsRouteImport } from './routes/why-us'
+import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesSlugRouteImport } from './routes/campuses.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -89,6 +90,11 @@ const WhyUsRoute = WhyUsRouteImport.update({
   path: '/why-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CampusesIndexRoute = CampusesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CampusesRoute,
+} as any)
 const CampusesSlugRoute = CampusesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -110,11 +116,11 @@ export interface FileRoutesByFullPath {
   '/tour': typeof TourRoute
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
+  '/campuses/': typeof CampusesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/campuses': typeof CampusesRouteWithChildren
   '/careers': typeof CareersRoute
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
@@ -126,6 +132,7 @@ export interface FileRoutesByTo {
   '/tour': typeof TourRoute
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
+  '/campuses': typeof CampusesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +150,7 @@ export interface FileRoutesById {
   '/tour': typeof TourRoute
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
+  '/campuses/': typeof CampusesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,11 +169,11 @@ export interface FileRouteTypes {
     | '/tour'
     | '/why-us'
     | '/campuses/$slug'
+    | '/campuses/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/campuses'
     | '/careers'
     | '/clever'
     | '/contact'
@@ -177,6 +185,7 @@ export interface FileRouteTypes {
     | '/tour'
     | '/why-us'
     | '/campuses/$slug'
+    | '/campuses'
   id:
     | '__root__'
     | '/'
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
     | '/tour'
     | '/why-us'
     | '/campuses/$slug'
+    | '/campuses/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -304,6 +314,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhyUsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/campuses/': {
+      id: '/campuses/'
+      path: '/'
+      fullPath: '/campuses/'
+      preLoaderRoute: typeof CampusesIndexRouteImport
+      parentRoute: typeof CampusesRoute
+    }
     '/campuses/$slug': {
       id: '/campuses/$slug'
       path: '/$slug'
@@ -316,10 +333,12 @@ declare module '@tanstack/react-router' {
 
 interface CampusesRouteChildren {
   CampusesSlugRoute: typeof CampusesSlugRoute
+  CampusesIndexRoute: typeof CampusesIndexRoute
 }
 
 const CampusesRouteChildren: CampusesRouteChildren = {
   CampusesSlugRoute: CampusesSlugRoute,
+  CampusesIndexRoute: CampusesIndexRoute,
 }
 
 const CampusesRouteWithChildren = CampusesRoute._addFileChildren(

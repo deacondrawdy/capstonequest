@@ -4,8 +4,10 @@ export const school = {
   tagline: "Where curiosity grows and bright futures begin.",
   welcome:
     "Welcome to Capstone Quest Academy, where little steps make big dreams come true. Nestled in the heart of Tucson and Yuma since 2013, our nurturing Pre-K programs guide little ones on an adventure of learning and growth.",
-  phone: "1-800-379-9083",
-  phoneHref: "tel:+18003799083",
+  // The old 1-800 line is retired. Both campus numbers route to the same
+  // AI assistant, so the sitewide number is Tucson's.
+  phone: "(520) 462-7788",
+  phoneHref: "tel:+15204627788",
   email: "hello@capstonequestacademy.org",
   hours: "Monday–Friday, 7:00 AM – 6:00 PM",
   ages: "3–5 years",
@@ -20,8 +22,8 @@ export const campuses = [
     name: "Tucson Campus",
     address: "1150 North Country Club Road",
     cityState: "Tucson, AZ 85716",
-    phone: "(520) 620-1100",
-    phoneHref: "tel:+15206201100",
+    phone: "(520) 462-7788",
+    phoneHref: "tel:+15204627788",
     image: "/images/tucson.jpg",
     blurb:
       "A bright, home-away-from-home campus near midtown Tucson — desert gardens, shade-sail playgrounds, and classrooms built for curious three-to-five-year-olds.",
@@ -36,15 +38,14 @@ export const campuses = [
     name: "Yuma Campus",
     address: "1220 South 4th Avenue",
     cityState: "Yuma, AZ 85364",
-    phone: "(928) 919-7203",
-    phoneHref: "tel:+19289197203",
+    phone: "(928) 977-9318",
+    phoneHref: "tel:+19289779318",
     image: "/images/yuma.jpg",
     blurb:
       "A welcoming Yuma campus with a covered drop-off, sun-safe outdoor play, and the same DES-approved Pre-K program families trust across Arizona.",
     hours: "7:00 AM – 6:00 PM",
     capacity: "Small classes of 10 or fewer",
-    mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=1220+South+4th+Avenue+Yuma+AZ+85364",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=1220+South+4th+Avenue+Yuma+AZ+85364",
   },
 ] as const;
 
@@ -198,13 +199,41 @@ export const faqs = [
 ] as const;
 
 export const dayInTheLife = [
-  { time: "7:00", title: "Warm welcome", detail: "Teachers greet each child by name. Breakfast and quiet table work for early birds." },
-  { time: "8:30", title: "Morning meeting", detail: "Songs, the day’s story, and a chance for every voice to be heard." },
-  { time: "9:15", title: "Studios & workshops", detail: "Literacy, early math, art, and block-building in small groups." },
-  { time: "11:00", title: "Outdoor adventure", detail: "Shade-sail playgrounds, tricycles, gardens, and big-body play." },
-  { time: "12:00", title: "Lunch & rest", detail: "Family-style lunch, then a rest that actually restores little nervous systems." },
-  { time: "2:30", title: "Choice time", detail: "Science trays, dramatic play, and teacher-guided investigations." },
-  { time: "5:00", title: "Closing circle", detail: "Stories home, a hug, and a teacher who can tell you how the day really went." },
+  {
+    time: "7:00",
+    title: "Warm welcome",
+    detail: "Teachers greet each child by name. Breakfast and quiet table work for early birds.",
+  },
+  {
+    time: "8:30",
+    title: "Morning meeting",
+    detail: "Songs, the day’s story, and a chance for every voice to be heard.",
+  },
+  {
+    time: "9:15",
+    title: "Studios & workshops",
+    detail: "Literacy, early math, art, and block-building in small groups.",
+  },
+  {
+    time: "11:00",
+    title: "Outdoor adventure",
+    detail: "Shade-sail playgrounds, tricycles, gardens, and big-body play.",
+  },
+  {
+    time: "12:00",
+    title: "Lunch & rest",
+    detail: "Family-style lunch, then a rest that actually restores little nervous systems.",
+  },
+  {
+    time: "2:30",
+    title: "Choice time",
+    detail: "Science trays, dramatic play, and teacher-guided investigations.",
+  },
+  {
+    time: "5:00",
+    title: "Closing circle",
+    detail: "Stories home, a hug, and a teacher who can tell you how the day really went.",
+  },
 ] as const;
 
 export const academyColors = [

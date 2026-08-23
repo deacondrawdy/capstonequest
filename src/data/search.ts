@@ -7,12 +7,12 @@ export const searchIndex = [
   {
     title: "Tucson Campus",
     path: "/campuses/tucson",
-    blurb: "1150 North Country Club Road, Tucson · (520) 620-1100",
+    blurb: "1150 North Country Club Road, Tucson · (520) 462-7788",
   },
   {
     title: "Yuma Campus",
     path: "/campuses/yuma",
-    blurb: "1220 South 4th Avenue, Yuma · (928) 919-7203",
+    blurb: "1220 South 4th Avenue, Yuma · (928) 977-9318",
   },
   {
     title: "Programs",
@@ -62,11 +62,11 @@ export const searchIndex = [
   {
     title: "See how my child is doing",
     path: "/portal",
-    blurb: "Parent portal — daily notes, meals, photos. Demo code QUEST / Chen.",
+    blurb: "Parent portal — daily notes, meals, photos.",
   },
   {
     title: "Contact",
     path: "/contact",
-    blurb: "1-800-379-9083 · hello@capstonequestacademy.org",
+    blurb: "(520) 462-7788 · hello@capstonequestacademy.org",
   },
 ] as const;

@@ -5,13 +5,19 @@ import { Button } from "@/components/ui/button";
 import { campuses } from "@/data/school";
 
 export const Route = createFileRoute("/campuses/$slug")({
+  // Resolve in beforeLoad, not in the component. Throwing notFound() during
+  // render crashed SSR and fell back to client rendering, so an unknown slug
+  // served a 200 containing a React error dump instead of a 404.
+  beforeLoad: ({ params }) => {
+    const campus = campuses.find((c) => c.slug === params.slug);
+    if (!campus) throw notFound();
+    return { campus };
+  },
   component: CampusDetail,
 });
 
 function CampusDetail() {
-  const { slug } = Route.useParams();
-  const campus = campuses.find((c) => c.slug === slug);
-  if (!campus) throw notFound();
+  const { campus } = Route.useRouteContext();
 
   return (
     <SiteShell>
