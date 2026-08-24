@@ -183,7 +183,7 @@ export function Hero() {
           >
             <QualityFirstStars />
             <p className="text-left text-[12px] font-extrabold tracking-wide text-paper uppercase sm:text-[13px]">
-              Quality First 3-Star Rating
+              Quality First Program
             </p>
           </a>
           {remainingStats.map((s) => (
