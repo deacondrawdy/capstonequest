@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
+  Award,
   BookOpen,
   CalendarDays,
   GraduationCap,
@@ -12,7 +13,6 @@ import {
   Star,
   Users,
 } from "lucide-react";
-import { QualityFirstStars } from "@/components/quality-first-mark";
 import { VideoModal } from "@/components/video-modal";
 import { Button } from "@/components/ui/button";
 import { academyColors } from "@/data/school";
@@ -181,7 +181,7 @@ export function Hero() {
             rel="noreferrer"
             className="flex items-center justify-center gap-2.5 bg-navy px-3 py-4 transition-colors hover:bg-navy-mid sm:px-4"
           >
-            <QualityFirstStars />
+            <Award className="size-8 shrink-0 text-gold sm:size-9" strokeWidth={1.7} />
             <p className="text-left text-[12px] font-extrabold tracking-wide text-paper uppercase sm:text-[13px]">
               Quality First Program
             </p>
