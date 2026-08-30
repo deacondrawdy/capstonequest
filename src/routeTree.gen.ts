@@ -18,9 +18,10 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EnrollRouteImport } from './routes/enroll'
 import { Route as InfoRouteImport } from './routes/info'
 import { Route as ParentsRouteImport } from './routes/parents'
-import { Route as PortalRouteImport } from './routes/portal'
+import { Route as PoliciesRouteImport } from './routes/policies'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as TourRouteImport } from './routes/tour'
+import { Route as TuitionRouteImport } from './routes/tuition'
 import { Route as WhyUsRouteImport } from './routes/why-us'
 import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesSlugRouteImport } from './routes/campuses.$slug'
@@ -70,9 +71,9 @@ const ParentsRoute = ParentsRouteImport.update({
   path: '/parents',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PortalRoute = PortalRouteImport.update({
-  id: '/portal',
-  path: '/portal',
+const PoliciesRoute = PoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -83,6 +84,11 @@ const ProgramsRoute = ProgramsRouteImport.update({
 const TourRoute = TourRouteImport.update({
   id: '/tour',
   path: '/tour',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TuitionRoute = TuitionRouteImport.update({
+  id: '/tuition',
+  path: '/tuition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhyUsRoute = WhyUsRouteImport.update({
@@ -111,9 +117,10 @@ export interface FileRoutesByFullPath {
   '/enroll': typeof EnrollRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
-  '/portal': typeof PortalRoute
+  '/policies': typeof PoliciesRoute
   '/programs': typeof ProgramsRoute
   '/tour': typeof TourRoute
+  '/tuition': typeof TuitionRoute
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
   '/campuses/': typeof CampusesIndexRoute
@@ -127,9 +134,10 @@ export interface FileRoutesByTo {
   '/enroll': typeof EnrollRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
-  '/portal': typeof PortalRoute
+  '/policies': typeof PoliciesRoute
   '/programs': typeof ProgramsRoute
   '/tour': typeof TourRoute
+  '/tuition': typeof TuitionRoute
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
   '/campuses': typeof CampusesIndexRoute
@@ -145,9 +153,10 @@ export interface FileRoutesById {
   '/enroll': typeof EnrollRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
-  '/portal': typeof PortalRoute
+  '/policies': typeof PoliciesRoute
   '/programs': typeof ProgramsRoute
   '/tour': typeof TourRoute
+  '/tuition': typeof TuitionRoute
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
   '/campuses/': typeof CampusesIndexRoute
@@ -164,9 +173,10 @@ export interface FileRouteTypes {
     | '/enroll'
     | '/info'
     | '/parents'
-    | '/portal'
+    | '/policies'
     | '/programs'
     | '/tour'
+    | '/tuition'
     | '/why-us'
     | '/campuses/$slug'
     | '/campuses/'
@@ -180,9 +190,10 @@ export interface FileRouteTypes {
     | '/enroll'
     | '/info'
     | '/parents'
-    | '/portal'
+    | '/policies'
     | '/programs'
     | '/tour'
+    | '/tuition'
     | '/why-us'
     | '/campuses/$slug'
     | '/campuses'
@@ -197,9 +208,10 @@ export interface FileRouteTypes {
     | '/enroll'
     | '/info'
     | '/parents'
-    | '/portal'
+    | '/policies'
     | '/programs'
     | '/tour'
+    | '/tuition'
     | '/why-us'
     | '/campuses/$slug'
     | '/campuses/'
@@ -215,9 +227,10 @@ export interface RootRouteChildren {
   EnrollRoute: typeof EnrollRoute
   InfoRoute: typeof InfoRoute
   ParentsRoute: typeof ParentsRoute
-  PortalRoute: typeof PortalRoute
+  PoliciesRoute: typeof PoliciesRoute
   ProgramsRoute: typeof ProgramsRoute
   TourRoute: typeof TourRoute
+  TuitionRoute: typeof TuitionRoute
   WhyUsRoute: typeof WhyUsRoute
 }
 
@@ -286,11 +299,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ParentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/portal': {
-      id: '/portal'
-      path: '/portal'
-      fullPath: '/portal'
-      preLoaderRoute: typeof PortalRouteImport
+    '/policies': {
+      id: '/policies'
+      path: '/policies'
+      fullPath: '/policies'
+      preLoaderRoute: typeof PoliciesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -305,6 +318,13 @@ declare module '@tanstack/react-router' {
       path: '/tour'
       fullPath: '/tour'
       preLoaderRoute: typeof TourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tuition': {
+      id: '/tuition'
+      path: '/tuition'
+      fullPath: '/tuition'
+      preLoaderRoute: typeof TuitionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/why-us': {
@@ -355,9 +375,10 @@ const rootRouteChildren: RootRouteChildren = {
   EnrollRoute: EnrollRoute,
   InfoRoute: InfoRoute,
   ParentsRoute: ParentsRoute,
-  PortalRoute: PortalRoute,
+  PoliciesRoute: PoliciesRoute,
   ProgramsRoute: ProgramsRoute,
   TourRoute: TourRoute,
+  TuitionRoute: TuitionRoute,
   WhyUsRoute: WhyUsRoute,
 }
 export const routeTree = rootRouteImport

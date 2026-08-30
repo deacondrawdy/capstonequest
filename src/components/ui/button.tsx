@@ -41,7 +41,14 @@ type ButtonProps = React.ComponentProps<"button"> &
 function Button({ className, variant, size, asChild = false, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : "button";
   return (
-    <Comp className={cn(buttonVariants({ variant, size, className }))} {...props} />
+    <Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      // A Button rendered as a link already reads as actionable, so the
+      // "underline links" preference skips it -- except the `link` variant,
+      // which is styled as running text and should be underlined.
+      data-a11y-nounderline={variant === "link" ? undefined : ""}
+      {...props}
+    />
   );
 }
 

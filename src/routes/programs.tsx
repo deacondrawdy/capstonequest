@@ -28,7 +28,7 @@ function ProgramsPage() {
             <img
               src={p.image}
               alt=""
-              className={`h-72 w-full rounded-[28px] object-cover ${i % 2 ? "lg:order-2" : ""}`}
+              className={`h-72 w-full rounded-[28px] object-cover object-top ${i % 2 ? "lg:order-2" : ""}`}
             />
             <div>
               <p className="text-xs font-bold tracking-wide text-brand uppercase">
@@ -44,9 +44,14 @@ function ProgramsPage() {
                   </li>
                 ))}
               </ul>
-              <Button asChild className="mt-6">
-                <Link to="/enroll">Start enrollment</Link>
-              </Button>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link to="/enroll">Start enrollment</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link to="/tuition">See rates</Link>
+                </Button>
+              </div>
             </div>
           </article>
         ))}

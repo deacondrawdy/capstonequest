@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   Award,
-  BookOpen,
+  Blocks,
   CalendarDays,
   GraduationCap,
   Heart,
@@ -17,13 +17,6 @@ import { VideoModal } from "@/components/video-modal";
 import { Button } from "@/components/ui/button";
 import { academyColors } from "@/data/school";
 import { cn } from "@/lib/utils";
-
-const features = [
-  { icon: Heart, color: "text-icon-green", ring: "border-icon-green/40", label: "Play-Based Learning" },
-  { icon: Users, color: "text-icon-orange", ring: "border-icon-orange/40", label: "Caring & Experienced Teachers" },
-  { icon: Shield, color: "text-icon-purple", ring: "border-icon-purple/40", label: "Safe & Secure Environment" },
-  { icon: BookOpen, color: "text-icon-blue", ring: "border-icon-blue/40", label: "School Ready Pre-K Curriculum" },
-];
 
 const reasons = [
   {
@@ -52,7 +45,10 @@ const reasons = [
   },
 ];
 
-const remainingStats = [
+const bottomBadges = [
+  { icon: Users, color: "text-icon-green", title: "Ages 3–5 Years" },
+  { icon: Heart, color: "text-icon-orange", title: "Caring & Experienced Teachers" },
+  { icon: Blocks, color: "text-icon-purple", title: "Play-Based Learning" },
   { icon: MapPin, color: "text-icon-pink", title: "Tucson & Yuma convenient locations" },
   { icon: ShieldCheck, color: "text-icon-blue", title: "100% Approved by DES" },
 ];
@@ -72,7 +68,7 @@ export function Hero() {
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-paper to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-5 pt-8 pb-8 sm:px-8 lg:min-h-[640px] lg:px-10 lg:pt-10 lg:pb-28">
+      <div className="relative mx-auto max-w-[1400px] px-5 pt-8 pb-8 sm:px-8 lg:flex lg:items-start lg:justify-between lg:gap-8 lg:px-10 lg:pt-10 lg:pb-36 xl:pb-32 2xl:pb-28">
         <div className="hero-stagger relative z-10 max-w-xl lg:max-w-[32rem]">
           <p className="flex items-center gap-2 text-[13px] font-bold tracking-[0.14em] text-brand uppercase">
             Pre-K Programs at
@@ -109,29 +105,6 @@ export function Hero() {
             friendships, and foundational skills for lifelong success.
           </p>
 
-          <ul className="mt-6 grid max-w-lg grid-cols-2 gap-x-2 gap-y-4 sm:grid-cols-4 sm:gap-x-0">
-            {features.map((f, i) => (
-              <li
-                key={f.label}
-                className={cn(
-                  "flex flex-col items-center px-1 text-center sm:items-center sm:text-center",
-                  i > 0 && "sm:border-l sm:border-line",
-                )}
-              >
-                <span
-                  className={cn(
-                    "mb-2 inline-flex size-11 items-center justify-center rounded-full border-2 bg-paper",
-                    f.ring,
-                    f.color,
-                  )}
-                >
-                  <f.icon className="size-5" strokeWidth={1.8} />
-                </span>
-                <span className="text-[11px] font-semibold leading-snug text-navy">{f.label}</span>
-              </li>
-            ))}
-          </ul>
-
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Button asChild size="xl">
               <Link to="/tour">
@@ -147,7 +120,7 @@ export function Hero() {
           </div>
         </div>
 
-        <aside className="mt-6 rounded-[24px] bg-paper p-5 shadow-card lg:absolute lg:top-[5.75rem] lg:right-6 lg:mt-0 lg:w-[18.1rem] lg:rounded-[26px] lg:p-5">
+        <aside className="relative z-10 mt-6 rounded-[24px] bg-paper p-5 shadow-card lg:mt-0 lg:w-[18.1rem] lg:shrink-0 lg:rounded-[26px] lg:p-5">
           <h2 className="mb-3.5 text-[13px] font-extrabold tracking-[0.08em] text-navy uppercase">
             Why Families Choose Us
           </h2>
@@ -164,36 +137,39 @@ export function Hero() {
               </li>
             ))}
           </ul>
-        </aside>
-      </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-4 pb-8 sm:px-6 lg:absolute lg:inset-x-0 lg:bottom-6 lg:px-10 lg:pb-0">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[22px] bg-navy-deep sm:grid-cols-4">
-          <div className="flex items-center justify-center gap-2.5 bg-navy px-3 py-4 sm:px-4">
-            <Users className="size-8 shrink-0 text-icon-green sm:size-9" strokeWidth={1.7} />
-            <p className="text-left text-[12px] font-extrabold tracking-wide text-paper uppercase sm:text-[13px]">
-              Ages 3–5 Years
-            </p>
-          </div>
           <a
             href="https://www.qualityfirstaz.com/"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-center gap-2.5 bg-navy px-3 py-4 transition-colors hover:bg-navy-mid sm:px-4"
+            className="mt-4 flex items-center gap-3 rounded-2xl border border-gold/50 bg-gold/10 px-3 py-2.5 transition-colors hover:bg-gold/20"
           >
-            <Award className="size-8 shrink-0 text-gold sm:size-9" strokeWidth={1.7} />
-            <p className="text-left text-[12px] font-extrabold tracking-wide text-paper uppercase sm:text-[13px]">
-              Quality First Program
-            </p>
+            <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy">
+              <Award className="size-4" strokeWidth={2.2} />
+            </span>
+            <div>
+              <p className="text-[14px] font-bold text-navy">Quality First Program</p>
+              <p className="text-[13px] leading-snug text-muted">
+                A participating Arizona Quality First program.
+              </p>
+            </div>
           </a>
-          {remainingStats.map((s) => (
+        </aside>
+      </div>
+
+      <div className="relative mx-auto max-w-[1400px] px-4 pb-8 sm:px-6 lg:absolute lg:inset-x-0 lg:bottom-6 lg:px-10 lg:pb-0">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[22px] bg-navy-deep lg:grid-cols-5">
+          {bottomBadges.map((b, i) => (
             <div
-              key={s.title}
-              className="flex items-center justify-center gap-2.5 bg-navy px-3 py-4 sm:px-4"
+              key={b.title}
+              className={cn(
+                "flex items-center justify-center gap-2.5 bg-navy px-3 py-4 sm:px-4",
+                i === bottomBadges.length - 1 && "col-span-2 lg:col-span-1",
+              )}
             >
-              <s.icon className={cn("size-8 shrink-0 sm:size-9", s.color)} strokeWidth={1.7} />
+              <b.icon className={cn("size-8 shrink-0 sm:size-9", b.color)} strokeWidth={1.7} />
               <p className="text-left text-[12px] font-extrabold tracking-wide text-paper uppercase sm:text-[13px]">
-                {s.title}
+                {b.title}
               </p>
             </div>
           ))}

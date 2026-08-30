@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CalendarDays, ExternalLink, FileText, HeartHandshake, Smartphone } from "lucide-react";
+import { CalendarDays, ExternalLink, FileText, HeartHandshake, ShieldCheck } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -8,13 +8,6 @@ import { faqs, parentDocuments } from "@/data/school";
 export const Route = createFileRoute("/parents")({ component: ParentsPage });
 
 const resources = [
-  {
-    icon: Smartphone,
-    title: "Parent portal",
-    text: "Daily notes, photos, meals, and messages from your child’s teacher.",
-    to: "/portal",
-    cta: "See how my child is doing",
-  },
   {
     icon: CalendarDays,
     title: "Tours & calendar",
@@ -28,6 +21,13 @@ const resources = [
     text: "Health forms, emergency contacts, and DES paperwork in one sitting.",
     to: "/enroll",
     cta: "Start enrollment",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Policies",
+    text: "Enrollment, release, discipline, and parent access — as posted at both campuses.",
+    to: "/policies",
+    cta: "Read the policies",
   },
   {
     icon: HeartHandshake,
@@ -46,7 +46,7 @@ function ParentsPage() {
           <p className="text-sm font-bold tracking-[0.14em] text-brand uppercase">Parents</p>
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">You’re on the team</h1>
           <p className="mt-3 text-muted">
-            Handbooks, menus, the portal, and the same family resources that live under Info on the current site.
+            Handbooks, menus, and the same family resources that live under Info on the current site.
           </p>
         </div>
       </div>
@@ -92,13 +92,19 @@ function ParentsPage() {
         <div className="mx-auto max-w-[800px] px-5 sm:px-8">
           <h2 className="text-3xl font-extrabold">Tuition & DES</h2>
           <p className="mt-3 text-paper/80">
-            We are 100% approved by the Arizona Department of Economic Security. Families using a DES child care
-            subsidy enroll in the same classrooms as private-pay families. Ask during your tour about current rates,
-            sibling discounts, and how we handle vouchers — we will walk the paperwork with you.
+            Full-day Pre-K runs $130.00 a week for five days and $120.00 for three, with before- and
+            after-care from $15.00. There is a 10% discount for one additional sibling. We are 100%
+            approved by the Arizona Department of Economic Security, and families using a DES child
+            care subsidy enroll the same way — copays apply, and we will walk the paperwork with you.
           </p>
-          <Button asChild variant="gold" className="mt-6">
-            <Link to="/contact">Ask about tuition</Link>
-          </Button>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild variant="gold">
+              <Link to="/tuition">See the full fee schedule</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link to="/contact">Ask about tuition</Link>
+            </Button>
+          </div>
         </div>
       </section>
       <section className="mx-auto max-w-[800px] px-5 py-14 sm:px-8">

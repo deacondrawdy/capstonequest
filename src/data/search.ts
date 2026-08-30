@@ -27,7 +27,17 @@ export const searchIndex = [
   {
     title: "Clever",
     path: "/clever",
-    blurb: "Clever, PowerSchool, ClassDojo, RAZ Kids, and the parent portal.",
+    blurb: "Clever, PowerSchool, ClassDojo, and RAZ Kids sign-ins.",
+  },
+  {
+    title: "Tuition & fees",
+    path: "/tuition",
+    blurb: "Weekly Pre-K rates, before & after care, sibling discounts, billing terms.",
+  },
+  {
+    title: "Policies",
+    path: "/policies",
+    blurb: "Enrollment, release, discipline, parent access, inspection reports.",
   },
   {
     title: "Careers",
@@ -58,11 +68,6 @@ export const searchIndex = [
     title: "Schedule a tour",
     path: "/tour",
     blurb: "Walk a Tucson or Yuma classroom on a weekday morning.",
-  },
-  {
-    title: "See how my child is doing",
-    path: "/portal",
-    blurb: "Parent portal — daily notes, meals, photos.",
   },
   {
     title: "Contact",

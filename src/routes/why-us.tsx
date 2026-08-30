@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Shield, GraduationCap, Users } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { dayInTheLife, faqs, testimonials } from "@/data/school";
+import { dailySchedule, faqs, testimonials } from "@/data/school";
 
 export const Route = createFileRoute("/why-us")({ component: WhyUsPage });
 
@@ -25,7 +25,7 @@ const pillars = [
   {
     icon: Users,
     title: "Family partnership",
-    text: "Tours, conferences, and a parent portal so you never have to wonder how the day actually went.",
+    text: "Tours, conferences, and teachers who call back — so you never have to wonder how the day actually went.",
   },
 ];
 
@@ -70,13 +70,10 @@ function WhyUsPage() {
         <div className="mx-auto max-w-[900px] px-5 sm:px-8">
           <h2 className="text-3xl font-extrabold text-navy">A day in Pre-K</h2>
           <ol className="mt-8 space-y-4">
-            {dayInTheLife.map((item) => (
-              <li key={item.time} className="grid grid-cols-[4.5rem_1fr] gap-4 border-b border-line pb-4">
-                <span className="font-extrabold text-brand tabular-nums">{item.time}</span>
-                <div>
-                  <p className="font-bold text-navy">{item.title}</p>
-                  <p className="text-sm text-muted">{item.detail}</p>
-                </div>
+            {dailySchedule.map((item) => (
+              <li key={item.time} className="grid grid-cols-[7rem_1fr] gap-4 border-b border-line pb-3">
+                <span className="text-sm font-extrabold text-brand tabular-nums">{item.time}</span>
+                <p className="font-semibold text-navy">{item.title}</p>
               </li>
             ))}
           </ol>

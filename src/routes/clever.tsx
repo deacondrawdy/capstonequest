@@ -1,7 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
-import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/clever")({ component: CleverPage });
 
@@ -42,11 +41,8 @@ function CleverPage() {
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight">Portals families already know</h1>
           <p className="mt-3 text-paper/80">
             The live AmeriSchools site sends “See how my child is doing” to PowerSchool and puts Clever in the top bar.
-            Those links still work. For Pre-K daily life — meals, rest, photos — use our parent portal.
+            Those links still work.
           </p>
-          <Button asChild variant="gold" className="mt-6">
-            <Link to="/portal">Open the Pre-K parent portal</Link>
-          </Button>
         </div>
       </div>
       <div className="mx-auto max-w-[800px] space-y-4 px-5 py-14 sm:px-8">
@@ -65,9 +61,6 @@ function CleverPage() {
             <ExternalLink className="mt-1 size-4 shrink-0 text-brand" />
           </a>
         ))}
-        <p className="pt-4 text-xs text-muted">
-          Demo the redesigned portal with family code <strong>QUEST</strong> and last name <strong>Chen</strong>.
-        </p>
       </div>
     </SiteShell>
   );

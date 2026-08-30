@@ -2,6 +2,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Capstone Quest Academy";
@@ -40,6 +41,9 @@ function RootDocument() {
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Applies saved accessibility preferences before first paint, so a
+            visitor who chose larger text never sees the default size flash. */}
+        <script dangerouslySetInnerHTML={{ __html: A11Y_BOOT_SCRIPT }} />
       </head>
       <body>
         <PreviewHostBridge />

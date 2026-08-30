@@ -3,7 +3,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
-import { campuses, dayInTheLife, programs, school, testimonials } from "@/data/school";
+import { campuses, dailySchedule, programs, school, testimonials } from "@/data/school";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -41,7 +41,7 @@ function Home() {
               "Ages 3–5, Tucson and Yuma since 2013",
               "Open 7:00 AM – 6:00 PM, Monday–Friday",
               "Before- and after-school care on both campuses",
-              "DES-approved · same classroom for every family",
+              "DES-approved · State of Arizona licensed",
             ].map((item) => (
               <li
                 key={item}
@@ -67,7 +67,7 @@ function Home() {
                 key={p.slug}
                 className="overflow-hidden rounded-[28px] bg-paper shadow-card transition-[box-shadow,transform] duration-200 hover:shadow-card-hover"
               >
-                <img src={p.image} alt="" className="h-44 w-full object-cover" />
+                <img src={p.image} alt="" className="h-44 w-full object-cover object-top" />
                 <div className="p-6">
                   <p className="text-xs font-bold tracking-wide text-brand uppercase">
                     {p.ages} · {p.hours}
@@ -128,17 +128,22 @@ function Home() {
           <h2 className="mt-2 max-w-lg text-3xl font-extrabold tracking-tight sm:text-4xl">
             Rhythm, play, and just enough school
           </h2>
-          <ol className="mt-10 grid gap-5 sm:grid-cols-2">
-            {dayInTheLife.map((item) => (
-              <li key={item.time} className="flex gap-4 rounded-2xl bg-white/10 p-4">
-                <span className="w-14 shrink-0 font-extrabold text-gold tabular-nums">{item.time}</span>
-                <div>
-                  <p className="font-bold">{item.title}</p>
-                  <p className="mt-1 text-sm text-paper/75">{item.detail}</p>
-                </div>
+          <ol className="mt-10 grid gap-2.5 sm:grid-cols-2">
+            {dailySchedule.map((item) => (
+              <li key={item.time} className="flex items-baseline gap-4 rounded-2xl bg-white/10 px-4 py-3">
+                <span className="w-[6.5rem] shrink-0 text-sm font-extrabold text-gold tabular-nums">
+                  {item.time}
+                </span>
+                <p className="font-semibold">{item.title}</p>
               </li>
             ))}
           </ol>
+          <p className="mt-6 text-sm text-paper/70">
+            Before- and after-care wraps around this day, 7:00–8:00 AM and 3:30–6:00 PM.{" "}
+            <Link to="/tuition" className="font-semibold text-gold underline underline-offset-2">
+              See rates
+            </Link>
+          </p>
         </div>
       </section>
 

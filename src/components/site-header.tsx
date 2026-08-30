@@ -3,6 +3,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, Phone, Star } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { SiteSearch } from "@/components/site-search";
+import { AccessibilityMenu } from "@/components/accessibility-menu";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -23,7 +24,7 @@ function DropTrigger({ children }: { children: ReactNode }) {
   );
 }
 
-type NavPath = "/" | "/clever" | "/careers" | "/contact";
+type NavPath = "/" | "/tuition" | "/careers" | "/contact";
 
 function TextLink({
   to,
@@ -66,11 +67,11 @@ const mobileLinks: Array<{ to: string; label: string }> = [
   { to: "/campuses", label: "Campuses" },
   { to: "/info", label: "Info" },
   { to: "/programs", label: "Programs" },
-  { to: "/clever", label: "Clever" },
+  { to: "/tuition", label: "Tuition & fees" },
+  { to: "/policies", label: "Policies" },
   { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact" },
   { to: "/parents", label: "Parent resources" },
-  { to: "/portal", label: "See how my child is doing" },
   { to: "/tour", label: "Schedule a tour" },
 ];
 
@@ -82,12 +83,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 bg-paper/95 shadow-[var(--shadow-nav)] backdrop-blur-md">
       <div className="hidden border-b border-line sm:block">
         <div className="mx-auto flex max-w-[1400px] items-center justify-end gap-3 px-4 py-1.5 sm:px-6 lg:px-10">
-          <Link
-            to="/portal"
-            className="text-[13px] font-semibold text-ink/70 underline-offset-2 hover:text-navy hover:underline"
-          >
-            See how my child is doing
-          </Link>
+          <AccessibilityMenu />
           <span className="text-ink/25" aria-hidden>
             |
           </span>
@@ -135,10 +131,13 @@ export function SiteHeader() {
               <DropdownMenuItem asChild>
                 <Link to="/why-us">Why us</Link>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/policies">Policies</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <TextLink to="/clever" active={pathname === "/clever"}>
-            Clever
+          <TextLink to="/tuition" active={pathname === "/tuition"}>
+            Tuition
           </TextLink>
           <TextLink to="/careers" active={pathname === "/careers"}>
             Careers
@@ -194,6 +193,9 @@ export function SiteHeader() {
                 <a href={school.phoneHref} className="mt-2 px-3 text-sm text-brand">
                   {school.phone}
                 </a>
+                <div className="mt-3 border-t border-line pt-3">
+                  <AccessibilityMenu className="px-3 py-2 text-sm" />
+                </div>
               </div>
             </SheetContent>
           </Sheet>

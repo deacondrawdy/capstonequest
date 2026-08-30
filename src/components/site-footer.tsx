@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="bg-navy-deep text-paper">
       <div className="mx-auto grid max-w-[1400px] gap-10 px-6 py-14 sm:px-8 lg:grid-cols-4 lg:px-10">
         <div>
-          <div className="mb-4 inline-block rounded-full bg-paper p-1">
+          <div className="mb-4 inline-flex rounded-full bg-paper p-1">
             <Logo size="sm" />
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-paper/75">
@@ -76,6 +76,16 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/tuition" className="hover:text-gold">
+                Tuition & fees
+              </Link>
+            </li>
+            <li>
+              <Link to="/policies" className="hover:text-gold">
+                Policies
+              </Link>
+            </li>
+            <li>
               <Link to="/careers" className="hover:text-gold">
                 Careers
               </Link>
@@ -88,11 +98,6 @@ export function SiteFooter() {
             <li>
               <Link to="/tour" className="hover:text-gold">
                 Schedule a tour
-              </Link>
-            </li>
-            <li>
-              <Link to="/portal" className="hover:text-gold">
-                Parent portal
               </Link>
             </li>
           </ul>

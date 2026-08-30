@@ -56,8 +56,8 @@ export const programs = [
     slug: "pre-k-3s",
     name: "Pre-K 3s",
     ages: "Age 3",
-    hours: "Half-day or full-day",
-    image: "/images/art.jpg",
+    hours: "Full-day, 3 or 5 days",
+    image: "/images/circle-time.jpg",
     summary:
       "A gentle first classroom year. Children learn to share, speak up, and explore through play, music, and outdoor discovery.",
     points: [
@@ -190,7 +190,7 @@ export const faqs = [
   },
   {
     q: "Can I see how my child is doing during the day?",
-    a: "Yes. Use “See how my child is doing” in the top bar for the parent portal. Families also sign in through Clever and PowerSchool the way the current AmeriSchools campuses do.",
+    a: "Yes. Call the campus any time and we will check on your child. Families also sign in through Clever and PowerSchool the way the current AmeriSchools campuses do.",
   },
   {
     q: "What are your hours?",
@@ -198,41 +198,144 @@ export const faqs = [
   },
 ] as const;
 
-export const dayInTheLife = [
+/**
+ * The classroom day exactly as posted in the rooms (8:00 AM–3:15 PM dismissal).
+ * Replaces an earlier idealised 7:00–5:00 timeline that did not match the
+ * schedule families actually see on the wall. Before- and after-care wraps
+ * around this block — see `tuition.beforeAfter`.
+ */
+export const dailySchedule = [
+  { time: "8:00 – 8:25", title: "Greeting, morning centers, and attendance" },
+  { time: "8:30 – 9:00", title: "Circle time, read out loud, and dance" },
+  { time: "9:00 – 9:30", title: "Outside play time" },
+  { time: "9:30 – 10:30", title: "Art, centers, and special projects" },
+  { time: "10:30 – 10:45", title: "Clean up, bathroom, wash hands" },
+  { time: "10:45 – 11:15", title: "Lunch" },
+  { time: "11:15 – 11:30", title: "Buddy reading" },
+  { time: "11:30 – 11:45", title: "Bathroom and wash hands" },
+  { time: "11:45 – 2:00", title: "Nap time" },
+  { time: "2:00 – 2:20", title: "Wake up and clean up" },
+  { time: "2:20 – 2:30", title: "Snack" },
+  { time: "2:30 – 2:40", title: "Dance and exercise" },
+  { time: "2:40 – 3:15", title: "Outside playtime and dismissal" },
+] as const;
+
+/**
+ * Rates and terms transcribed from the signed fee schedules dated 8/1/24.
+ * `effective` is rendered on the page: these are the rates on the current
+ * forms, and families should confirm them before signing.
+ */
+export const tuition = {
+  effective: "August 1, 2024",
+  preschoolHours: "8:00 AM – 3:30 PM",
+  programs: [
+    {
+      name: "Program #1",
+      schedule: "5 days a week",
+      hours: "8:00 AM – 3:30 PM",
+      price: "$130.00",
+      unit: "per week",
+    },
+    {
+      name: "Program #2",
+      schedule: "3 days a week",
+      hours: "8:00 AM – 3:30 PM",
+      price: "$120.00",
+      unit: "per week",
+    },
+    {
+      name: "Pre-K + before & after care",
+      schedule: "5 days a week",
+      hours: "7:00 AM – 6:00 PM",
+      price: "$160.00",
+      unit: "per week",
+      highlight: "Saves 20% against booking the two separately",
+    },
+  ],
+  beforeAfterHours: "7:00–8:00 AM & 3:30–6:00 PM",
+  beforeAfter: [
+    {
+      schedule: "5 days a week",
+      options: [
+        { care: "Before and after care", price: "$70.00" },
+        { care: "Before care only", price: "$25.00" },
+        { care: "After care only", price: "$60.00" },
+      ],
+    },
+    {
+      schedule: "3 days a week",
+      options: [
+        { care: "Before and after care", price: "$55.00" },
+        { care: "Before care only", price: "$15.00" },
+        { care: "After care only", price: "$50.00" },
+      ],
+    },
+  ],
+  included: [
+    "A nutritious afternoon snack is part of the fee schedule.",
+    "Parents provide their child with a lunch each day of attendance.",
+    "Afternoon care includes homework time and structured activities like recreation and games, with a snack provided.",
+  ],
+  discounts: [
+    "10% discount for one additional sibling, on both Pre-K and before & after care.",
+    "DES recipients select a program the same way; copays apply.",
+  ],
+  terms: [
+    "Fees are based on your contract schedule, not on attendance.",
+    "School calendar breaks (if we are not open) and major public holidays are not billed.",
+    "Fees are billed every Monday and due that evening, for the week ahead. A $10.00 late charge applies Wednesday morning.",
+    "Late pick-up is $1.00 per minute, billed the next cycle.",
+    "Emergency drop-off for before & after care is $15.00, due at pick-up, and must be cleared by the front office so we know we have space.",
+    "Extra days beyond your contract are billed as drop-ins. Filing a new contract avoids the drop-in rate.",
+    "A signed contract and current registration documents must be on file before your child attends.",
+  ],
+} as const;
+
+/**
+ * Licensing policies as posted at the campuses. Wording follows the posted
+ * notices; these are regulatory disclosures, so they are quoted rather than
+ * rewritten in marketing voice.
+ */
+export const policies = [
   {
-    time: "7:00",
-    title: "Warm welcome",
-    detail: "Teachers greet each child by name. Breakfast and quiet table work for early birds.",
+    title: "Child Enrollment Procedures",
+    body: "Children are enrolled upon completion of all required enrollment documentation, including but not limited to:",
+    list: [
+      "Enrollment application",
+      "Emergency contact information",
+      "Immunization records",
+      "Health records as required by licensing rules",
+    ],
+    footer:
+      "Enrollment is based on availability and the child’s age appropriateness for the Pre-Kindergarten program.",
   },
   {
-    time: "8:30",
-    title: "Morning meeting",
-    detail: "Songs, the day’s story, and a chance for every voice to be heard.",
+    title: "Child Admission and Release Procedures",
+    body: "Children are released only to parents or individuals authorized in writing by the parent or guardian. Identification is required when releasing a child to an individual unfamiliar to staff. Children may not leave the facility without authorized supervision.",
   },
   {
-    time: "9:15",
-    title: "Studios & workshops",
-    detail: "Literacy, early math, art, and block-building in small groups.",
+    title: "Discipline Guidelines",
+    body: "The facility uses positive, age-appropriate guidance techniques that are consistent and developmentally appropriate for Pre-Kindergarten-age children. Discipline focuses on redirection, modeling appropriate behavior, and setting clear expectations. Corporal punishment, humiliation, or abusive language is never used.",
   },
   {
-    time: "11:00",
-    title: "Outdoor adventure",
-    detail: "Shade-sail playgrounds, tricycles, gardens, and big-body play.",
+    title: "Child Disenrollment Procedures",
+    body: "Children may be disenrolled by the parent or guardian with written notice provided to the facility. The facility reserves the right to disenroll a child for reasons including, but not limited to, non-payment of fees, failure to follow facility policies, or safety concerns, in accordance with licensing rules and facility policies.",
   },
   {
-    time: "12:00",
-    title: "Lunch & rest",
-    detail: "Family-style lunch, then a rest that actually restores little nervous systems.",
+    title: "Suspension and Expulsion Policy",
+    body: "The facility has written policies regarding suspension and expulsion that include prevention strategies, clear expectations, and age-appropriate guidance methods. These policies are available to parents upon request.",
   },
   {
-    time: "2:30",
-    title: "Choice time",
-    detail: "Science trays, dramatic play, and teacher-guided investigations.",
+    title: "Parent Access",
+    body: "Parents have access to areas of the facility where their enrolled child is receiving child care during normal operating hours.",
   },
   {
-    time: "5:00",
-    title: "Closing circle",
-    detail: "Stories home, a hug, and a teacher who can tell you how the day really went.",
+    title: "Pesticide Application Notification",
+    body: "Parents are notified at least 48 hours in advance of pesticide application on the facility premises, in accordance with state requirements.",
+  },
+  {
+    title: "Inspection Reports",
+    body: "Parents are informed that licensing inspection reports are available for review on the facility premises.",
   },
 ] as const;
 

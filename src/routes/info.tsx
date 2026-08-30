@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpen, Building2, CalendarDays, FileText, GraduationCap, Users } from "lucide-react";
+import { BookOpen, Building2, CalendarDays, FileText, GraduationCap, Receipt, ShieldCheck, Users } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 
 export const Route = createFileRoute("/info")({ component: InfoPage });
@@ -29,7 +29,7 @@ const cards = [
   {
     icon: BookOpen,
     title: "Clever & portals",
-    text: "Clever, PowerSchool, ClassDojo, RAZ Kids — plus the Pre-K parent portal.",
+    text: "Clever, PowerSchool, ClassDojo, and RAZ Kids — the sign-ins families already use.",
     to: "/clever",
     cta: "Open portals",
   },
@@ -39,6 +39,20 @@ const cards = [
     text: "Walk a real morning meeting. Most tours last about 40 minutes.",
     to: "/tour",
     cta: "Book a tour",
+  },
+  {
+    icon: Receipt,
+    title: "Tuition & fees",
+    text: "Weekly Pre-K rates, before & after care, sibling discounts, and billing terms.",
+    to: "/tuition",
+    cta: "See tuition",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Policies",
+    text: "Enrollment, admission and release, discipline, parent access, and inspection reports.",
+    to: "/policies",
+    cta: "Read the policies",
   },
   {
     icon: FileText,
