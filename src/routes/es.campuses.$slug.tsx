@@ -2,10 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { CampusDetail } from "@/pages/campuses.$slug";
 import { campuses } from "@/data/school";
 
-export const Route = createFileRoute("/campuses/$slug")({
-  // Resolve in beforeLoad, not in the component. Throwing notFound() during
-  // render crashed SSR and fell back to client rendering, so an unknown slug
-  // served a 200 containing a React error dump instead of a 404.
+export const Route = createFileRoute("/es/campuses/$slug")({
   beforeLoad: ({ params }) => {
     const campus = campuses.find((c) => c.slug === params.slug);
     if (!campus) throw notFound();

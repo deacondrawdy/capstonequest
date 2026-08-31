@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { AppLink, useContent } from "@/lib/locale";
 import {
   Award,
   Blocks,
@@ -18,43 +18,24 @@ import { Button } from "@/components/ui/button";
 import { academyColors } from "@/data/school";
 import { cn } from "@/lib/utils";
 
-const reasons = [
-  {
-    icon: Heart,
-    bg: "bg-icon-green",
-    title: "Small Class Sizes",
-    text: "Individualized attention for every child.",
-  },
-  {
-    icon: Shield,
-    bg: "bg-icon-orange",
-    title: "Safe & Secure",
-    text: "Top-notch safety with trusted care.",
-  },
-  {
-    icon: GraduationCap,
-    bg: "bg-icon-purple",
-    title: "School Ready",
-    text: "Engaging Pre-K curriculum that builds skills & confidence.",
-  },
-  {
-    icon: Users,
-    bg: "bg-icon-blue",
-    title: "Family Partnership",
-    text: "We work together with you every step of the way.",
-  },
-];
-
-const bottomBadges = [
-  { icon: Users, color: "text-icon-green", title: "Ages 3–5 Years" },
-  { icon: Heart, color: "text-icon-orange", title: "Caring & Experienced Teachers" },
-  { icon: Blocks, color: "text-icon-purple", title: "Play-Based Learning" },
-  { icon: MapPin, color: "text-icon-pink", title: "Tucson & Yuma convenient locations" },
-  { icon: ShieldCheck, color: "text-icon-blue", title: "100% Approved by DES" },
-];
-
 export function Hero() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const c = useContent();
+
+  const reasons = [
+    { icon: Heart, bg: "bg-icon-green", ...c.hero.reasons.smallClasses },
+    { icon: Shield, bg: "bg-icon-orange", ...c.hero.reasons.safe },
+    { icon: GraduationCap, bg: "bg-icon-purple", ...c.hero.reasons.schoolReady },
+    { icon: Users, bg: "bg-icon-blue", ...c.hero.reasons.family },
+  ];
+
+  const bottomBadges = [
+    { icon: Users, color: "text-icon-green", title: c.hero.badges.ages },
+    { icon: Heart, color: "text-icon-orange", title: c.hero.badges.teachers },
+    { icon: Blocks, color: "text-icon-purple", title: c.hero.badges.play },
+    { icon: MapPin, color: "text-icon-pink", title: c.hero.badges.locations },
+    { icon: ShieldCheck, color: "text-icon-blue", title: c.hero.badges.des },
+  ];
 
   return (
     <section className="relative overflow-hidden bg-paper">
@@ -62,16 +43,16 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-y-0 left-[38%] right-0 hidden overflow-hidden lg:block">
         <img
           src="/images/hero.jpg"
-          alt="A preschooler coloring at a classroom table"
+          alt={c.hero.imageAlt}
           className="h-full w-full object-cover object-[15%_22%] outline-none"
         />
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-paper to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-5 pt-8 pb-8 sm:px-8 lg:flex lg:items-start lg:justify-between lg:gap-8 lg:px-10 lg:pt-10 lg:pb-36 xl:pb-32 2xl:pb-28">
+      <div className="relative mx-auto max-w-[1400px] px-5 pt-8 pb-8 sm:px-8 lg:flex lg:items-start lg:justify-between lg:gap-8 lg:px-10 lg:pt-10 lg:pb-36 xl:pb-32 2xl:pb-32">
         <div className="hero-stagger relative z-10 max-w-xl lg:max-w-[32rem]">
           <p className="flex items-center gap-2 text-[13px] font-bold tracking-[0.14em] text-brand uppercase">
-            Pre-K Programs at
+            {c.hero.eyebrow}
             <Star className="size-3.5 fill-icon-blue text-icon-blue" />
             <Star className="size-4 fill-gold text-gold" />
           </p>
@@ -88,41 +69,40 @@ export function Hero() {
           </h1>
 
           <p className="font-script mt-3 text-[1.65rem] leading-none text-brand italic sm:text-[1.85rem]">
-            Where curiosity grows and bright futures begin.
+            {c.hero.tagline}
           </p>
           <span className="mt-1 block h-1 w-48 rounded-full bg-gold/90" />
 
           <div className="mt-5 overflow-hidden rounded-[24px] lg:hidden">
             <img
               src="/images/hero.jpg"
-              alt="A preschooler coloring at a classroom table"
+              alt={c.hero.imageAlt}
               className="h-56 w-full object-cover object-[18%_18%] outline-none sm:h-72"
             />
           </div>
 
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-            A nurturing, play-based learning environment that helps your child build confidence,
-            friendships, and foundational skills for lifelong success.
+            {c.hero.lede}
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Button asChild size="xl">
-              <Link to="/tour">
+              <AppLink to="/tour">
                 <CalendarDays className="size-4" />
-                Schedule a Tour
+                {c.common.scheduleTour}
                 <span aria-hidden>→</span>
-              </Link>
+              </AppLink>
             </Button>
             <Button variant="outline" size="xl" onClick={() => setVideoOpen(true)}>
               <Play className="size-4 fill-navy" />
-              Watch Our Video
+              {c.hero.watchVideo}
             </Button>
           </div>
         </div>
 
         <aside className="relative z-10 mt-6 rounded-[24px] bg-paper p-5 shadow-card lg:mt-0 lg:w-[18.1rem] lg:shrink-0 lg:rounded-[26px] lg:p-5">
           <h2 className="mb-3.5 text-[13px] font-extrabold tracking-[0.08em] text-navy uppercase">
-            Why Families Choose Us
+            {c.hero.whyTitle}
           </h2>
           <ul className="space-y-3.5">
             {reasons.map((r) => (
@@ -148,9 +128,9 @@ export function Hero() {
               <Award className="size-4" strokeWidth={2.2} />
             </span>
             <div>
-              <p className="text-[14px] font-bold text-navy">Quality First Program</p>
+              <p className="text-[14px] font-bold text-navy">{c.hero.qualityFirst.title}</p>
               <p className="text-[13px] leading-snug text-muted">
-                A participating Arizona Quality First program.
+                {c.hero.qualityFirst.text}
               </p>
             </div>
           </a>

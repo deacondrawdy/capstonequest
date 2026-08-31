@@ -1,9 +1,10 @@
 import { useState, type ReactNode } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, Phone, Star } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { SiteSearch } from "@/components/site-search";
 import { AccessibilityMenu } from "@/components/accessibility-menu";
+import { LocaleSwitch } from "@/components/locale-switch";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,30 +14,29 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { campuses, school } from "@/data/school";
+import { AppLink, stripLocale, useContent, type AppPath } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 function DropTrigger({ children }: { children: ReactNode }) {
   return (
-    <DropdownMenuTrigger className="inline-flex items-center gap-0.5 px-1 pb-1 text-[13px] font-semibold tracking-[0.04em] text-ink/80 uppercase outline-none hover:text-navy data-[state=open]:text-navy">
+    <DropdownMenuTrigger className="inline-flex items-center gap-0.5 px-1 pb-1 text-[13px] font-semibold tracking-[0.04em] text-ink/80 uppercase outline-none transition-colors hover:text-navy focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=open]:text-navy">
       {children}
       <ChevronDown className="size-3.5" />
     </DropdownMenuTrigger>
   );
 }
 
-type NavPath = "/" | "/tuition" | "/careers" | "/contact";
-
 function TextLink({
   to,
   active,
   children,
 }: {
-  to: NavPath;
+  to: AppPath;
   active?: boolean;
   children: ReactNode;
 }) {
   return (
-    <Link
+    <AppLink
       to={to}
       className={cn(
         "relative px-1 pb-1 text-[13px] font-semibold tracking-[0.04em] text-ink/80 uppercase transition-colors hover:text-navy",
@@ -45,44 +45,52 @@ function TextLink({
     >
       {children}
       {active ? <span className="absolute inset-x-0 -bottom-1 h-[3px] rounded-full bg-gold" /> : null}
-    </Link>
+    </AppLink>
   );
 }
 
 export function TopBanner() {
+  const c = useContent();
   return (
     <div className="bg-gold text-navy">
       <div className="mx-auto flex max-w-[1400px] items-center justify-center px-4 py-2 sm:px-6">
         <p className="flex items-center gap-2 text-center text-sm font-bold sm:text-base">
           <Star className="size-3.5 shrink-0 fill-navy text-navy" aria-hidden />
-          Only a few spots left in Tucson & Yuma
+          {c.banner.text}
         </p>
       </div>
     </div>
   );
 }
 
-const mobileLinks: Array<{ to: string; label: string }> = [
-  { to: "/", label: "Home" },
-  { to: "/campuses", label: "Campuses" },
-  { to: "/info", label: "Info" },
-  { to: "/programs", label: "Programs" },
-  { to: "/tuition", label: "Tuition & fees" },
-  { to: "/policies", label: "Policies" },
-  { to: "/careers", label: "Careers" },
-  { to: "/contact", label: "Contact" },
-  { to: "/parents", label: "Parent resources" },
-  { to: "/tour", label: "Schedule a tour" },
-];
-
 export function SiteHeader() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // Compared against the locale-stripped path so /es/tuition marks Tuition
+  // active exactly as /tuition does.
+  const path = useRouterState({ select: (s) => stripLocale(s.location.pathname) });
   const [open, setOpen] = useState(false);
+  const c = useContent();
+
+  const mobileLinks: Array<{ to: AppPath; label: string }> = [
+    { to: "/", label: c.nav.home },
+    { to: "/campuses", label: c.nav.campuses },
+    { to: "/info", label: c.nav.info },
+    { to: "/programs", label: c.nav.programs },
+    { to: "/tuition", label: c.nav.tuitionFees },
+    { to: "/policies", label: c.nav.policies },
+    { to: "/careers", label: c.nav.careers },
+    { to: "/contact", label: c.nav.contact },
+    { to: "/parents", label: c.nav.parents },
+    { to: "/tour", label: c.common.scheduleTour },
+  ];
 
   return (
     <header className="sticky top-0 z-40 bg-paper/95 shadow-[var(--shadow-nav)] backdrop-blur-md">
       <div className="hidden border-b border-line sm:block">
         <div className="mx-auto flex max-w-[1400px] items-center justify-end gap-3 px-4 py-1.5 sm:px-6 lg:px-10">
+          <LocaleSwitch />
+          <span className="text-ink/25" aria-hidden>
+            |
+          </span>
           <AccessibilityMenu />
           <span className="text-ink/25" aria-hidden>
             |
@@ -95,55 +103,55 @@ export function SiteHeader() {
         <Logo className="-my-2" />
 
         <nav className="ml-2 hidden flex-1 items-center justify-center gap-4 lg:flex xl:gap-6">
-          <TextLink to="/" active={pathname === "/"}>
-            Home
+          <TextLink to="/" active={path === "/"}>
+            {c.nav.home}
           </TextLink>
           <DropdownMenu>
-            <DropTrigger>Campuses</DropTrigger>
+            <DropTrigger>{c.nav.campuses}</DropTrigger>
             <DropdownMenuContent align="start">
-              {campuses.map((c) => (
-                <DropdownMenuItem key={c.slug} asChild>
-                  <Link to="/campuses/$slug" params={{ slug: c.slug }}>
-                    {c.name}
-                  </Link>
+              {campuses.map((campus) => (
+                <DropdownMenuItem key={campus.slug} asChild>
+                  <AppLink to="/campuses/$slug" params={{ slug: campus.slug }}>
+                    {c.campuses[campus.slug].name}
+                  </AppLink>
                 </DropdownMenuItem>
               ))}
               <DropdownMenuItem asChild>
-                <Link to="/campuses">All campuses</Link>
+                <AppLink to="/campuses">{c.nav.allCampuses}</AppLink>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <DropdownMenu>
-            <DropTrigger>Info</DropTrigger>
+            <DropTrigger>{c.nav.info}</DropTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem asChild>
-                <Link to="/info">Info home</Link>
+                <AppLink to="/info">{c.nav.infoHome}</AppLink>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/about">About us</Link>
+                <AppLink to="/about">{c.nav.about}</AppLink>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/programs">Programs</Link>
+                <AppLink to="/programs">{c.nav.programs}</AppLink>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/parents">Parent resources</Link>
+                <AppLink to="/parents">{c.nav.parents}</AppLink>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/why-us">Why us</Link>
+                <AppLink to="/why-us">{c.nav.whyUs}</AppLink>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/policies">Policies</Link>
+                <AppLink to="/policies">{c.nav.policies}</AppLink>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <TextLink to="/tuition" active={pathname === "/tuition"}>
-            Tuition
+          <TextLink to="/tuition" active={path === "/tuition"}>
+            {c.nav.tuition}
           </TextLink>
-          <TextLink to="/careers" active={pathname === "/careers"}>
-            Careers
+          <TextLink to="/careers" active={path === "/careers"}>
+            {c.nav.careers}
           </TextLink>
-          <TextLink to="/contact" active={pathname === "/contact"}>
-            Contact
+          <TextLink to="/contact" active={path === "/contact"}>
+            {c.nav.contact}
           </TextLink>
         </nav>
 
@@ -159,41 +167,42 @@ export function SiteHeader() {
             {school.phone}
           </a>
           <Button asChild variant="brand" size="sm" className="sm:hidden">
-            <Link to="/enroll">Enroll</Link>
+            <AppLink to="/enroll">{c.common.enroll}</AppLink>
           </Button>
           <Button asChild variant="brand" size="lg" className="hidden sm:inline-flex">
-            <Link to="/enroll">Enroll</Link>
+            <AppLink to="/enroll">{c.common.enroll}</AppLink>
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
+              <Button variant="ghost" size="icon" className="lg:hidden" aria-label={c.nav.openMenu}>
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
             <SheetContent>
               <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
+                <SheetTitle>{c.nav.menu}</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-1 overflow-y-auto text-base font-semibold text-navy">
                 {mobileLinks.map((item) => (
-                  <Link
+                  <AppLink
                     key={item.to}
-                    to={item.to as "/"}
+                    to={item.to}
                     onClick={() => setOpen(false)}
                     className="rounded-xl px-3 py-3 hover:bg-paper-soft"
                   >
                     {item.label}
-                  </Link>
+                  </AppLink>
                 ))}
                 <Button asChild className="mt-4" variant="brand">
-                  <Link to="/enroll" onClick={() => setOpen(false)}>
-                    Enroll
-                  </Link>
+                  <AppLink to="/enroll" onClick={() => setOpen(false)}>
+                    {c.common.enroll}
+                  </AppLink>
                 </Button>
                 <a href={school.phoneHref} className="mt-2 px-3 text-sm text-brand">
                   {school.phone}
                 </a>
-                <div className="mt-3 border-t border-line pt-3">
+                <div className="mt-3 flex flex-col gap-1 border-t border-line pt-3">
+                  <LocaleSwitch className="px-3 py-2 text-sm" />
                   <AccessibilityMenu className="px-3 py-2 text-sm" />
                 </div>
               </div>

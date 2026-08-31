@@ -25,10 +25,18 @@ export const campuses = [
     phone: "(520) 462-7788",
     phoneHref: "tel:+15204627788",
     image: "/images/tucson.jpg",
+    // Wide (4:1) building shot used as the page banner. Only Tucson has one;
+    // the campus page falls back to the overlaid `image` hero without it.
+    banner: "/images/tucson-banner.jpg",
+    bannerAlt:
+      "The Tucson campus building, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates” beside the AmeriSchool Academy sign.",
     blurb:
       "A bright, home-away-from-home campus near midtown Tucson — desert gardens, shade-sail playgrounds, and classrooms built for curious three-to-five-year-olds.",
     hours: "7:00 AM – 6:00 PM",
-    capacity: "Small classes of 10 or fewer",
+    // Sits in the campus facts list beside address, phone, and hours. Those are
+    // all independently verifiable, so a headcount here read as a daily
+    // commitment rather than a description of the room. `feel`, not `capacity`.
+    feel: "A home away from home, all day",
     mapUrl:
       "https://www.google.com/maps/search/?api=1&query=1150+North+Country+Club+Road+Tucson+AZ+85716",
   },
@@ -44,7 +52,7 @@ export const campuses = [
     blurb:
       "A welcoming Yuma campus with a covered drop-off, sun-safe outdoor play, and the same DES-approved Pre-K program families trust across Arizona.",
     hours: "7:00 AM – 6:00 PM",
-    capacity: "Small classes of 10 or fewer",
+    feel: "A home away from home, all day",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=1220+South+4th+Avenue+Yuma+AZ+85364",
   },
 ] as const;
@@ -57,7 +65,7 @@ export const programs = [
     name: "Pre-K 3s",
     ages: "Age 3",
     hours: "Full-day, 3 or 5 days",
-    image: "/images/circle-time.jpg",
+    image: "/images/pattern-blocks.jpg",
     summary:
       "A gentle first classroom year. Children learn to share, speak up, and explore through play, music, and outdoor discovery.",
     points: [
@@ -71,7 +79,7 @@ export const programs = [
     name: "Pre-K 4s",
     ages: "Ages 4–5",
     hours: "Full-day kindergarten-ready",
-    image: "/images/blocks.jpg",
+    image: "/images/binoculars.jpg",
     summary:
       "A school-ready year that still feels like play. Children leave with confidence, friendships, and the skills kindergarten teachers look for.",
     points: [
@@ -85,7 +93,7 @@ export const programs = [
     name: "Before & After Care",
     ages: "Ages 3–5",
     hours: "7:00–8:00 AM · 3:30–6:00 PM",
-    image: "/images/playground.jpg",
+    image: "/images/bubbles.jpg",
     summary:
       "Fee-for-service wraparound care used by working families since 2013 — early arrival and late dismissal with the same trusted teachers.",
     points: [
@@ -98,104 +106,58 @@ export const programs = [
 
 export const parentDocuments = [
   {
-    title: "Parent Rights Handbook",
+    id: "parent-rights",
     href: "https://www.azed.gov/sites/default/files/2023/08/Parental%20Rights%20Handbook_Public%20Charter%20Schools__2023_Final.pdf",
-    blurb: "Arizona public charter school parent rights (ADE).",
   },
   {
-    title: "Student Handbook",
+    id: "student-handbook",
     href: "https://amerischools.org/wp-content/uploads/2025/07/Amerischools-Student-Handbook-last-edited-6-16-25.pdf",
-    blurb: "Campus handbook shared with AmeriSchools Academy families.",
   },
   {
-    title: "Wellness Policy",
+    id: "wellness",
     href: "https://amerischools.org/wp-content/uploads/2025/08/AmeriSchools-Wellness-Policy-1.pdf",
-    blurb: "Nutrition, movement, and wellness standards.",
   },
   {
-    title: "Tucson breakfast menu",
+    id: "breakfast",
     href: "https://amerischools.org/wp-content/uploads/2026/07/August-Breakfastmenu.pdf",
-    blurb: "Current breakfast offerings at the Tucson campus.",
   },
   {
-    title: "Tucson lunch menu",
+    id: "lunch",
     href: "https://amerischools.org/wp-content/uploads/2026/07/August-lunch-menu-copy-4.pdf",
-    blurb: "Current lunch offerings at the Tucson campus.",
   },
   {
-    title: "School supplies",
+    id: "supplies",
     href: "https://amerischools.org/wp-content/uploads/2026/07/School-Supplies.pdf",
-    blurb: "What to pack for the first day.",
   },
 ] as const;
 
 export const staff = [
   {
+    id: "elena",
     name: "Elena Brooks",
-    role: "Head of School",
-    campus: "Tucson & Yuma",
     image: "/images/elena.jpg",
-    bio: "Elena has led early childhood programs in Arizona for 16 years. She believes every family deserves a school that feels both rigorous and kind.",
   },
   {
+    id: "sofia",
     name: "Sofia Reyes",
-    role: "Lead Pre-K Teacher",
-    campus: "Tucson",
     image: "/images/sofia.jpg",
-    bio: "Sofia designs play-based units that sneak in literacy and math. Parents know her for the handwritten notes that come home each Friday.",
   },
 ] as const;
 
 export const testimonials = [
-  {
-    quote:
-      "Maya skipped into kindergarten already knowing how to wait her turn, write her name, and ask a great question. Capstone Quest made that look easy.",
-    name: "Priya Chen",
-    role: "Tucson parent",
-  },
-  {
-    quote:
-      "The teachers actually know my son. Not just his allergies — his favorite dump truck, the way he warms up slowly, the songs that calm him.",
-    name: "Marcus Alvarez",
-    role: "Yuma parent",
-  },
-  {
-    quote:
-      "We used a DES voucher and never felt like a second-class family. The program is the same beautiful experience for every child in the room.",
-    name: "Danielle Ortiz",
-    role: "Tucson parent",
-  },
+  { id: "priya", name: "Priya Chen" },
+  { id: "marcus", name: "Marcus Alvarez" },
+  { id: "danielle", name: "Danielle Ortiz" },
 ] as const;
 
 export const faqs = [
-  {
-    q: "What ages do you serve?",
-    a: "Children ages 3 through 5. Most families start the year they turn three and stay through the kindergarten-ready Pre-K 4s year.",
-  },
-  {
-    q: "Are you DES approved?",
-    a: "Yes. Both campuses are 100% approved by the Arizona Department of Economic Security and state-licensed. We gladly accept DES child care subsidies.",
-  },
-  {
-    q: "How quickly can we enroll?",
-    a: "Once we have a tour and a completed packet, many families finish enrollment in as little as one day — especially when a seat is open for the current session.",
-  },
-  {
-    q: "What does a typical day look like?",
-    a: "Morning meeting, outdoor play, literacy and math workshops, lunch, rest, studios (art, blocks, science), and a closing circle. Full-day children stay for snack and afternoon centers.",
-  },
-  {
-    q: "What is the teacher-to-child ratio?",
-    a: "We keep classes small — typically 10 or fewer children with a lead teacher and an assistant — so every child is known.",
-  },
-  {
-    q: "Can I see how my child is doing during the day?",
-    a: "Yes. Call the campus any time and we will check on your child. Families also sign in through Clever and PowerSchool the way the current AmeriSchools campuses do.",
-  },
-  {
-    q: "What are your hours?",
-    a: "The instructional Pre-K program runs five days a week. Campuses are open Monday–Friday, 7:00 AM to 6:00 PM, with fee-for-service early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM).",
-  },
+  { id: "ages" },
+  { id: "des" },
+  { id: "enroll" },
+  { id: "day" },
+  { id: "ratio" },
+  { id: "checkin" },
+  { id: "hours" },
 ] as const;
 
 /**
@@ -205,19 +167,19 @@ export const faqs = [
  * around this block — see `tuition.beforeAfter`.
  */
 export const dailySchedule = [
-  { time: "8:00 – 8:25", title: "Greeting, morning centers, and attendance" },
-  { time: "8:30 – 9:00", title: "Circle time, read out loud, and dance" },
-  { time: "9:00 – 9:30", title: "Outside play time" },
-  { time: "9:30 – 10:30", title: "Art, centers, and special projects" },
-  { time: "10:30 – 10:45", title: "Clean up, bathroom, wash hands" },
-  { time: "10:45 – 11:15", title: "Lunch" },
-  { time: "11:15 – 11:30", title: "Buddy reading" },
-  { time: "11:30 – 11:45", title: "Bathroom and wash hands" },
-  { time: "11:45 – 2:00", title: "Nap time" },
-  { time: "2:00 – 2:20", title: "Wake up and clean up" },
-  { time: "2:20 – 2:30", title: "Snack" },
-  { time: "2:30 – 2:40", title: "Dance and exercise" },
-  { time: "2:40 – 3:15", title: "Outside playtime and dismissal" },
+  { id: "s1", time: "8:00 – 8:25" },
+  { id: "s2", time: "8:30 – 9:00" },
+  { id: "s3", time: "9:00 – 9:30" },
+  { id: "s4", time: "9:30 – 10:30" },
+  { id: "s5", time: "10:30 – 10:45" },
+  { id: "s6", time: "10:45 – 11:15" },
+  { id: "s7", time: "11:15 – 11:30" },
+  { id: "s8", time: "11:30 – 11:45" },
+  { id: "s9", time: "11:45 – 2:00" },
+  { id: "s10", time: "2:00 – 2:20" },
+  { id: "s11", time: "2:20 – 2:30" },
+  { id: "s12", time: "2:30 – 2:40" },
+  { id: "s13", time: "2:40 – 3:15" },
 ] as const;
 
 /**
@@ -226,68 +188,31 @@ export const dailySchedule = [
  * forms, and families should confirm them before signing.
  */
 export const tuition = {
-  effective: "August 1, 2024",
-  preschoolHours: "8:00 AM – 3:30 PM",
+  // Prices and the effective date are locale-neutral and live here; every
+  // label, term and description is in the content layer so it can be translated.
+  effective: "2024-08-01",
   programs: [
-    {
-      name: "Program #1",
-      schedule: "5 days a week",
-      hours: "8:00 AM – 3:30 PM",
-      price: "$130.00",
-      unit: "per week",
-    },
-    {
-      name: "Program #2",
-      schedule: "3 days a week",
-      hours: "8:00 AM – 3:30 PM",
-      price: "$120.00",
-      unit: "per week",
-    },
-    {
-      name: "Pre-K + before & after care",
-      schedule: "5 days a week",
-      hours: "7:00 AM – 6:00 PM",
-      price: "$160.00",
-      unit: "per week",
-      highlight: "Saves 20% against booking the two separately",
-    },
+    { id: "p1", price: "$130.00" },
+    { id: "p2", price: "$120.00" },
+    { id: "bundle", price: "$160.00" },
   ],
-  beforeAfterHours: "7:00–8:00 AM & 3:30–6:00 PM",
   beforeAfter: [
     {
-      schedule: "5 days a week",
+      id: "d5",
       options: [
-        { care: "Before and after care", price: "$70.00" },
-        { care: "Before care only", price: "$25.00" },
-        { care: "After care only", price: "$60.00" },
+        { id: "both", price: "$70.00" },
+        { id: "before", price: "$25.00" },
+        { id: "after", price: "$60.00" },
       ],
     },
     {
-      schedule: "3 days a week",
+      id: "d3",
       options: [
-        { care: "Before and after care", price: "$55.00" },
-        { care: "Before care only", price: "$15.00" },
-        { care: "After care only", price: "$50.00" },
+        { id: "both", price: "$55.00" },
+        { id: "before", price: "$15.00" },
+        { id: "after", price: "$50.00" },
       ],
     },
-  ],
-  included: [
-    "A nutritious afternoon snack is part of the fee schedule.",
-    "Parents provide their child with a lunch each day of attendance.",
-    "Afternoon care includes homework time and structured activities like recreation and games, with a snack provided.",
-  ],
-  discounts: [
-    "10% discount for one additional sibling, on both Pre-K and before & after care.",
-    "DES recipients select a program the same way; copays apply.",
-  ],
-  terms: [
-    "Fees are based on your contract schedule, not on attendance.",
-    "School calendar breaks (if we are not open) and major public holidays are not billed.",
-    "Fees are billed every Monday and due that evening, for the week ahead. A $10.00 late charge applies Wednesday morning.",
-    "Late pick-up is $1.00 per minute, billed the next cycle.",
-    "Emergency drop-off for before & after care is $15.00, due at pick-up, and must be cleared by the front office so we know we have space.",
-    "Extra days beyond your contract are billed as drop-ins. Filing a new contract avoids the drop-in rate.",
-    "A signed contract and current registration documents must be on file before your child attends.",
   ],
 } as const;
 
@@ -297,46 +222,16 @@ export const tuition = {
  * rewritten in marketing voice.
  */
 export const policies = [
-  {
-    title: "Child Enrollment Procedures",
-    body: "Children are enrolled upon completion of all required enrollment documentation, including but not limited to:",
-    list: [
-      "Enrollment application",
-      "Emergency contact information",
-      "Immunization records",
-      "Health records as required by licensing rules",
-    ],
-    footer:
-      "Enrollment is based on availability and the child’s age appropriateness for the Pre-Kindergarten program.",
-  },
-  {
-    title: "Child Admission and Release Procedures",
-    body: "Children are released only to parents or individuals authorized in writing by the parent or guardian. Identification is required when releasing a child to an individual unfamiliar to staff. Children may not leave the facility without authorized supervision.",
-  },
-  {
-    title: "Discipline Guidelines",
-    body: "The facility uses positive, age-appropriate guidance techniques that are consistent and developmentally appropriate for Pre-Kindergarten-age children. Discipline focuses on redirection, modeling appropriate behavior, and setting clear expectations. Corporal punishment, humiliation, or abusive language is never used.",
-  },
-  {
-    title: "Child Disenrollment Procedures",
-    body: "Children may be disenrolled by the parent or guardian with written notice provided to the facility. The facility reserves the right to disenroll a child for reasons including, but not limited to, non-payment of fees, failure to follow facility policies, or safety concerns, in accordance with licensing rules and facility policies.",
-  },
-  {
-    title: "Suspension and Expulsion Policy",
-    body: "The facility has written policies regarding suspension and expulsion that include prevention strategies, clear expectations, and age-appropriate guidance methods. These policies are available to parents upon request.",
-  },
-  {
-    title: "Parent Access",
-    body: "Parents have access to areas of the facility where their enrolled child is receiving child care during normal operating hours.",
-  },
-  {
-    title: "Pesticide Application Notification",
-    body: "Parents are notified at least 48 hours in advance of pesticide application on the facility premises, in accordance with state requirements.",
-  },
-  {
-    title: "Inspection Reports",
-    body: "Parents are informed that licensing inspection reports are available for review on the facility premises.",
-  },
+  // Text lives in the content layer: these are licensing disclosures and the
+  // Spanish wording needs to sit beside the English for staff review.
+  { id: "enrollment" },
+  { id: "release" },
+  { id: "discipline" },
+  { id: "disenrollment" },
+  { id: "suspension" },
+  { id: "access" },
+  { id: "pesticide" },
+  { id: "inspection" },
 ] as const;
 
 export const academyColors = [

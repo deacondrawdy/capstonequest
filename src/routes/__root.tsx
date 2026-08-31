@@ -3,21 +3,20 @@ import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
+import { localizePath, stripLocale, useLocale } from "@/lib/locale";
+import { en } from "@/content/en";
+import { es } from "@/content/es";
+import { useRouterState } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
-
-const APP_NAME = "Capstone Quest Academy";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
-      {
-        name: "description",
-        content:
-          "Capstone Quest Academy — DES-approved Pre-K in Tucson and Yuma. Play-based learning for ages 3–5. Now enrolling the 26–27 school year.",
-      },
+      // Title and description are rendered in RootDocument instead: this block
+      // is evaluated once and cannot vary by locale, so a static entry here
+      // would win over the Spanish one and ship English metadata on /es pages.
       { name: "theme-color", content: "#0D2C6B" },
     ],
     links: [
@@ -37,10 +36,23 @@ export const Route = createRootRoute({
 });
 
 function RootDocument() {
+  const locale = useLocale();
+  const canonical = useRouterState({ select: (s) => stripLocale(s.location.pathname) });
+  const meta = locale === "es" ? es.meta : en.meta;
+
   return (
-    <html lang="en" className="antialiased" suppressHydrationWarning>
+    <html lang={locale} className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Rendered here rather than in `head`, which is evaluated once and
+            cannot see the active locale. React hoists these into <head>. */}
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        {/* Relative hrefs: the production domain is not configured here yet.
+            Swap for absolute URLs once it is — Google prefers them. */}
+        <link rel="alternate" hrefLang="en" href={localizePath(canonical, "en")} />
+        <link rel="alternate" hrefLang="es" href={localizePath(canonical, "es")} />
+        <link rel="alternate" hrefLang="x-default" href={localizePath(canonical, "en")} />
         {/* Applies saved accessibility preferences before first paint, so a
             visitor who chose larger text never sees the default size flash. */}
         <script dangerouslySetInnerHTML={{ __html: A11Y_BOOT_SCRIPT }} />

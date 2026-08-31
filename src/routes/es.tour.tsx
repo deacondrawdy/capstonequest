@@ -3,7 +3,7 @@ import { TourPage } from "@/pages/tour";
 
 type Search = { campus?: string };
 
-export const Route = createFileRoute("/tour")({
+export const Route = createFileRoute("/es/tour")({
   validateSearch: (s: Record<string, unknown>): Search => ({
     campus: typeof s.campus === "string" ? s.campus : undefined,
   }),

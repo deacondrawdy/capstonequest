@@ -1,9 +1,11 @@
-import { Link } from "@tanstack/react-router";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { campuses, school } from "@/data/school";
+import { AppLink, useContent } from "@/lib/locale";
 
 export function SiteFooter() {
+  const c = useContent();
+
   return (
     <footer className="bg-navy-deep text-paper">
       <div className="mx-auto grid max-w-[1400px] gap-10 px-6 py-14 sm:px-8 lg:grid-cols-4 lg:px-10">
@@ -11,36 +13,34 @@ export function SiteFooter() {
           <div className="mb-4 inline-flex rounded-full bg-paper p-1">
             <Logo size="sm" />
           </div>
-          <p className="max-w-xs text-sm leading-relaxed text-paper/75">
-            {school.tagline} DES-approved Pre-K in Tucson and Yuma since 2013.
-          </p>
+          <p className="max-w-xs text-sm leading-relaxed text-paper/75">{c.footer.blurb}</p>
         </div>
         <div>
-          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">Visit</h3>
+          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.visit}</h3>
           <ul className="space-y-4 text-sm text-paper/80">
-            {campuses.map((c) => (
-              <li key={c.slug}>
-                <Link
+            {campuses.map((campus) => (
+              <li key={campus.slug}>
+                <AppLink
                   to="/campuses/$slug"
-                  params={{ slug: c.slug }}
+                  params={{ slug: campus.slug }}
                   className="font-semibold text-paper hover:underline"
                 >
-                  {c.name}
-                </Link>
+                  {c.campuses[campus.slug].name}
+                </AppLink>
                 <p className="mt-1 flex gap-2">
                   <MapPin className="mt-0.5 size-3.5 shrink-0" />
                   <span>
-                    {c.address}
+                    {campus.address}
                     <br />
-                    {c.cityState}
+                    {campus.cityState}
                   </span>
                 </p>
                 {/* Each campus shows its own local number so the footer NAP on
                     every page matches that campus's Google Business Profile. */}
                 <p className="mt-1 flex gap-2">
                   <Phone className="mt-0.5 size-3.5 shrink-0" />
-                  <a href={c.phoneHref} className="hover:text-gold">
-                    {c.phone}
+                  <a href={campus.phoneHref} className="hover:text-gold">
+                    {campus.phone}
                   </a>
                 </p>
               </li>
@@ -48,62 +48,62 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">Explore</h3>
+          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.explore}</h3>
           <ul className="space-y-2 text-sm text-paper/80">
             <li>
-              <Link to="/programs" className="hover:text-gold">
-                Programs
-              </Link>
+              <AppLink to="/programs" className="hover:text-gold">
+                {c.footer.links.programs}
+              </AppLink>
             </li>
             <li>
-              <Link to="/why-us" className="hover:text-gold">
-                Why Us
-              </Link>
+              <AppLink to="/why-us" className="hover:text-gold">
+                {c.footer.links.whyUs}
+              </AppLink>
             </li>
             <li>
-              <Link to="/parents" className="hover:text-gold">
-                Parents
-              </Link>
+              <AppLink to="/parents" className="hover:text-gold">
+                {c.footer.links.parents}
+              </AppLink>
             </li>
             <li>
-              <Link to="/about" className="hover:text-gold">
-                About
-              </Link>
+              <AppLink to="/about" className="hover:text-gold">
+                {c.footer.links.about}
+              </AppLink>
             </li>
             <li>
-              <Link to="/clever" className="hover:text-gold">
-                Clever & portals
-              </Link>
+              <AppLink to="/clever" className="hover:text-gold">
+                {c.footer.links.clever}
+              </AppLink>
             </li>
             <li>
-              <Link to="/tuition" className="hover:text-gold">
-                Tuition & fees
-              </Link>
+              <AppLink to="/tuition" className="hover:text-gold">
+                {c.footer.links.tuition}
+              </AppLink>
             </li>
             <li>
-              <Link to="/policies" className="hover:text-gold">
-                Policies
-              </Link>
+              <AppLink to="/policies" className="hover:text-gold">
+                {c.footer.links.policies}
+              </AppLink>
             </li>
             <li>
-              <Link to="/careers" className="hover:text-gold">
-                Careers
-              </Link>
+              <AppLink to="/careers" className="hover:text-gold">
+                {c.footer.links.careers}
+              </AppLink>
             </li>
             <li>
-              <Link to="/info" className="hover:text-gold">
-                Info
-              </Link>
+              <AppLink to="/info" className="hover:text-gold">
+                {c.footer.links.info}
+              </AppLink>
             </li>
             <li>
-              <Link to="/tour" className="hover:text-gold">
-                Schedule a tour
-              </Link>
+              <AppLink to="/tour" className="hover:text-gold">
+                {c.footer.links.tour}
+              </AppLink>
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">Talk with us</h3>
+          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.talk}</h3>
           <ul className="space-y-3 text-sm text-paper/80">
             <li className="flex items-center gap-2">
               <Phone className="size-4" />
@@ -119,15 +119,17 @@ export function SiteFooter() {
             </li>
             <li className="flex items-center gap-2">
               <Clock className="size-4" />
-              {school.hours}
+              {c.common.hoursLine}
             </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-4 text-xs text-paper/55 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p>© {new Date().getFullYear()} Capstone Quest Academy. All rights reserved.</p>
-          <p>Arizona DES approved · State licensed · Ages 3–5</p>
+          <p>
+            © {new Date().getFullYear()} Capstone Quest Academy. {c.footer.rights}
+          </p>
+          <p>{c.footer.badges}</p>
         </div>
       </div>
     </footer>
