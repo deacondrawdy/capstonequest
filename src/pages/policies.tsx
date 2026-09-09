@@ -40,6 +40,17 @@ export function PoliciesPage() {
               {c.policiesPage.items[p.id].footer ? (
                 <p className="mt-3 leading-relaxed text-muted">{c.policiesPage.items[p.id].footer}</p>
               ) : null}
+              {p.id === "suspension" ? (
+                <p className="mt-3">
+                  <AppLink
+                    to="/handbook"
+                    hash="suspension"
+                    className="font-semibold text-brand underline underline-offset-2"
+                  >
+                    {c.policiesPage.handbookLink}
+                  </AppLink>
+                </p>
+              ) : null}
             </article>
           ))}
         </div>

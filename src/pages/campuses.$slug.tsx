@@ -1,12 +1,14 @@
 import { Clock, Home, MapPin, Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
+import { StaffGrid } from "@/components/staff-grid";
 import { Button } from "@/components/ui/button";
 import { AppLink, useContent } from "@/lib/locale";
-import type { Campus } from "@/data/school";
+import { staffForCampus, type Campus } from "@/data/school";
 
 /** `campus` is resolved in the route's beforeLoad so an unknown slug 404s. */
 export function CampusDetail({ campus }: { campus: Campus }) {
   const c = useContent();
+  const team = staffForCampus(campus.slug);
 
   return (
     <SiteShell>
@@ -100,6 +102,23 @@ export function CampusDetail({ campus }: { campus: Campus }) {
           </p>
         </aside>
       </div>
+
+      {/* Families pick a campus first and a school second, so the people at
+          that campus belong on its page, not only on /about. Rendered only
+          where there is someone to show. */}
+      {team.length > 0 ? (
+        <section className="bg-paper-soft py-14">
+          <div className="mx-auto max-w-[1100px] px-5 sm:px-8">
+            <h2 className="text-3xl font-extrabold text-navy">
+              {c.campusPage.staffTitle.replace("{campus}", campus.city)}
+            </h2>
+            <p className="mt-2 text-muted">{c.campusPage.staffLede}</p>
+            <div className="mt-8">
+              <StaffGrid members={team} />
+            </div>
+          </div>
+        </section>
+      ) : null}
     </SiteShell>
   );
 }

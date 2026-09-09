@@ -4,11 +4,13 @@ export const school = {
   tagline: "Where curiosity grows and bright futures begin.",
   welcome:
     "Welcome to Capstone Quest Academy, where little steps make big dreams come true. Nestled in the heart of Tucson and Yuma since 2013, our nurturing Pre-K programs guide little ones on an adventure of learning and growth.",
-  // The old 1-800 line is retired. Both campus numbers route to the same
-  // AI assistant, so the sitewide number is Tucson's.
+  // The old 1-800 line is retired. Tucson's 520 number reaches the Retell
+  // voice agent; Yuma's 928 number does not yet, so Tucson stays the sitewide
+  // default. The header lets a family pick their campus (see lib/campus.ts).
+  // Revisit this once the 928 is connected.
   phone: "(520) 462-7788",
   phoneHref: "tel:+15204627788",
-  email: "hello@capstonequestacademy.org",
+  email: "info@capstonequestacademy.com",
   hours: "Monday–Friday, 7:00 AM – 6:00 PM",
   ages: "3–5 years",
   year: "26–27",
@@ -60,31 +62,20 @@ export const campuses = [
 export type Campus = (typeof campuses)[number];
 
 export const programs = [
+  // One Pre-K classroom, not a 3s room and a 4s room. The school groups three-,
+  // four- and five-year-olds together, so the site lists a single programme.
   {
-    slug: "pre-k-3s",
-    name: "Pre-K 3s",
-    ages: "Age 3",
+    slug: "pre-k",
+    name: "Pre-K",
+    ages: "Ages 3–5",
     hours: "Full-day, 3 or 5 days",
-    image: "/images/pattern-blocks.jpg",
-    summary:
-      "A gentle first classroom year. Children learn to share, speak up, and explore through play, music, and outdoor discovery.",
-    points: [
-      "Play-based centers and outdoor time every day",
-      "Language, early literacy, and social-emotional coaching",
-      "Predictable routines that make little ones feel safe",
-    ],
-  },
-  {
-    slug: "pre-k-4s",
-    name: "Pre-K 4s",
-    ages: "Ages 4–5",
-    hours: "Full-day kindergarten-ready",
     image: "/images/binoculars.jpg",
     summary:
-      "A school-ready year that still feels like play. Children leave with confidence, friendships, and the skills kindergarten teachers look for.",
+      "One mixed-age classroom where threes, fours and fives learn together — sharing, speaking up, and exploring through play, and leaving ready for kindergarten.",
     points: [
+      "Play-based centers and outdoor time every day",
       "Pre-literacy, early math, and scientific wondering",
-      "Self-help skills and classroom independence",
+      "Language and social-emotional coaching, with routines that make little ones feel safe",
       "Portfolios that travel with your child into kindergarten",
     ],
   },
@@ -105,6 +96,12 @@ export const programs = [
 ] as const;
 
 export const parentDocuments = [
+  {
+    // Served from public/documents rather than an outside host, so it cannot
+    // rot when AmeriSchools reorganises their uploads directory.
+    id: "handbook",
+    href: "/documents/capstone-quest-parent-handbook.pdf",
+  },
   {
     id: "parent-rights",
     href: "https://www.azed.gov/sites/default/files/2023/08/Parental%20Rights%20Handbook_Public%20Charter%20Schools__2023_Final.pdf",
@@ -131,18 +128,28 @@ export const parentDocuments = [
   },
 ] as const;
 
+// Real Tucson staff, photographed at the campus. The two placeholder profiles
+// that shipped with the original export were not people who work here; they and
+// their stock portraits are gone.
 export const staff = [
   {
-    id: "elena",
-    name: "Elena Brooks",
-    image: "/images/elena.jpg",
+    id: "zoe",
+    name: "Zoe Cordova",
+    image: "/images/zoe.jpg",
+    campuses: ["tucson"],
   },
   {
-    id: "sofia",
-    name: "Sofia Reyes",
-    image: "/images/sofia.jpg",
+    id: "juridia",
+    name: "Juridia Hernandez",
+    image: "/images/juridia.jpg",
+    campuses: ["tucson"],
   },
 ] as const;
+
+/** Staff shown on a campus page. Empty for a campus with nobody listed yet. */
+export function staffForCampus(slug: string) {
+  return staff.filter((member) => (member.campuses as readonly string[]).includes(slug));
+}
 
 export const testimonials = [
   { id: "priya", name: "Priya Chen" },

@@ -1,4 +1,4 @@
-import { CalendarDays, ExternalLink, FileText, HeartHandshake, ShieldCheck } from "lucide-react";
+import { BookOpen, CalendarDays, ExternalLink, FileText, HeartHandshake, ShieldCheck } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -10,6 +10,7 @@ export function ParentsPage() {
   const c = useContent();
 
   const resources: Array<{ icon: typeof CalendarDays; to: AppPath; title: string; text: string; cta: string }> = [
+    { icon: BookOpen, to: "/handbook", ...c.parents.resources.handbook },
     { icon: CalendarDays, to: "/tour", ...c.parents.resources.tours },
     { icon: FileText, to: "/enroll", ...c.parents.resources.packet },
     { icon: ShieldCheck, to: "/policies", ...c.parents.resources.policies },

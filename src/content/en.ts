@@ -25,10 +25,17 @@ export const en = {
     backHome: "Back home",
     hoursLine: "Monday–Friday, 7:00 AM – 6:00 PM",
     hoursShort: "7:00 AM – 6:00 PM",
+    formNotice: "What happens to this: it is emailed to our school office so we can reply. We do not sell or share it. See our",
+    formNoticeLink: "privacy policy",
   },
 
   banner: {
     text: "Only a few spots left in Tucson & Yuma",
+  },
+
+  campusSwitch: {
+    label: "Campus",
+    call: "Call the {campus} campus",
   },
 
   localeSwitch: {
@@ -78,6 +85,8 @@ export const en = {
       careers: "Careers",
       info: "Info",
       tour: "Schedule a tour",
+      privacy: "Privacy",
+      handbook: "Parent handbook",
     },
   },
 
@@ -119,31 +128,23 @@ export const en = {
     openInMaps: "Open in Maps",
     preferOther: "Prefer the other campus?",
     compare: "Compare locations",
+    // Only rendered for a campus that has staff listed; {campus} is the city.
+    staffTitle: "Meet the {campus} team",
+    staffLede: "The teachers your child will see every morning, in their own words.",
   },
 
   /** Keyed by the programme slug in src/data/school.ts. */
   programs: {
-    "pre-k-3s": {
-      name: "Pre-K 3s",
-      ages: "Age 3",
+    "pre-k": {
+      name: "Pre-K",
+      ages: "Ages 3–5",
       hours: "Full-day, 3 or 5 days",
       summary:
-        "A gentle first classroom year. Children learn to share, speak up, and explore through play, music, and outdoor discovery.",
+        "One mixed-age classroom where threes, fours and fives learn together — sharing, speaking up, and exploring through play, and leaving ready for kindergarten.",
       points: [
         "Play-based centers and outdoor time every day",
-        "Language, early literacy, and social-emotional coaching",
-        "Predictable routines that make little ones feel safe",
-      ],
-    },
-    "pre-k-4s": {
-      name: "Pre-K 4s",
-      ages: "Ages 4–5",
-      hours: "Full-day kindergarten-ready",
-      summary:
-        "A school-ready year that still feels like play. Children leave with confidence, friendships, and the skills kindergarten teachers look for.",
-      points: [
         "Pre-literacy, early math, and scientific wondering",
-        "Self-help skills and classroom independence",
+        "Language and social-emotional coaching, with routines that make little ones feel safe",
         "Portfolios that travel with your child into kindergarten",
       ],
     },
@@ -163,6 +164,11 @@ export const en = {
 
   /** Keyed by the document `id` in src/data/school.ts. */
   documents: {
+    handbook: {
+      title: "Parent Handbook",
+      blurb:
+        "The full Capstone Quest Pre-K handbook (PDF): admissions, tuition, daily schedule, discipline, and the suspension and expulsion prevention policy.",
+    },
     "parent-rights": {
       title: "Parent Rights Handbook",
       blurb: "Arizona public charter school parent rights (ADE).",
@@ -219,6 +225,7 @@ export const en = {
     title: "You’re on the team",
     lede: "Handbooks, menus, and the same family resources that live under Info on the current site.",
     resources: {
+      handbook: { title: "Parent handbook", text: "Admissions, daily routines, discipline, and the suspension and expulsion prevention policy.", cta: "Read the handbook" },
       tours: { title: "Tours & calendar", text: "Walk the campus, meet teachers, and peek at a real morning meeting.", cta: "Schedule a tour" },
       packet: { title: "Enrollment packet", text: "Health forms, emergency contacts, and DES paperwork in one sitting.", cta: "Start enrollment" },
       policies: { title: "Policies", text: "Enrollment, release, discipline, and parent access — as posted at both campuses.", cta: "Read the policies" },
@@ -252,7 +259,7 @@ export const en = {
     lede: "Everything that used to live under Info on the current site — about us, programs, parent resources, and portals — rewritten for Pre-K families.",
     cards: {
       about: { title: "About Capstone Quest", text: "DES-approved Pre-K in Tucson and Yuma since 2013. Little steps, big dreams.", cta: "Our story" },
-      programs: { title: "Programs", text: "Pre-K 3s, Pre-K 4s, and before & after care, 7 AM–6 PM, five days a week.", cta: "See programs" },
+      programs: { title: "Programs", text: "One mixed-age Pre-K classroom for ages 3–5, plus before & after care, 7 AM–6 PM.", cta: "See programs" },
       parents: { title: "Parent resources", text: "Handbooks, menus, parent rights, wellness policy, and supplies.", cta: "For parents" },
       clever: { title: "Clever & portals", text: "Clever, PowerSchool, ClassDojo, and RAZ Kids — the sign-ins families already use.", cta: "Open portals" },
       tour: { title: "Schedule a tour", text: "Walk a real morning meeting. Most tours last about 40 minutes.", cta: "Book a tour" },
@@ -269,7 +276,7 @@ export const en = {
       clever: "The single sign-on the current AmeriSchools site uses for students and staff.",
       powerschool: "Attendance, grades for K–8 siblings, and the historic “See how my child is doing” link.",
       classdojo: "Classroom stories and messages from the lead teacher.",
-      raz: "Leveled readers for Pre-K 4s who are ready for books at home.",
+      raz: "Leveled readers for children who are ready for books at home.",
       khan: "Optional practice — never homework for three-year-olds.",
     },
   },
@@ -284,9 +291,27 @@ export const en = {
     believe2: "Owl (our mortarboarded mascot) stands for wisdom earned gently: try, notice, try again.",
     peopleTitle: "People who know your child",
     meetUs: "Meet us on a tour",
+    // Written by the teachers themselves as welcome letters to their classes,
+    // and kept in their own words rather than rewritten into third person.
     staff: {
-      elena: { role: "Head of School", campus: "Tucson & Yuma", bio: "Elena has led early childhood programs in Arizona for 16 years. She believes every family deserves a school that feels both rigorous and kind." },
-      sofia: { role: "Lead Pre-K Teacher", campus: "Tucson", bio: "Sofia designs play-based units that sneak in literacy and math. Parents know her for the handwritten notes that come home each Friday." },
+      zoe: {
+        role: "Teacher",
+        campus: "Tucson",
+        bio: [
+          "Hi! My name is Miss Zoe Cordova, and I’m so excited to be your teacher this year! I love creating a classroom where students feel welcomed, supported, and excited to learn.",
+          "A few of my favorite things are sunset colors, Korean BBQ, mockingbirds, Too Many Carrots, and Pan’s Labyrinth. I love traveling, going to the movies, cooking, watching sunsets, and spending time with my friends and family. My favorite season is fall and winter, and I’m always happy with anything spicy!",
+          "I’m looking forward to a year filled with learning, laughter, kindness, and lots of wonderful memories together!",
+        ],
+      },
+      juridia: {
+        role: "Teacher’s Assistant",
+        campus: "Tucson",
+        bio: [
+          "Hi! My name is Juridia Hernandez, but you can call me Miss J! I’m so excited to be your Teacher’s Assistant and to help make our classroom a fun, welcoming, and encouraging place for every student.",
+          "A few of my favorite things are orange and pink, Chinese food, sea otters, volleyball, K-pop and R&B, and wintertime. I also love doing nails, cooking and baking for others, dancing, doing my makeup, decorating for Christmas, and spending time with family and friends. Two places I especially love are Korea and Japan.",
+          "I’m looking forward to helping our students learn, laugh, grow, and have an amazing year together! 💕🌈",
+        ],
+      },
     },
   },
   schedule: {
@@ -306,7 +331,7 @@ export const en = {
   },
 
   faqs: {
-    ages: { q: "What ages do you serve?", a: "Children ages 3 through 5. Most families start the year they turn three and stay through the kindergarten-ready Pre-K 4s year." },
+    ages: { q: "What ages do you serve?", a: "Children ages 3 through 5, together in one classroom. Most families start the year their child turns three and stay through the kindergarten-ready year." },
     des: { q: "Are you DES approved?", a: "Yes. Both campuses are 100% approved by the Arizona Department of Economic Security and state-licensed. We gladly accept DES child care subsidies." },
     enroll: { q: "How quickly can we enroll?", a: "Once we have a tour and a completed packet, many families finish enrollment in as little as one day — especially when a seat is open for the current session." },
     day: { q: "What does a typical day look like?", a: "Morning meeting, outdoor play, literacy and math workshops, lunch, rest, studios (art, blocks, science), and a closing circle. Full-day children stay for snack and afternoon centers." },
@@ -407,6 +432,7 @@ export const en = {
     effectiveNote: "Rates shown are from the fee schedule effective August 1, 2024. Confirm current rates with your campus before signing — call {phone} or email",
   },
   policiesPage: {
+    handbookLink: "Read the full prevention policy in the parent handbook",
     eyebrow: "Policies",
     title: "Enrollment, release, and care policies",
     lede: "The licensing policies posted at both campuses, in the same words. Ask the front office for anything here in print.",
@@ -507,6 +533,273 @@ export const en = {
     des: { notSure: "Not sure yet", yes: "Yes — DES subsidy", no: "No — private pay" },
     sending: "Sending…",
     submit: "Submit enrollment",
+  },
+  privacyPage: {
+    eyebrow: "Privacy",
+    title: "Privacy policy",
+    updated: "Last updated: August 31, 2026",
+    lede: "This explains what this website collects, why, and who sees it. It is written to be read by a parent, not a lawyer.",
+    summaryTitle: "The short version",
+    summary: [
+      "The only information we collect is what you type into a form and send us.",
+      "There is no advertising, no tracking, and no cookies on this site.",
+      "Form submissions are emailed to our school offices. We do not sell or share them.",
+    ],
+    sections: {
+      who: {
+        title: "Who we are",
+        body: "Capstone Quest Academy operates the Pre-K programs at our Tucson and Yuma campuses and is responsible for the information collected through this website. Our contact details are at the bottom of this page.",
+      },
+      collect: {
+        title: "What we collect",
+        intro: "We collect information only when you choose to send it to us using one of the forms on this site. Nothing is gathered in the background.",
+        enroll: "Enrollment form: your child’s first and last name, your child’s date of birth, your preferred start date, campus and program, your name as parent or guardian, your email address, your phone number, and whether you plan to use a DES child care subsidy.",
+        tour: "Tour request: your name, email address, phone number, the campus you want to visit, your child’s age, your preferred date and time, and anything you write in the notes box. People often use that box for things like allergies or a sibling’s name, so please share only what you are comfortable sending by email.",
+        contact: "Contact form: your name, email address, the topic you pick, and your message.",
+        careers: "Job application: your name, email address, phone number, the role and campus you are applying for, and your message.",
+        note: "We do not ask for a Social Security number, payment details, or immigration status anywhere on this site.",
+      },
+      why: {
+        title: "Why we collect it",
+        body: "To answer your question, schedule your tour, start an enrollment, or consider your job application. We do not use it to advertise to you, and we do not add you to a mailing list.",
+      },
+      recipients: {
+        title: "Who else sees it",
+        body: "When you submit a form, the message is delivered to our school email inboxes using Resend, an email delivery service acting on our behalf. It handles the message in order to deliver it and does not use it for its own purposes. Nobody else receives your submission.",
+      },
+      dont: {
+        title: "What this site does not do",
+        items: [
+          "No analytics. We do not measure or record your visit.",
+          "No advertising or tracking pixels, and nothing is shared with advertisers or social networks.",
+          "No cookies. This site does not set any.",
+          "We never sell your information, and we do not share it for anyone else’s marketing.",
+        ],
+      },
+      browser: {
+        title: "What your own browser stores",
+        body: "If you change the language or use the accessibility menu, your choice is saved on your own device so the site remembers it next time. Those two settings never leave your device and are never sent to us. Clearing your browser data removes them.",
+      },
+      children: {
+        title: "Information about children",
+        body: "The enrollment and tour forms are filled in by a parent or guardian, and they ask for information about a child, including a name and date of birth. We use it only to respond to your enquiry and to prepare for enrollment. We do not knowingly collect information directly from children, and this site is not directed at children.",
+      },
+      retention: {
+        title: "How long we keep it",
+        body: "[RETENTION PERIOD — TO CONFIRM] Enquiries from families who do not enroll, and applications from candidates we do not hire, are deleted from our inboxes after this period. If your child enrolls, their records are kept as part of their school file, described below.",
+      },
+      choices: {
+        title: "Seeing, correcting, or deleting your information",
+        body: "You can ask us what we hold about you, ask us to correct it, or ask us to delete it. Contact us using the details below and we will respond. There is no penalty for asking, and it will not affect your child’s place or your application.",
+      },
+      scope: {
+        title: "What this policy does not cover",
+        body: "This policy covers this website only. Once a child is enrolled, their school records are handled separately under our enrollment paperwork and the systems the school uses for families. This site also links out to other organizations, including AmeriSchools, Clever, PowerSchool, ClassDojo, RAZ Kids, Khan Academy Kids, and Quality First Arizona. Those sites have their own privacy policies and we are not responsible for them.",
+      },
+      changes: {
+        title: "Changes to this policy",
+        body: "If we change how this website handles information, we will update this page and change the date at the top.",
+      },
+      contact: {
+        title: "Contact us",
+        body: "Call us, email us, or speak to the front office at either campus. We would rather answer a question about this than have you wonder.",
+      },
+    },
+  },
+  handbookPage: {
+    eyebrow: "Parent handbook",
+    title: "Capstone Quest Academy Parent Handbook",
+    subtitle: "Childhood Learning Program · Pre-Kindergarten · AM (before) and PM (after) school program",
+    lede: "Everything families need to know about the Pre-K program, from admissions through the daily schedule. The printable version is available as a PDF.",
+    downloadPdf: "Download the PDF",
+    contentsTitle: "Contents",
+    officesTitle: "School offices",
+    officesNote: "Call the campus directly — the front office answers during program hours.",
+    foreword: {
+      title: "Foreword",
+      p1: "Welcome to another exciting year educating Pre-Kindergarten children, ages 3 to 5, creating a vision for early childhood learning. As a parent, you are entrusting us with your most valued possession, a loving child.",
+      p2: "The teacher and each parent is an important contributor to the teaching and learning team for the child’s future. Each acts as a trustee, providing a safe environment and securing opportunities that define a lifetime. These mutual responsibilities become significant targets for fulfilling the emerging needs of children and families.",
+      p3: "The Pre-Kindergarten instructional program runs five days a week, with an A.M. (early arrival) or P.M. (late dismissal) program provided as fee-for-service child care. Early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM) serve the supervisory and safety needs of children and families.",
+      p4: "The Pre-Kindergarten program is a warm, caring and safe environment resulting in a strong foundation for future schooling. The young child learns to solve problems in challenging situations. The classroom is an excellent laboratory, helping define and create resources for youthful growth and maturity. The ultimate objective is to foster a lifelong love of learning.",
+    },
+    philosophy: {
+      title: "Philosophy and program",
+      valuesTitle: "What we value",
+      values: [
+        "Non-graded", "Personalized instruction", "Highly qualified staff",
+        "Skill-based instruction", "Integrated curriculum", "Enrichment",
+        "Community as laboratory", "High academic standards", "Choice",
+      ],
+      descriptionTitle: "Program description",
+      description: "Capstone Quest Academy provides a private-school Pre-Kindergarten program serving families and children ages 3 to 5 who are not yet eligible for kindergarten. Each learning center sits inside an AmeriSchools Academy charter school location.",
+      datesTitle: "Dates and hours of service",
+      dates: "The Pre-K instructional program runs five days a week. Capstone Quest is offered during school breaks if participation allows, except for New Year’s Day, Martin Luther King Day, Presidents Day, Memorial Day, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving Day and Christmas Day. An A.M. (early arrival) or P.M. (late dismissal) program is provided as fee-for-service child care where the facility is licensed for it.",
+      curriculumTitle: "Curriculum",
+      curriculum: "This program is a warm, caring and safe environment providing a developmentally appropriate experience. The young child experiences rules for self-control and solves problems in challenging situations, whether in the community, school or family. The classroom is a community of young children beginning to accept, or reasonably reject, rules for behavior. That experience provides clearly understood limits, helping create personal resources for growth and maturity.",
+      centersTitle: "Thematic centers for early childhood learning",
+      centers: [
+        "Daily care routines", "Math and manipulatives", "Active play", "Science and nature",
+        "Music and movement", "Water and sand play", "Block play", "Creative experiences",
+        "Dramatic play", "We, you and me",
+      ],
+      quote: "Play is our brain’s favorite way of learning",
+      quoteAuthor: "Diane Ackerman",
+      partnership: "Lesson plans are posted daily, following licensing requirements. Parents are encouraged to read to their child, recite nursery rhymes, sing children’s songs, or play “I Spy” in the car. These shared moments strengthen family bonds. This learning laboratory values play and rest, physical exercise, pre-literacy language exploration, and developing cognitive and social skills.",
+    },
+    admissions: {
+      title: "Program admissions",
+      criteriaTitle: "Admissions criteria",
+      criteriaIntro: "A limited number of spaces are available for Pre-K children ages 3 to 5 who are not eligible for kindergarten. Children participating in the program are expected to be able to:",
+      criteria: [
+        "Follow simple teacher directions",
+        "Independently dress, feed and use the bathroom",
+        "Interact appropriately with others",
+        "Move from one activity to another without repeated instructions",
+        "Express themselves orally in an age-appropriate way",
+      ],
+      registrationTitle: "Student registration",
+      registrationIntro: "All parents must complete registration before their child’s first day. This includes:",
+      registration: [
+        "The registration packet",
+        "A current student immunization card",
+        "A current emergency card",
+        "A copy of the child’s birth certificate",
+        "Proof of residence",
+      ],
+      registrationNote: "To cancel a registration, notify the registrar two weeks before departure.",
+      contractTitle: "Tuition contract",
+      contract: "Parents sign a tuition contract requiring weekly payments, due by the first day of each week through the ProCare online portal. A deposit equal to one week’s tuition is due at registration and is credited to the child’s first week of attendance. Weekly tuition reserves the child’s place even when the child is absent. If payment is not received by the first day of the week, the child cannot attend and the space may be offered to another family.",
+      contractLink: "See current rates on the tuition page",
+      collectionsTitle: "Collections",
+      collections: "Program participation requires payment of current fees. Participation is voluntary; payment is mandatory. Unpaid tuition is a contract obligation and may be assigned for collection.",
+      refundTitle: "Refunds",
+      refund: "No credit or refund is given for absences.",
+    },
+    participation: {
+      title: "Program participation",
+      arrival: {
+        title: "Arrival",
+        body: "Parents are responsible for bringing their children to school each day. On arrival, sign your child in using the ProCare app or the tablet provided, and walk your child to the classroom or meeting area. Never leave a child unattended unless a staff member is present to supervise. Leaving a child unattended on early arrival is unlawful under state statute, and failure to follow these protocols may result in a report to Child Protective Services.",
+      },
+      dismissal: {
+        title: "Dismissal",
+        body: "Parents sign out using the ProCare app or tablet and collect their children at dismissal. Staff accompany children to the pick-up area. Children are released only to parents or authorized adults named on the contact form; an authorized adult other than a parent must sign the dismissal form and show photo identification. Please be prompt. Late pick-up is charged at $1.00 per minute per child. If an emergency arises, call the registrar with your expected arrival time.",
+      },
+      attendance: {
+        title: "Attendance",
+        body: "Regular, prompt attendance is expected, and licensing requires attendance records for every child. A first-come, first-served waiting list supports program capacity.",
+      },
+      options: {
+        title: "Schedule options",
+        body: "The Pre-K schedule offers two options for each family.",
+        items: [
+          "Program #1: Capstone Pre-K, 8:00 AM to 3:30 PM.",
+          "Program #2: Capstone Pre-K plus the 7:00 AM to 6:00 PM wraparound program, Monday to Friday. This mirrors the AmeriSchools Academy elementary calendar, except that Pre-K offers a summer session with a two-week recess and other breaks.",
+        ],
+      },
+      immunizations: {
+        title: "Immunizations",
+        body: "As a condition of registration, every child’s immunization record must be current. The record must be stamped by the physician’s office, and the clinic name, address and phone number recorded on the Emergency Health Card before the child attends.",
+      },
+      medication: {
+        title: "Medication",
+        body: "Parents must tell the school about any medical, physical or disabling condition that limits their child’s participation, including allergies to weather, pollen, food or medicine. A Medication Consent Form authorizes staff to give prescribed medication during the day. The registrar stores and administers medication, which must be in its original labelled container. Children may not carry or take medication themselves.",
+      },
+      snack: {
+        title: "Snack time",
+        body: "The program follows the food service and nutrition standards in early childhood licensing. Afternoon snack is a learning center in its own right, exploring food and nutrition, and its cost is included in the program fee. The Food Allergies Form is completed at registration so allergens can be removed from snack choices.",
+      },
+      backpacks: {
+        title: "Backpacks",
+        body: "Please send a backpack large enough to hold a folder with your child’s name. It carries papers, artwork and keepsakes home. Keeping it in one place at home helps a child take responsibility for their own belongings. Please check the backpack and folder each day.",
+      },
+      fireDrills: {
+        title: "Fire drills",
+        body: "Unannounced evacuation drills are conducted at least every 30 days, as required by law. Evacuation plans are posted in every classroom.",
+      },
+      emergency: {
+        title: "Emergency provisions",
+        bodyIntro: "First aid is given by the classroom teacher. A child who becomes ill is accompanied to the school office, and a parent or responsible adult is contacted. Emergency care depends on the Emergency Health Card being current, which must record:",
+        items: [
+          "Current home address and telephone or cell number",
+          "Place of employment and phone numbers for all responsible adults",
+          "Names of four responsible adults other than the parent",
+        ],
+        bodyEnd: "Children with communicable conditions, including fever, diarrhea, vomiting or another disabling condition, must stay home. Parents are responsible for reporting the absence and the health condition. Fees are not reduced for absence.",
+      },
+      conferences: {
+        title: "Parent conferences",
+        body: "Formal parent conferences are held every six weeks to discuss each child’s academic and developmental progress. The first conference takes place in person. Informal conferences also happen by phone and message. Please arrange after-care supervision independently where dismissal schedules require it.",
+      },
+      discipline: {
+        title: "Discipline",
+        body: "Play is a powerful teaching activity. Teaching discipline through play focuses on the child experiencing effective behaviors, beginning with adults modelling purposeful acts. Behavioral strategies include demonstrating appropriate coping skills, preparing developmentally appropriate activities sequenced to the child’s maturity, scheduling activities in a controlled environment, and providing clear, consistent and fair rules for behavior.",
+      },
+      pesticide: {
+        title: "Pesticide application",
+        body: "Parents, students and staff are informed when pesticides are applied on school property, currently at least 48 hours before application as state statute requires. Notification includes oral notice to pupils and staff, written notice to parents or guardians, and posted signs identifying the application areas. Each site keeps written records of these notifications. This does not include non-restricted disinfectants, sanitizers or deodorizers.",
+      },
+    },
+    suspension: {
+      title: "Suspension and expulsion prevention policy",
+      commitmentTitle: "Our commitment",
+      commitment: "We believe every child deserves to feel safe, supported and welcome in their early learning environment. Young children are still developing social, emotional and behavioral skills, and behavior is a form of communication. We are committed to preventing suspension and expulsion wherever possible, through proactive teaching, strong relationships with families, and collaboration with community partners. Removal from care is considered only as a last resort, after supportive strategies and resources have been fully explored. This policy aligns with the Arizona Department of Economic Security Suspension and Expulsion Prevention Policy.",
+      preventionTitle: "Prevention and early intervention",
+      prevention: [
+        "Maintaining predictable daily routines and nurturing classroom environments",
+        "Teaching social-emotional skills through modelling and guided practice",
+        "Using positive behavior guidance and redirection",
+        "Adjusting classroom environments or expectations to meet individual needs",
+        "Supporting staff through coaching, reflective supervision and professional development",
+      ],
+      familyTitle: "Family partnership and communication",
+      familyIntro: "Families are valued partners. When a behavioral or developmental concern is identified, we will:",
+      family: [
+        "Share observations with families in a strengths-based way",
+        "Invite families into problem-solving discussions",
+        "Develop support strategies or individualized plans together",
+        "Consider cultural, linguistic and family perspectives when planning support",
+      ],
+      inclusionTitle: "Inclusion and support for all children",
+      inclusionIntro: "We do not deny enrollment or remove a child because of developmental delay, disability, behavioral challenge or suspected special need without first putting supportive interventions in place. Support may include:",
+      inclusion: [
+        "Individualized behavior or support plans",
+        "Environmental or schedule modifications",
+        "Additional classroom support",
+        "Developmental screening with family consent",
+        "Collaboration with early intervention or special education services",
+      ],
+      consultationTitle: "Consultation and community resources",
+      consultationIntro: "Before suspension or expulsion is considered, we seek additional support where available:",
+      consultation: [
+        "Referral to AZ STEPS, the Arizona Statewide Training and Technical Assistance for Expulsion Prevention",
+        "Early childhood mental health consultation",
+        "Inclusion specialists or behavior consultants",
+        "Community-based developmental or family support services",
+      ],
+      documentationTitle: "Documentation and review",
+      documentationIntro: "We document observed concerns, strategies used, family communication, supports requested or received, and progress over time. Strategies are reviewed regularly and adjusted.",
+      lastResortTitle: "Suspension or expulsion as a last resort",
+      lastResortIntro: "Suspension or expulsion is considered only when all of the following are true:",
+      lastResort: [
+        "A serious and ongoing safety risk exists",
+        "Reasonable accommodations and interventions have been attempted",
+        "Consultation or external support has been requested where available",
+      ],
+      transitionIntro: "If a child must leave the program, we will:",
+      transition: [
+        "Notify the parent in writing at least five business days before disenrollment",
+        "Work with the family to identify alternative care or services",
+        "Provide referrals to community resources",
+        "Support a respectful, planned transition to minimize disruption",
+      ],
+      reviewTitle: "Policy communication and review",
+      reviewIntro: "This policy is shared with families on enrollment, included in the handbook, reviewed annually with staff, and updated as guidance and best practice evolve.",
+    },
+    scheduleTitle: "Model schedule of daily activities",
+    scheduleNote: "Subject to change. Gates open at 7:00 AM for the before-school program and 8:00 AM for the full day.",
+    napNote: "The program provides each child with a mat for nap time.",
+    recessNote: "Outdoor recess is weather permitting, with inclement heat respected.",
   },
 };
 

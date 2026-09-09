@@ -5,6 +5,7 @@ import { Logo } from "@/components/logo";
 import { SiteSearch } from "@/components/site-search";
 import { AccessibilityMenu } from "@/components/accessibility-menu";
 import { LocaleSwitch } from "@/components/locale-switch";
+import { CampusSwitch } from "@/components/campus-switch";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { campuses, school } from "@/data/school";
+import { campuses } from "@/data/school";
 import { AppLink, stripLocale, useContent, type AppPath } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
@@ -73,6 +74,8 @@ export function SiteHeader() {
   const mobileLinks: Array<{ to: AppPath; label: string }> = [
     { to: "/", label: c.nav.home },
     { to: "/campuses", label: c.nav.campuses },
+    // Was missing from the mobile menu entirely.
+    { to: "/about", label: c.nav.about },
     { to: "/info", label: c.nav.info },
     { to: "/programs", label: c.nav.programs },
     { to: "/tuition", label: c.nav.tuitionFees },
@@ -87,6 +90,10 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 bg-paper/95 shadow-[var(--shadow-nav)] backdrop-blur-md">
       <div className="hidden border-b border-line sm:block">
         <div className="mx-auto flex max-w-[1400px] items-center justify-end gap-3 px-4 py-1.5 sm:px-6 lg:px-10">
+          <CampusSwitch />
+          <span className="text-ink/25" aria-hidden>
+            |
+          </span>
           <LocaleSwitch />
           <span className="text-ink/25" aria-hidden>
             |
@@ -102,7 +109,9 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-3 py-2 sm:px-6 lg:px-8">
         <Logo className="-my-2" />
 
-        <nav className="ml-2 hidden flex-1 items-center justify-center gap-4 lg:flex xl:gap-6">
+        {/* Seven items now. The gap tightens below xl so the longer Spanish
+            labels still fit on one line at 1024px. */}
+        <nav className="ml-2 hidden flex-1 items-center justify-center gap-3 lg:flex xl:gap-6">
           <TextLink to="/" active={path === "/"}>
             {c.nav.home}
           </TextLink>
@@ -121,14 +130,17 @@ export function SiteHeader() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          {/* About is a top-level item, not a row inside "Info". It carries the
+              staff, the philosophy and the school's history, and nobody hunts
+              for that under a menu called Info. */}
+          <TextLink to="/about" active={path === "/about"}>
+            {c.nav.about}
+          </TextLink>
           <DropdownMenu>
             <DropTrigger>{c.nav.info}</DropTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem asChild>
                 <AppLink to="/info">{c.nav.infoHome}</AppLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <AppLink to="/about">{c.nav.about}</AppLink>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <AppLink to="/programs">{c.nav.programs}</AppLink>
@@ -159,13 +171,34 @@ export function SiteHeader() {
           <div className="sm:hidden">
             <SiteSearch variant="icon" />
           </div>
-          <a
-            href={school.phoneHref}
-            className="hidden items-center gap-2 text-sm font-bold text-brand xl:inline-flex"
-          >
-            <Phone className="size-4" />
-            {school.phone}
-          </a>
+          {/* Both numbers are rendered; CSS shows the one matching the
+              visitor's campus preference. Choosing in CSS keeps the SSR HTML
+              valid for either campus and keeps the hidden number out of the
+              accessibility tree. */}
+          {campuses.map((entry) => (
+            <a
+              key={entry.slug}
+              data-campus-phone={entry.slug}
+              href={entry.phoneHref}
+              className="hidden items-center gap-2 text-sm font-bold text-brand xl:inline-flex"
+            >
+              <Phone className="size-4" />
+              {entry.phone}
+            </a>
+          ))}
+          {/* Below xl the number had no place in the header at all, so the
+              quickest way to reach the school was invisible on a phone. */}
+          {campuses.map((entry) => (
+            <a
+              key={`call-${entry.slug}`}
+              data-campus-phone={entry.slug}
+              href={entry.phoneHref}
+              aria-label={c.campusSwitch.call.replace("{campus}", entry.city)}
+              className="inline-flex size-11 items-center justify-center rounded-full text-brand transition-colors hover:bg-paper-soft focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none xl:hidden"
+            >
+              <Phone className="size-5" />
+            </a>
+          ))}
           <Button asChild variant="brand" size="sm" className="sm:hidden">
             <AppLink to="/enroll">{c.common.enroll}</AppLink>
           </Button>
@@ -198,9 +231,16 @@ export function SiteHeader() {
                     {c.common.enroll}
                   </AppLink>
                 </Button>
-                <a href={school.phoneHref} className="mt-2 px-3 text-sm text-brand">
-                  {school.phone}
-                </a>
+                {campuses.map((entry) => (
+                  <a
+                    key={`sheet-${entry.slug}`}
+                    data-campus-phone={entry.slug}
+                    href={entry.phoneHref}
+                    className="mt-2 px-3 text-sm text-brand"
+                  >
+                    {entry.phone}
+                  </a>
+                ))}
                 <div className="mt-3 flex flex-col gap-1 border-t border-line pt-3">
                   <LocaleSwitch className="px-3 py-2 text-sm" />
                   <AccessibilityMenu className="px-3 py-2 text-sm" />

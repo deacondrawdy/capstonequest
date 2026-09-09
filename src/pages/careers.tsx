@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Heart, Sparkles, Users, Wallet } from "lucide-react";
 import { toast } from "sonner";
 import { SiteShell } from "@/components/site-shell";
+import { FormPrivacyNotice } from "@/components/form-privacy-notice";
 import { useContent } from "@/lib/locale";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -136,6 +137,7 @@ export function CareersPage() {
                 <Label htmlFor="message">{c.careersPage.fields.message}</Label>
                 <Textarea id="message" name="message" required />
               </div>
+              <FormPrivacyNotice className="mb-1" />
               <Button type="submit" size="lg" disabled={sending}>
                 {sending ? c.careersPage.sending : c.careersPage.submit}
               </Button>

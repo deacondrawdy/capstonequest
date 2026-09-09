@@ -183,7 +183,7 @@ export function AccessibilityMenu({ className }: { className?: string }) {
         <p className="text-[12px] leading-relaxed text-muted">
           Using a screen reader, magnifier, or other assistive technology? It works with this site
           directly — you do not need these settings. If something is hard to use, please{" "}
-          <a href="mailto:hello@capstonequestacademy.org" className="underline underline-offset-2">
+          <a href="mailto:info@capstonequestacademy.com" className="underline underline-offset-2">
             tell us
           </a>
           .

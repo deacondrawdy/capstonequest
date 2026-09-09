@@ -71,11 +71,6 @@ export function SiteFooter() {
               </AppLink>
             </li>
             <li>
-              <AppLink to="/clever" className="hover:text-gold">
-                {c.footer.links.clever}
-              </AppLink>
-            </li>
-            <li>
               <AppLink to="/tuition" className="hover:text-gold">
                 {c.footer.links.tuition}
               </AppLink>
@@ -98,6 +93,16 @@ export function SiteFooter() {
             <li>
               <AppLink to="/tour" className="hover:text-gold">
                 {c.footer.links.tour}
+              </AppLink>
+            </li>
+            <li>
+              <AppLink to="/handbook" className="hover:text-gold">
+                {c.footer.links.handbook}
+              </AppLink>
+            </li>
+            <li>
+              <AppLink to="/privacy" className="hover:text-gold">
+                {c.footer.links.privacy}
               </AppLink>
             </li>
           </ul>

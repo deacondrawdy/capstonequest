@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { SiteShell } from "@/components/site-shell";
+import { FormPrivacyNotice } from "@/components/form-privacy-notice";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -109,6 +110,7 @@ export function EnrollPage() {
               </select>
             </div>
             <div className="sm:col-span-2">
+              <FormPrivacyNotice className="mb-3" />
               <Button type="submit" size="lg" disabled={sending}>
                 {sending ? c.enrollPage.sending : c.enrollPage.submit}
               </Button>

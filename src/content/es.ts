@@ -27,10 +27,17 @@ export const es: Content = {
     backHome: "Volver al inicio",
     hoursLine: "Lunes a viernes, 7:00 a. m. – 6:00 p. m.",
     hoursShort: "7:00 a. m. – 6:00 p. m.",
+    formNotice: "Qué pasa con estos datos: se envían por correo a la oficina de la escuela para poder responderle. No los vendemos ni los compartimos. Consulte nuestro",
+    formNoticeLink: "aviso de privacidad",
   },
 
   banner: {
     text: "Quedan pocos lugares en Tucson y Yuma",
+  },
+
+  campusSwitch: {
+    label: "Plantel",
+    call: "Llamar al plantel de {campus}",
   },
 
   localeSwitch: {
@@ -48,7 +55,10 @@ export const es: Content = {
     allCampuses: "Todos los planteles",
     info: "Información",
     infoHome: "Información general",
-    about: "Quiénes somos",
+    // "Nosotros" rather than "Quiénes somos": this is now a top-level nav item,
+    // and the longer phrase pushed the Spanish header onto a second line at
+    // 1024px.
+    about: "Nosotros",
     programs: "Programas",
     parents: "Recursos para familias",
     whyUs: "Por qué elegirnos",
@@ -79,6 +89,8 @@ export const es: Content = {
       careers: "Empleo",
       info: "Información",
       tour: "Agende una visita",
+      privacy: "Privacidad",
+      handbook: "Manual para padres",
     },
   },
 
@@ -119,30 +131,21 @@ export const es: Content = {
     openInMaps: "Abrir en Maps",
     preferOther: "¿Prefiere el otro plantel?",
     compare: "Comparar ubicaciones",
+    staffTitle: "Conozca al equipo de {campus}",
+    staffLede: "Las maestras que su hijo verá cada mañana, en sus propias palabras.",
   },
 
   programs: {
-    "pre-k-3s": {
-      name: "Preescolar 3 años",
-      ages: "3 años",
+    "pre-k": {
+      name: "Preescolar",
+      ages: "De 3 a 5 años",
       hours: "Día completo, 3 o 5 días",
       summary:
-        "Un primer año de salón tranquilo y afectuoso. Los niños aprenden a compartir, a expresarse y a explorar por medio del juego, la música y el descubrimiento al aire libre.",
+        "Un solo salón de edades mixtas donde niños de tres, cuatro y cinco años aprenden juntos: comparten, se expresan y exploran por medio del juego, y salen listos para el kínder.",
       points: [
         "Centros de juego y tiempo al aire libre todos los días",
-        "Lenguaje, lectoescritura inicial y acompañamiento socioemocional",
-        "Rutinas predecibles que hacen que los pequeños se sientan seguros",
-      ],
-    },
-    "pre-k-4s": {
-      name: "Preescolar 4 años",
-      ages: "4 y 5 años",
-      hours: "Día completo, listos para kínder",
-      summary:
-        "Un año de preparación para la escuela que sigue sintiéndose como juego. Los niños salen con confianza, amistades y las habilidades que buscan los maestros de kínder.",
-      points: [
         "Prelectura, matemáticas iniciales y curiosidad científica",
-        "Habilidades de autonomía e independencia en el salón",
+        "Lenguaje y acompañamiento socioemocional, con rutinas que hacen que los pequeños se sientan seguros",
         "Portafolios que acompañan a su hijo al entrar a kínder",
       ],
     },
@@ -161,6 +164,11 @@ export const es: Content = {
   },
 
   documents: {
+    handbook: {
+      title: "Manual para padres",
+      blurb:
+        "El manual completo del preescolar Capstone Quest (PDF): admisiones, colegiatura, horario diario, disciplina y la política de prevención de suspensión y expulsión.",
+    },
     "parent-rights": {
       title: "Manual de derechos de los padres",
       blurb: "Derechos de los padres en escuelas chárter públicas de Arizona (ADE).",
@@ -188,7 +196,10 @@ export const es: Content = {
   },
   hero: {
     eyebrow: "Programas preescolares en",
-    tagline: "Donde crece la curiosidad y comienzan los futuros brillantes.",
+    // Kept to roughly the English length so it sits on one line in the hero's
+    // 32rem column; the gold rule under it spans the sentence, and a line that
+    // wraps leaves the rule running past the end of the text.
+    tagline: "Donde la curiosidad crece y el futuro brilla.",
     lede: "Un ambiente de aprendizaje afectuoso y basado en el juego que ayuda a su hijo a desarrollar confianza, amistades y las bases para toda la vida.",
     imageAlt: "Una niña de preescolar coloreando en una mesa del salón",
     watchVideo: "Ver nuestro video",
@@ -217,6 +228,7 @@ export const es: Content = {
     title: "Usted forma parte del equipo",
     lede: "Manuales, menús y los mismos recursos para familias que están en la sección de Información.",
     resources: {
+      handbook: { title: "Manual para padres", text: "Admisiones, rutinas diarias, disciplina y la política de prevención de suspensión y expulsión.", cta: "Leer el manual" },
       tours: { title: "Visitas y calendario", text: "Recorra el plantel, conozca a los maestros y observe una reunión matutina real.", cta: "Agende una visita" },
       packet: { title: "Paquete de inscripción", text: "Formularios de salud, contactos de emergencia y documentación de DES en una sola cita.", cta: "Comenzar la inscripción" },
       policies: { title: "Políticas", text: "Inscripción, entrega de niños, disciplina y acceso de los padres, tal como están publicadas en ambos planteles.", cta: "Leer las políticas" },
@@ -250,7 +262,7 @@ export const es: Content = {
     lede: "Todo lo que antes estaba en la sección de Información: quiénes somos, programas, recursos para familias y portales, reescrito para familias de preescolar.",
     cards: {
       about: { title: "Sobre Capstone Quest", text: "Preescolar aprobado por DES en Tucson y Yuma desde 2013. Pequeños pasos, grandes sueños.", cta: "Nuestra historia" },
-      programs: { title: "Programas", text: "Preescolar de 3 y 4 años, y cuidado antes y después de clases, de 7 a. m. a 6 p. m., cinco días a la semana.", cta: "Ver programas" },
+      programs: { title: "Programas", text: "Un solo salón preescolar de edades mixtas para niños de 3 a 5 años, más cuidado antes y después de clases, de 7 a. m. a 6 p. m.", cta: "Ver programas" },
       parents: { title: "Recursos para familias", text: "Manuales, menús, derechos de los padres, política de bienestar y útiles.", cta: "Para las familias" },
       clever: { title: "Clever y portales", text: "Clever, PowerSchool, ClassDojo y RAZ Kids: los accesos que las familias ya usan.", cta: "Abrir portales" },
       tour: { title: "Agende una visita", text: "Observe una reunión matutina real. La mayoría de las visitas dura unos 40 minutos.", cta: "Reserve una visita" },
@@ -267,7 +279,7 @@ export const es: Content = {
       clever: "El inicio de sesión único que usa el sitio actual de AmeriSchools para alumnos y personal.",
       powerschool: "Asistencia, calificaciones de hermanos de K a 8 y el enlace histórico “See how my child is doing”.",
       classdojo: "Historias del salón y mensajes del maestro titular.",
-      raz: "Lecturas por nivel para niños de preescolar de 4 años listos para leer en casa.",
+      raz: "Lecturas por nivel para los niños que ya están listos para leer en casa.",
       khan: "Práctica opcional; nunca tarea para niños de tres años.",
     },
   },
@@ -283,8 +295,24 @@ export const es: Content = {
     peopleTitle: "Personas que conocen a su hijo",
     meetUs: "Conózcanos en una visita",
     staff: {
-      elena: { role: "Directora general", campus: "Tucson y Yuma", bio: "Elena ha dirigido programas de primera infancia en Arizona durante 16 años. Cree que toda familia merece una escuela exigente y amable a la vez." },
-      sofia: { role: "Maestra titular de preescolar", campus: "Tucson", bio: "Sofia diseña unidades basadas en el juego que incorporan lectoescritura y matemáticas. Las familias la conocen por las notas escritas a mano que envía cada viernes." },
+      zoe: {
+        role: "Maestra",
+        campus: "Tucson",
+        bio: [
+          "¡Hola! Me llamo Miss Zoe Cordova y me emociona mucho ser su maestra este año. Me encanta crear un salón donde los estudiantes se sientan bienvenidos, apoyados y con ganas de aprender.",
+          "Algunas de mis cosas favoritas son los colores del atardecer, la barbacoa coreana, los cenzontles, Too Many Carrots y El laberinto del fauno. Me encanta viajar, ir al cine, cocinar, ver atardeceres y pasar tiempo con mis amigos y mi familia. Mis estaciones favoritas son el otoño y el invierno, y siempre me hace feliz cualquier cosa picante.",
+          "¡Espero un año lleno de aprendizaje, risas, amabilidad y muchos recuerdos maravillosos juntos!",
+        ],
+      },
+      juridia: {
+        role: "Asistente de maestra",
+        campus: "Tucson",
+        bio: [
+          "¡Hola! Me llamo Juridia Hernandez, pero pueden decirme Miss J. Me emociona mucho ser su asistente de maestra y ayudar a que nuestro salón sea un lugar divertido, acogedor y alentador para cada estudiante.",
+          "Algunas de mis cosas favoritas son el naranja y el rosa, la comida china, las nutrias marinas, el voleibol, el K-pop y el R&B, y el invierno. También me encanta hacer uñas, cocinar y hornear para los demás, bailar, maquillarme, decorar para Navidad y pasar tiempo con mi familia y mis amigos. Dos lugares que quiero mucho son Corea y Japón.",
+          "¡Espero ayudar a nuestros estudiantes a aprender, reír, crecer y tener un año increíble juntos! 💕🌈",
+        ],
+      },
     },
   },
   schedule: {
@@ -304,7 +332,7 @@ export const es: Content = {
   },
 
   faqs: {
-    ages: { q: "¿Qué edades atienden?", a: "Niños de 3 a 5 años. La mayoría de las familias comienza el año en que cumplen tres y se queda hasta el año de preescolar de 4 años, listo para el kínder." },
+    ages: { q: "¿Qué edades atienden?", a: "Niños de 3 a 5 años, juntos en un mismo salón. La mayoría de las familias comienza el año en que su hijo cumple tres y se queda hasta el año en que está listo para el kínder." },
     des: { q: "¿Están aprobados por DES?", a: "Sí. Ambos planteles están 100% aprobados por el Departamento de Seguridad Económica de Arizona y cuentan con licencia estatal. Aceptamos con gusto los subsidios de cuidado infantil de DES." },
     enroll: { q: "¿Qué tan rápido podemos inscribirnos?", a: "Una vez que hacemos la visita y recibimos el paquete completo, muchas familias terminan la inscripción en un solo día, sobre todo cuando hay un lugar disponible para el periodo actual." },
     day: { q: "¿Cómo es un día típico?", a: "Reunión matutina, juego al aire libre, talleres de lectoescritura y matemáticas, almuerzo, descanso, talleres (arte, bloques, ciencia) y círculo de cierre. Los niños de día completo se quedan para el refrigerio y los centros de la tarde." },
@@ -405,6 +433,7 @@ export const es: Content = {
     effectiveNote: "Las tarifas mostradas provienen de la lista de cuotas vigente desde el 1 de agosto de 2024. Confirme las tarifas actuales con su plantel antes de firmar: llame al {phone} o escriba a",
   },
   policiesPage: {
+    handbookLink: "Lea la política completa de prevención en el manual para padres",
     eyebrow: "Políticas",
     title: "Políticas de inscripción, entrega y cuidado",
     lede: "Las políticas de licencia publicadas en ambos planteles, con las mismas palabras. Pida en la oficina cualquiera de estos documentos impresos.",
@@ -505,5 +534,272 @@ export const es: Content = {
     des: { notSure: "Aún no estoy seguro", yes: "Sí, con subsidio de DES", no: "No, pago particular" },
     sending: "Enviando…",
     submit: "Enviar inscripción",
+  },
+  privacyPage: {
+    eyebrow: "Privacidad",
+    title: "Aviso de privacidad",
+    updated: "Última actualización: 31 de agosto de 2026",
+    lede: "Aquí le explicamos qué información recopila este sitio, para qué y quién la ve. Está escrito para que lo lea una familia, no un abogado.",
+    summaryTitle: "En pocas palabras",
+    summary: [
+      "Lo único que recopilamos es lo que usted escribe en un formulario y nos envía.",
+      "Este sitio no tiene publicidad, ni rastreo, ni cookies.",
+      "Los formularios llegan por correo a las oficinas de la escuela. No vendemos ni compartimos su información.",
+    ],
+    sections: {
+      who: {
+        title: "Quiénes somos",
+        body: "Capstone Quest Academy opera los programas preescolares de nuestros planteles de Tucson y Yuma y es responsable de la información que se recopila en este sitio. Nuestros datos de contacto están al final de esta página.",
+      },
+      collect: {
+        title: "Qué información recopilamos",
+        intro: "Solo recopilamos información cuando usted decide enviárnosla por medio de alguno de los formularios del sitio. No se recoge nada en segundo plano.",
+        enroll: "Formulario de inscripción: el nombre y apellido de su hijo, su fecha de nacimiento, la fecha de inicio que usted prefiere, el plantel y el programa, su nombre como padre, madre o tutor, su correo electrónico, su teléfono y si piensa usar un subsidio de cuidado infantil de DES.",
+        tour: "Solicitud de visita: su nombre, correo electrónico y teléfono, el plantel que desea visitar, la edad de su hijo, la fecha y hora que prefiere, y lo que escriba en el cuadro de notas. Muchas familias usan ese cuadro para mencionar alergias o el nombre de un hermano, así que comparta solo lo que se sienta cómodo enviando por correo.",
+        contact: "Formulario de contacto: su nombre, su correo electrónico, el tema que elija y su mensaje.",
+        careers: "Solicitud de empleo: su nombre, correo electrónico y teléfono, el puesto y el plantel que solicita, y su mensaje.",
+        note: "En ninguna parte de este sitio le pedimos número de Seguro Social, datos de pago ni información sobre su situación migratoria.",
+      },
+      why: {
+        title: "Para qué la usamos",
+        body: "Para responder su pregunta, agendar su visita, iniciar una inscripción o considerar su solicitud de empleo. No la usamos para enviarle publicidad ni lo agregamos a una lista de correos.",
+      },
+      recipients: {
+        title: "Quién más la ve",
+        body: "Cuando usted envía un formulario, el mensaje llega a los correos de la escuela por medio de Resend, un servicio de entrega de correo que actúa por cuenta nuestra. Ese servicio maneja el mensaje solo para entregarlo y no lo usa para sus propios fines. Nadie más recibe lo que usted envía.",
+      },
+      dont: {
+        title: "Lo que este sitio no hace",
+        items: [
+          "Sin analíticas. No medimos ni registramos su visita.",
+          "Sin publicidad ni píxeles de rastreo, y no se comparte nada con anunciantes ni redes sociales.",
+          "Sin cookies. Este sitio no coloca ninguna.",
+          "Nunca vendemos su información ni la compartimos para la mercadotecnia de terceros.",
+        ],
+      },
+      browser: {
+        title: "Lo que guarda su propio navegador",
+        body: "Si cambia el idioma o usa el menú de accesibilidad, su preferencia se guarda en su propio dispositivo para que el sitio la recuerde la próxima vez. Esas dos preferencias nunca salen de su dispositivo y nunca se nos envían. Si borra los datos de su navegador, desaparecen.",
+      },
+      children: {
+        title: "Información sobre los niños",
+        body: "Los formularios de inscripción y de visita los llena un padre, madre o tutor, y piden información sobre un niño, incluidos su nombre y su fecha de nacimiento. La usamos únicamente para responder su solicitud y preparar la inscripción. No recopilamos información directamente de los niños a sabiendas, y este sitio no está dirigido a niños.",
+      },
+      retention: {
+        title: "Cuánto tiempo la conservamos",
+        body: "[PERIODO DE CONSERVACIÓN — POR CONFIRMAR] Las solicitudes de familias que no se inscriben, y las solicitudes de candidatos que no contratamos, se eliminan de nuestros correos después de ese periodo. Si su hijo se inscribe, sus datos se conservan como parte de su expediente escolar, que se describe más abajo.",
+      },
+      choices: {
+        title: "Consultar, corregir o eliminar su información",
+        body: "Puede pedirnos qué información tenemos sobre usted, pedirnos que la corrijamos o que la eliminemos. Comuníquese con nosotros con los datos de abajo y le responderemos. Preguntar no tiene ninguna consecuencia y no afecta el lugar de su hijo ni su solicitud de empleo.",
+      },
+      scope: {
+        title: "Lo que este aviso no cubre",
+        body: "Este aviso cubre únicamente este sitio web. Una vez que un niño se inscribe, su expediente escolar se maneja por separado, conforme a los documentos de inscripción y a los sistemas que la escuela usa con las familias. Este sitio también enlaza a otras organizaciones, como AmeriSchools, Clever, PowerSchool, ClassDojo, RAZ Kids, Khan Academy Kids y Quality First Arizona. Esos sitios tienen sus propios avisos de privacidad y no somos responsables de ellos.",
+      },
+      changes: {
+        title: "Cambios a este aviso",
+        body: "Si cambiamos la forma en que este sitio maneja la información, actualizaremos esta página y la fecha que aparece arriba.",
+      },
+      contact: {
+        title: "Comuníquese con nosotros",
+        body: "Llámenos, escríbanos o pase a la oficina de cualquiera de los dos planteles. Preferimos responder su pregunta a que se quede con la duda.",
+      },
+    },
+  },
+  handbookPage: {
+    eyebrow: "Manual para padres",
+    title: "Manual para padres de Capstone Quest Academy",
+    subtitle: "Programa de aprendizaje infantil · Preescolar · Programa de la mañana (antes) y de la tarde (después)",
+    lede: "Todo lo que las familias necesitan saber sobre el programa preescolar, desde la admisión hasta el horario diario. La versión para imprimir está disponible en PDF.",
+    downloadPdf: "Descargar el PDF",
+    contentsTitle: "Contenido",
+    officesTitle: "Oficinas escolares",
+    officesNote: "Llame directamente al plantel; la oficina contesta durante el horario del programa.",
+    foreword: {
+      title: "Presentación",
+      p1: "Bienvenido a otro año emocionante educando a niños de preescolar, de 3 a 5 años, creando una visión para el aprendizaje en la primera infancia. Como padre o madre, usted nos confía su bien más preciado: un hijo amado.",
+      p2: "El maestro y cada familia son parte importante del equipo de enseñanza y aprendizaje para el futuro del niño. Cada uno actúa como responsable de brindar un entorno seguro y de asegurar oportunidades que marcan toda una vida. Estas responsabilidades compartidas se vuelven metas clave para atender las necesidades de los niños y las familias.",
+      p3: "El programa académico de preescolar es de cinco días a la semana, con un programa de llegada temprana (a. m.) o salida tardía (p. m.) que se ofrece como cuidado infantil con costo adicional. La llegada temprana (7:00–8:00 a. m.) y la salida tardía (3:30–6:00 p. m.) atienden las necesidades de supervisión y seguridad de los niños y las familias.",
+      p4: "El programa de preescolar es un ambiente cálido, afectuoso y seguro que da una base sólida para el éxito escolar futuro. El niño pequeño aprende a resolver problemas en situaciones desafiantes. El salón es un excelente laboratorio que ayuda a definir y crear recursos para el crecimiento y la madurez. El objetivo final es fomentar el amor por el aprendizaje durante toda la vida.",
+    },
+    philosophy: {
+      title: "Filosofía y programa",
+      valuesTitle: "Lo que valoramos",
+      values: [
+        "Sin calificaciones por grado", "Instrucción personalizada", "Personal altamente capacitado",
+        "Instrucción basada en habilidades", "Plan de estudios integrado", "Enriquecimiento",
+        "La comunidad como laboratorio", "Altos estándares académicos", "Posibilidad de elegir",
+      ],
+      descriptionTitle: "Descripción del programa",
+      description: "Capstone Quest Academy ofrece un programa preescolar de escuela privada para familias y niños de 3 a 5 años que aún no tienen edad para el kínder. Cada centro de aprendizaje se ubica dentro de un plantel de la escuela chárter AmeriSchools Academy.",
+      datesTitle: "Fechas y horario de servicio",
+      dates: "El programa académico de preescolar es de cinco días a la semana. Capstone Quest se ofrece durante los recesos escolares si la participación lo permite, excepto en Año Nuevo, el Día de Martin Luther King, el Día de los Presidentes, el Día de los Caídos, el Día de la Independencia, el Día del Trabajo, el Día de la Raza, el Día de los Veteranos, el Día de Acción de Gracias y la Navidad. El programa de llegada temprana (a. m.) o salida tardía (p. m.) se ofrece como cuidado infantil con costo adicional donde el plantel cuenta con licencia para ello.",
+      curriculumTitle: "Plan de estudios",
+      curriculum: "Este programa es un ambiente cálido, afectuoso y seguro que ofrece una experiencia apropiada para el desarrollo. El niño pequeño vive reglas de autocontrol y resuelve problemas en situaciones desafiantes, ya sea en la comunidad, la escuela o la familia. El salón es una comunidad de niños pequeños que empiezan a aceptar, o a rechazar razonablemente, las reglas de conducta. Esa experiencia ofrece límites claros y ayuda a crear recursos personales para el crecimiento y la madurez.",
+      centersTitle: "Centros temáticos para el aprendizaje infantil",
+      centers: [
+        "Rutinas de cuidado diario", "Matemáticas y material manipulable", "Juego activo", "Ciencia y naturaleza",
+        "Música y movimiento", "Juego con agua y arena", "Juego con bloques", "Experiencias creativas",
+        "Juego dramático", "Nosotros, tú y yo",
+      ],
+      quote: "El juego es la forma favorita de aprender de nuestro cerebro",
+      quoteAuthor: "Diane Ackerman",
+      partnership: "Los planes de clase se publican a diario, conforme a los requisitos de licencia. Animamos a las familias a leerle a su hijo, recitar rimas infantiles, cantar canciones o jugar a “Veo, veo” en el coche. Esos momentos compartidos fortalecen los lazos familiares. Este laboratorio de aprendizaje valora el juego y el descanso, el ejercicio físico, la exploración del lenguaje previa a la lectura y el desarrollo de habilidades cognitivas y sociales.",
+    },
+    admissions: {
+      title: "Admisiones al programa",
+      criteriaTitle: "Criterios de admisión",
+      criteriaIntro: "Hay un número limitado de lugares para niños de preescolar de 3 a 5 años que aún no tienen edad para el kínder. Se espera que los niños que participan en el programa puedan:",
+      criteria: [
+        "Seguir instrucciones sencillas del maestro",
+        "Vestirse, comer e ir al baño por sí mismos",
+        "Convivir de manera adecuada con los demás",
+        "Pasar de una actividad a otra sin instrucciones repetidas",
+        "Expresarse oralmente de forma adecuada para su edad",
+      ],
+      registrationTitle: "Inscripción del alumno",
+      registrationIntro: "Toda familia debe completar la inscripción antes del primer día de su hijo. Esto incluye:",
+      registration: [
+        "El paquete de inscripción",
+        "Cartilla de vacunación vigente",
+        "Tarjeta de emergencia vigente",
+        "Una copia del acta de nacimiento del niño",
+        "Comprobante de domicilio",
+      ],
+      registrationNote: "Para cancelar una inscripción, avise a la oficina de registro dos semanas antes de la salida.",
+      contractTitle: "Contrato de colegiatura",
+      contract: "Las familias firman un contrato de colegiatura con pagos semanales, que vencen el primer día de cada semana a través del portal en línea ProCare. Al inscribirse se paga un depósito equivalente a una semana de colegiatura, que se acredita a la primera semana de asistencia del niño. La colegiatura semanal reserva el lugar del niño aunque falte. Si el pago no se recibe el primer día de la semana, el niño no puede asistir y el lugar puede ofrecerse a otra familia.",
+      contractLink: "Ver las tarifas actuales en la página de colegiatura",
+      collectionsTitle: "Cobranza",
+      collections: "La participación en el programa requiere el pago de las cuotas vigentes. La participación es voluntaria; el pago es obligatorio. La colegiatura no pagada es una obligación contractual y puede enviarse a cobranza.",
+      refundTitle: "Reembolsos",
+      refund: "No se otorgan créditos ni reembolsos por ausencias.",
+    },
+    participation: {
+      title: "Participación en el programa",
+      arrival: {
+        title: "Llegada",
+        body: "Las familias son responsables de llevar a sus hijos a la escuela cada día. Al llegar, registre la entrada de su hijo en la aplicación ProCare o en la tableta disponible, y acompáñelo al salón o al área de reunión. Nunca deje a un niño sin supervisión si no hay personal presente. Dejar a un niño solo en la llegada temprana es ilegal según la ley estatal, y no seguir estas normas puede dar lugar a un reporte a Servicios de Protección Infantil.",
+      },
+      dismissal: {
+        title: "Salida",
+        body: "Las familias registran la salida en la aplicación ProCare o en la tableta y recogen a sus hijos a la hora de salida. El personal acompaña a los niños al área de entrega. Los niños se entregan únicamente a los padres o a los adultos autorizados en la hoja de contactos; un adulto autorizado que no sea el padre o la madre debe firmar la hoja de salida y mostrar identificación con foto. Por favor sea puntual. La recogida tardía cuesta $1.00 por minuto por niño. Si surge una emergencia, llame a la oficina de registro e indique a qué hora llegará.",
+      },
+      attendance: {
+        title: "Asistencia",
+        body: "Se espera asistencia regular y puntual, y las normas de licencia exigen registros de asistencia de cada niño. Una lista de espera por orden de llegada respalda la capacidad del programa.",
+      },
+      options: {
+        title: "Opciones de horario",
+        body: "El horario de preescolar ofrece dos opciones para cada familia.",
+        items: [
+          "Programa n.º 1: preescolar Capstone, de 8:00 a. m. a 3:30 p. m.",
+          "Programa n.º 2: preescolar Capstone más el programa complementario de 7:00 a. m. a 6:00 p. m., de lunes a viernes. Sigue el calendario de primaria de AmeriSchools Academy, salvo que el preescolar ofrece sesión de verano con un receso de dos semanas y otros descansos.",
+        ],
+      },
+      immunizations: {
+        title: "Vacunas",
+        body: "Como condición para la inscripción, la cartilla de vacunación de cada niño debe estar vigente. El registro debe llevar el sello del consultorio médico, y el nombre, la dirección y el teléfono de la clínica deben anotarse en la Tarjeta de Salud de Emergencia antes de que el niño asista.",
+      },
+      medication: {
+        title: "Medicamentos",
+        body: "Las familias deben informar a la escuela de cualquier condición médica, física o discapacitante que limite la participación de su hijo, incluidas alergias al clima, al polen, a alimentos o a medicamentos. El Formulario de Consentimiento para Medicamentos autoriza al personal a administrar medicamentos recetados durante el día. La oficina de registro guarda y administra los medicamentos, que deben estar en su envase original y etiquetado. Los niños no pueden portar ni tomar medicamentos por sí mismos.",
+      },
+      snack: {
+        title: "Refrigerio",
+        body: "El programa sigue las normas de servicio de alimentos y nutrición de la licencia para la primera infancia. El refrigerio de la tarde es en sí un centro de aprendizaje sobre alimentos y nutrición, y su costo está incluido en la cuota del programa. El Formulario de Alergias Alimentarias se llena al inscribirse para retirar esos alimentos de las opciones de refrigerio.",
+      },
+      backpacks: {
+        title: "Mochilas",
+        body: "Envíe una mochila lo bastante grande para una carpeta con el nombre de su hijo. En ella viajan a casa papeles, dibujos y recuerdos. Guardarla siempre en el mismo lugar ayuda al niño a hacerse responsable de sus cosas. Por favor revise la mochila y la carpeta todos los días.",
+      },
+      fireDrills: {
+        title: "Simulacros de incendio",
+        body: "Se realizan simulacros de evacuación sin aviso al menos cada 30 días, como exige la ley. Los planes de evacuación están publicados en cada salón.",
+      },
+      emergency: {
+        title: "Disposiciones de emergencia",
+        bodyIntro: "Los primeros auxilios los brinda el maestro del salón. Si un niño se enferma, un miembro del personal lo acompaña a la oficina y se avisa a un padre o adulto responsable. La atención de emergencia depende de que la Tarjeta de Salud de Emergencia esté al día, y debe incluir:",
+        items: [
+          "Domicilio actual y teléfono fijo o celular",
+          "Lugar de trabajo y teléfonos de todos los adultos responsables",
+          "Nombres de cuatro adultos responsables además del padre o la madre",
+        ],
+        bodyEnd: "Los niños con enfermedades contagiosas, incluidos fiebre, diarrea, vómito u otra condición incapacitante, deben quedarse en casa. La familia es responsable de reportar la ausencia y la condición de salud. Las cuotas no se reducen por ausencia.",
+      },
+      conferences: {
+        title: "Conferencias con las familias",
+        body: "Las conferencias formales se realizan cada seis semanas para hablar del avance académico y del desarrollo de cada niño. La primera conferencia es en persona. También hay conferencias informales por teléfono y mensaje. Por favor organice por su cuenta la supervisión después de clases cuando el horario de salida lo requiera.",
+      },
+      discipline: {
+        title: "Disciplina",
+        body: "El juego es una poderosa actividad de enseñanza. Enseñar disciplina por medio del juego se centra en que el niño experimente conductas eficaces, empezando por los adultos que modelan actos con propósito. Las estrategias incluyen mostrar habilidades adecuadas para afrontar situaciones, preparar actividades apropiadas para el desarrollo y ordenadas según la madurez del niño, programar actividades en un entorno controlado y ofrecer reglas de conducta claras, consistentes y justas.",
+      },
+      pesticide: {
+        title: "Aplicación de plaguicidas",
+        body: "Se informa a las familias, los alumnos y el personal cuando se aplican plaguicidas en la propiedad escolar, actualmente con al menos 48 horas de anticipación, como exige la ley estatal. El aviso incluye notificación oral a alumnos y personal, aviso por escrito a los padres o tutores, y letreros que señalan las áreas de aplicación. Cada plantel conserva registros escritos de estos avisos. Esto no incluye desinfectantes, sanitizantes ni desodorantes de uso no restringido.",
+      },
+    },
+    suspension: {
+      title: "Política de prevención de suspensión y expulsión",
+      commitmentTitle: "Nuestro compromiso",
+      commitment: "Creemos que todo niño merece sentirse seguro, apoyado y bienvenido en su entorno de aprendizaje temprano. Los niños pequeños aún están desarrollando habilidades sociales, emocionales y de conducta, y el comportamiento es una forma de comunicación. Nos comprometemos a prevenir la suspensión y la expulsión siempre que sea posible, mediante enseñanza proactiva, relaciones sólidas con las familias y colaboración con socios comunitarios. La salida del programa se considera solo como último recurso, después de haber agotado las estrategias y los recursos de apoyo. Esta política sigue la Política de Prevención de Suspensión y Expulsión del Departamento de Seguridad Económica de Arizona.",
+      preventionTitle: "Prevención e intervención temprana",
+      prevention: [
+        "Mantener rutinas diarias predecibles y salones acogedores",
+        "Enseñar habilidades socioemocionales con modelado y práctica guiada",
+        "Usar orientación positiva de la conducta y redirección",
+        "Ajustar el entorno del salón o las expectativas a las necesidades de cada niño",
+        "Apoyar al personal con acompañamiento, supervisión reflexiva y formación profesional",
+      ],
+      familyTitle: "Alianza y comunicación con la familia",
+      familyIntro: "Las familias son aliadas valiosas. Cuando se identifica una preocupación de conducta o desarrollo, haremos lo siguiente:",
+      family: [
+        "Compartir observaciones con la familia desde las fortalezas del niño",
+        "Invitar a la familia a participar en la búsqueda de soluciones",
+        "Desarrollar juntos estrategias de apoyo o planes individualizados",
+        "Tomar en cuenta las perspectivas culturales, lingüísticas y familiares al planear los apoyos",
+      ],
+      inclusionTitle: "Inclusión y apoyo para todos los niños",
+      inclusionIntro: "No negamos la inscripción ni damos de baja a un niño por un retraso del desarrollo, una discapacidad, un reto de conducta o una posible necesidad especial sin antes poner en marcha intervenciones de apoyo. Los apoyos pueden incluir:",
+      inclusion: [
+        "Planes individualizados de conducta o de apoyo",
+        "Modificaciones del entorno o del horario",
+        "Apoyo adicional en el salón",
+        "Evaluaciones del desarrollo con el consentimiento de la familia",
+        "Colaboración con servicios de intervención temprana o educación especial",
+      ],
+      consultationTitle: "Consulta y recursos comunitarios",
+      consultationIntro: "Antes de considerar una suspensión o expulsión, buscamos apoyos adicionales cuando están disponibles:",
+      consultation: [
+        "Referencia a AZ STEPS, el programa estatal de Arizona de capacitación y asistencia técnica para la prevención de expulsiones",
+        "Consulta de salud mental en la primera infancia",
+        "Especialistas en inclusión o consultores de conducta",
+        "Servicios comunitarios de desarrollo o de apoyo familiar",
+      ],
+      documentationTitle: "Documentación y revisión",
+      documentationIntro: "Documentamos las preocupaciones observadas, las estrategias aplicadas, la comunicación con la familia, los apoyos solicitados o recibidos y el avance a lo largo del tiempo. Las estrategias se revisan con regularidad y se ajustan.",
+      lastResortTitle: "La suspensión o expulsión como último recurso",
+      lastResortIntro: "La suspensión o expulsión se considera únicamente cuando se cumple todo lo siguiente:",
+      lastResort: [
+        "Existe un riesgo de seguridad grave y continuo",
+        "Se han intentado adaptaciones e intervenciones razonables",
+        "Se ha solicitado consulta o apoyo externo cuando estaba disponible",
+      ],
+      transitionIntro: "Si un niño debe dejar el programa, haremos lo siguiente:",
+      transition: [
+        "Avisar por escrito a la familia al menos cinco días hábiles antes de la baja",
+        "Trabajar con la familia para encontrar cuidado o servicios alternativos",
+        "Ofrecer referencias a recursos comunitarios",
+        "Apoyar una transición respetuosa y planeada para reducir la afectación",
+      ],
+      reviewTitle: "Comunicación y revisión de la política",
+      reviewIntro: "Esta política se comparte con las familias al inscribirse, se incluye en el manual, se revisa cada año con el personal y se actualiza conforme evolucionan las guías y las mejores prácticas.",
+    },
+    scheduleTitle: "Horario modelo de actividades diarias",
+    scheduleNote: "Sujeto a cambios. Las puertas abren a las 7:00 a. m. para el programa de la mañana y a las 8:00 a. m. para el día completo.",
+    napNote: "El programa proporciona a cada niño un tapete para la hora de la siesta.",
+    recessNote: "El recreo al aire libre depende del clima, respetando el calor extremo.",
   },
 };

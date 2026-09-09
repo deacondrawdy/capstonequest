@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { SiteShell } from "@/components/site-shell";
+import { FormPrivacyNotice } from "@/components/form-privacy-notice";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -107,6 +108,7 @@ export function ContactPage() {
                 <Label htmlFor="message">{c.contactPage.fields.message}</Label>
                 <Textarea id="message" name="message" required />
               </div>
+              <FormPrivacyNotice className="mb-1" />
               <Button type="submit" size="lg" disabled={sending}>
                 {sending ? c.contactPage.sending : c.contactPage.submit}
               </Button>

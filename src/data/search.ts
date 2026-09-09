@@ -17,7 +17,7 @@ export const searchIndex = [
   {
     title: "Programs",
     path: "/programs",
-    blurb: "Pre-K 3s, Pre-K 4s, and before & after care, 7 AM–6 PM.",
+    blurb: "One mixed-age Pre-K classroom for ages 3–5, plus before & after care, 7 AM–6 PM.",
   },
   {
     title: "Info",
@@ -70,8 +70,18 @@ export const searchIndex = [
     blurb: "Walk a Tucson or Yuma classroom on a weekday morning.",
   },
   {
+    title: "Parent handbook",
+    path: "/handbook",
+    blurb: "Admissions, daily routines, discipline, and the suspension and expulsion prevention policy.",
+  },
+  {
+    title: "Privacy",
+    path: "/privacy",
+    blurb: "What this site collects, why, and who sees it.",
+  },
+  {
     title: "Contact",
     path: "/contact",
-    blurb: "(520) 462-7788 · hello@capstonequestacademy.org",
+    blurb: "(520) 462-7788 · info@capstonequestacademy.com",
   },
 ] as const;

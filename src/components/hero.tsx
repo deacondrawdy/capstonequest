@@ -39,18 +39,29 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-paper">
-      {/* Photo lives only on the right so headlines never sit on her face */}
-      <div className="pointer-events-none absolute inset-y-0 left-[38%] right-0 hidden overflow-hidden lg:block">
+      {/* Photo lives only on the right so headlines never sit on her face.
+          The edges are pinned to the same centred 1400px container as the text
+          and the info card, not to the viewport. That matters: a viewport
+          percentage keeps scaling the photo up forever, so the girl drifts
+          right faster than the container-bound card does, and somewhere past
+          1900px the card lands on top of her. Above 1400px the panel is a
+          constant 868px, so the composition is identical on a laptop and on a
+          4K television.
+
+          The right edge runs one gutter (40px) past the info card and the navy
+          badge bar, so both sit on the photo rather than flush against its cut
+          edge. */}
+      <div className="pointer-events-none absolute inset-y-0 left-[max(38%,calc(50%-168px))] right-[max(0px,calc(50%-700px))] hidden overflow-hidden xl:block">
         <img
           src="/images/hero.jpg"
           alt={c.hero.imageAlt}
-          className="h-full w-full object-cover object-[15%_22%] outline-none"
+          className="h-full w-full object-cover object-[50%_22%] outline-none"
         />
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-paper to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-5 pt-8 pb-8 sm:px-8 lg:flex lg:items-start lg:justify-between lg:gap-8 lg:px-10 lg:pt-10 lg:pb-36 xl:pb-32 2xl:pb-32">
-        <div className="hero-stagger relative z-10 max-w-xl lg:max-w-[32rem]">
+      <div className="relative mx-auto max-w-[1400px] px-5 pt-8 pb-8 sm:px-8 lg:px-10 lg:pt-10 lg:pb-40 xl:flex xl:items-start xl:justify-between xl:gap-8 xl:pb-32">
+        <div className="hero-stagger relative z-10 max-w-xl lg:max-w-none xl:max-w-[32rem]">
           <p className="flex items-center gap-2 text-[13px] font-bold tracking-[0.14em] text-brand uppercase">
             {c.hero.eyebrow}
             <Star className="size-3.5 fill-icon-blue text-icon-blue" />
@@ -68,16 +79,22 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="font-script mt-3 text-[1.65rem] leading-none text-brand italic sm:text-[1.85rem]">
-            {c.hero.tagline}
-          </p>
-          <span className="mt-1 block h-1 w-48 rounded-full bg-gold/90" />
+          {/* The rule is wrapped with the tagline in a shrink-to-fit box so it
+              spans the whole sentence. It used to be a fixed 12rem, which
+              underlined about a third of the English line and a different
+              fraction again in Spanish. */}
+          <div className="mt-3 inline-block max-w-full">
+            <p className="font-script text-[1.65rem] leading-none text-brand italic sm:text-[1.85rem]">
+              {c.hero.tagline}
+            </p>
+            <span className="mt-1 block h-1 rounded-full bg-gold/90" />
+          </div>
 
-          <div className="mt-5 overflow-hidden rounded-[24px] lg:hidden">
+          <div className="mt-5 overflow-hidden rounded-[24px] xl:hidden">
             <img
               src="/images/hero.jpg"
               alt={c.hero.imageAlt}
-              className="h-56 w-full object-cover object-[18%_18%] outline-none sm:h-72"
+              className="h-56 w-full object-cover object-[18%_18%] outline-none sm:h-72 lg:h-[22rem]"
             />
           </div>
 
@@ -100,11 +117,13 @@ export function Hero() {
           </div>
         </div>
 
-        <aside className="relative z-10 mt-6 rounded-[24px] bg-paper p-5 shadow-card lg:mt-0 lg:w-[18.1rem] lg:shrink-0 lg:rounded-[26px] lg:p-5">
+        <aside className="relative z-10 mt-6 rounded-[24px] bg-paper p-5 shadow-card xl:mt-0 xl:w-[18.1rem] xl:shrink-0 xl:rounded-[26px] xl:p-5">
           <h2 className="mb-3.5 text-[13px] font-extrabold tracking-[0.08em] text-navy uppercase">
             {c.hero.whyTitle}
           </h2>
-          <ul className="space-y-3.5">
+          {/* Between lg and xl the card sits under the text at full container
+              width, so the reasons run two-up rather than as one long column. */}
+          <ul className="flex flex-col gap-3.5 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-4 xl:flex xl:gap-3.5">
             {reasons.map((r) => (
               <li key={r.title} className="flex gap-3">
                 <span className={cn("mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full text-paper", r.bg)}>
@@ -137,7 +156,9 @@ export function Hero() {
         </aside>
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-4 pb-8 sm:px-6 lg:absolute lg:inset-x-0 lg:bottom-6 lg:px-10 lg:pb-0">
+      {/* Sits flush with the bottom of the photo. At bottom-6 a 24px strip of
+          the background image showed under the bar and read as a mistake. */}
+      <div className="relative mx-auto max-w-[1400px] px-4 pb-8 sm:px-6 lg:absolute lg:inset-x-0 lg:bottom-0 lg:px-10 lg:pb-0">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[22px] bg-navy-deep lg:grid-cols-5">
           {bottomBadges.map((b, i) => (
             <div

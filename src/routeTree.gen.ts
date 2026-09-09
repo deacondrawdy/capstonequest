@@ -16,9 +16,11 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CleverRouteImport } from './routes/clever'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EnrollRouteImport } from './routes/enroll'
+import { Route as HandbookRouteImport } from './routes/handbook'
 import { Route as InfoRouteImport } from './routes/info'
 import { Route as ParentsRouteImport } from './routes/parents'
 import { Route as PoliciesRouteImport } from './routes/policies'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as TourRouteImport } from './routes/tour'
 import { Route as TuitionRouteImport } from './routes/tuition'
@@ -32,9 +34,11 @@ import { Route as EsCareersRouteImport } from './routes/es.careers'
 import { Route as EsCleverRouteImport } from './routes/es.clever'
 import { Route as EsContactRouteImport } from './routes/es.contact'
 import { Route as EsEnrollRouteImport } from './routes/es.enroll'
+import { Route as EsHandbookRouteImport } from './routes/es.handbook'
 import { Route as EsInfoRouteImport } from './routes/es.info'
 import { Route as EsParentsRouteImport } from './routes/es.parents'
 import { Route as EsPoliciesRouteImport } from './routes/es.policies'
+import { Route as EsPrivacyRouteImport } from './routes/es.privacy'
 import { Route as EsProgramsRouteImport } from './routes/es.programs'
 import { Route as EsTourRouteImport } from './routes/es.tour'
 import { Route as EsTuitionRouteImport } from './routes/es.tuition'
@@ -77,6 +81,11 @@ const EnrollRoute = EnrollRouteImport.update({
   path: '/enroll',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HandbookRoute = HandbookRouteImport.update({
+  id: '/handbook',
+  path: '/handbook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InfoRoute = InfoRouteImport.update({
   id: '/info',
   path: '/info',
@@ -90,6 +99,11 @@ const ParentsRoute = ParentsRouteImport.update({
 const PoliciesRoute = PoliciesRouteImport.update({
   id: '/policies',
   path: '/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -157,6 +171,11 @@ const EsEnrollRoute = EsEnrollRouteImport.update({
   path: '/es/enroll',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsHandbookRoute = EsHandbookRouteImport.update({
+  id: '/es/handbook',
+  path: '/es/handbook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsInfoRoute = EsInfoRouteImport.update({
   id: '/es/info',
   path: '/es/info',
@@ -170,6 +189,11 @@ const EsParentsRoute = EsParentsRouteImport.update({
 const EsPoliciesRoute = EsPoliciesRouteImport.update({
   id: '/es/policies',
   path: '/es/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsPrivacyRoute = EsPrivacyRouteImport.update({
+  id: '/es/privacy',
+  path: '/es/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsProgramsRoute = EsProgramsRouteImport.update({
@@ -211,9 +235,11 @@ export interface FileRoutesByFullPath {
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
   '/enroll': typeof EnrollRoute
+  '/handbook': typeof HandbookRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
   '/policies': typeof PoliciesRoute
+  '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/tour': typeof TourRoute
   '/tuition': typeof TuitionRoute
@@ -225,9 +251,11 @@ export interface FileRoutesByFullPath {
   '/es/clever': typeof EsCleverRoute
   '/es/contact': typeof EsContactRoute
   '/es/enroll': typeof EsEnrollRoute
+  '/es/handbook': typeof EsHandbookRoute
   '/es/info': typeof EsInfoRoute
   '/es/parents': typeof EsParentsRoute
   '/es/policies': typeof EsPoliciesRoute
+  '/es/privacy': typeof EsPrivacyRoute
   '/es/programs': typeof EsProgramsRoute
   '/es/tour': typeof EsTourRoute
   '/es/tuition': typeof EsTuitionRoute
@@ -244,9 +272,11 @@ export interface FileRoutesByTo {
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
   '/enroll': typeof EnrollRoute
+  '/handbook': typeof HandbookRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
   '/policies': typeof PoliciesRoute
+  '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/tour': typeof TourRoute
   '/tuition': typeof TuitionRoute
@@ -257,9 +287,11 @@ export interface FileRoutesByTo {
   '/es/clever': typeof EsCleverRoute
   '/es/contact': typeof EsContactRoute
   '/es/enroll': typeof EsEnrollRoute
+  '/es/handbook': typeof EsHandbookRoute
   '/es/info': typeof EsInfoRoute
   '/es/parents': typeof EsParentsRoute
   '/es/policies': typeof EsPoliciesRoute
+  '/es/privacy': typeof EsPrivacyRoute
   '/es/programs': typeof EsProgramsRoute
   '/es/tour': typeof EsTourRoute
   '/es/tuition': typeof EsTuitionRoute
@@ -278,9 +310,11 @@ export interface FileRoutesById {
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
   '/enroll': typeof EnrollRoute
+  '/handbook': typeof HandbookRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
   '/policies': typeof PoliciesRoute
+  '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/tour': typeof TourRoute
   '/tuition': typeof TuitionRoute
@@ -292,9 +326,11 @@ export interface FileRoutesById {
   '/es/clever': typeof EsCleverRoute
   '/es/contact': typeof EsContactRoute
   '/es/enroll': typeof EsEnrollRoute
+  '/es/handbook': typeof EsHandbookRoute
   '/es/info': typeof EsInfoRoute
   '/es/parents': typeof EsParentsRoute
   '/es/policies': typeof EsPoliciesRoute
+  '/es/privacy': typeof EsPrivacyRoute
   '/es/programs': typeof EsProgramsRoute
   '/es/tour': typeof EsTourRoute
   '/es/tuition': typeof EsTuitionRoute
@@ -314,9 +350,11 @@ export interface FileRouteTypes {
     | '/clever'
     | '/contact'
     | '/enroll'
+    | '/handbook'
     | '/info'
     | '/parents'
     | '/policies'
+    | '/privacy'
     | '/programs'
     | '/tour'
     | '/tuition'
@@ -328,9 +366,11 @@ export interface FileRouteTypes {
     | '/es/clever'
     | '/es/contact'
     | '/es/enroll'
+    | '/es/handbook'
     | '/es/info'
     | '/es/parents'
     | '/es/policies'
+    | '/es/privacy'
     | '/es/programs'
     | '/es/tour'
     | '/es/tuition'
@@ -347,9 +387,11 @@ export interface FileRouteTypes {
     | '/clever'
     | '/contact'
     | '/enroll'
+    | '/handbook'
     | '/info'
     | '/parents'
     | '/policies'
+    | '/privacy'
     | '/programs'
     | '/tour'
     | '/tuition'
@@ -360,9 +402,11 @@ export interface FileRouteTypes {
     | '/es/clever'
     | '/es/contact'
     | '/es/enroll'
+    | '/es/handbook'
     | '/es/info'
     | '/es/parents'
     | '/es/policies'
+    | '/es/privacy'
     | '/es/programs'
     | '/es/tour'
     | '/es/tuition'
@@ -380,9 +424,11 @@ export interface FileRouteTypes {
     | '/clever'
     | '/contact'
     | '/enroll'
+    | '/handbook'
     | '/info'
     | '/parents'
     | '/policies'
+    | '/privacy'
     | '/programs'
     | '/tour'
     | '/tuition'
@@ -394,9 +440,11 @@ export interface FileRouteTypes {
     | '/es/clever'
     | '/es/contact'
     | '/es/enroll'
+    | '/es/handbook'
     | '/es/info'
     | '/es/parents'
     | '/es/policies'
+    | '/es/privacy'
     | '/es/programs'
     | '/es/tour'
     | '/es/tuition'
@@ -415,9 +463,11 @@ export interface RootRouteChildren {
   CleverRoute: typeof CleverRoute
   ContactRoute: typeof ContactRoute
   EnrollRoute: typeof EnrollRoute
+  HandbookRoute: typeof HandbookRoute
   InfoRoute: typeof InfoRoute
   ParentsRoute: typeof ParentsRoute
   PoliciesRoute: typeof PoliciesRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProgramsRoute: typeof ProgramsRoute
   TourRoute: typeof TourRoute
   TuitionRoute: typeof TuitionRoute
@@ -428,9 +478,11 @@ export interface RootRouteChildren {
   EsCleverRoute: typeof EsCleverRoute
   EsContactRoute: typeof EsContactRoute
   EsEnrollRoute: typeof EsEnrollRoute
+  EsHandbookRoute: typeof EsHandbookRoute
   EsInfoRoute: typeof EsInfoRoute
   EsParentsRoute: typeof EsParentsRoute
   EsPoliciesRoute: typeof EsPoliciesRoute
+  EsPrivacyRoute: typeof EsPrivacyRoute
   EsProgramsRoute: typeof EsProgramsRoute
   EsTourRoute: typeof EsTourRoute
   EsTuitionRoute: typeof EsTuitionRoute
@@ -489,6 +541,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnrollRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/handbook': {
+      id: '/handbook'
+      path: '/handbook'
+      fullPath: '/handbook'
+      preLoaderRoute: typeof HandbookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/info': {
       id: '/info'
       path: '/info'
@@ -508,6 +567,13 @@ declare module '@tanstack/react-router' {
       path: '/policies'
       fullPath: '/policies'
       preLoaderRoute: typeof PoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -601,6 +667,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsEnrollRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/handbook': {
+      id: '/es/handbook'
+      path: '/es/handbook'
+      fullPath: '/es/handbook'
+      preLoaderRoute: typeof EsHandbookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/info': {
       id: '/es/info'
       path: '/es/info'
@@ -620,6 +693,13 @@ declare module '@tanstack/react-router' {
       path: '/es/policies'
       fullPath: '/es/policies'
       preLoaderRoute: typeof EsPoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/privacy': {
+      id: '/es/privacy'
+      path: '/es/privacy'
+      fullPath: '/es/privacy'
+      preLoaderRoute: typeof EsPrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/programs': {
@@ -703,9 +783,11 @@ const rootRouteChildren: RootRouteChildren = {
   CleverRoute: CleverRoute,
   ContactRoute: ContactRoute,
   EnrollRoute: EnrollRoute,
+  HandbookRoute: HandbookRoute,
   InfoRoute: InfoRoute,
   ParentsRoute: ParentsRoute,
   PoliciesRoute: PoliciesRoute,
+  PrivacyRoute: PrivacyRoute,
   ProgramsRoute: ProgramsRoute,
   TourRoute: TourRoute,
   TuitionRoute: TuitionRoute,
@@ -716,9 +798,11 @@ const rootRouteChildren: RootRouteChildren = {
   EsCleverRoute: EsCleverRoute,
   EsContactRoute: EsContactRoute,
   EsEnrollRoute: EsEnrollRoute,
+  EsHandbookRoute: EsHandbookRoute,
   EsInfoRoute: EsInfoRoute,
   EsParentsRoute: EsParentsRoute,
   EsPoliciesRoute: EsPoliciesRoute,
+  EsPrivacyRoute: EsPrivacyRoute,
   EsProgramsRoute: EsProgramsRoute,
   EsTourRoute: EsTourRoute,
   EsTuitionRoute: EsTuitionRoute,

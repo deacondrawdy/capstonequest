@@ -3,6 +3,7 @@ import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
+import { CAMPUS_BOOT_SCRIPT } from "@/lib/campus";
 import { localizePath, stripLocale, useLocale } from "@/lib/locale";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
@@ -24,11 +25,32 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      // Fonts are self-hosted (see the @font-face block in src/styles.css).
+      // They used to come from fonts.googleapis.com, which handed Google every
+      // visitor's IP on every page view.
+      //
+      // These two faces carry the headline and body text, so they are preloaded.
+      // Measured: preloaded faces start at ~200ms, in parallel with the
+      // stylesheet; the faces that are not preloaded do not start until ~430ms,
+      // after CSS parses and layout asks for them.
+      //
+      // Chrome logs "preloaded ... but not used within a few seconds" for these.
+      // That warning is a false positive -- its heuristic misfires on fonts with
+      // a `unicode-range`, and both faces do end up in `document.fonts` as
+      // loaded, each fetched exactly once. Do not "fix" it by deleting these.
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap",
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/plus-jakarta-sans-800-latin.woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/plus-jakarta-sans-400-latin.woff2",
+        crossOrigin: "anonymous",
       },
     ],
   }),
@@ -56,6 +78,8 @@ function RootDocument() {
         {/* Applies saved accessibility preferences before first paint, so a
             visitor who chose larger text never sees the default size flash. */}
         <script dangerouslySetInnerHTML={{ __html: A11Y_BOOT_SCRIPT }} />
+        {/* Same pre-paint trick for the campus phone number. */}
+        <script dangerouslySetInnerHTML={{ __html: CAMPUS_BOOT_SCRIPT }} />
       </head>
       <body>
         <PreviewHostBridge />

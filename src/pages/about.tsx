@@ -1,4 +1,5 @@
 import { SiteShell } from "@/components/site-shell";
+import { StaffGrid } from "@/components/staff-grid";
 import { Button } from "@/components/ui/button";
 import { staff } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
@@ -38,19 +39,8 @@ export function AboutPage() {
       <section className="bg-paper-soft py-14">
         <div className="mx-auto max-w-[1100px] px-5 sm:px-8">
           <h2 className="text-3xl font-extrabold text-navy">{c.aboutPage.peopleTitle}</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {staff.map((s) => (
-              <article key={s.id} className="flex gap-5 rounded-[28px] bg-paper p-5 shadow-card">
-                <img src={s.image} alt={s.name} className="size-28 shrink-0 rounded-2xl object-cover" />
-                <div>
-                  <h3 className="text-xl font-bold text-navy">{s.name}</h3>
-                  <p className="text-sm font-semibold text-brand">
-                    {c.aboutPage.staff[s.id].role} · {c.aboutPage.staff[s.id].campus}
-                  </p>
-                  <p className="mt-2 text-sm text-muted">{c.aboutPage.staff[s.id].bio}</p>
-                </div>
-              </article>
-            ))}
+          <div className="mt-8">
+            <StaffGrid members={staff} />
           </div>
           <Button asChild className="mt-10">
             <AppLink to="/tour">{c.aboutPage.meetUs}</AppLink>

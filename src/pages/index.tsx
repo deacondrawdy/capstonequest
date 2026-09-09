@@ -55,7 +55,10 @@ export function Home() {
           <h2 className="mt-2 max-w-xl text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">
             {c.homePage.programsTitle}
           </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {/* Two programmes, not three: the 3s and 4s rooms are one classroom.
+              Capped so the pair does not stretch into a billboard on wide
+              screens. */}
+          <div className="mt-10 grid max-w-[860px] gap-6 md:grid-cols-2">
             {programs.map((p) => (
               <article
                 key={p.slug}
