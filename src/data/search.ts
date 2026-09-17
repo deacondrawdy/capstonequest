@@ -28,4 +28,7 @@ const allPages = [
 ] as const;
 
 /** Hidden sections (src/data/features.ts) are left out of search. */
-export const searchIndex = allPages.filter((page) => page.id !== "careers" || features.careers);
+export const searchIndex = allPages.filter(
+  (page) =>
+    (page.id !== "careers" || features.careers) && (page.id !== "clever" || features.clever),
+);

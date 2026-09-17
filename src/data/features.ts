@@ -7,7 +7,14 @@
  * "page not found"; and the privacy policy stops listing the job application
  * form as something the site collects. When restoring, also add "/careers"
  * back to PATHS in scripts/a11y-check.mjs.
+ *
+ * clever — hidden September 17, 2026. The school does not use Clever,
+ * PowerSchool or the other portals the page linked to. While false: no card on
+ * the Info page, nothing in site search, and /clever and /es/clever return
+ * "page not found". When restoring, also add "/clever" back to PATHS in
+ * scripts/a11y-check.mjs.
  */
 export const features = {
   careers: false,
+  clever: false,
 } as const;

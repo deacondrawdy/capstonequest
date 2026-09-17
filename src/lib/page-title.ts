@@ -12,7 +12,7 @@ const PATH_TITLES: Record<string, TitleKey> = {
   "/campuses": "campuses",
   // Hidden sections are left out, so their 404 is titled "Page not found".
   ...(features.careers ? { "/careers": "careers" as const } : {}),
-  "/clever": "clever",
+  ...(features.clever ? { "/clever": "clever" as const } : {}),
   "/contact": "contact",
   "/enroll": "enroll",
   "/handbook": "handbook",
