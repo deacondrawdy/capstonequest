@@ -1,105 +1,96 @@
-import { useState } from "react";
+import { Download, Mail, Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
-import { FormPrivacyNotice } from "@/components/form-privacy-notice";
-import { FormDone, FormFailure, SelectField, TextField, ValidatedForm } from "@/components/form-kit";
 import { Button } from "@/components/ui/button";
-import { campuses, programs, school } from "@/data/school";
-import { useContent } from "@/lib/locale";
-import { saveEnroll } from "@/lib/inquiries";
+import { campuses, enrollmentPacket, school } from "@/data/school";
+import { AppLink, useContent } from "@/lib/locale";
 
-type Contact = { phone: string; phoneHref: string };
-
+/**
+ * Enrollment is on paper. This page hands out the packet and explains what to
+ * do with it; it collects no information, so it needs no privacy notice.
+ *
+ * Every "Enroll" button on the site still points here rather than straight at
+ * the PDF: the packet needs instructions (one per child, a doctor completes the
+ * immunization form, return it to the registrar), and the packet is a scan a
+ * screen reader cannot read, so the help offer below has to sit next to it.
+ */
 export function EnrollPage() {
   const c = useContent();
-  const f = c.enrollPage.fields;
-  const [done, setDone] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [failed, setFailed] = useState<Contact | null>(null);
-
-  async function onValidSubmit(fd: FormData) {
-    const picked = campuses.find((cam) => cam.slug === String(fd.get("campus") ?? ""));
-    setSending(true);
-    setFailed(null);
-    try {
-      await saveEnroll({
-        childFirst: String(fd.get("childFirst") ?? ""),
-        childLast: String(fd.get("childLast") ?? ""),
-        dob: String(fd.get("dob") ?? ""),
-        campus: String(fd.get("campus") ?? ""),
-        program: String(fd.get("program") ?? ""),
-        parentName: String(fd.get("parentName") ?? ""),
-        email: String(fd.get("email") ?? ""),
-        phone: String(fd.get("phone") ?? ""),
-        des: String(fd.get("des") ?? ""),
-        start: String(fd.get("start") ?? ""),
-      });
-      setDone(true);
-    } catch {
-      setFailed(picked ?? school);
-    } finally {
-      setSending(false);
-    }
-  }
+  const e = c.enrollPage;
+  const fileInfo = e.fileInfo
+    .replace("{pages}", String(enrollmentPacket.pages))
+    .replace("{size}", enrollmentPacket.size);
 
   return (
     <SiteShell>
       <div className="mx-auto max-w-[760px] px-5 py-14 sm:px-8">
-        <p className="text-sm font-bold tracking-[0.14em] text-brand uppercase">{c.enrollPage.eyebrow}</p>
-        <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">{c.enrollPage.title}</h1>
-        <p className="mt-3 text-muted">{c.enrollPage.lede2}</p>
-        {done ? (
-          <FormDone className="mt-10 rounded-[28px] bg-paper-soft p-8">
-            <h2 className="text-2xl font-bold text-navy">{c.enrollPage.doneTitle}</h2>
-            <p className="mt-2 text-muted">{c.enrollPage.doneText}</p>
-          </FormDone>
-        ) : (
-          <ValidatedForm className="mt-8 grid gap-4 sm:grid-cols-2" onValidSubmit={onValidSubmit}>
-            {/* The child's details take no autocomplete: WCAG 1.3.5 covers data
-                about the person filling in the form, and autofilling the
-                parent's own name into the child's field would be a mistake. */}
-            <TextField label={f.childFirst} name="childFirst" required />
-            <TextField label={f.childLast} name="childLast" required />
-            <TextField label={f.dob} name="dob" type="date" required />
-            <TextField label={f.start} name="start" type="date" />
-            <SelectField label={f.campus} name="campus" defaultValue="tucson">
-              {campuses.map((cam) => (
-                <option key={cam.slug} value={cam.slug}>
-                  {c.campuses[cam.slug].name}
-                </option>
-              ))}
-            </SelectField>
-            <SelectField label={f.program} name="program">
-              {programs.map((pr) => (
-                <option key={pr.slug} value={pr.slug}>
-                  {c.programs[pr.slug].name}
-                </option>
-              ))}
-            </SelectField>
-            <TextField
-              label={f.parentName}
-              name="parentName"
-              required
-              autoComplete="name"
-              className="sm:col-span-2"
-            />
-            <TextField label={f.email} name="email" type="email" required autoComplete="email" />
-            <TextField label={f.phone} name="phone" type="tel" required autoComplete="tel" />
-            <SelectField label={f.des} name="des" className="sm:col-span-2">
-              <option value="not-sure">{c.enrollPage.des.notSure}</option>
-              <option value="yes">{c.enrollPage.yes}</option>
-              <option value="no">{c.enrollPage.des.no}</option>
-            </SelectField>
-            {failed ? (
-              <FormFailure template={c.enrollPage.failed} phone={failed.phone} phoneHref={failed.phoneHref} />
-            ) : null}
-            <div className="sm:col-span-2">
-              <FormPrivacyNotice className="mb-3" />
-              <Button type="submit" size="lg" disabled={sending}>
-                {sending ? c.enrollPage.sending : c.enrollPage.submit}
-              </Button>
-            </div>
-          </ValidatedForm>
-        )}
+        <p className="text-sm font-bold tracking-[0.14em] text-brand uppercase">{e.eyebrow}</p>
+        <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">{e.title}</h1>
+        <p className="mt-3 text-lg leading-relaxed text-muted">{e.lede}</p>
+
+        <div className="mt-8 rounded-[28px] bg-paper-soft p-6 sm:p-8">
+          {/* Buttons don't wrap by default; this label is long enough in Spanish
+              to push a 320px screen sideways (WCAG 1.4.10). */}
+          <Button asChild size="lg" className="h-auto min-h-12 whitespace-normal py-3 text-left">
+            <a
+              href={enrollmentPacket.href}
+              download={enrollmentPacket.fileName}
+              aria-describedby="packet-info"
+            >
+              <Download className="size-4" aria-hidden />
+              {e.download}
+            </a>
+          </Button>
+          <p id="packet-info" className="mt-3 text-sm text-muted">
+            {fileInfo}
+            {e.languageNote ? <> · {e.languageNote}</> : null}
+          </p>
+        </div>
+
+        <section className="mt-10">
+          <h2 className="text-2xl font-extrabold tracking-tight text-navy">{e.stepsTitle}</h2>
+          <ol className="mt-4 space-y-4">
+            {e.steps.map((step, i) => (
+              <li key={step} className="flex gap-4">
+                <span
+                  aria-hidden
+                  className="flex size-8 shrink-0 items-center justify-center rounded-full bg-navy text-sm font-bold text-paper"
+                >
+                  {i + 1}
+                </span>
+                <span className="pt-1 leading-relaxed text-ink/85">{step}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-5 leading-relaxed text-muted">{e.note}</p>
+          <p className="mt-3">
+            <AppLink to="/tuition" className="font-semibold text-brand underline underline-offset-2">
+              {c.common.seeRates}
+            </AppLink>
+          </p>
+        </section>
+
+        <section className="mt-10 rounded-[28px] border border-line p-6">
+          <h2 className="text-xl font-extrabold tracking-tight text-navy">{e.helpTitle}</h2>
+          <p className="mt-3 leading-relaxed text-muted">{e.help}</p>
+          <ul className="mt-4 space-y-2 text-sm">
+            {campuses.map((campus) => (
+              <li key={campus.slug} className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                <Phone className="size-4 shrink-0 text-brand" aria-hidden />
+                <span className="font-semibold text-navy">{e.campusLabel.replace("{campus}", campus.city)}:</span>
+                <a href={campus.phoneHref} className="font-semibold text-brand hover:underline">
+                  {campus.phone}
+                </a>
+              </li>
+            ))}
+            <li className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <Mail className="size-4 shrink-0 text-brand" aria-hidden />
+              <span className="font-semibold text-navy">{e.emailLabel}:</span>
+              <a href={`mailto:${school.email}`} className="font-semibold break-all text-brand hover:underline">
+                {school.email}
+              </a>
+            </li>
+          </ul>
+        </section>
       </div>
     </SiteShell>
   );

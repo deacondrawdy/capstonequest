@@ -624,69 +624,83 @@ export const en = {
     submit: "Request this tour",
   },
 
+  /** Enrollment is on paper: this page hands out the packet, it collects nothing. */
   enrollPage: {
     eyebrow: "Enroll",
-    title: "Start in as little as one day",
-    lede: "Tell us about your child and we will confirm a seat, walk the paperwork, and set a start date.",
-    doneTitle: "Application received",
-    doneText: "A director will call to confirm campus, start date, and any DES paperwork. Keep an eye on your email.",
-    lede2: "Tell us about your child. If a seat is open, many families finish the packet the same day they tour.",
-    yes: "Yes",
-    sent: "Enrollment started — we will follow up within one business day.",
-    failed: "We could not send this. Please call {phone}.",
-    fields: {
-      childFirst: "Child’s first name", childLast: "Child’s last name",
-      dob: "Date of birth", start: "Preferred start", campus: "Campus", program: "Program",
-      parentName: "Parent / guardian", email: "Email", phone: "Phone",
-      des: "Will you use a DES child care subsidy?",
-    },
-    des: { notSure: "Not sure yet", yes: "Yes — DES subsidy", no: "No — private pay" },
-    sending: "Sending…",
-    submit: "Submit enrollment",
+    title: "Enroll your child",
+    lede: "Enrollment is done on paper. Download the enrollment packet, fill it in, and return it to your campus registrar.",
+    download: "Download the enrollment packet",
+    /** {pages} and {size} come from enrollmentPacket in src/data/school.ts. */
+    fileInfo: "PDF · {pages} pages · {size}",
+    /** Shown only when the packet is not in the page's language. */
+    languageNote: "",
+    stepsTitle: "How to enroll",
+    steps: [
+      "Download and print the packet. Complete one packet for each child.",
+      "Fill it in and sign where marked. The immunization certificate must be completed by your child’s doctor or clinic, or you can attach a copy of the official immunization record signed or stamped by the provider.",
+      "Return the completed packet to the registrar at your campus. You will then receive an invitation to the ProCare parent app.",
+    ],
+    note: "Every child needs a signed contract and current registration documents on file in the office before their first day.",
+    helpTitle: "Need help, or the packet in another format?",
+    help: "If you can’t print the packet, can’t use a PDF, or would like help filling it in, contact your campus. We can go through it with you by phone or in person, or provide it in another format.",
+    emailLabel: "Email",
+    campusLabel: "{campus} campus",
   },
   /**
-   * Describes what is true today, including what is not yet done. "Partially
-   * conforms" is the W3C's own term; do not upgrade it to "fully conforms" or
-   * "ADA compliant" until the known limitations below are gone.
+   * The accessibility statement, from the draft prepared for the school
+   * (September 2026), corrected wherever it went beyond what was actually
+   * tested and fixed. Every sentence here must stay true: this is the page a
+   * complaint quotes back. "Partially conforms" is the W3C's own term; do not
+   * upgrade it to "fully conforms" or "ADA compliant" while limitations remain.
    */
   accessibilityPage: {
     eyebrow: "Accessibility",
     title: "Accessibility statement",
-    updated: "Last reviewed September 2026",
-    lede: "Capstone Quest Academy wants every family to be able to use this website — including parents, grandparents and caregivers who use a screen reader, a keyboard instead of a mouse, magnification, captions, or voice control.",
+    updated: "Last reviewed September 16, 2026",
+    commitmentTitle: "Our commitment",
+    commitment: [
+      "Capstone Quest Academy wants every family to be able to use this website — including parents and caregivers who use a screen reader, navigate by keyboard, enlarge the text, or rely on captions.",
+      "We built accessibility into this site rather than adding it on. That includes an accessibility panel you can open from the top of any page, with controls for text size, higher contrast, underlined links, a plainer typeface, and reduced motion. Your choices are saved on your own device and are applied before the page appears.",
+    ],
     standardTitle: "The standard we work to",
-    standard: "We work to the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA, published by the World Wide Web Consortium (W3C). It is the current version of the standard most widely used to judge whether a website is accessible.",
-    statusTitle: "Where the site stands",
-    status: "The site partially conforms to WCAG 2.2 Level AA. Most of it meets the standard; the exceptions we know about are listed below, and we are working through them.",
-    doneTitle: "What we have done",
-    done: [
-      "Every page works with a keyboard alone, and a “Skip to main content” link comes first on every page.",
-      "Each page has its own title, and headings, lists and page regions are marked up so screen readers can move around.",
-      "Photos that carry meaning have text descriptions.",
-      "Text and form field borders meet the WCAG 2.2 AA contrast levels.",
-      "The header stays at the top of the screen, and the page is set up so it never covers the control you are using or the section a link takes you to.",
-      "Pages work when zoomed to 400% and on narrow phone screens without scrolling sideways.",
-      "Forms have visible labels, mark required fields, and explain any mistake next to the field.",
-      "The whole site is available in English and Spanish, and each page is marked with its language.",
-      "We check the site with automated tools and by hand, page by page, in both languages, and had it independently audited against WCAG 2.2 AA in September 2026.",
+    standard: "We aim to meet the Web Content Accessibility Guidelines (WCAG) version 2.2 at Level AA. These are the internationally recognized guidelines for making web content usable by people with disabilities, and they are the standard most commonly applied in the United States.",
+    standingTitle: "Where we stand",
+    standing: [
+      "This site was audited against WCAG 2.2 Level AA on September 16, 2026, and re-tested after the fixes were made, using automated testing and a manual, page-by-page review.",
+      "The audit found the site in good condition. It identified six items for improvement, none of which prevented anyone from finding our programs, understanding our tuition, or requesting a tour. Automated testing now reports no issues on any page, in either language.",
+      "The site partially conforms to WCAG 2.2 Level AA: most of it meets the standard, and the exceptions we know about are listed below.",
+      "We will re-audit the site at least once a year, and after any significant change.",
     ],
-    menuNote: "The Accessibility menu at the top of every page lets you enlarge text, raise contrast, underline links, switch to a plainer typeface, or reduce motion. It is optional: the site is built to work without it.",
-    limitsTitle: "Known limitations",
-    limits: [
-      "Some documents on the Parent resources page — the student handbook, wellness policy, meal menus and supply list — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
-      "The parent handbook is offered as a PDF. The same handbook is also on this site as a web page, which is the accessible version.",
+    improvingTitle: "Where we are still improving",
+    improvingIntro: "We would rather tell you than have you find out.",
+    auditResult: "The September 16 audit identified six items. On re-testing, three were corrected: content landing beneath the page header when you move through a page or follow a link, the Spanish and English switch not being marked as foreign-language text, and the structure of the homepage regions. Two were found to work correctly already: the way screen readers announce our school name, and the keyboard focus outline on dark buttons.",
+    openIntro: "One item from the audit remains open, along with three other limitations we know about:",
+    open: [
+      "We are reviewing the colors of the lettering of our name on the homepage. They meet the required contrast at the size shown, but with little margin.",
+      "Our downloadable Parent Handbook PDF has not been fully checked for accessibility. The handbook is also published on this site as a web page, and that version is accessible.",
+      "Our enrollment packet is a scanned PDF, so a screen reader cannot read it and it cannot be filled in on screen. If you need it in another format, or help completing it, contact your campus and we will go through it with you by phone or in person.",
+      "Some documents on our Parent resources page — the student handbook, wellness policy, meal menus and supply list — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
     ],
-    helpTitle: "Tell us about a barrier, or ask for another format",
-    help: "If something on this site is hard to use, or you need information in a different format — large print, plain text, or read to you over the phone — please tell us. Let us know which page and what you were trying to do.",
+    helpTitle: "If something does not work for you",
+    helpIntro: "Please tell us. You will not be putting us out — it helps us fix it for the next family.",
     emailLabel: "Email",
-    technicalTitle: "How the site is built",
-    technical: "The site uses standard HTML, CSS and JavaScript, with WAI-ARIA where it helps assistive technology. It is designed to work with current versions of Chrome, Safari, Firefox and Edge, and with common screen readers.",
+    campusLabel: "{campus} campus",
+    hoursLabel: "Hours",
+    helpDetails: "Please tell us the page you were on and what happened. We aim to respond within two business days.",
+    formats: "If you need information from this site in another format — large print, plain text, or read aloud over the phone — ask us and we will provide it.",
+    technicalTitle: "Technical notes",
+    technical: [
+      "This statement applies to the website at capstonequestacademy.com, in English and Spanish.",
+      "The site does not use a third-party accessibility overlay. Accessibility features are built into the site itself.",
+      "Typefaces are served from our own site rather than a third party.",
+      "This statement was last reviewed on September 16, 2026.",
+    ],
   },
 
   privacyPage: {
     eyebrow: "Privacy",
     title: "Privacy policy",
-    updated: "Last updated: August 31, 2026",
+    updated: "Last updated: September 16, 2026",
     lede: "This explains what this website collects, why, and who sees it. It is written to be read by a parent, not a lawyer.",
     summaryTitle: "The short version",
     summary: [
@@ -702,7 +716,6 @@ export const en = {
       collect: {
         title: "What we collect",
         intro: "We collect information only when you choose to send it to us using one of the forms on this site. Nothing is gathered in the background.",
-        enroll: "Enrollment form: your child’s first and last name, your child’s date of birth, your preferred start date, campus and program, your name as parent or guardian, your email address, your phone number, and whether you plan to use a DES child care subsidy.",
         tour: "Tour request: your name, email address, phone number, the campus you want to visit, your child’s age, your preferred date and time, and anything you write in the notes box. People often use that box for things like allergies or a sibling’s name, so please share only what you are comfortable sending by email.",
         contact: "Contact form: your name, email address, the topic you pick, and your message.",
         careers: "Job application: your name, email address, phone number, the role and campus you are applying for, and your message.",
@@ -710,7 +723,7 @@ export const en = {
       },
       why: {
         title: "Why we collect it",
-        body: "To answer your question, schedule your tour, start an enrollment, or consider your job application. We do not use it to advertise to you, and we do not add you to a mailing list.",
+        body: "To answer your question, schedule your tour, or consider your job application. We do not use it to advertise to you, and we do not add you to a mailing list.",
       },
       recipients: {
         title: "Who else sees it",
@@ -731,7 +744,7 @@ export const en = {
       },
       children: {
         title: "Information about children",
-        body: "The enrollment and tour forms are filled in by a parent or guardian, and they ask for information about a child, including a name and date of birth. We use it only to respond to your enquiry and to prepare for enrollment. We do not knowingly collect information directly from children, and this site is not directed at children.",
+        body: "The tour request form is filled in by a parent or guardian and asks for your child’s age. We use it only to respond to your request. Enrollment itself is done on paper: the enrollment packet is downloaded from this site but completed and returned to the campus registrar, so this site never receives it. We do not knowingly collect information directly from children, and this site is not directed at children.",
       },
       retention: {
         title: "How long we keep it",

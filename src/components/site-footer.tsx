@@ -1,6 +1,7 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { campuses, school } from "@/data/school";
+import { features } from "@/data/features";
 import { AppLink, useContent } from "@/lib/locale";
 
 export function SiteFooter() {
@@ -80,11 +81,13 @@ export function SiteFooter() {
                 {c.footer.links.policies}
               </AppLink>
             </li>
-            <li>
-              <AppLink to="/careers" className="hover:text-gold">
-                {c.footer.links.careers}
-              </AppLink>
-            </li>
+            {features.careers ? (
+              <li>
+                <AppLink to="/careers" className="hover:text-gold">
+                  {c.footer.links.careers}
+                </AppLink>
+              </li>
+            ) : null}
             <li>
               <AppLink to="/info" className="hover:text-gold">
                 {c.footer.links.info}

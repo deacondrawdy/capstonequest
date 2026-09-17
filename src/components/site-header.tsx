@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { campuses } from "@/data/school";
+import { features } from "@/data/features";
 import { AppLink, stripLocale, useContent, type AppPath } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
@@ -98,7 +99,7 @@ export function SiteHeader() {
     { to: "/programs", label: c.nav.programs },
     { to: "/tuition", label: c.nav.tuitionFees },
     { to: "/policies", label: c.nav.policies },
-    { to: "/careers", label: c.nav.careers },
+    ...(features.careers ? [{ to: "/careers" as const, label: c.nav.careers }] : []),
     { to: "/contact", label: c.nav.contact },
     { to: "/parents", label: c.nav.parents },
     { to: "/tour", label: c.common.scheduleTour },
@@ -131,8 +132,8 @@ export function SiteHeader() {
         {/* Slightly smaller below 360px: see the action row below. */}
         <Logo className="-my-2 max-[359px]:[&_img]:size-16" />
 
-        {/* Seven items now. The gap tightens below xl so the longer Spanish
-            labels still fit on one line at 1024px. */}
+        {/* The gap tightens below xl so the longer Spanish labels still fit on
+            one line at 1024px. */}
         <nav
           aria-label={c.nav.mainLabel}
           className="ml-2 hidden flex-1 items-center justify-center gap-3 lg:flex xl:gap-6"
@@ -184,9 +185,11 @@ export function SiteHeader() {
           <TextLink to="/tuition" active={path === "/tuition"}>
             {c.nav.tuition}
           </TextLink>
-          <TextLink to="/careers" active={path === "/careers"}>
-            {c.nav.careers}
-          </TextLink>
+          {features.careers ? (
+            <TextLink to="/careers" active={path === "/careers"}>
+              {c.nav.careers}
+            </TextLink>
+          ) : null}
           <TextLink to="/contact" active={path === "/contact"}>
             {c.nav.contact}
           </TextLink>

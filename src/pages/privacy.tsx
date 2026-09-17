@@ -1,6 +1,7 @@
 import { Check, Mail, Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { campuses, school } from "@/data/school";
+import { features } from "@/data/features";
 import { useContent } from "@/lib/locale";
 
 /**
@@ -56,7 +57,8 @@ export function PrivacyPage() {
           <h2 className="text-2xl font-extrabold tracking-tight text-navy">{s.collect.title}</h2>
           <p className="mt-3 leading-relaxed text-muted">{s.collect.intro}</p>
           <ul className="mt-4 space-y-3">
-            {[s.collect.enroll, s.collect.tour, s.collect.contact, s.collect.careers].map(
+            {/* The job application form is only listed while Careers is switched on. */}
+            {[s.collect.tour, s.collect.contact, ...(features.careers ? [s.collect.careers] : [])].map(
               (item) => (
                 <li key={item} className="flex gap-3 leading-relaxed text-muted">
                   <span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-brand" />

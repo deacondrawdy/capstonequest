@@ -1,5 +1,6 @@
 import type { Content } from "@/content/en";
 import { campuses } from "@/data/school";
+import { features } from "@/data/features";
 
 type TitleKey = keyof Content["pageTitles"];
 
@@ -9,7 +10,8 @@ const PATH_TITLES: Record<string, TitleKey> = {
   "/about": "about",
   "/accessibility": "accessibility",
   "/campuses": "campuses",
-  "/careers": "careers",
+  // Hidden sections are left out, so their 404 is titled "Page not found".
+  ...(features.careers ? { "/careers": "careers" as const } : {}),
   "/clever": "clever",
   "/contact": "contact",
   "/enroll": "enroll",

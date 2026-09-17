@@ -95,6 +95,23 @@ export const programs = [
   },
 ] as const;
 
+/**
+ * The enrollment packet families print, complete and return to the registrar.
+ * Enrollment is on paper; the site no longer has an online enrollment form.
+ *
+ * It is a 13-page scan from the office copier: image-only, untagged, not
+ * fillable. A screen reader cannot read it, so /enroll offers help by phone or
+ * in person and the accessibility statement lists it as a known limitation.
+ * Replace it with a tagged or fillable PDF when the school has one, and update
+ * `pages` and `size` if the file changes.
+ */
+export const enrollmentPacket = {
+  href: "/documents/capstone-quest-prek-enrollment-packet.pdf",
+  fileName: "capstone-quest-prek-enrollment-packet.pdf",
+  pages: 13,
+  size: "843 KB",
+} as const;
+
 export const parentDocuments = [
   {
     // Served from public/documents rather than an outside host, so it cannot

@@ -43,7 +43,7 @@ const PATHS = [
   "/campuses",
   "/campuses/tucson",
   "/campuses/yuma",
-  "/careers",
+  // "/careers" is hidden for now (src/data/features.ts) and returns 404.
   "/clever",
   "/contact",
   "/enroll",

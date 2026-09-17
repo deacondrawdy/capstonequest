@@ -1,10 +1,12 @@
+import { features } from "@/data/features";
+
 /**
  * Pages the site search can find. Titles and descriptions live in the content
  * layer (`search.pages` in src/content/en.ts and es.ts) so a Spanish reader
  * searches in Spanish and lands on the Spanish page. Paths are the English app
  * paths; the search dialog localizes them.
  */
-export const searchIndex = [
+const allPages = [
   { id: "home", path: "/" },
   { id: "tucson", path: "/campuses/tucson" },
   { id: "yuma", path: "/campuses/yuma" },
@@ -24,3 +26,6 @@ export const searchIndex = [
   { id: "contact", path: "/contact" },
   { id: "accessibility", path: "/accessibility" },
 ] as const;
+
+/** Hidden sections (src/data/features.ts) are left out of search. */
+export const searchIndex = allPages.filter((page) => page.id !== "careers" || features.careers);
