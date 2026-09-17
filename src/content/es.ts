@@ -664,7 +664,6 @@ export const es: Content = {
     menuNote: "El menú de Accesibilidad, en la parte superior de cada página, le permite agrandar el texto, aumentar el contraste, subrayar los enlaces, usar una letra más sencilla o reducir el movimiento. Es opcional: el sitio está hecho para funcionar sin él.",
     limitsTitle: "Limitaciones conocidas",
     limits: [
-      "El video del salón en la página de inicio todavía no tiene subtítulos. Los estamos agregando. Si desea saber qué muestra, comuníquese con nosotros.",
       "Algunos documentos de la página de Recursos para familias —el manual del estudiante, la política de bienestar, los menús y la lista de útiles— los publica AmeriSchools Academy, no nosotros, y es posible que no sean totalmente accesibles. Le daremos cualquiera de ellos en otro formato si lo solicita.",
       "El manual para padres se ofrece en PDF. El mismo manual también está en este sitio como página web, que es la versión accesible.",
     ],

@@ -18,6 +18,18 @@ import { Button } from "@/components/ui/button";
 import { academyColors } from "@/data/school";
 import { cn } from "@/lib/utils";
 
+/**
+ * The classroom video is hidden until a better-produced one replaces it.
+ *
+ * When it comes back it needs captions in English and Spanish (WCAG 1.2.2,
+ * Level A) — the old file had an audio track and none — and, if the picture
+ * shows anything the sound doesn't, a description (1.2.5). Swap the file in
+ * video-modal.tsx, add the caption tracks there, flip this to true, and remove
+ * the video line from the accessibility statement's known limitations if it has
+ * been re-added.
+ */
+const SHOW_VIDEO = false;
+
 export function Hero() {
   const [videoOpen, setVideoOpen] = useState(false);
   const c = useContent();
@@ -117,10 +129,12 @@ export function Hero() {
                 <span aria-hidden>→</span>
               </AppLink>
             </Button>
-            <Button variant="outline" size="xl" onClick={() => setVideoOpen(true)}>
-              <Play className="size-4 fill-navy" />
-              {c.hero.watchVideo}
-            </Button>
+            {SHOW_VIDEO ? (
+              <Button variant="outline" size="xl" onClick={() => setVideoOpen(true)}>
+                <Play className="size-4 fill-navy" />
+                {c.hero.watchVideo}
+              </Button>
+            ) : null}
           </div>
         </div>
 
@@ -188,7 +202,7 @@ export function Hero() {
         </div>
       </div>
 
-      <VideoModal open={videoOpen} onOpenChange={setVideoOpen} />
+      {SHOW_VIDEO ? <VideoModal open={videoOpen} onOpenChange={setVideoOpen} /> : null}
     </section>
   );
 }

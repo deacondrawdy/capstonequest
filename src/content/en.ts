@@ -673,7 +673,6 @@ export const en = {
     menuNote: "The Accessibility menu at the top of every page lets you enlarge text, raise contrast, underline links, switch to a plainer typeface, or reduce motion. It is optional: the site is built to work without it.",
     limitsTitle: "Known limitations",
     limits: [
-      "The classroom video on the home page does not have captions yet. We are adding them. If you would like to know what it shows, contact us.",
       "Some documents on the Parent resources page — the student handbook, wellness policy, meal menus and supply list — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
       "The parent handbook is offered as a PDF. The same handbook is also on this site as a web page, which is the accessible version.",
     ],
