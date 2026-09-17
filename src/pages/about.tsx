@@ -25,7 +25,7 @@ export function AboutPage() {
         </div>
       </div>
       <div className="mx-auto grid max-w-[1100px] items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-2">
-        <img src="/images/circle-time.jpg" alt={c.aboutPage.imageAlt} className="h-80 w-full rounded-[28px] object-cover" />
+        <img src="/images/turkey-hats.jpg" alt={c.aboutPage.imageAlt} className="h-80 w-full rounded-[28px] object-cover" />
         <div>
           <h2 className="text-3xl font-extrabold text-navy">{c.aboutPage.believeTitle}</h2>
           <p className="mt-3 text-muted">

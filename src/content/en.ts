@@ -197,10 +197,11 @@ export const en = {
     yuma: {
       name: "Yuma Campus",
       blurb:
-        "A welcoming Yuma campus with a covered drop-off, sun-safe outdoor play, and the same DES-approved Pre-K program families trust across Arizona.",
+        "A bright, home-away-from-home campus easily accessible throughout Yuma — desert gardens, shade-sail playgrounds, and classrooms built for curious three-to-five-year-olds.",
       feel: "A home away from home, all day",
       bannerAlt: "",
-      imageAlt: "Yuma campus exterior",
+      imageAlt:
+        "The Yuma campus: a long single-story building with a covered entrance and benches along the front, a fenced yard to one side, and open lawn in front, under a clear Arizona sky.",
     },
   },
 
@@ -324,7 +325,7 @@ export const en = {
     docsTitle: "Handbooks, menus & forms",
     docsLede: "The same documents families download from AmeriSchools Info — parent rights, wellness, menus, and supplies.",
     tuitionTitle: "Tuition & DES",
-    tuitionText: "Full-day Pre-K runs $130.00 a week for five days and $120.00 for three, with before- and after-care from $15.00. There is a 10% discount for one additional sibling. We are 100% approved by the Arizona Department of Economic Security, and families using a DES child care subsidy enroll the same way — copays apply, and we will walk the paperwork with you.",
+    tuitionText: "Full-day Pre-K runs $130.00 a week for five days and $120.00 for three, with before- and after-care from $15.00. There is a 10% discount for one additional sibling. We are 100% approved by the Arizona Department of Economic Security, and families using a DES child care subsidy enroll the same way — copays apply, and we will walk through the paperwork with you.",
     tuitionCta: "See the full fee schedule",
     tuitionAsk: "Ask about tuition",
     faqTitle: "Parent FAQs",
@@ -375,10 +376,10 @@ export const en = {
     title: "A quest for curious kids",
     lede: "Welcome to Capstone Quest Academy, where little steps make big dreams come true. Since 2013 our Tucson and Yuma campuses have been a home away from home — a DES-certified Pre-K that prepares children aged three to five for kindergarten without rushing childhood.",
     hours: "The instructional day runs five days a week. Early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM) are offered as fee-for-service care so working families can use the full 7 AM–6 PM window.",
-    imageAlt: "Circle time in a Capstone Quest classroom",
+    imageAlt: "Six preschoolers in paper turkey hats, arms around each other, posing in their classroom.",
     believeTitle: "What we believe",
     believe1: "Children learn by doing, talking, and belonging. Our teachers design studios — art, blocks, stories, outdoor science — where literacy and math show up as tools, not drills. Families are partners, not visitors.",
-    believe2: "Owl (our mortarboarded mascot) stands for wisdom earned gently: try, notice, try again.",
+    believe2: "Owl-livia (our mortarboarded mascot) stands for wisdom earned gently: try, notice, try again.",
     peopleTitle: "People who know your child",
     meetUs: "Meet us on a tour",
     // Written by the teachers themselves as welcome letters to their classes,
@@ -443,7 +444,7 @@ export const en = {
     enroll: { q: "How quickly can we enroll?", a: "Once we have a tour and a completed packet, many families finish enrollment in as little as one day — especially when a seat is open for the current session." },
     day: { q: "What does a typical day look like?", a: "Morning meeting, outdoor play, literacy and math workshops, lunch, rest, studios (art, blocks, science), and a closing circle. Full-day children stay for snack and afternoon centers." },
     ratio: { q: "What is the teacher-to-child ratio?", a: "Every Pre-K room has a lead teacher and an assistant, and we staff to Arizona licensing requirements so groups stay small enough that each child is known by name. Class sizes shift a little by campus and age group — ask for current numbers on your tour." },
-    checkin: { q: "Can I see how my child is doing during the day?", a: "Yes. Call the campus any time and we will check on your child. Families also sign in through Clever and PowerSchool the way the current AmeriSchools campuses do." },
+    checkin: { q: "Can I see how my child is doing during the day?", a: "Yes. Call the campus any time and we will check on your child. If you would like, ask your child's teacher to take photos or short videos during the day and send them to you." },
     hours: { q: "What are your hours?", a: "The instructional Pre-K program runs five days a week. Campuses are open Monday–Friday, 7:00 AM to 6:00 PM, with fee-for-service early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM)." },
   },
 
@@ -463,7 +464,7 @@ export const en = {
       ready: { title: "School-ready, still playful", text: "Literacy, math, and self-help skills live inside studios and stories — never worksheets for three-year-olds." },
       family: { title: "Family partnership", text: "Tours, conferences, and teachers who call back — so you never have to wonder how the day actually went." },
     },
-    playgroundAlt: "Shaded preschool playground",
+    playgroundAlt: "A grinning preschooler looking out through the top of a blue and red playground climber.",
     desTitle: "Approved by DES. Built for families.",
     desText: "Both campuses are fully approved by the Arizona Department of Economic Security. We accept child care subsidies, and every family — voucher or private pay — gets the same classroom, the same teachers, the same day.",
     dayTitle: "A day in Pre-K",
@@ -535,7 +536,7 @@ export const en = {
       "A signed contract and current registration documents must be on file before your child attends.",
     ],
     ctaTitle: "Ready to enroll?",
-    ctaText: "Complete one registration form per child and return it to the campus registrar. We will walk the DES paperwork with you if you are using a subsidy.",
+    ctaText: "Complete one registration form per child and return it to the campus registrar. We will walk through the DES paperwork with you if you are using a subsidy.",
     effectiveNote: "Rates shown are from the fee schedule effective August 1, 2024. Confirm current rates with your campus before signing — call {phone} or email",
   },
   policiesPage: {

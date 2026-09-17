@@ -29,8 +29,14 @@ export function ParentsPage() {
         </div>
       </div>
       <div className="mx-auto grid max-w-[1100px] gap-6 px-5 py-14 sm:px-8 md:grid-cols-2">
-        {resources.map((r) => (
-          <article key={r.title} className="rounded-[28px] border border-line p-6">
+        {resources.map((r, i) => (
+          // A lone card on the last row stretches across both columns.
+          <article
+            key={r.title}
+            className={`rounded-[28px] border border-line p-6 ${
+              i === resources.length - 1 && resources.length % 2 === 1 ? "md:col-span-2" : ""
+            }`}
+          >
             <r.icon className="size-8 text-brand" />
             <h2 className="mt-3 text-xl font-bold text-navy">{r.title}</h2>
             <p className="mt-2 text-sm text-muted">{r.text}</p>
@@ -48,12 +54,13 @@ export function ParentsPage() {
           </p>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {parentDocuments.map((doc) => (
-              <li key={c.documents[doc.id].title}>
+              // The parent handbook leads, across both columns; the rest pair up.
+              <li key={c.documents[doc.id].title} className={doc.id === "handbook" ? "sm:col-span-2" : undefined}>
                 <a
                   href={doc.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-start justify-between gap-3 rounded-2xl border border-line p-4 hover:bg-paper-soft"
+                  className="flex h-full items-start justify-between gap-3 rounded-2xl border border-line p-4 hover:bg-paper-soft"
                 >
                   <span>
                     <span className="font-bold text-navy">{c.documents[doc.id].title}</span>

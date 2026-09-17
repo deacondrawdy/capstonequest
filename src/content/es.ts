@@ -196,10 +196,11 @@ export const es: Content = {
     yuma: {
       name: "Plantel de Yuma",
       blurb:
-        "Un plantel acogedor en Yuma, con área techada para dejar y recoger a los niños, juegos al aire libre protegidos del sol y el mismo programa preescolar aprobado por DES en el que confían las familias de Arizona.",
+        "Un plantel luminoso y acogedor, de fácil acceso desde cualquier punto de Yuma: jardines desérticos, áreas de juego con toldos y salones diseñados para niños curiosos de tres a cinco años.",
       feel: "Un hogar fuera de casa, todo el día",
       bannerAlt: "",
-      imageAlt: "Fachada del plantel de Yuma",
+      imageAlt:
+        "El plantel de Yuma: un edificio largo de una planta con entrada techada y bancas al frente, un patio cercado a un costado y césped abierto enfrente, bajo un cielo despejado de Arizona.",
     },
   },
 
@@ -374,10 +375,10 @@ export const es: Content = {
     title: "Una aventura para niños curiosos",
     lede: "Bienvenido a Capstone Quest Academy, donde los pequeños pasos hacen realidad los grandes sueños. Desde 2013, nuestros planteles de Tucson y Yuma han sido un hogar fuera de casa: un preescolar certificado por DES que prepara a niños de tres a cinco años para el kínder sin apresurar la infancia.",
     hours: "La jornada académica es de cinco días a la semana. La llegada temprana (7:00–8:00 a. m.) y la salida tardía (3:30–6:00 p. m.) se ofrecen como servicio con costo adicional, para que las familias trabajadoras aprovechen todo el horario de 7 a. m. a 6 p. m.",
-    imageAlt: "Hora del círculo en un salón de Capstone Quest",
+    imageAlt: "Seis niños de preescolar con sombreros de pavo de papel, abrazados, posando en su salón.",
     believeTitle: "En qué creemos",
     believe1: "Los niños aprenden haciendo, conversando y sintiéndose parte del grupo. Nuestros maestros diseñan talleres de arte, bloques, cuentos y ciencia al aire libre, donde la lectoescritura y las matemáticas aparecen como herramientas, no como ejercicios. Las familias son aliadas, no visitantes.",
-    believe2: "Owl, nuestra mascota con birrete, representa la sabiduría que se gana con calma: intentar, observar, intentar de nuevo.",
+    believe2: "Owl-livia, nuestra mascota con birrete, representa la sabiduría que se gana con calma: intentar, observar, intentar de nuevo.",
     peopleTitle: "Personas que conocen a su hijo",
     meetUs: "Conózcanos en una visita",
     staff: {
@@ -440,7 +441,7 @@ export const es: Content = {
     enroll: { q: "¿Qué tan rápido podemos inscribirnos?", a: "Una vez que hacemos la visita y recibimos el paquete completo, muchas familias terminan la inscripción en un solo día, sobre todo cuando hay un lugar disponible para el periodo actual." },
     day: { q: "¿Cómo es un día típico?", a: "Reunión matutina, juego al aire libre, talleres de lectoescritura y matemáticas, almuerzo, descanso, talleres (arte, bloques, ciencia) y círculo de cierre. Los niños de día completo se quedan para el refrigerio y los centros de la tarde." },
     ratio: { q: "¿Cuál es la proporción de maestros por niño?", a: "Cada salón de preescolar tiene un maestro titular y un asistente, y contamos con el personal que exigen las normas de licencia de Arizona, de modo que los grupos son lo bastante pequeños para que se conozca a cada niño por su nombre. El tamaño de los grupos varía un poco según el plantel y la edad; pregúntenos las cifras actuales en su visita." },
-    checkin: { q: "¿Puedo saber cómo está mi hijo durante el día?", a: "Sí. Llame al plantel cuando quiera y con gusto revisamos cómo está su hijo. Las familias también inician sesión en Clever y PowerSchool, igual que en los planteles actuales de AmeriSchools." },
+    checkin: { q: "¿Puedo saber cómo está mi hijo durante el día?", a: "Sí. Llame al plantel cuando quiera y con gusto revisamos cómo está su hijo. Si lo desea, pida a la maestra de su hijo que le tome fotos o videos cortos durante el día y se los envíe." },
     hours: { q: "¿Cuál es su horario?", a: "El programa académico de preescolar es de cinco días a la semana. Los planteles abren de lunes a viernes, de 7:00 a. m. a 6:00 p. m., con llegada temprana (7:00–8:00 a. m.) y salida tardía (3:30–6:00 p. m.) con costo adicional." },
   },
 
@@ -460,7 +461,7 @@ export const es: Content = {
       ready: { title: "Listos para la escuela, sin dejar de jugar", text: "La lectoescritura, las matemáticas y la autonomía viven dentro de los talleres y los cuentos; nunca hojas de ejercicios para niños de tres años." },
       family: { title: "Alianza con la familia", text: "Visitas, conferencias y maestros que devuelven la llamada, para que nunca tenga que preguntarse cómo estuvo el día." },
     },
-    playgroundAlt: "Área de juego preescolar con sombra",
+    playgroundAlt: "Una niña de preescolar sonríe asomada por la parte alta de un juego infantil azul y rojo.",
     desTitle: "Aprobados por DES. Hechos para las familias.",
     desText: "Ambos planteles están totalmente aprobados por el Departamento de Seguridad Económica de Arizona. Aceptamos subsidios de cuidado infantil, y cada familia, con vale o con pago particular, recibe el mismo salón, los mismos maestros y el mismo día.",
     dayTitle: "Un día en preescolar",

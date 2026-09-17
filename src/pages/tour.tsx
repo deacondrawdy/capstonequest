@@ -57,7 +57,7 @@ export function TourPage({ preset }: { preset?: string }) {
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">{c.tourPage.title}</h1>
           <p className="mt-3 text-muted">{c.tourPage.lede}</p>
           <img
-            src="/images/circle-time.jpg"
+            src="/images/classroom-morning.jpg"
             alt=""
             className="mt-8 hidden h-64 w-full rounded-[28px] object-cover lg:block"
           />

@@ -9,8 +9,9 @@
  * Two independent channels, both optional, at least one required:
  *   LEAD_WEBHOOK_URL  POST the raw JSON. Point it at Zapier/Make/n8n today and
  *                     at the Twilio/cal.com flow later with no code change.
- *   RESEND_API_KEY    + LEAD_EMAIL_TO (+ optional LEAD_EMAIL_FROM) to email the
- *                     school directly.
+ *   RESEND_API_KEY    email the school directly. Mail goes to
+ *                     admin@capstonequestacademy.com unless LEAD_EMAIL_TO says
+ *                     otherwise; LEAD_EMAIL_FROM sets the sender.
  *
  * If neither is configured, delivery throws. That is intentional: the form must
  * never tell a parent "we'll confirm by email" when nothing was sent.
@@ -37,9 +38,24 @@ function env(name: string): string {
   return raw && raw.trim() ? raw.trim() : "";
 }
 
+/**
+ * Where leads go when LEAD_EMAIL_TO is not set. The school asked for the
+ * website's forms to land in the admin mailbox; keeping it here means the only
+ * thing production must configure is the API key.
+ */
+const DEFAULT_LEAD_EMAIL_TO = "admin@capstonequestacademy.com";
+
+/** Recipients, from the environment when set, otherwise the school's admin box. */
+function leadRecipients(): string[] {
+  return (env("LEAD_EMAIL_TO") || DEFAULT_LEAD_EMAIL_TO)
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 /** True when at least one delivery channel is configured. */
 export function leadDeliveryConfigured(): boolean {
-  return Boolean(env("LEAD_WEBHOOK_URL") || (env("RESEND_API_KEY") && env("LEAD_EMAIL_TO")));
+  return Boolean(env("LEAD_WEBHOOK_URL") || env("RESEND_API_KEY"));
 }
 
 function renderText(lead: LeadEnvelope): string {
@@ -87,10 +103,7 @@ async function sendEmail(lead: LeadEnvelope): Promise<void> {
     },
     body: JSON.stringify({
       from: env("LEAD_EMAIL_FROM") || "Capstone Quest website <onboarding@resend.dev>",
-      to: env("LEAD_EMAIL_TO")
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean),
+      to: leadRecipients(),
       subject: lead.subject,
       text: renderText(lead),
       html: renderHtml(lead),
@@ -108,13 +121,11 @@ export async function deliverLead(lead: LeadEnvelope): Promise<{ channels: strin
   const attempts: Array<{ channel: string; run: () => Promise<void> }> = [];
   const webhook = env("LEAD_WEBHOOK_URL");
   if (webhook) attempts.push({ channel: "webhook", run: () => postWebhook(webhook, lead) });
-  if (env("RESEND_API_KEY") && env("LEAD_EMAIL_TO")) {
-    attempts.push({ channel: "email", run: () => sendEmail(lead) });
-  }
+  if (env("RESEND_API_KEY")) attempts.push({ channel: "email", run: () => sendEmail(lead) });
 
   if (attempts.length === 0) {
     throw new Error(
-      "No lead delivery channel configured. Set LEAD_WEBHOOK_URL, or RESEND_API_KEY together with LEAD_EMAIL_TO.",
+      `No lead delivery channel configured. Set RESEND_API_KEY (mail goes to ${leadRecipients().join(", ")} unless LEAD_EMAIL_TO overrides it), or LEAD_WEBHOOK_URL.`,
     );
   }
 

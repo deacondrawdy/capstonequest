@@ -1,4 +1,4 @@
-import { BookOpen, Building2, CalendarDays, FileText, GraduationCap, Receipt, ShieldCheck, Users } from "lucide-react";
+import { Building2, CalendarDays, FileText, GraduationCap, Receipt, ShieldCheck, Users } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { AppLink, useContent, type AppPath } from "@/lib/locale";
 
@@ -11,7 +11,6 @@ export function InfoPage() {
     { icon: Building2, to: "/about", ...c.infoPage.cards.about },
     { icon: GraduationCap, to: "/programs", ...c.infoPage.cards.programs },
     { icon: Users, to: "/parents", ...c.infoPage.cards.parents },
-    { icon: BookOpen, to: "/clever", ...c.infoPage.cards.clever },
     { icon: CalendarDays, to: "/tour", ...c.infoPage.cards.tour },
     { icon: Receipt, to: "/tuition", ...c.infoPage.cards.tuition },
     { icon: ShieldCheck, to: "/policies", ...c.infoPage.cards.policies },
@@ -30,8 +29,12 @@ export function InfoPage() {
         </div>
       </div>
       <div className="mx-auto grid max-w-[1100px] gap-5 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-3">
-        {cards.map((card) => (
-          <article key={card.title} className="rounded-[28px] border border-line p-6">
+        {cards.map((card, i) => (
+          // About leads the page across the full row; the rest sit in threes.
+          <article
+            key={card.title}
+            className={`rounded-[28px] border border-line p-6 ${i === 0 ? "md:col-span-2 lg:col-span-3" : ""}`}
+          >
             <card.icon className="size-7 text-brand" />
             <h2 className="mt-3 text-lg font-bold text-navy">{card.title}</h2>
             <p className="mt-2 text-sm text-muted">{card.text}</p>

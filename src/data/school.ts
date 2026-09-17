@@ -127,10 +127,7 @@ export const parentDocuments = [
     id: "student-handbook",
     href: "https://amerischools.org/wp-content/uploads/2025/07/Amerischools-Student-Handbook-last-edited-6-16-25.pdf",
   },
-  {
-    id: "wellness",
-    href: "https://amerischools.org/wp-content/uploads/2025/08/AmeriSchools-Wellness-Policy-1.pdf",
-  },
+  // The page shows these in pairs after the handbook; keep the menus adjacent.
   {
     id: "breakfast",
     href: "https://amerischools.org/wp-content/uploads/2026/07/August-Breakfastmenu.pdf",
@@ -138,6 +135,10 @@ export const parentDocuments = [
   {
     id: "lunch",
     href: "https://amerischools.org/wp-content/uploads/2026/07/August-lunch-menu-copy-4.pdf",
+  },
+  {
+    id: "wellness",
+    href: "https://amerischools.org/wp-content/uploads/2025/08/AmeriSchools-Wellness-Policy-1.pdf",
   },
   {
     id: "supplies",
