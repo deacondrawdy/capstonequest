@@ -29,7 +29,13 @@ export function LocaleSwitch({ className }: { className?: string }) {
         }
       }}
       hrefLang={other}
-      aria-label={c.localeSwitch.label}
+      // The link is written in the language it switches to, so it carries that
+      // lang itself (WCAG 3.1.2) and a screen reader says "Español" with Spanish
+      // pronunciation on an English page. The icon is hidden, so the word is the
+      // whole content. No aria-label: it would replace the visible word and break
+      // voice control (2.5.3). No title either: it would be in the page's
+      // language inside an element marked as the other one.
+      lang={other}
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[13px] font-semibold text-ink/70 transition-colors hover:bg-paper-soft hover:text-navy focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
         className,

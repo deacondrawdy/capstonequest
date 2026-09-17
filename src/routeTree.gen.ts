@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as CampusesRouteImport } from './routes/campuses'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CleverRouteImport } from './routes/clever'
@@ -29,6 +30,7 @@ import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesSlugRouteImport } from './routes/campuses.$slug'
 import { Route as EsIndexRouteImport } from './routes/es.index'
 import { Route as EsAboutRouteImport } from './routes/es.about'
+import { Route as EsAccessibilityRouteImport } from './routes/es.accessibility'
 import { Route as EsCampusesRouteImport } from './routes/es.campuses'
 import { Route as EsCareersRouteImport } from './routes/es.careers'
 import { Route as EsCleverRouteImport } from './routes/es.clever'
@@ -54,6 +56,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CampusesRoute = CampusesRouteImport.update({
@@ -146,6 +153,11 @@ const EsAboutRoute = EsAboutRouteImport.update({
   path: '/es/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsAccessibilityRoute = EsAccessibilityRouteImport.update({
+  id: '/es/accessibility',
+  path: '/es/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsCampusesRoute = EsCampusesRouteImport.update({
   id: '/es/campuses',
   path: '/es/campuses',
@@ -230,6 +242,7 @@ const EsCampusesSlugRoute = EsCampusesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/campuses': typeof CampusesRouteWithChildren
   '/careers': typeof CareersRoute
   '/clever': typeof CleverRoute
@@ -246,6 +259,7 @@ export interface FileRoutesByFullPath {
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
   '/es/about': typeof EsAboutRoute
+  '/es/accessibility': typeof EsAccessibilityRoute
   '/es/campuses': typeof EsCampusesRouteWithChildren
   '/es/careers': typeof EsCareersRoute
   '/es/clever': typeof EsCleverRoute
@@ -268,6 +282,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/careers': typeof CareersRoute
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
@@ -283,6 +298,7 @@ export interface FileRoutesByTo {
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
   '/es/about': typeof EsAboutRoute
+  '/es/accessibility': typeof EsAccessibilityRoute
   '/es/careers': typeof EsCareersRoute
   '/es/clever': typeof EsCleverRoute
   '/es/contact': typeof EsContactRoute
@@ -305,6 +321,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/campuses': typeof CampusesRouteWithChildren
   '/careers': typeof CareersRoute
   '/clever': typeof CleverRoute
@@ -321,6 +338,7 @@ export interface FileRoutesById {
   '/why-us': typeof WhyUsRoute
   '/campuses/$slug': typeof CampusesSlugRoute
   '/es/about': typeof EsAboutRoute
+  '/es/accessibility': typeof EsAccessibilityRoute
   '/es/campuses': typeof EsCampusesRouteWithChildren
   '/es/careers': typeof EsCareersRoute
   '/es/clever': typeof EsCleverRoute
@@ -345,6 +363,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/campuses'
     | '/careers'
     | '/clever'
@@ -361,6 +380,7 @@ export interface FileRouteTypes {
     | '/why-us'
     | '/campuses/$slug'
     | '/es/about'
+    | '/es/accessibility'
     | '/es/campuses'
     | '/es/careers'
     | '/es/clever'
@@ -383,6 +403,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/careers'
     | '/clever'
     | '/contact'
@@ -398,6 +419,7 @@ export interface FileRouteTypes {
     | '/why-us'
     | '/campuses/$slug'
     | '/es/about'
+    | '/es/accessibility'
     | '/es/careers'
     | '/es/clever'
     | '/es/contact'
@@ -419,6 +441,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/accessibility'
     | '/campuses'
     | '/careers'
     | '/clever'
@@ -435,6 +458,7 @@ export interface FileRouteTypes {
     | '/why-us'
     | '/campuses/$slug'
     | '/es/about'
+    | '/es/accessibility'
     | '/es/campuses'
     | '/es/careers'
     | '/es/clever'
@@ -458,6 +482,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccessibilityRoute: typeof AccessibilityRoute
   CampusesRoute: typeof CampusesRouteWithChildren
   CareersRoute: typeof CareersRoute
   CleverRoute: typeof CleverRoute
@@ -473,6 +498,7 @@ export interface RootRouteChildren {
   TuitionRoute: typeof TuitionRoute
   WhyUsRoute: typeof WhyUsRoute
   EsAboutRoute: typeof EsAboutRoute
+  EsAccessibilityRoute: typeof EsAccessibilityRoute
   EsCampusesRoute: typeof EsCampusesRouteWithChildren
   EsCareersRoute: typeof EsCareersRoute
   EsCleverRoute: typeof EsCleverRoute
@@ -504,6 +530,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/campuses': {
@@ -630,6 +663,13 @@ declare module '@tanstack/react-router' {
       path: '/es/about'
       fullPath: '/es/about'
       preLoaderRoute: typeof EsAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/accessibility': {
+      id: '/es/accessibility'
+      path: '/es/accessibility'
+      fullPath: '/es/accessibility'
+      preLoaderRoute: typeof EsAccessibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/campuses': {
@@ -778,6 +818,7 @@ const EsCampusesRouteWithChildren = EsCampusesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccessibilityRoute: AccessibilityRoute,
   CampusesRoute: CampusesRouteWithChildren,
   CareersRoute: CareersRoute,
   CleverRoute: CleverRoute,
@@ -793,6 +834,7 @@ const rootRouteChildren: RootRouteChildren = {
   TuitionRoute: TuitionRoute,
   WhyUsRoute: WhyUsRoute,
   EsAboutRoute: EsAboutRoute,
+  EsAccessibilityRoute: EsAccessibilityRoute,
   EsCampusesRoute: EsCampusesRouteWithChildren,
   EsCareersRoute: EsCareersRoute,
   EsCleverRoute: EsCleverRoute,

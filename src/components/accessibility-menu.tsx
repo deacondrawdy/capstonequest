@@ -17,52 +17,39 @@ import {
   saveA11yPrefs,
   type A11yPrefs,
 } from "@/lib/a11y";
+import { useContent } from "@/lib/locale";
+import { school } from "@/data/school";
 import { cn } from "@/lib/utils";
 
-const TEXT_SIZES: Array<{ value: A11yPrefs["text"]; label: string; sample: string }> = [
-  { value: "base", label: "Default", sample: "text-[13px]" },
-  { value: "lg", label: "Large", sample: "text-[15px]" },
-  { value: "xl", label: "Largest", sample: "text-[17px]" },
+// Labels live in the content layer (`a11yMenu`); only the values and the sample
+// sizes are fixed here.
+const TEXT_SIZES: Array<{ value: A11yPrefs["text"]; sample: string }> = [
+  { value: "base", sample: "text-[13px]" },
+  { value: "lg", sample: "text-[15px]" },
+  { value: "xl", sample: "text-[17px]" },
 ];
 
 const TOGGLES: Array<{
   key: Exclude<keyof A11yPrefs, "text">;
   on: string;
   off: string;
-  label: string;
-  hint: string;
 }> = [
-  {
-    key: "contrast",
-    on: "high",
-    off: "normal",
-    label: "Higher contrast",
-    hint: "Darkens body text and strengthens borders.",
-  },
-  {
-    key: "links",
-    on: "underline",
-    off: "default",
-    label: "Underline links",
-    hint: "Marks every link without relying on colour.",
-  },
-  {
-    key: "font",
-    on: "readable",
-    off: "default",
-    label: "Plainer typeface",
-    hint: "A wider face with more space between letters and lines.",
-  },
-  {
-    key: "motion",
-    on: "reduce",
-    off: "system",
-    label: "Reduce motion",
-    hint: "Stops the page animating things as you scroll.",
-  },
+  { key: "contrast", on: "high", off: "normal" },
+  { key: "links", on: "underline", off: "default" },
+  { key: "font", on: "readable", off: "default" },
+  { key: "motion", on: "reduce", off: "system" },
 ];
 
+/**
+ * Display preferences for visitors who want them.
+ *
+ * This is a convenience, not an accessibility compliance measure: WCAG
+ * conformance lives in the page markup itself, and the site has to work fully
+ * for a screen-reader or keyboard user who never opens this menu.
+ */
 export function AccessibilityMenu({ className }: { className?: string }) {
+  const c = useContent();
+  const m = c.a11yMenu;
   // Server render always uses the defaults; the boot script has already styled
   // the page from storage, so syncing state after mount avoids a hydration
   // mismatch without the visitor ever seeing unstyled defaults.
@@ -93,20 +80,18 @@ export function AccessibilityMenu({ className }: { className?: string }) {
           )}
         >
           <Accessibility className="size-4" aria-hidden />
-          <span>Accessibility</span>
+          <span>{m.trigger}</span>
         </button>
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Accessibility</DialogTitle>
-          <DialogDescription>
-            Adjust how this site looks. Your choices are saved on this device.
-          </DialogDescription>
+          <DialogTitle>{m.title}</DialogTitle>
+          <DialogDescription>{m.description}</DialogDescription>
         </DialogHeader>
 
         <div role="group" aria-labelledby="a11y-text-size">
           <p id="a11y-text-size" className="text-sm font-bold text-navy">
-            Text size
+            {m.textSize}
           </p>
           <div className="mt-2 grid grid-cols-3 gap-2">
             {TEXT_SIZES.map((size) => {
@@ -125,7 +110,7 @@ export function AccessibilityMenu({ className }: { className?: string }) {
                       : "border-line text-navy hover:bg-paper-soft",
                   )}
                 >
-                  {size.label}
+                  {m.sizes[size.value]}
                 </button>
               );
             })}
@@ -156,8 +141,8 @@ export function AccessibilityMenu({ className }: { className?: string }) {
                     {active ? <Check className="size-3.5" strokeWidth={3} /> : null}
                   </span>
                   <span>
-                    <span className="block text-sm font-bold text-navy">{t.label}</span>
-                    <span className="block text-[13px] text-muted">{t.hint}</span>
+                    <span className="block text-sm font-bold text-navy">{m.toggles[t.key].label}</span>
+                    <span className="block text-[13px] text-muted">{m.toggles[t.key].hint}</span>
                   </span>
                 </button>
               </li>
@@ -173,18 +158,17 @@ export function AccessibilityMenu({ className }: { className?: string }) {
             className="inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[13px] font-semibold text-brand transition-colors hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40"
           >
             <RotateCcw className="size-3.5" aria-hidden />
-            Reset to default
+            {m.reset}
           </button>
           <DialogClose asChild>
-            <Button size="sm">Done</Button>
+            <Button size="sm">{m.done}</Button>
           </DialogClose>
         </div>
 
         <p className="text-[12px] leading-relaxed text-muted">
-          Using a screen reader, magnifier, or other assistive technology? It works with this site
-          directly — you do not need these settings. If something is hard to use, please{" "}
-          <a href="mailto:info@capstonequestacademy.com" className="underline underline-offset-2">
-            tell us
+          {m.atNote}{" "}
+          <a href={`mailto:${school.email}`} className="underline underline-offset-2">
+            {m.atNoteLink}
           </a>
           .
         </p>

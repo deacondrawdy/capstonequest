@@ -1,87 +1,26 @@
+/**
+ * Pages the site search can find. Titles and descriptions live in the content
+ * layer (`search.pages` in src/content/en.ts and es.ts) so a Spanish reader
+ * searches in Spanish and lands on the Spanish page. Paths are the English app
+ * paths; the search dialog localizes them.
+ */
 export const searchIndex = [
-  {
-    title: "Home",
-    path: "/",
-    blurb: "Pre-K programs at Capstone Quest Academy in Tucson and Yuma.",
-  },
-  {
-    title: "Tucson Campus",
-    path: "/campuses/tucson",
-    blurb: "1150 North Country Club Road, Tucson · (520) 462-7788",
-  },
-  {
-    title: "Yuma Campus",
-    path: "/campuses/yuma",
-    blurb: "1220 South 4th Avenue, Yuma · (928) 977-9318",
-  },
-  {
-    title: "Programs",
-    path: "/programs",
-    blurb: "One mixed-age Pre-K classroom for ages 3–5, plus before & after care, 7 AM–6 PM.",
-  },
-  {
-    title: "Info",
-    path: "/info",
-    blurb: "About us, programs, parent resources, and calendars.",
-  },
-  {
-    title: "Clever",
-    path: "/clever",
-    blurb: "Clever, PowerSchool, ClassDojo, and RAZ Kids sign-ins.",
-  },
-  {
-    title: "Tuition & fees",
-    path: "/tuition",
-    blurb: "Weekly Pre-K rates, before & after care, sibling discounts, billing terms.",
-  },
-  {
-    title: "Policies",
-    path: "/policies",
-    blurb: "Enrollment, release, discipline, parent access, inspection reports.",
-  },
-  {
-    title: "Careers",
-    path: "/careers",
-    blurb: "Teach Pre-K in Tucson or Yuma. Small classes, benefits, family culture.",
-  },
-  {
-    title: "About",
-    path: "/about",
-    blurb: "DES-approved Pre-K since 2013. Little steps, big dreams.",
-  },
-  {
-    title: "Parents",
-    path: "/parents",
-    blurb: "Menus, handbooks, DES, tuition, and family partnership.",
-  },
-  {
-    title: "Why Us",
-    path: "/why-us",
-    blurb: "Small classes, safety, school-ready curriculum, DES approved.",
-  },
-  {
-    title: "Enroll",
-    path: "/enroll",
-    blurb: "Start the 26–27 school year. Often complete in one day.",
-  },
-  {
-    title: "Schedule a tour",
-    path: "/tour",
-    blurb: "Walk a Tucson or Yuma classroom on a weekday morning.",
-  },
-  {
-    title: "Parent handbook",
-    path: "/handbook",
-    blurb: "Admissions, daily routines, discipline, and the suspension and expulsion prevention policy.",
-  },
-  {
-    title: "Privacy",
-    path: "/privacy",
-    blurb: "What this site collects, why, and who sees it.",
-  },
-  {
-    title: "Contact",
-    path: "/contact",
-    blurb: "(520) 462-7788 · info@capstonequestacademy.com",
-  },
+  { id: "home", path: "/" },
+  { id: "tucson", path: "/campuses/tucson" },
+  { id: "yuma", path: "/campuses/yuma" },
+  { id: "programs", path: "/programs" },
+  { id: "info", path: "/info" },
+  { id: "clever", path: "/clever" },
+  { id: "tuition", path: "/tuition" },
+  { id: "policies", path: "/policies" },
+  { id: "careers", path: "/careers" },
+  { id: "about", path: "/about" },
+  { id: "parents", path: "/parents" },
+  { id: "whyUs", path: "/why-us" },
+  { id: "enroll", path: "/enroll" },
+  { id: "tour", path: "/tour" },
+  { id: "handbook", path: "/handbook" },
+  { id: "privacy", path: "/privacy" },
+  { id: "contact", path: "/contact" },
+  { id: "accessibility", path: "/accessibility" },
 ] as const;

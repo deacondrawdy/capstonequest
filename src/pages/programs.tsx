@@ -24,11 +24,11 @@ export function ProgramsPage() {
           <article
             id={p.slug}
             key={p.slug}
-            className="grid scroll-mt-28 items-center gap-8 lg:grid-cols-2"
+            className="grid items-center gap-8 lg:grid-cols-2"
           >
             <img
               src={p.image}
-              alt=""
+              alt={c.programs[p.slug].imageAlt}
               className={`h-72 w-full rounded-[28px] object-cover object-top ${i % 2 ? "lg:order-2" : ""}`}
             />
             <div>

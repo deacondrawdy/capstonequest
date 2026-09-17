@@ -16,7 +16,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <article id={id} className="scroll-mt-28">
+    <article id={id}>
       <h2 className="text-2xl font-extrabold tracking-tight text-navy">{title}</h2>
       <div className="mt-3 space-y-3 leading-relaxed text-muted">{children}</div>
     </article>
@@ -39,7 +39,7 @@ function Bullets({ items }: { items: readonly string[] }) {
 function Sub({ title, body }: { title: string; body: string }) {
   return (
     <div>
-      <p className="font-semibold text-navy">{title}</p>
+      <h3 className="font-semibold text-navy">{title}</h3>
       <p className="mt-1">{body}</p>
     </div>
   );
@@ -70,8 +70,9 @@ export function HandbookPage() {
           <p className="mt-4 leading-relaxed text-muted">{h.lede}</p>
           <Button asChild className="mt-6">
             <a href={PDF_HREF} target="_blank" rel="noreferrer">
-              <Download className="size-4" />
+              <Download className="size-4" aria-hidden />
               {h.downloadPdf}
+              <span className="sr-only"> {c.common.opensNewTab}</span>
             </a>
           </Button>
         </div>
@@ -118,7 +119,7 @@ export function HandbookPage() {
         </section>
 
         <Section title={h.philosophy.title}>
-          <p className="font-semibold text-navy">{h.philosophy.valuesTitle}</p>
+          <h3 className="font-semibold text-navy">{h.philosophy.valuesTitle}</h3>
           <ul className="flex flex-wrap gap-2">
             {h.philosophy.values.map((v) => (
               <li
@@ -129,13 +130,13 @@ export function HandbookPage() {
               </li>
             ))}
           </ul>
-          <p className="pt-2 font-semibold text-navy">{h.philosophy.descriptionTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.philosophy.descriptionTitle}</h3>
           <p>{h.philosophy.description}</p>
-          <p className="pt-2 font-semibold text-navy">{h.philosophy.datesTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.philosophy.datesTitle}</h3>
           <p>{h.philosophy.dates}</p>
-          <p className="pt-2 font-semibold text-navy">{h.philosophy.curriculumTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.philosophy.curriculumTitle}</h3>
           <p>{h.philosophy.curriculum}</p>
-          <p className="pt-2 font-semibold text-navy">{h.philosophy.centersTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.philosophy.centersTitle}</h3>
           <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
             {h.philosophy.centers.map((item) => (
               <li key={item} className="flex gap-3">
@@ -154,23 +155,23 @@ export function HandbookPage() {
         </Section>
 
         <Section title={h.admissions.title}>
-          <p className="font-semibold text-navy">{h.admissions.criteriaTitle}</p>
+          <h3 className="font-semibold text-navy">{h.admissions.criteriaTitle}</h3>
           <p>{h.admissions.criteriaIntro}</p>
           <Bullets items={h.admissions.criteria} />
-          <p className="pt-2 font-semibold text-navy">{h.admissions.registrationTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.admissions.registrationTitle}</h3>
           <p>{h.admissions.registrationIntro}</p>
           <Bullets items={h.admissions.registration} />
           <p>{h.admissions.registrationNote}</p>
-          <p className="pt-2 font-semibold text-navy">{h.admissions.contractTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.admissions.contractTitle}</h3>
           <p>{h.admissions.contract}</p>
           <p>
             <AppLink to="/tuition" className="font-semibold text-brand underline underline-offset-2">
               {h.admissions.contractLink}
             </AppLink>
           </p>
-          <p className="pt-2 font-semibold text-navy">{h.admissions.collectionsTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.admissions.collectionsTitle}</h3>
           <p>{h.admissions.collections}</p>
-          <p className="pt-2 font-semibold text-navy">{h.admissions.refundTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.admissions.refundTitle}</h3>
           <p>{h.admissions.refund}</p>
         </Section>
 
@@ -179,7 +180,7 @@ export function HandbookPage() {
           <Sub {...h.participation.dismissal} />
           <Sub {...h.participation.attendance} />
           <div>
-            <p className="font-semibold text-navy">{h.participation.options.title}</p>
+            <h3 className="font-semibold text-navy">{h.participation.options.title}</h3>
             <p className="mt-1">{h.participation.options.body}</p>
             <div className="mt-2">
               <Bullets items={h.participation.options.items} />
@@ -191,7 +192,7 @@ export function HandbookPage() {
           <Sub {...h.participation.backpacks} />
           <Sub {...h.participation.fireDrills} />
           <div>
-            <p className="font-semibold text-navy">{h.participation.emergency.title}</p>
+            <h3 className="font-semibold text-navy">{h.participation.emergency.title}</h3>
             <p className="mt-1">{h.participation.emergency.bodyIntro}</p>
             <div className="mt-2">
               <Bullets items={h.participation.emergency.items} />
@@ -204,27 +205,27 @@ export function HandbookPage() {
         </Section>
 
         <Section id="suspension" title={h.suspension.title}>
-          <p className="font-semibold text-navy">{h.suspension.commitmentTitle}</p>
+          <h3 className="font-semibold text-navy">{h.suspension.commitmentTitle}</h3>
           <p>{h.suspension.commitment}</p>
-          <p className="pt-2 font-semibold text-navy">{h.suspension.preventionTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.suspension.preventionTitle}</h3>
           <Bullets items={h.suspension.prevention} />
-          <p className="pt-2 font-semibold text-navy">{h.suspension.familyTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.suspension.familyTitle}</h3>
           <p>{h.suspension.familyIntro}</p>
           <Bullets items={h.suspension.family} />
-          <p className="pt-2 font-semibold text-navy">{h.suspension.inclusionTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.suspension.inclusionTitle}</h3>
           <p>{h.suspension.inclusionIntro}</p>
           <Bullets items={h.suspension.inclusion} />
-          <p className="pt-2 font-semibold text-navy">{h.suspension.consultationTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.suspension.consultationTitle}</h3>
           <p>{h.suspension.consultationIntro}</p>
           <Bullets items={h.suspension.consultation} />
-          <p className="pt-2 font-semibold text-navy">{h.suspension.documentationTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.suspension.documentationTitle}</h3>
           <p>{h.suspension.documentationIntro}</p>
-          <p className="pt-2 font-semibold text-navy">{h.suspension.lastResortTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.suspension.lastResortTitle}</h3>
           <p>{h.suspension.lastResortIntro}</p>
           <Bullets items={h.suspension.lastResort} />
           <p>{h.suspension.transitionIntro}</p>
           <Bullets items={h.suspension.transition} />
-          <p className="pt-2 font-semibold text-navy">{h.suspension.reviewTitle}</p>
+          <h3 className="pt-2 font-semibold text-navy">{h.suspension.reviewTitle}</h3>
           <p>{h.suspension.reviewIntro}</p>
         </Section>
 

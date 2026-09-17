@@ -1,23 +1,26 @@
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { Heart, Sparkles, Users, Wallet } from "lucide-react";
-import { toast } from "sonner";
 import { SiteShell } from "@/components/site-shell";
 import { FormPrivacyNotice } from "@/components/form-privacy-notice";
+import {
+  FormDone,
+  FormFailure,
+  SelectField,
+  TextAreaField,
+  TextField,
+  ValidatedForm,
+} from "@/components/form-kit";
 import { useContent } from "@/lib/locale";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { campuses, school } from "@/data/school";
 import { saveJobApp } from "@/lib/inquiries";
 
-
-
-
 export function CareersPage() {
   const c = useContent();
+  const f = c.careersPage.fields;
   const [done, setDone] = useState(false);
   const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const perks = [
     { icon: Users, ...c.careersPage.perks.classes },
@@ -31,10 +34,9 @@ export function CareersPage() {
     c.careersPage.openings.care,
   ];
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+  async function onValidSubmit(fd: FormData) {
     setSending(true);
+    setFailed(false);
     try {
       await saveJobApp({
         name: String(fd.get("name") ?? ""),
@@ -45,9 +47,8 @@ export function CareersPage() {
         message: String(fd.get("message") ?? ""),
       });
       setDone(true);
-      toast.success(c.careersPage.received);
     } catch {
-      toast.error(`We could not send this. Please call ${school.phone}.`);
+      setFailed(true);
     } finally {
       setSending(false);
     }
@@ -75,8 +76,11 @@ export function CareersPage() {
           </article>
         ))}
       </div>
+      {/* min-w-0 on both columns: without it a grid item is as wide as its
+          longest unbreakable content, and the Spanish role names pushed this
+          page 121px sideways at 320px. */}
       <div className="mx-auto grid max-w-[1100px] gap-10 px-5 pb-16 sm:px-8 lg:grid-cols-[1fr_1fr]">
-        <div>
+        <div className="min-w-0">
           <h2 className="text-2xl font-extrabold text-navy">{c.careersPage.openTitle}</h2>
           <ul className="mt-5 space-y-4">
             {openings.map((o) => (
@@ -88,60 +92,39 @@ export function CareersPage() {
             ))}
           </ul>
         </div>
-        <div className="rounded-[28px] bg-paper-soft p-6 sm:p-8">
+        <div className="min-w-0 rounded-[28px] bg-paper-soft p-6 sm:p-8">
           {done ? (
-            <p className="text-lg font-semibold text-navy">
-              {c.careersPage.thanks}
-            </p>
+            <FormDone>
+              <p className="text-lg font-semibold text-navy">{c.careersPage.thanks}</p>
+            </FormDone>
           ) : (
-            <form className="grid gap-4" onSubmit={onSubmit}>
-              <h2 className="text-xl font-bold text-navy">{c.careersPage.applyTitle}</h2>
-              <div className="grid gap-1.5">
-                <Label htmlFor="name">{c.careersPage.fields.name}</Label>
-                <Input id="name" name="name" required />
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="email">{c.careersPage.fields.email}</Label>
-                <Input id="email" name="email" type="email" required />
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="phone">{c.careersPage.fields.phone}</Label>
-                <Input id="phone" name="phone" type="tel" required />
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="role">{c.careersPage.fields.role}</Label>
-                <select
-                  id="role"
-                  name="role"
-                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-                >
+            <>
+              <h2 className="mb-4 text-xl font-bold text-navy">{c.careersPage.applyTitle}</h2>
+              <ValidatedForm className="grid gap-4" onValidSubmit={onValidSubmit}>
+                <TextField label={f.name} name="name" required autoComplete="name" />
+                <TextField label={f.email} name="email" type="email" required autoComplete="email" />
+                <TextField label={f.phone} name="phone" type="tel" required autoComplete="tel" />
+                <SelectField label={f.role} name="role">
                   {openings.map((o) => (
                     <option key={o.role}>{o.role}</option>
                   ))}
-                </select>
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="campus">{c.careersPage.fields.campus}</Label>
-                <select
-                  id="campus"
-                  name="campus"
-                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-                >
+                </SelectField>
+                <SelectField label={f.campus} name="campus">
                   {campuses.map((cam) => (
                     <option key={cam.slug}>{c.campuses[cam.slug].name}</option>
                   ))}
                   <option>{c.careersPage.eitherCampus}</option>
-                </select>
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="message">{c.careersPage.fields.message}</Label>
-                <Textarea id="message" name="message" required />
-              </div>
-              <FormPrivacyNotice className="mb-1" />
-              <Button type="submit" size="lg" disabled={sending}>
-                {sending ? c.careersPage.sending : c.careersPage.submit}
-              </Button>
-            </form>
+                </SelectField>
+                <TextAreaField label={f.message} name="message" required />
+                {failed ? (
+                  <FormFailure template={c.careersPage.failed} phone={school.phone} phoneHref={school.phoneHref} />
+                ) : null}
+                <FormPrivacyNotice className="mb-1" />
+                <Button type="submit" size="lg" disabled={sending}>
+                  {sending ? c.careersPage.sending : c.careersPage.submit}
+                </Button>
+              </ValidatedForm>
+            </>
           )}
         </div>
       </div>

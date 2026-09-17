@@ -36,7 +36,7 @@ export function InfoPage() {
             <h2 className="mt-3 text-lg font-bold text-navy">{card.title}</h2>
             <p className="mt-2 text-sm text-muted">{card.text}</p>
             <AppLink to={card.to} className="mt-4 inline-flex text-sm font-semibold text-brand hover:underline">
-              {card.cta} →
+              {card.cta} <span aria-hidden>→</span>
             </AppLink>
           </article>
         ))}

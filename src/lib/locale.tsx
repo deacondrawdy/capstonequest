@@ -11,6 +11,7 @@ export const LOCALE_STORAGE_KEY = "cqa-locale";
 export type AppPath =
   | "/"
   | "/about"
+  | "/accessibility"
   | "/campuses"
   | "/campuses/$slug"
   | "/careers"

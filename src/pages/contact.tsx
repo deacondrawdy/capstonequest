@@ -1,26 +1,30 @@
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { toast } from "sonner";
 import { SiteShell } from "@/components/site-shell";
 import { FormPrivacyNotice } from "@/components/form-privacy-notice";
+import {
+  FormDone,
+  FormFailure,
+  SelectField,
+  TextAreaField,
+  TextField,
+  ValidatedForm,
+} from "@/components/form-kit";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { campuses, school } from "@/data/school";
 import { useContent } from "@/lib/locale";
 import { saveContact } from "@/lib/inquiries";
 
-
 export function ContactPage() {
   const c = useContent();
+  const f = c.contactPage.fields;
   const [done, setDone] = useState(false);
   const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+  async function onValidSubmit(fd: FormData) {
     setSending(true);
+    setFailed(false);
     try {
       await saveContact({
         name: String(fd.get("name") ?? ""),
@@ -29,9 +33,8 @@ export function ContactPage() {
         message: String(fd.get("message") ?? ""),
       });
       setDone(true);
-      toast.success(c.contactPage.sent);
     } catch {
-      toast.error(c.contactPage.failed.replace("{phone}", school.phone));
+      setFailed(true);
     } finally {
       setSending(false);
     }
@@ -75,44 +78,31 @@ export function ContactPage() {
             ))}
           </div>
         </div>
-        <div className="rounded-[28px] bg-paper-soft p-6 sm:p-8">
+        <div className="min-w-0 rounded-[28px] bg-paper-soft p-6 sm:p-8">
           {done ? (
-            <p className="text-lg font-semibold text-navy">
-            {c.contactPage.thanks}
-          </p>
+            <FormDone>
+              <p className="text-lg font-semibold text-navy">{c.contactPage.thanks}</p>
+            </FormDone>
           ) : (
-            <form className="grid gap-4" onSubmit={onSubmit}>
-              <div className="grid gap-1.5">
-                <Label htmlFor="name">{c.contactPage.fields.name}</Label>
-                <Input id="name" name="name" required />
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="email">{c.contactPage.fields.email}</Label>
-                <Input id="email" name="email" type="email" required />
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="topic">{c.contactPage.fields.topic}</Label>
-                <select
-                  id="topic"
-                  name="topic"
-                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-                >
-                  <option>{c.contactPage.topics.general}</option>
-                  <option>{c.contactPage.topics.tour}</option>
-                  <option>{c.contactPage.topics.enrollment}</option>
-                  <option>{c.contactPage.topics.des}</option>
-                  <option>{c.contactPage.topics.current}</option>
-                </select>
-              </div>
-              <div className="grid gap-1.5">
-                <Label htmlFor="message">{c.contactPage.fields.message}</Label>
-                <Textarea id="message" name="message" required />
-              </div>
+            <ValidatedForm className="grid gap-4" onValidSubmit={onValidSubmit}>
+              <TextField label={f.name} name="name" required autoComplete="name" />
+              <TextField label={f.email} name="email" type="email" required autoComplete="email" />
+              <SelectField label={f.topic} name="topic">
+                <option>{c.contactPage.topics.general}</option>
+                <option>{c.contactPage.topics.tour}</option>
+                <option>{c.contactPage.topics.enrollment}</option>
+                <option>{c.contactPage.topics.des}</option>
+                <option>{c.contactPage.topics.current}</option>
+              </SelectField>
+              <TextAreaField label={f.message} name="message" required />
+              {failed ? (
+                <FormFailure template={c.contactPage.failed} phone={school.phone} phoneHref={school.phoneHref} />
+              ) : null}
               <FormPrivacyNotice className="mb-1" />
               <Button type="submit" size="lg" disabled={sending}>
                 {sending ? c.contactPage.sending : c.contactPage.submit}
               </Button>
-            </form>
+            </ValidatedForm>
           )}
         </div>
       </div>

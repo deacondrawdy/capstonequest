@@ -40,7 +40,7 @@ export function WhyUsPage() {
         ))}
       </div>
 
-      <section id="safety" className="scroll-mt-28 bg-paper-soft py-14">
+      <section id="safety" className="bg-paper-soft py-14">
         <div className="mx-auto grid max-w-[1100px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-2">
           <img src="/images/playground.jpg" alt={c.whyUsPage.playgroundAlt} className="h-72 w-full rounded-[28px] object-cover" />
           <div>
@@ -52,7 +52,7 @@ export function WhyUsPage() {
         </div>
       </section>
 
-      <section id="day" className="scroll-mt-28 py-14">
+      <section id="day" className="py-14">
         <div className="mx-auto max-w-[900px] px-5 sm:px-8">
           <h2 className="text-3xl font-extrabold text-navy">{c.whyUsPage.dayTitle}</h2>
           <ol className="mt-8 space-y-4">

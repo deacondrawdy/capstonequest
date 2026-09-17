@@ -5,6 +5,7 @@ import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
 import { CAMPUS_BOOT_SCRIPT } from "@/lib/campus";
 import { localizePath, stripLocale, useLocale } from "@/lib/locale";
+import { pageTitle } from "@/lib/page-title";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
 import { useRouterState } from "@tanstack/react-router";
@@ -60,7 +61,8 @@ export const Route = createRootRoute({
 function RootDocument() {
   const locale = useLocale();
   const canonical = useRouterState({ select: (s) => stripLocale(s.location.pathname) });
-  const meta = locale === "es" ? es.meta : en.meta;
+  const content = locale === "es" ? es : en;
+  const meta = content.meta;
 
   return (
     <html lang={locale} className="antialiased" suppressHydrationWarning>
@@ -68,7 +70,7 @@ function RootDocument() {
         <HeadContent />
         {/* Rendered here rather than in `head`, which is evaluated once and
             cannot see the active locale. React hoists these into <head>. */}
-        <title>{meta.title}</title>
+        <title>{pageTitle(canonical, content)}</title>
         <meta name="description" content={meta.description} />
         {/* Relative hrefs: the production domain is not configured here yet.
             Swap for absolute URLs once it is — Google prefers them. */}

@@ -128,9 +128,9 @@ export const parentDocuments = [
   },
 ] as const;
 
-// Real Tucson staff, photographed at the campus. The two placeholder profiles
-// that shipped with the original export were not people who work here; they and
-// their stock portraits are gone.
+// Real staff, photographed at their campuses. The two placeholder profiles that
+// shipped with the original export were not people who work here; they and their
+// stock portraits are gone. `campuses` drives which campus page lists whom.
 export const staff = [
   {
     id: "zoe",
@@ -143,6 +143,18 @@ export const staff = [
     name: "Juridia Hernandez",
     image: "/images/juridia.jpg",
     campuses: ["tucson"],
+  },
+  {
+    id: "sidney",
+    name: "Sidney Quinn",
+    image: "/images/sidney.jpg",
+    campuses: ["yuma"],
+  },
+  {
+    id: "tianna",
+    name: "Tianna Garcia",
+    image: "/images/tianna.jpg",
+    campuses: ["yuma"],
   },
 ] as const;
 

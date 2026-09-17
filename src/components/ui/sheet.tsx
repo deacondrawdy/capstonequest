@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 const Sheet = DialogPrimitive.Root;
@@ -15,6 +16,7 @@ function SheetContent({
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   side?: "left" | "right";
 }) {
+  const c = useContent();
   return (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-navy-deep/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
@@ -30,9 +32,9 @@ function SheetContent({
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute top-4 right-4 rounded-full p-1 text-muted hover:bg-paper-soft hover:text-ink">
-          <X className="size-5" />
-          <span className="sr-only">Close</span>
+        <DialogPrimitive.Close className="absolute top-4 right-4 rounded-full p-1 text-muted hover:bg-paper-soft hover:text-ink focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
+          <X className="size-5" aria-hidden />
+          <span className="sr-only">{c.common.close}</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>

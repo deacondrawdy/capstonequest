@@ -38,8 +38,9 @@ export function CleverPage() {
             <span>
               <span className="font-bold text-navy">{p.name}</span>
               <span className="mt-1 block text-sm text-muted">{p.blurb}</span>
+              <span className="sr-only"> {c.common.opensNewTab}</span>
             </span>
-            <ExternalLink className="mt-1 size-4 shrink-0 text-brand" />
+            <ExternalLink className="mt-1 size-4 shrink-0 text-brand" aria-hidden />
           </a>
         ))}
       </div>

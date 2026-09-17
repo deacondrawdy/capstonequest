@@ -70,7 +70,14 @@ export function Hero() {
 
           <h1 className="mt-2 font-display text-[2.15rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.35rem]">
             CAPSTONE QUEST
-            <span className="mt-1 flex flex-wrap text-[2.45rem] tracking-[-0.04em] sm:text-6xl lg:text-[3.9rem]">
+            {/* Each letter is its own coloured span, which some screen readers
+                spell out as "A, C, A, D, E, M, Y". The letters are hidden from
+                them and the word is given once, in full. */}
+            <span className="sr-only"> Academy</span>
+            <span
+              aria-hidden
+              className="mt-1 flex flex-wrap text-[2.45rem] tracking-[-0.04em] sm:text-6xl lg:text-[3.9rem]"
+            >
               {academyColors.map((ch, i) => (
                 <span key={`${ch.letter}-${i}`} className={cn(ch.className)}>
                   {ch.letter}
@@ -117,7 +124,10 @@ export function Hero() {
           </div>
         </div>
 
-        <aside className="relative z-10 mt-6 rounded-[24px] bg-paper p-5 shadow-card xl:mt-0 xl:w-[18.1rem] xl:shrink-0 xl:rounded-[26px] xl:p-5">
+        {/* A div, not <aside>: nested inside <main> an aside becomes a
+            complementary landmark within another landmark (WCAG 1.3.1). The
+            h2 below still makes it reachable by heading. */}
+        <div className="relative z-10 mt-6 rounded-[24px] bg-paper p-5 shadow-card xl:mt-0 xl:w-[18.1rem] xl:shrink-0 xl:rounded-[26px] xl:p-5">
           <h2 className="mb-3.5 text-[13px] font-extrabold tracking-[0.08em] text-navy uppercase">
             {c.hero.whyTitle}
           </h2>
@@ -151,9 +161,10 @@ export function Hero() {
               <p className="text-[13px] leading-snug text-muted">
                 {c.hero.qualityFirst.text}
               </p>
+              <span className="sr-only"> {c.common.opensNewTab}</span>
             </div>
           </a>
-        </aside>
+        </div>
       </div>
 
       {/* Sits flush with the bottom of the photo. At bottom-6 a 24px strip of

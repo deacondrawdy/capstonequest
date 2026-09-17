@@ -1,25 +1,35 @@
-import { useState, type FormEvent } from "react";
-import { toast } from "sonner";
+import { useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { FormPrivacyNotice } from "@/components/form-privacy-notice";
+import {
+  FormDone,
+  FormFailure,
+  SelectField,
+  TextAreaField,
+  TextField,
+  ValidatedForm,
+} from "@/components/form-kit";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { campuses, school } from "@/data/school";
 import { saveTour } from "@/lib/inquiries";
 import { AppLink, useContent } from "@/lib/locale";
 
+/** Tour slots. The value sent to the office is fixed; the label is localized. */
+const TIMES = ["8:30 AM", "9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM"] as const;
+
+type Contact = { phone: string; phoneHref: string };
+
 export function TourPage({ preset }: { preset?: string }) {
   const c = useContent();
+  const f = c.tourPage.fields;
   const [done, setDone] = useState(false);
   const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState<Contact | null>(null);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const picked = campuses.find((c) => c.slug === String(fd.get("campus") ?? ""));
+  async function onValidSubmit(fd: FormData) {
+    const picked = campuses.find((cam) => cam.slug === String(fd.get("campus") ?? ""));
     setSending(true);
+    setFailed(null);
     try {
       await saveTour({
         name: String(fd.get("name") ?? ""),
@@ -32,9 +42,8 @@ export function TourPage({ preset }: { preset?: string }) {
         notes: String(fd.get("notes") ?? ""),
       });
       setDone(true);
-      toast.success(c.tourPage.sent);
     } catch {
-      toast.error(c.tourPage.failed.replace("{phone}", picked?.phone ?? school.phone));
+      setFailed(picked ?? school);
     } finally {
       setSending(false);
     }
@@ -43,101 +52,60 @@ export function TourPage({ preset }: { preset?: string }) {
   return (
     <SiteShell>
       <div className="mx-auto grid max-w-[1100px] gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-bold tracking-[0.14em] text-brand uppercase">{c.tourPage.eyebrow}</p>
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">{c.tourPage.title}</h1>
-          <p className="mt-3 text-muted">
-            {c.tourPage.lede}
-              </p>
+          <p className="mt-3 text-muted">{c.tourPage.lede}</p>
           <img
             src="/images/circle-time.jpg"
             alt=""
             className="mt-8 hidden h-64 w-full rounded-[28px] object-cover lg:block"
           />
         </div>
-        <div className="rounded-[28px] bg-paper-soft p-6 sm:p-8">
+        <div className="min-w-0 rounded-[28px] bg-paper-soft p-6 sm:p-8">
           {done ? (
-            <div>
+            <FormDone>
               <h2 className="text-2xl font-bold text-navy">{c.tourPage.doneTitle}</h2>
-              <p className="mt-2 text-muted">
-            {c.tourPage.doneText}
-              </p>
+              <p className="mt-2 text-muted">{c.tourPage.doneText}</p>
               <Button asChild className="mt-6">
                 <AppLink to="/enroll">{c.common.startEnrollment}</AppLink>
               </Button>
-            </div>
+            </FormDone>
           ) : (
-            <form className="grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
-              <Field label={c.tourPage.fields.name} name="name" required className="sm:col-span-2" />
-              <Field label={c.tourPage.fields.email} name="email" type="email" required />
-              <Field label={c.tourPage.fields.phone} name="phone" type="tel" required />
-              <div className="grid gap-1.5">
-                <Label htmlFor="campus">{c.tourPage.fields.campus}</Label>
-                <select
-                  id="campus"
-                  name="campus"
-                  defaultValue={preset ?? "tucson"}
-                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-                >
-                  {campuses.map((cam) => (
-                    <option key={cam.slug} value={cam.slug}>
-                      {c.campuses[cam.slug].name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <Field label={c.tourPage.fields.childAge} name="childAge" placeholder={c.tourPage.fields.childAgeHint} />
-              <Field label={c.tourPage.fields.date} name="date" type="date" required />
-              <div className="grid gap-1.5">
-                <Label htmlFor="time">{c.tourPage.fields.time}</Label>
-                <select
-                  id="time"
-                  name="time"
-                  className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-                  defaultValue="9:00 AM"
-                >
-                  {["8:30 AM", "9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM"].map((t) => (
-                    <option key={t}>{t}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="grid gap-1.5 sm:col-span-2">
-                <Label htmlFor="notes">{c.tourPage.fields.notes}</Label>
-                <Textarea id="notes" name="notes" placeholder={c.tourPage.fields.notesHint} />
-              </div>
+            <ValidatedForm className="grid gap-4 sm:grid-cols-2" onValidSubmit={onValidSubmit}>
+              <TextField label={f.name} name="name" required autoComplete="name" className="sm:col-span-2" />
+              <TextField label={f.email} name="email" type="email" required autoComplete="email" />
+              <TextField label={f.phone} name="phone" type="tel" required autoComplete="tel" />
+              <SelectField label={f.campus} name="campus" defaultValue={preset ?? "tucson"}>
+                {campuses.map((cam) => (
+                  <option key={cam.slug} value={cam.slug}>
+                    {c.campuses[cam.slug].name}
+                  </option>
+                ))}
+              </SelectField>
+              <TextField label={f.childAge} name="childAge" placeholder={f.childAgeHint} />
+              <TextField label={f.date} name="date" type="date" required />
+              <SelectField label={f.time} name="time" defaultValue="9:00 AM">
+                {TIMES.map((t, i) => (
+                  <option key={t} value={t}>
+                    {c.tourPage.timeLabels[i] ?? t}
+                  </option>
+                ))}
+              </SelectField>
+              <TextAreaField label={f.notes} name="notes" placeholder={f.notesHint} className="sm:col-span-2" />
+              {failed ? (
+                <FormFailure template={c.tourPage.failed} phone={failed.phone} phoneHref={failed.phoneHref} />
+              ) : null}
               <div className="sm:col-span-2">
                 <FormPrivacyNotice className="mb-3" />
                 <Button type="submit" size="lg" disabled={sending}>
                   {sending ? c.tourPage.sending : c.tourPage.submit}
                 </Button>
               </div>
-            </form>
+            </ValidatedForm>
           )}
         </div>
       </div>
     </SiteShell>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  required,
-  placeholder,
-  className,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-  className?: string;
-}) {
-  return (
-    <div className={`grid gap-1.5 ${className ?? ""}`}>
-      <Label htmlFor={name}>{label}</Label>
-      <Input id={name} name={name} type={type} required={required} placeholder={placeholder} />
-    </div>
   );
 }

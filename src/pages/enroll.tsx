@@ -1,25 +1,25 @@
-import { useState, type FormEvent } from "react";
-import { toast } from "sonner";
+import { useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { FormPrivacyNotice } from "@/components/form-privacy-notice";
+import { FormDone, FormFailure, SelectField, TextField, ValidatedForm } from "@/components/form-kit";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { campuses, programs, school } from "@/data/school";
 import { useContent } from "@/lib/locale";
 import { saveEnroll } from "@/lib/inquiries";
 
+type Contact = { phone: string; phoneHref: string };
 
 export function EnrollPage() {
   const c = useContent();
+  const f = c.enrollPage.fields;
   const [done, setDone] = useState(false);
   const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState<Contact | null>(null);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const picked = campuses.find((c) => c.slug === String(fd.get("campus") ?? ""));
+  async function onValidSubmit(fd: FormData) {
+    const picked = campuses.find((cam) => cam.slug === String(fd.get("campus") ?? ""));
     setSending(true);
+    setFailed(null);
     try {
       await saveEnroll({
         childFirst: String(fd.get("childFirst") ?? ""),
@@ -34,9 +34,8 @@ export function EnrollPage() {
         start: String(fd.get("start") ?? ""),
       });
       setDone(true);
-      toast.success(c.enrollPage.sent);
     } catch {
-      toast.error(c.enrollPage.failed.replace("{phone}", picked?.phone ?? school.phone));
+      setFailed(picked ?? school);
     } finally {
       setSending(false);
     }
@@ -46,99 +45,62 @@ export function EnrollPage() {
     <SiteShell>
       <div className="mx-auto max-w-[760px] px-5 py-14 sm:px-8">
         <p className="text-sm font-bold tracking-[0.14em] text-brand uppercase">{c.enrollPage.eyebrow}</p>
-        <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">
-          {c.enrollPage.title}
-        </h1>
-        <p className="mt-3 text-muted">
-          {c.enrollPage.lede2}
-        </p>
+        <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">{c.enrollPage.title}</h1>
+        <p className="mt-3 text-muted">{c.enrollPage.lede2}</p>
         {done ? (
-          <div className="mt-10 rounded-[28px] bg-paper-soft p-8">
+          <FormDone className="mt-10 rounded-[28px] bg-paper-soft p-8">
             <h2 className="text-2xl font-bold text-navy">{c.enrollPage.doneTitle}</h2>
-            <p className="mt-2 text-muted">
-          {c.enrollPage.doneText}
-        </p>
-          </div>
+            <p className="mt-2 text-muted">{c.enrollPage.doneText}</p>
+          </FormDone>
         ) : (
-          <form className="mt-8 grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
-            <Field label={c.enrollPage.fields.childFirst} name="childFirst" required />
-            <Field label={c.enrollPage.fields.childLast} name="childLast" required />
-            <Field label={c.enrollPage.fields.dob} name="dob" type="date" required />
-            <Field label={c.enrollPage.fields.start} name="start" type="date" />
-            <div className="grid gap-1.5">
-              <Label htmlFor="campus">{c.enrollPage.fields.campus}</Label>
-              <select
-                id="campus"
-                name="campus"
-                className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-                defaultValue="tucson"
-              >
-                {campuses.map((cam) => (
-                  <option key={cam.slug} value={cam.slug}>
-                    {c.campuses[cam.slug].name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="grid gap-1.5">
-              <Label htmlFor="program">{c.enrollPage.fields.program}</Label>
-              <select
-                id="program"
-                name="program"
-                className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-              >
-                {programs.map((pr) => (
-                  <option key={pr.slug} value={pr.slug}>
-                    {c.programs[pr.slug].name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <Field label={c.enrollPage.fields.parentName} name="parentName" required className="sm:col-span-2" />
-            <Field label={c.enrollPage.fields.email} name="email" type="email" required />
-            <Field label={c.enrollPage.fields.phone} name="phone" type="tel" required />
-            <div className="grid gap-1.5 sm:col-span-2">
-              <Label htmlFor="des">{c.enrollPage.fields.des}</Label>
-              <select
-                id="des"
-                name="des"
-                className="h-11 rounded-md border border-input bg-paper px-3 text-sm"
-              >
-                <option value="not-sure">{c.enrollPage.des.notSure}</option>
-                <option value="yes">{c.enrollPage.yes}</option>
-                <option value="no">{c.enrollPage.des.no}</option>
-              </select>
-            </div>
+          <ValidatedForm className="mt-8 grid gap-4 sm:grid-cols-2" onValidSubmit={onValidSubmit}>
+            {/* The child's details take no autocomplete: WCAG 1.3.5 covers data
+                about the person filling in the form, and autofilling the
+                parent's own name into the child's field would be a mistake. */}
+            <TextField label={f.childFirst} name="childFirst" required />
+            <TextField label={f.childLast} name="childLast" required />
+            <TextField label={f.dob} name="dob" type="date" required />
+            <TextField label={f.start} name="start" type="date" />
+            <SelectField label={f.campus} name="campus" defaultValue="tucson">
+              {campuses.map((cam) => (
+                <option key={cam.slug} value={cam.slug}>
+                  {c.campuses[cam.slug].name}
+                </option>
+              ))}
+            </SelectField>
+            <SelectField label={f.program} name="program">
+              {programs.map((pr) => (
+                <option key={pr.slug} value={pr.slug}>
+                  {c.programs[pr.slug].name}
+                </option>
+              ))}
+            </SelectField>
+            <TextField
+              label={f.parentName}
+              name="parentName"
+              required
+              autoComplete="name"
+              className="sm:col-span-2"
+            />
+            <TextField label={f.email} name="email" type="email" required autoComplete="email" />
+            <TextField label={f.phone} name="phone" type="tel" required autoComplete="tel" />
+            <SelectField label={f.des} name="des" className="sm:col-span-2">
+              <option value="not-sure">{c.enrollPage.des.notSure}</option>
+              <option value="yes">{c.enrollPage.yes}</option>
+              <option value="no">{c.enrollPage.des.no}</option>
+            </SelectField>
+            {failed ? (
+              <FormFailure template={c.enrollPage.failed} phone={failed.phone} phoneHref={failed.phoneHref} />
+            ) : null}
             <div className="sm:col-span-2">
               <FormPrivacyNotice className="mb-3" />
               <Button type="submit" size="lg" disabled={sending}>
                 {sending ? c.enrollPage.sending : c.enrollPage.submit}
               </Button>
             </div>
-          </form>
+          </ValidatedForm>
         )}
       </div>
     </SiteShell>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  required,
-  className,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-  className?: string;
-}) {
-  return (
-    <div className={`grid gap-1.5 ${className ?? ""}`}>
-      <Label htmlFor={name}>{label}</Label>
-      <Input id={name} name={name} type={type} required={required} />
-    </div>
   );
 }

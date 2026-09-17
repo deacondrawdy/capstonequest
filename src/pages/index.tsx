@@ -64,7 +64,11 @@ export function Home() {
                 key={p.slug}
                 className="overflow-hidden rounded-[28px] bg-paper shadow-card transition-[box-shadow,transform] duration-200 hover:shadow-card-hover"
               >
-                <img src={p.image} alt="" className="h-44 w-full object-cover object-top" />
+                <img
+                  src={p.image}
+                  alt={c.programs[p.slug].imageAlt}
+                  className="h-44 w-full object-cover object-top"
+                />
                 <div className="p-6">
                   <p className="text-xs font-bold tracking-wide text-brand uppercase">
                     {c.programs[p.slug].ages} · {c.programs[p.slug].hours}
@@ -107,7 +111,9 @@ export function Home() {
                   <p className="mt-1 text-sm text-muted">
                     {campus.address}, {campus.cityState}
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-brand">{c.homePage.visitCampus} →</p>
+                  <p className="mt-2 text-sm font-semibold text-brand">
+                    {c.homePage.visitCampus} <span aria-hidden>→</span>
+                  </p>
                 </AppLink>
               ))}
             </div>
@@ -136,7 +142,7 @@ export function Home() {
             ))}
           </ol>
           <p className="mt-6 text-sm text-paper/70">
-            Before- and after-care wraps around this day, 7:00–8:00 AM and 3:30–6:00 PM.{" "}
+            {c.homePage.dayNote}{" "}
             <AppLink to="/tuition" className="font-semibold text-gold underline underline-offset-2">
               {c.common.seeRates}
             </AppLink>

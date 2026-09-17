@@ -16,7 +16,7 @@ export function SiteFooter() {
           <p className="max-w-xs text-sm leading-relaxed text-paper/75">{c.footer.blurb}</p>
         </div>
         <div>
-          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.visit}</h3>
+          <h2 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.visit}</h2>
           <ul className="space-y-4 text-sm text-paper/80">
             {campuses.map((campus) => (
               <li key={campus.slug}>
@@ -48,7 +48,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.explore}</h3>
+          <h2 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.explore}</h2>
           <ul className="space-y-2 text-sm text-paper/80">
             <li>
               <AppLink to="/programs" className="hover:text-gold">
@@ -105,10 +105,15 @@ export function SiteFooter() {
                 {c.footer.links.privacy}
               </AppLink>
             </li>
+            <li>
+              <AppLink to="/accessibility" className="hover:text-gold">
+                {c.footer.links.accessibility}
+              </AppLink>
+            </li>
           </ul>
         </div>
         <div>
-          <h3 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.talk}</h3>
+          <h2 className="mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.talk}</h2>
           <ul className="space-y-3 text-sm text-paper/80">
             <li className="flex items-center gap-2">
               <Phone className="size-4" />

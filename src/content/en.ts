@@ -27,9 +27,95 @@ export const en = {
     hoursShort: "7:00 AM – 6:00 PM",
     formNotice: "What happens to this: it is emailed to our school office so we can reply. We do not sell or share it. See our",
     formNoticeLink: "privacy policy",
+    skipToContent: "Skip to main content",
+    close: "Close",
+    logoHome: "Capstone Quest Academy home",
+    opensNewTab: "(opens in a new tab)",
+    pdf: "PDF",
+  },
+
+  /** Page titles. {campus} is the campus name; the site name is appended. */
+  pageTitles: {
+    home: "Pre-K in Tucson and Yuma",
+    about: "About us",
+    campuses: "Campuses",
+    campus: "{campus}",
+    careers: "Careers",
+    clever: "Clever & student portals",
+    contact: "Contact",
+    enroll: "Enroll",
+    info: "Info",
+    parents: "Parent resources",
+    handbook: "Parent handbook",
+    policies: "Policies",
+    privacy: "Privacy policy",
+    programs: "Programs",
+    tour: "Schedule a tour",
+    tuition: "Tuition & fees",
+    whyUs: "Why us",
+    accessibility: "Accessibility",
+    notFound: "Page not found",
+  },
+
+  /** Shared by every form. Replaces the browser's own validation bubbles. */
+  forms: {
+    requiredNote: "Fields marked * are required.",
+    required: "This field is required.",
+    email: "Enter an email address, like name@example.com.",
+    invalid: "Check this entry and try again.",
+  },
+
+  a11yMenu: {
+    trigger: "Accessibility",
+    title: "Accessibility",
+    description: "Adjust how this site looks. Your choices are saved on this device.",
+    textSize: "Text size",
+    sizes: { base: "Default", lg: "Large", xl: "Largest" },
+    toggles: {
+      contrast: { label: "Higher contrast", hint: "Darkens body text and strengthens borders." },
+      links: { label: "Underline links", hint: "Marks every link without relying on colour." },
+      font: { label: "Plainer typeface", hint: "A wider face with more space between letters and lines." },
+      motion: { label: "Reduce motion", hint: "Stops the page animating things as you scroll." },
+    },
+    reset: "Reset to default",
+    done: "Done",
+    atNote:
+      "Using a screen reader, magnifier, or other assistive technology? It works with this site directly — you do not need these settings. If something is hard to use, please",
+    atNoteLink: "tell us",
+  },
+
+  search: {
+    trigger: "Search",
+    title: "Search Capstone Quest",
+    inputLabel: "Search the site",
+    placeholder: "Campuses, programs, careers…",
+    empty: "No matching pages.",
+    /** Keyed by the entry `id` in src/data/search.ts. */
+    pages: {
+      home: { title: "Home", blurb: "Pre-K programs at Capstone Quest Academy in Tucson and Yuma." },
+      tucson: { title: "Tucson Campus", blurb: "1150 North Country Club Road, Tucson · (520) 462-7788" },
+      yuma: { title: "Yuma Campus", blurb: "1220 South 4th Avenue, Yuma · (928) 977-9318" },
+      programs: { title: "Programs", blurb: "One mixed-age Pre-K classroom for ages 3–5, plus before & after care, 7 AM–6 PM." },
+      info: { title: "Info", blurb: "About us, programs, parent resources, and calendars." },
+      clever: { title: "Clever", blurb: "Clever, PowerSchool, ClassDojo, and RAZ Kids sign-ins." },
+      tuition: { title: "Tuition & fees", blurb: "Weekly Pre-K rates, before & after care, sibling discounts, billing terms." },
+      policies: { title: "Policies", blurb: "Enrollment, release, discipline, parent access, inspection reports." },
+      careers: { title: "Careers", blurb: "Teach Pre-K in Tucson or Yuma. Small classes, benefits, family culture." },
+      about: { title: "About", blurb: "DES-approved Pre-K since 2013. Little steps, big dreams." },
+      parents: { title: "Parents", blurb: "Menus, handbooks, DES, tuition, and family partnership." },
+      whyUs: { title: "Why Us", blurb: "Small classes, safety, school-ready curriculum, DES approved." },
+      enroll: { title: "Enroll", blurb: "Start the 26–27 school year. Often complete in one day." },
+      tour: { title: "Schedule a tour", blurb: "Walk a Tucson or Yuma classroom on a weekday morning." },
+      handbook: { title: "Parent handbook", blurb: "Admissions, daily routines, discipline, and the suspension and expulsion prevention policy." },
+      privacy: { title: "Privacy", blurb: "What this site collects, why, and who sees it." },
+      contact: { title: "Contact", blurb: "(520) 462-7788 · info@capstonequestacademy.com" },
+      accessibility: { title: "Accessibility", blurb: "How this site is built to be usable by everyone, and how to report a barrier." },
+    },
   },
 
   banner: {
+    /** Landmark name for screen readers navigating by region. */
+    label: "Enrollment announcement",
     text: "Only a few spots left in Tucson & Yuma",
   },
 
@@ -65,6 +151,7 @@ export const en = {
     contact: "Contact",
     menu: "Menu",
     openMenu: "Open menu",
+    mainLabel: "Main",
   },
 
   footer: {
@@ -87,6 +174,7 @@ export const en = {
       tour: "Schedule a tour",
       privacy: "Privacy",
       handbook: "Parent handbook",
+      accessibility: "Accessibility",
     },
   },
 
@@ -139,6 +227,7 @@ export const en = {
       name: "Pre-K",
       ages: "Ages 3–5",
       hours: "Full-day, 3 or 5 days",
+      imageAlt: "Two boys peering through toy binoculars in their classroom",
       summary:
         "One mixed-age classroom where threes, fours and fives learn together — sharing, speaking up, and exploring through play, and leaving ready for kindergarten.",
       points: [
@@ -152,6 +241,7 @@ export const en = {
       name: "Before & After Care",
       ages: "Ages 3–5",
       hours: "7:00–8:00 AM · 3:30–6:00 PM",
+      imageAlt: "A girl blowing bubbles outside, with a classmate behind her",
       summary:
         "Fee-for-service wraparound care used by working families since 2013 — early arrival and late dismissal with the same trusted teachers.",
       points: [
@@ -310,6 +400,23 @@ export const en = {
           "Hi! My name is Juridia Hernandez, but you can call me Miss J! I’m so excited to be your Teacher’s Assistant and to help make our classroom a fun, welcoming, and encouraging place for every student.",
           "A few of my favorite things are orange and pink, Chinese food, sea otters, volleyball, K-pop and R&B, and wintertime. I also love doing nails, cooking and baking for others, dancing, doing my makeup, decorating for Christmas, and spending time with family and friends. Two places I especially love are Korea and Japan.",
           "I’m looking forward to helping our students learn, laugh, grow, and have an amazing year together! 💕🌈",
+        ],
+      },
+      sidney: {
+        role: "Preschool Teacher",
+        campus: "Yuma",
+        bio: [
+          "I am a caring Preschool Teacher with a passion for helping young children learn, grow, and feel confident.",
+          "When not in the classroom, I enjoy spending time with my animals, exploring nature, and getting lost in a good book.",
+          "I bring curiosity, kindness, and a love of learning every day to my students. I have been with Capstone for 3 years.",
+        ],
+      },
+      tianna: {
+        role: "Preschool Teacher",
+        campus: "Yuma",
+        bio: [
+          "Hi everyone! I’m Ms. Tianna, I am 28 years old and have loved teaching here at Capstone preschool for the past 5 years.",
+          "When I’m not in the classroom, I love traveling and spending time with my family.",
         ],
       },
     },
@@ -473,6 +580,7 @@ export const en = {
     applyTitle: "Apply",
     thanks: "Thank you — a director will write back if there’s a match.",
     received: "Application received.",
+    failed: "We could not send your application. Please call {phone}.",
     fields: { name: "Name", email: "Email", phone: "Phone", role: "Role", campus: "Campus", message: "Why this work" },
     eitherCampus: "Either campus",
     sending: "Sending…",
@@ -510,6 +618,8 @@ export const en = {
       date: "Preferred date", time: "Preferred time",
       notes: "Anything we should know?", notesHint: "Sibling, DES voucher, allergies…",
     },
+    /** Display labels for the fixed tour slots in tour.tsx, in the same order. */
+    timeLabels: ["8:30 AM", "9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM"],
     sending: "Sending…",
     submit: "Request this tour",
   },
@@ -534,6 +644,46 @@ export const en = {
     sending: "Sending…",
     submit: "Submit enrollment",
   },
+  /**
+   * Describes what is true today, including what is not yet done. "Partially
+   * conforms" is the W3C's own term; do not upgrade it to "fully conforms" or
+   * "ADA compliant" until the known limitations below are gone.
+   */
+  accessibilityPage: {
+    eyebrow: "Accessibility",
+    title: "Accessibility statement",
+    updated: "Last reviewed September 2026",
+    lede: "Capstone Quest Academy wants every family to be able to use this website — including parents, grandparents and caregivers who use a screen reader, a keyboard instead of a mouse, magnification, captions, or voice control.",
+    standardTitle: "The standard we work to",
+    standard: "We work to the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA, published by the World Wide Web Consortium (W3C). It is the current version of the standard most widely used to judge whether a website is accessible.",
+    statusTitle: "Where the site stands",
+    status: "The site partially conforms to WCAG 2.2 Level AA. Most of it meets the standard; the exceptions we know about are listed below, and we are working through them.",
+    doneTitle: "What we have done",
+    done: [
+      "Every page works with a keyboard alone, and a “Skip to main content” link comes first on every page.",
+      "Each page has its own title, and headings, lists and page regions are marked up so screen readers can move around.",
+      "Photos that carry meaning have text descriptions.",
+      "Text and form field borders meet the WCAG 2.2 AA contrast levels.",
+      "The header stays at the top of the screen, and the page is set up so it never covers the control you are using or the section a link takes you to.",
+      "Pages work when zoomed to 400% and on narrow phone screens without scrolling sideways.",
+      "Forms have visible labels, mark required fields, and explain any mistake next to the field.",
+      "The whole site is available in English and Spanish, and each page is marked with its language.",
+      "We check the site with automated tools and by hand, page by page, in both languages, and had it independently audited against WCAG 2.2 AA in September 2026.",
+    ],
+    menuNote: "The Accessibility menu at the top of every page lets you enlarge text, raise contrast, underline links, switch to a plainer typeface, or reduce motion. It is optional: the site is built to work without it.",
+    limitsTitle: "Known limitations",
+    limits: [
+      "The classroom video on the home page does not have captions yet. We are adding them. If you would like to know what it shows, contact us.",
+      "Some documents on the Parent resources page — the student handbook, wellness policy, meal menus and supply list — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
+      "The parent handbook is offered as a PDF. The same handbook is also on this site as a web page, which is the accessible version.",
+    ],
+    helpTitle: "Tell us about a barrier, or ask for another format",
+    help: "If something on this site is hard to use, or you need information in a different format — large print, plain text, or read to you over the phone — please tell us. Let us know which page and what you were trying to do.",
+    emailLabel: "Email",
+    technicalTitle: "How the site is built",
+    technical: "The site uses standard HTML, CSS and JavaScript, with WAI-ARIA where it helps assistive technology. It is designed to work with current versions of Chrome, Safari, Firefox and Edge, and with common screen readers.",
+  },
+
   privacyPage: {
     eyebrow: "Privacy",
     title: "Privacy policy",

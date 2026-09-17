@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, Phone, Star } from "lucide-react";
 import { Logo } from "@/components/logo";
@@ -53,14 +53,16 @@ function TextLink({
 export function TopBanner() {
   const c = useContent();
   return (
-    <div className="bg-gold text-navy">
+    // A named region, so the enrollment notice is reachable by landmark
+    // navigation. As a bare div it sat outside every landmark on the page.
+    <section aria-label={c.banner.label} className="bg-gold text-navy">
       <div className="mx-auto flex max-w-[1400px] items-center justify-center px-4 py-2 sm:px-6">
         <p className="flex items-center gap-2 text-center text-sm font-bold sm:text-base">
           <Star className="size-3.5 shrink-0 fill-navy text-navy" aria-hidden />
           {c.banner.text}
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -70,6 +72,22 @@ export function SiteHeader() {
   const path = useRouterState({ select: (s) => stripLocale(s.location.pathname) });
   const [open, setOpen] = useState(false);
   const c = useContent();
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Publishes the header's real height as --header-h, which sets
+  // scroll-padding-top in styles.css (WCAG 2.4.11). Measured rather than
+  // hard-coded: the header is 64px on a small phone, 126px on desktop, and
+  // taller again when a visitor picks larger text in the accessibility menu.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const root = document.documentElement;
+    const publish = () => root.style.setProperty("--header-h", `${Math.ceil(header.getBoundingClientRect().height)}px`);
+    publish();
+    const observer = new ResizeObserver(publish);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   const mobileLinks: Array<{ to: AppPath; label: string }> = [
     { to: "/", label: c.nav.home },
@@ -87,7 +105,10 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-paper/95 shadow-[var(--shadow-nav)] backdrop-blur-md">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-40 bg-paper/95 shadow-[var(--shadow-nav)] backdrop-blur-md"
+    >
       <div className="hidden border-b border-line sm:block">
         <div className="mx-auto flex max-w-[1400px] items-center justify-end gap-3 px-4 py-1.5 sm:px-6 lg:px-10">
           <CampusSwitch />
@@ -107,11 +128,15 @@ export function SiteHeader() {
       </div>
 
       <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-3 py-2 sm:px-6 lg:px-8">
-        <Logo className="-my-2" />
+        {/* Slightly smaller below 360px: see the action row below. */}
+        <Logo className="-my-2 max-[359px]:[&_img]:size-16" />
 
         {/* Seven items now. The gap tightens below xl so the longer Spanish
             labels still fit on one line at 1024px. */}
-        <nav className="ml-2 hidden flex-1 items-center justify-center gap-3 lg:flex xl:gap-6">
+        <nav
+          aria-label={c.nav.mainLabel}
+          className="ml-2 hidden flex-1 items-center justify-center gap-3 lg:flex xl:gap-6"
+        >
           <TextLink to="/" active={path === "/"}>
             {c.nav.home}
           </TextLink>
@@ -167,8 +192,13 @@ export function SiteHeader() {
           </TextLink>
         </nav>
 
+        {/* At 320px wide -- the width WCAG 1.4.10 requires to work without
+            sideways scrolling -- this row needed ~300px and had 296, and the
+            Spanish "Inscribirse" pushed it 39px over. Below 360px the search
+            icon moves into the menu sheet and the logo shrinks, which frees
+            ~65px. */}
         <div className="ml-auto flex items-center gap-2 lg:ml-0 lg:gap-3">
-          <div className="sm:hidden">
+          <div className="max-[359px]:hidden sm:hidden">
             <SiteSearch variant="icon" />
           </div>
           {/* Both numbers are rendered; CSS shows the one matching the
@@ -216,16 +246,18 @@ export function SiteHeader() {
                 <SheetTitle>{c.nav.menu}</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-1 overflow-y-auto text-base font-semibold text-navy">
-                {mobileLinks.map((item) => (
-                  <AppLink
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setOpen(false)}
-                    className="rounded-xl px-3 py-3 hover:bg-paper-soft"
-                  >
-                    {item.label}
-                  </AppLink>
-                ))}
+                <nav aria-label={c.nav.mainLabel} className="flex flex-col gap-1">
+                  {mobileLinks.map((item) => (
+                    <AppLink
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setOpen(false)}
+                      className="rounded-xl px-3 py-3 hover:bg-paper-soft focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    >
+                      {item.label}
+                    </AppLink>
+                  ))}
+                </nav>
                 <Button asChild className="mt-4" variant="brand">
                   <AppLink to="/enroll" onClick={() => setOpen(false)}>
                     {c.common.enroll}
@@ -241,9 +273,12 @@ export function SiteHeader() {
                     {entry.phone}
                   </a>
                 ))}
-                <div className="mt-3 flex flex-col gap-1 border-t border-line pt-3">
+                <div className="mt-3 flex flex-col items-start gap-1 border-t border-line pt-3">
                   <LocaleSwitch className="px-3 py-2 text-sm" />
                   <AccessibilityMenu className="px-3 py-2 text-sm" />
+                  {/* The header drops its search icon below 360px, so search
+                      has to be reachable from here. */}
+                  <SiteSearch variant="text" />
                 </div>
               </div>
             </SheetContent>

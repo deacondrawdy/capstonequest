@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
 const Dialog = DialogPrimitive.Root;
@@ -28,6 +29,9 @@ function DialogContent({
   children,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content>) {
+  // Read here rather than passed in, so no dialog can ship an English "Close"
+  // onto a Spanish page.
+  const c = useContent();
   return (
     <DialogPortal>
       <DialogOverlay />
@@ -40,8 +44,8 @@ function DialogContent({
       >
         {children}
         <DialogPrimitive.Close className="absolute top-4 right-4 rounded-full p-1 text-muted hover:bg-paper-soft hover:text-ink focus-visible:ring-2 focus-visible:ring-ring">
-          <X className="size-4" />
-          <span className="sr-only">Close</span>
+          <X className="size-4" aria-hidden />
+          <span className="sr-only">{c.common.close}</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPortal>

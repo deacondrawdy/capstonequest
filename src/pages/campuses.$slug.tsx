@@ -36,8 +36,17 @@ export function CampusDetail({ campus }: { campus: Campus }) {
         </>
       ) : (
         <div className="relative h-64 overflow-hidden sm:h-80">
-          <img src={campus.image} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 to-navy-deep/10" />
+          <img
+            src={campus.image}
+            alt={c.campuses[campus.slug].imageAlt}
+            className="h-full w-full object-cover"
+          />
+          {/* The scrim holds near-solid through the lower half, where the text
+              sits. The old 70%-to-10% fade left only ~55% navy behind the gold
+              "Campus" label, which measured 2.4:1 against the photo's lighter
+              pixels (WCAG 1.4.3 needs 4.5:1). axe cannot judge text over a
+              photo, so this was measured from the rendered pixels. */}
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/85 via-50% to-navy-deep/15" />
           <div className="absolute bottom-8 left-0 w-full px-5 sm:px-8">
             <div className="mx-auto max-w-[1100px]">
               <p className="text-sm font-bold tracking-[0.14em] text-gold uppercase">{c.campusPage.eyebrow}</p>
@@ -82,11 +91,14 @@ export function CampusDetail({ campus }: { campus: Campus }) {
             <Button asChild variant="outline" size="lg">
               <a href={campus.mapUrl} target="_blank" rel="noreferrer">
                 {c.campusPage.openInMaps}
+                <span className="sr-only"> {c.common.opensNewTab}</span>
               </a>
             </Button>
           </div>
         </div>
-        <aside className="h-fit rounded-[28px] bg-paper-soft p-6">
+        {/* A div, not <aside>: an aside inside <main> is a complementary
+            landmark nested in another landmark. Its heading keeps it findable. */}
+        <div className="h-fit rounded-[28px] bg-paper-soft p-6">
           <h2 className="font-bold text-navy">{c.campusPage.tourTitle}</h2>
           <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
             {c.campusPage.tourList.map((item) => (
@@ -100,7 +112,7 @@ export function CampusDetail({ campus }: { campus: Campus }) {
             </AppLink>
             .
           </p>
-        </aside>
+        </div>
       </div>
 
       {/* Families pick a campus first and a school second, so the people at

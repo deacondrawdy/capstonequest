@@ -168,10 +168,14 @@
   --color-rainbow-a: #2b7de9;
   --color-rainbow-c: #e53935;
   --color-rainbow-a2: #43a047;
-  --color-rainbow-d: #ff9800;
+  /* D, M and Y were #ff9800, #f4c400 and #f9a825: 2.16, 1.65 and 1.97 on
+     white, under the 3:1 WCAG 1.4.3 needs for large text. These are the nearest
+     shades of the same hue that clear it (3.10, 3.08, 3.08). Automated checkers
+     skip single letters, so don't read a clean axe run as proof these pass. */
+  --color-rainbow-d: #d47e00;
   --color-rainbow-e: #8e24aa;
-  --color-rainbow-m: #f4c400;
-  --color-rainbow-y: #f9a825;
+  --color-rainbow-m: #b28f00;
+  --color-rainbow-y: #ce8206;
   --color-background: #ffffff;
   --color-foreground: #14233f;
   --color-card: #ffffff;
@@ -184,7 +188,11 @@
   --color-accent-foreground: #14233f;
   --color-destructive: #c62828;
   --color-border: #e4eaf4;
-  --color-input: #e4eaf4;
+  /* Form field borders, and nothing else. The field edge is how a sighted user
+     finds the control, so WCAG 1.4.11 wants 3:1; the old #e4eaf4 was 1.21.
+     #7d8ca6 is 3.40 on white and 3.20 on the paper-soft form panels. Decorative
+     dividers keep --color-line. */
+  --color-input: #7d8ca6;
   --color-popover: #ffffff;
   --color-popover-foreground: #14233f;
   --color-muted-foreground: #5a6a82;
@@ -217,6 +225,19 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    /* WCAG 2.4.11 Focus Not Obscured. The header is sticky, so when the browser
+       scrolls a focused control or an #anchor target into view it must stop
+       short of the header, not slide it underneath. SiteHeader overwrites
+       --header-h with the measured height, which also covers the taller header
+       under the text-size preference; these values are the pre-JS fallback. */
+    --header-h: 5.5rem;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+
+  @media (width >= 40rem) {
+    html {
+      --header-h: 8rem;
+    }
   }
 
   body {

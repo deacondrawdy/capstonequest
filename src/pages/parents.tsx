@@ -35,7 +35,7 @@ export function ParentsPage() {
             <h2 className="mt-3 text-xl font-bold text-navy">{r.title}</h2>
             <p className="mt-2 text-sm text-muted">{r.text}</p>
             <AppLink to={r.to} className="mt-4 inline-flex text-sm font-semibold text-brand hover:underline">
-              {r.cta} →
+              {r.cta} <span aria-hidden>→</span>
             </AppLink>
           </article>
         ))}
@@ -57,16 +57,21 @@ export function ParentsPage() {
                 >
                   <span>
                     <span className="font-bold text-navy">{c.documents[doc.id].title}</span>
+                    {/* Say it's a PDF before someone taps it on a phone. */}
+                    {doc.href.endsWith(".pdf") ? (
+                      <span className="ml-1.5 text-xs font-semibold text-muted">({c.common.pdf})</span>
+                    ) : null}
                     <span className="mt-1 block text-sm text-muted">{c.documents[doc.id].blurb}</span>
+                    <span className="sr-only"> {c.common.opensNewTab}</span>
                   </span>
-                  <ExternalLink className="mt-1 size-4 shrink-0 text-brand" />
+                  <ExternalLink className="mt-1 size-4 shrink-0 text-brand" aria-hidden />
                 </a>
               </li>
             ))}
           </ul>
         </div>
       </section>
-      <section id="tuition" className="scroll-mt-28 bg-navy py-14 text-paper">
+      <section id="tuition" className="bg-navy py-14 text-paper">
         <div className="mx-auto max-w-[800px] px-5 sm:px-8">
           <h2 className="text-3xl font-extrabold">{c.parents.tuitionTitle}</h2>
           <p className="mt-3 text-paper/80">
