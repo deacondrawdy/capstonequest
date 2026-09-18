@@ -1,7 +1,7 @@
 import { Check, Clock, Info } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
-import { school, tuition } from "@/data/school";
+import { feeSchedule, school, tuition } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
 
 export function TuitionPage() {
@@ -127,6 +127,19 @@ export function TuitionPage() {
               <AppLink to="/tour">{c.common.scheduleTour}</AppLink>
             </Button>
           </div>
+          {/* The rates above are a summary; this is the sheet families sign. */}
+          <p className="mt-6 text-sm">
+            <a
+              href={feeSchedule.href}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-gold underline underline-offset-4"
+            >
+              {c.tuitionPage.feeScheduleCta}
+              <span className="ml-1.5 font-normal text-paper/70">({c.common.pdf})</span>
+              <span className="sr-only"> {c.common.opensNewTab}</span>
+            </a>
+          </p>
           <p className="mt-8 text-sm text-paper/60">
             {c.tuitionPage.effectiveNote.replace("{phone}", school.phone)}{" "}
             <a href={`mailto:${school.email}`} className="underline underline-offset-2">

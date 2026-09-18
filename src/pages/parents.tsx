@@ -53,9 +53,17 @@ export function ParentsPage() {
             {c.parents.docsLede}
           </p>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {parentDocuments.map((doc) => (
-              // The parent handbook leads, across both columns; the rest pair up.
-              <li key={c.documents[doc.id].title} className={doc.id === "handbook" ? "sm:col-span-2" : undefined}>
+            {parentDocuments.map((doc, i) => (
+              // The parent handbook leads across both columns; the rest pair up,
+              // and a lone card on the last row stretches rather than sit half empty.
+              <li
+                key={c.documents[doc.id].title}
+                className={
+                  doc.id === "handbook" || (i === parentDocuments.length - 1 && i % 2 === 1)
+                    ? "sm:col-span-2"
+                    : undefined
+                }
+              >
                 <a
                   href={doc.href}
                   target="_blank"

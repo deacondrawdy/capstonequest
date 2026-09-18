@@ -256,6 +256,10 @@ export const es: Content = {
       blurb:
         "El manual completo del preescolar Capstone Quest (PDF): admisiones, colegiatura, horario diario, disciplina y la política de prevención de suspensión y expulsión.",
     },
+    fees: {
+      title: "Tarifas de preescolar",
+      blurb: "Tarifas de los programas, condiciones de pago y el acuerdo de tarifas que firman las familias. Vigente desde el 1 de agosto de 2024.",
+    },
     "parent-rights": {
       title: "Manual de derechos de los padres",
       blurb: "Derechos de los padres en escuelas chárter públicas de Arizona (ADE).",
@@ -534,6 +538,7 @@ export const es: Content = {
     ],
     ctaTitle: "¿Listo para inscribirse?",
     ctaText: "Llene un formulario de inscripción por niño y entréguelo en la oficina de registro del plantel. Le ayudamos con los trámites de DES si usa un subsidio.",
+    feeScheduleCta: "Descargar la lista de tarifas",
     effectiveNote: "Las tarifas mostradas provienen de la lista de cuotas vigente desde el 1 de agosto de 2024. Confirme las tarifas actuales con su plantel antes de firmar: llame al {phone} o escriba a",
   },
   policiesPage: {

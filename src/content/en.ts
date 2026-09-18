@@ -260,6 +260,10 @@ export const en = {
       blurb:
         "The full Capstone Quest Pre-K handbook (PDF): admissions, tuition, daily schedule, discipline, and the suspension and expulsion prevention policy.",
     },
+    fees: {
+      title: "Pre-K fee schedule",
+      blurb: "Program rates, payment terms, and the fee agreement families sign. Effective August 1, 2024.",
+    },
     "parent-rights": {
       title: "Parent Rights Handbook",
       blurb: "Arizona public charter school parent rights (ADE).",
@@ -537,6 +541,7 @@ export const en = {
     ],
     ctaTitle: "Ready to enroll?",
     ctaText: "Complete one registration form per child and return it to the campus registrar. We will walk through the DES paperwork with you if you are using a subsidy.",
+    feeScheduleCta: "Download the fee schedule",
     effectiveNote: "Rates shown are from the fee schedule effective August 1, 2024. Confirm current rates with your campus before signing — call {phone} or email",
   },
   policiesPage: {

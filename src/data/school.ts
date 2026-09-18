@@ -109,7 +109,12 @@ export const enrollmentPacket = {
   href: "/documents/capstone-quest-prek-enrollment-packet.pdf",
   fileName: "capstone-quest-prek-enrollment-packet.pdf",
   pages: 13,
-  size: "843 KB",
+  size: "3.6 MB",
+} as const;
+
+/** The rate sheet families sign, served from public/documents. */
+export const feeSchedule = {
+  href: "/documents/capstone-quest-prek-fee-schedule.pdf",
 } as const;
 
 export const parentDocuments = [
@@ -120,12 +125,20 @@ export const parentDocuments = [
     href: "/documents/capstone-quest-parent-handbook.pdf",
   },
   {
+    id: "fees",
+    href: feeSchedule.href,
+  },
+  {
     id: "parent-rights",
     href: "https://www.azed.gov/sites/default/files/2023/08/Parental%20Rights%20Handbook_Public%20Charter%20Schools__2023_Final.pdf",
   },
   {
     id: "student-handbook",
     href: "https://amerischools.org/wp-content/uploads/2025/07/Amerischools-Student-Handbook-last-edited-6-16-25.pdf",
+  },
+  {
+    id: "wellness",
+    href: "https://amerischools.org/wp-content/uploads/2025/08/AmeriSchools-Wellness-Policy-1.pdf",
   },
   // The page shows these in pairs after the handbook; keep the menus adjacent.
   {
@@ -135,10 +148,6 @@ export const parentDocuments = [
   {
     id: "lunch",
     href: "https://amerischools.org/wp-content/uploads/2026/07/August-lunch-menu-copy-4.pdf",
-  },
-  {
-    id: "wellness",
-    href: "https://amerischools.org/wp-content/uploads/2025/08/AmeriSchools-Wellness-Policy-1.pdf",
   },
   {
     id: "supplies",
