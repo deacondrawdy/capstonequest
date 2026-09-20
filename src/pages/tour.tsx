@@ -1,109 +1,95 @@
 import { useState } from "react";
+import { Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
-import { FormPrivacyNotice } from "@/components/form-privacy-notice";
-import {
-  FormDone,
-  FormFailure,
-  SelectField,
-  TextAreaField,
-  TextField,
-  ValidatedForm,
-} from "@/components/form-kit";
-import { Button } from "@/components/ui/button";
-import { campuses, school } from "@/data/school";
-import { saveTour } from "@/lib/inquiries";
-import { AppLink, useContent } from "@/lib/locale";
+import { CalBooker } from "@/components/cal-booker";
+import { campuses } from "@/data/school";
+import { useContent } from "@/lib/locale";
+import { CAMPUS_DEFAULT, type CampusPref } from "@/lib/campus";
 
-/** Tour slots. The value sent to the office is fixed; the label is localized. */
-const TIMES = ["8:30 AM", "9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM"] as const;
-
-type Contact = { phone: string; phoneHref: string };
+function isCampus(value: string | undefined): value is CampusPref {
+  return value === "tucson" || value === "yuma";
+}
 
 export function TourPage({ preset }: { preset?: string }) {
   const c = useContent();
-  const f = c.tourPage.fields;
-  const [done, setDone] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [failed, setFailed] = useState<Contact | null>(null);
-
-  async function onValidSubmit(fd: FormData) {
-    const picked = campuses.find((cam) => cam.slug === String(fd.get("campus") ?? ""));
-    setSending(true);
-    setFailed(null);
-    try {
-      await saveTour({
-        name: String(fd.get("name") ?? ""),
-        email: String(fd.get("email") ?? ""),
-        phone: String(fd.get("phone") ?? ""),
-        campus: String(fd.get("campus") ?? ""),
-        childAge: String(fd.get("childAge") ?? ""),
-        date: String(fd.get("date") ?? ""),
-        time: String(fd.get("time") ?? ""),
-        notes: String(fd.get("notes") ?? ""),
-      });
-      setDone(true);
-    } catch {
-      setFailed(picked ?? school);
-    } finally {
-      setSending(false);
-    }
-  }
+  // ?campus=yuma on the link from a campus page; otherwise Tucson, matching the
+  // sitewide default in lib/campus.ts.
+  const [slug, setSlug] = useState<CampusPref>(isCampus(preset) ? preset : CAMPUS_DEFAULT);
+  const campus = campuses.find((cam) => cam.slug === slug) ?? campuses[0];
 
   return (
     <SiteShell>
-      <div className="mx-auto grid max-w-[1100px] gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="min-w-0">
+      <div className="mx-auto max-w-[1100px] px-5 py-14 sm:px-8">
+        <div className="max-w-2xl">
           <p className="text-sm font-bold tracking-[0.14em] text-brand uppercase">{c.tourPage.eyebrow}</p>
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">{c.tourPage.title}</h1>
           <p className="mt-3 text-muted">{c.tourPage.lede}</p>
-          <img
-            src="/images/classroom-morning.jpg"
-            alt=""
-            className="mt-8 hidden h-64 w-full rounded-[28px] object-cover lg:block"
-          />
         </div>
-        <div className="min-w-0 rounded-[28px] bg-paper-soft p-6 sm:p-8">
-          {done ? (
-            <FormDone>
-              <h2 className="text-2xl font-bold text-navy">{c.tourPage.doneTitle}</h2>
-              <p className="mt-2 text-muted">{c.tourPage.doneText}</p>
-              <Button asChild className="mt-6">
-                <AppLink to="/enroll">{c.common.startEnrollment}</AppLink>
-              </Button>
-            </FormDone>
-          ) : (
-            <ValidatedForm className="grid gap-4 sm:grid-cols-2" onValidSubmit={onValidSubmit}>
-              <TextField label={f.name} name="name" required autoComplete="name" className="sm:col-span-2" />
-              <TextField label={f.email} name="email" type="email" required autoComplete="email" />
-              <TextField label={f.phone} name="phone" type="tel" required autoComplete="tel" />
-              <SelectField label={f.campus} name="campus" defaultValue={preset ?? "tucson"}>
-                {campuses.map((cam) => (
-                  <option key={cam.slug} value={cam.slug}>
-                    {c.campuses[cam.slug].name}
-                  </option>
-                ))}
-              </SelectField>
-              <TextField label={f.childAge} name="childAge" placeholder={f.childAgeHint} />
-              <TextField label={f.date} name="date" type="date" required />
-              <SelectField label={f.time} name="time" defaultValue="9:00 AM">
-                {TIMES.map((t, i) => (
-                  <option key={t} value={t}>
-                    {c.tourPage.timeLabels[i] ?? t}
-                  </option>
-                ))}
-              </SelectField>
-              <TextAreaField label={f.notes} name="notes" placeholder={f.notesHint} className="sm:col-span-2" />
-              {failed ? (
-                <FormFailure template={c.tourPage.failed} phone={failed.phone} phoneHref={failed.phoneHref} />
-              ) : null}
-              <div className="sm:col-span-2">
-                <FormPrivacyNotice className="mb-3" />
-                <Button type="submit" size="lg" disabled={sending}>
-                  {sending ? c.tourPage.sending : c.tourPage.submit}
-                </Button>
-              </div>
-            </ValidatedForm>
-          )}
+
+        {/* Two buttons rather than a tab list: each one swaps the booker below,
+            and `aria-pressed` says which campus is showing. */}
+        <div className="mt-8">
+          <p id="campus-choice" className="text-sm font-bold text-navy">
+            {c.tourPage.pickCampus}
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2" role="group" aria-labelledby="campus-choice">
+            {campuses.map((cam) => {
+              const active = cam.slug === slug;
+              return (
+                <button
+                  key={cam.slug}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setSlug(cam.slug as CampusPref)}
+                  className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors ${
+                    active
+                      ? "border-navy bg-navy text-paper"
+                      : "border-line bg-paper text-navy hover:bg-paper-soft"
+                  }`}
+                >
+                  {c.campuses[cam.slug].name}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-8 lg:grid-cols-[1.35fr_0.65fr]">
+          <div className="min-w-0 rounded-[28px] border border-line bg-paper p-2 sm:p-4">
+            {/* Keyed by campus so switching mounts a fresh booker. */}
+            <CalBooker
+              key={campus.slug}
+              calLink={campus.calLink}
+              namespace={campus.slug === "tucson" ? "tucson-tour" : "yuma-tour"}
+              className="min-h-[640px] w-full"
+            />
+          </div>
+
+          <div className="min-w-0">
+            <div className="rounded-[28px] bg-paper-soft p-6">
+              <h2 className="text-lg font-bold text-navy">{c.tourPage.helpTitle}</h2>
+              <p className="mt-2 text-sm text-muted">{c.tourPage.helpText}</p>
+              <p className="mt-4 flex items-center gap-2 text-sm">
+                <Phone className="size-4 shrink-0 text-brand" aria-hidden />
+                <a href={campus.phoneHref} className="font-semibold text-navy hover:underline">
+                  {campus.phone}
+                </a>
+              </p>
+              <p className="mt-2 text-sm text-muted">
+                {campus.address}
+                <br />
+                {campus.cityState}
+              </p>
+              {/* The booker itself is English-only, so a Spanish reader is told
+                  before they meet it, not after. */}
+              <p className="mt-4 text-sm text-muted">{c.tourPage.bookingNote}</p>
+            </div>
+            <img
+              src="/images/classroom-morning.jpg"
+              alt=""
+              className="mt-6 hidden h-56 w-full rounded-[28px] object-cover lg:block"
+            />
+          </div>
         </div>
       </div>
     </SiteShell>

@@ -192,7 +192,8 @@ export const en = {
       feel: "A home away from home, all day",
       bannerAlt:
         "The Tucson campus building, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates” beside the AmeriSchool Academy sign.",
-      imageAlt: "Tucson campus exterior",
+      imageAlt:
+        "The Tucson campus: a long brick building behind a lawn, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates”.",
     },
     yuma: {
       name: "Yuma Campus",
@@ -613,21 +614,11 @@ export const en = {
   tourPage: {
     eyebrow: "Visit",
     title: "Schedule a tour",
-    lede: "Walk the classrooms, meet a lead teacher, and see a real morning. Most tours last about 40 minutes. We can often confirm the same day.",
-    doneTitle: "You’re on the calendar",
-    doneText: "We saved your request and will email a confirmation. Want to enroll while you wait?",
-    sent: "Tour requested — we will confirm by email.",
-    failed: "We could not send your request. Please call {phone}.",
-    fields: {
-      name: "Your name", email: "Email", phone: "Phone", campus: "Campus",
-      childAge: "Child’s age", childAgeHint: "e.g. 3 years, 10 months",
-      date: "Preferred date", time: "Preferred time",
-      notes: "Anything we should know?", notesHint: "Sibling, DES voucher, allergies…",
-    },
-    /** Display labels for the fixed tour slots in tour.tsx, in the same order. */
-    timeLabels: ["8:30 AM", "9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM"],
-    sending: "Sending…",
-    submit: "Request this tour",
+    lede: "Walk the classrooms, meet a lead teacher, and see a real morning. Tours last about 30 minutes. Pick a campus, then choose any open time below.",
+    pickCampus: "Which campus would you like to visit?",
+    helpTitle: "Rather talk to someone?",
+    helpText: "Call the campus and we will find a time with you. We are happy to answer questions about the program, tuition, or DES before you visit.",
+    bookingNote: "Booking is handled by Cal.com, and that step is in English. Call us if you would like to book in Spanish.",
   },
 
   /** Enrollment is on paper: this page hands out the packet, it collects nothing. */
@@ -680,11 +671,12 @@ export const en = {
     improvingTitle: "Where we are still improving",
     improvingIntro: "We would rather tell you than have you find out.",
     auditResult: "The September 16 audit identified six items. On re-testing, three were corrected: content landing beneath the page header when you move through a page or follow a link, the Spanish and English switch not being marked as foreign-language text, and the structure of the homepage regions. Two were found to work correctly already: the way screen readers announce our school name, and the keyboard focus outline on dark buttons.",
-    openIntro: "One item from the audit remains open, along with three other limitations we know about:",
+    openIntro: "One item from the audit remains open, along with four other limitations we know about:",
     open: [
       "We are reviewing the colors of the lettering of our name on the homepage. They meet the required contrast at the size shown, but with little margin.",
       "Our downloadable Parent Handbook PDF has not been fully checked for accessibility. The handbook is also published on this site as a web page, and that version is accessible.",
       "Our enrollment packet is a scanned PDF, so a screen reader cannot read it and it cannot be filled in on screen. If you need it in another format, or help completing it, contact your campus and we will go through it with you by phone or in person.",
+      "Tour booking on our Schedule a tour page is provided by Cal.com. That part of the page is built by them, not by us, and it is only in English. If it does not work for you, call your campus and we will book the tour with you.",
       "Some documents on our Parent resources page — the student handbook, wellness policy, meal menus and supply list — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
     ],
     helpTitle: "If something does not work for you",
@@ -712,7 +704,7 @@ export const en = {
     summary: [
       "The only information we collect is what you type into a form and send us.",
       "There is no advertising, no tracking, and no cookies on this site.",
-      "Form submissions are emailed to our school offices. We do not sell or share them.",
+      "Form submissions are emailed to our school offices, and tour bookings go through Cal.com. We do not sell or share either.",
     ],
     sections: {
       who: {
@@ -722,7 +714,7 @@ export const en = {
       collect: {
         title: "What we collect",
         intro: "We collect information only when you choose to send it to us using one of the forms on this site. Nothing is gathered in the background.",
-        tour: "Tour request: your name, email address, phone number, the campus you want to visit, your child’s age, your preferred date and time, and anything you write in the notes box. People often use that box for things like allergies or a sibling’s name, so please share only what you are comfortable sending by email.",
+        tour: "Tour booking: tours are booked through Cal.com, a scheduling service acting on our behalf. Cal.com asks for your name, email address and phone number, and emails you a confirmation. Cal.com handles that booking on our behalf; we see the booking in our calendar.",
         contact: "Contact form: your name, email address, the topic you pick, and your message.",
         careers: "Job application: your name, email address, phone number, the role and campus you are applying for, and your message.",
         note: "We do not ask for a Social Security number, payment details, or immigration status anywhere on this site.",
@@ -750,7 +742,7 @@ export const en = {
       },
       children: {
         title: "Information about children",
-        body: "The tour request form is filled in by a parent or guardian and asks for your child’s age. We use it only to respond to your request. Enrollment itself is done on paper: the enrollment packet is downloaded from this site but completed and returned to the campus registrar, so this site never receives it. We do not knowingly collect information directly from children, and this site is not directed at children.",
+        body: "Tour bookings are made by a parent or guardian. We use it only to respond to your request. Enrollment itself is done on paper: the enrollment packet is downloaded from this site but completed and returned to the campus registrar, so this site never receives it. We do not knowingly collect information directly from children, and this site is not directed at children.",
       },
       retention: {
         title: "How long we keep it",

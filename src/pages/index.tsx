@@ -118,9 +118,11 @@ export function Home() {
               ))}
             </div>
           </div>
+          {/* Landscape tiles: both campus photos are wide building shots, and a
+              tall crop cut the Tucson enrolment banner mid-word. */}
           <div className="grid grid-cols-2 gap-3">
-            <img src="/images/tucson.jpg" alt={c.campuses.tucson.imageAlt} className="h-56 w-full rounded-[24px] object-cover sm:h-72" />
-            <img src="/images/yuma.jpg" alt={c.campuses.yuma.imageAlt} className="mt-8 h-56 w-full rounded-[24px] object-cover sm:h-72" />
+            <img src="/images/tucson.jpg" alt={c.campuses.tucson.imageAlt} className="h-44 w-full rounded-[24px] object-cover sm:h-52" />
+            <img src="/images/yuma.jpg" alt={c.campuses.yuma.imageAlt} className="mt-8 h-44 w-full rounded-[24px] object-cover sm:h-52" />
           </div>
         </div>
       </section>

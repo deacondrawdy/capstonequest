@@ -191,7 +191,8 @@ export const es: Content = {
       feel: "Un hogar fuera de casa, todo el día",
       bannerAlt:
         "El edificio del plantel de Tucson, con una manta que dice “Inscripciones abiertas para preescolar — Con licencia, aprobado por DES, día completo, tarifas accesibles” junto al letrero de AmeriSchool Academy.",
-      imageAlt: "Fachada del plantel de Tucson",
+      imageAlt:
+        "El plantel de Tucson: un edificio largo de ladrillo detrás del césped, con una manta que dice “Inscripciones abiertas para preescolar — Con licencia, aprobado por DES, día completo, tarifas accesibles”.",
     },
     yuma: {
       name: "Plantel de Yuma",
@@ -608,22 +609,13 @@ export const es: Content = {
     submit: "Enviar mensaje",
   },
   tourPage: {
-    eyebrow: "Visita",
+    eyebrow: "Visítenos",
     title: "Agende una visita",
-    lede: "Recorra los salones, conozca a un maestro titular y vea una mañana real. La mayoría de las visitas dura unos 40 minutos. Muchas veces podemos confirmarla el mismo día.",
-    doneTitle: "Ya está en el calendario",
-    doneText: "Guardamos su solicitud y le enviaremos la confirmación por correo. ¿Quiere inscribirse mientras tanto?",
-    sent: "Visita solicitada. Se la confirmaremos por correo electrónico.",
-    failed: "No pudimos enviar su solicitud. Por favor llame al {phone}.",
-    fields: {
-      name: "Su nombre", email: "Correo electrónico", phone: "Teléfono", campus: "Plantel",
-      childAge: "Edad del niño", childAgeHint: "por ejemplo, 3 años y 10 meses",
-      date: "Fecha preferida", time: "Hora preferida",
-      notes: "¿Algo que debamos saber?", notesHint: "Hermanos, vale de DES, alergias…",
-    },
-    timeLabels: ["8:30 a. m.", "9:00 a. m.", "10:30 a. m.", "1:00 p. m.", "3:30 p. m."],
-    sending: "Enviando…",
-    submit: "Solicitar esta visita",
+    lede: "Recorra los salones, conozca a una maestra y vea una mañana real. Las visitas duran unos 30 minutos. Elija un plantel y luego cualquier horario disponible.",
+    pickCampus: "¿Qué plantel le gustaría visitar?",
+    helpTitle: "¿Prefiere hablar con alguien?",
+    helpText: "Llame al plantel y buscamos un horario con usted. Con gusto respondemos preguntas sobre el programa, la colegiatura o DES antes de su visita.",
+    bookingNote: "Las reservaciones las maneja Cal.com y ese paso está en inglés. Llámenos si desea reservar en español.",
   },
 
   enrollPage: {
@@ -666,11 +658,12 @@ export const es: Content = {
     improvingTitle: "En qué seguimos mejorando",
     improvingIntro: "Preferimos decírselo nosotros.",
     auditResult: "La auditoría del 16 de septiembre de 2026 identificó seis puntos. Al volver a probarlos, tres se corrigieron: el contenido que quedaba debajo del encabezado del sitio al recorrer una página o seguir un enlace, el botón de cambio de idioma que no estaba marcado como texto en otro idioma y la estructura de las regiones de la página de inicio. Dos ya funcionaban correctamente: la forma en que los lectores de pantalla anuncian el nombre de la escuela y el contorno de foco del teclado en los botones oscuros.",
-    openIntro: "Queda abierto un punto de la auditoría, junto con otras tres limitaciones que conocemos:",
+    openIntro: "Queda abierto un punto de la auditoría, junto con otras cuatro limitaciones que conocemos:",
     open: [
       "Estamos revisando los colores de las letras de nuestro nombre en la página de inicio. Cumplen con el contraste exigido en el tamaño en que aparecen, pero con poco margen.",
       "El Manual para Padres en PDF aún no se ha revisado por completo en cuanto a accesibilidad. El manual también está publicado en este sitio como página web, y esa versión sí es accesible.",
       "Nuestro paquete de inscripción es un PDF escaneado, por lo que un lector de pantalla no puede leerlo y no se puede llenar en la pantalla. Si lo necesita en otro formato, o ayuda para llenarlo, comuníquese con su plantel y lo revisaremos con usted por teléfono o en persona.",
+      "La reservación de visitas en la página Agende una visita la proporciona Cal.com. Esa parte de la página la construyen ellos, no nosotros, y solo está en inglés. Si no le funciona, llame a su plantel y agendamos la visita con usted.",
       "Algunos documentos de la página de Recursos para familias —el manual del estudiante, la política de bienestar, los menús y la lista de útiles— los publica AmeriSchools Academy, no nosotros, y es posible que no sean totalmente accesibles. Le daremos cualquiera de ellos en otro formato si lo solicita.",
     ],
     helpTitle: "Si algo no le funciona",
@@ -698,7 +691,7 @@ export const es: Content = {
     summary: [
       "Lo único que recopilamos es lo que usted escribe en un formulario y nos envía.",
       "Este sitio no tiene publicidad, ni rastreo, ni cookies.",
-      "Los formularios llegan por correo a las oficinas de la escuela. No vendemos ni compartimos su información.",
+      "Los formularios llegan por correo a las oficinas de la escuela y las visitas se agendan por medio de Cal.com. No vendemos ni compartimos su información.",
     ],
     sections: {
       who: {
@@ -708,7 +701,7 @@ export const es: Content = {
       collect: {
         title: "Qué información recopilamos",
         intro: "Solo recopilamos información cuando usted decide enviárnosla por medio de alguno de los formularios del sitio. No se recoge nada en segundo plano.",
-        tour: "Solicitud de visita: su nombre, correo electrónico y teléfono, el plantel que desea visitar, la edad de su hijo, la fecha y hora que prefiere, y lo que escriba en el cuadro de notas. Muchas familias usan ese cuadro para mencionar alergias o el nombre de un hermano, así que comparta solo lo que se sienta cómodo enviando por correo.",
+        tour: "Reservación de visitas: las visitas se agendan a través de Cal.com, un servicio de programación que actúa por cuenta nuestra. Cal.com le pide su nombre, correo electrónico y teléfono, y le envía una confirmación. Cal.com gestiona esa reservación por cuenta nuestra; nosotros vemos la cita en nuestro calendario.",
         contact: "Formulario de contacto: su nombre, su correo electrónico, el tema que elija y su mensaje.",
         careers: "Solicitud de empleo: su nombre, correo electrónico y teléfono, el puesto y el plantel que solicita, y su mensaje.",
         note: "En ninguna parte de este sitio le pedimos número de Seguro Social, datos de pago ni información sobre su situación migratoria.",
@@ -736,7 +729,7 @@ export const es: Content = {
       },
       children: {
         title: "Información sobre los niños",
-        body: "El formulario para solicitar una visita lo llena un padre, madre o tutor y pide la edad de su hijo. La usamos únicamente para responder su solicitud. La inscripción se hace en papel: el paquete de inscripción se descarga de este sitio, pero se llena y se entrega en la oficina de inscripciones del plantel, así que este sitio nunca lo recibe. No recopilamos información directamente de los niños a sabiendas, y este sitio no está dirigido a niños.",
+        body: "Las visitas las agenda un padre, madre o tutor. La inscripción se hace en papel: el paquete de inscripción se descarga de este sitio, pero se llena y se entrega en la oficina de inscripciones del plantel, así que este sitio nunca lo recibe. No recopilamos información directamente de los niños a sabiendas, y este sitio no está dirigido a niños.",
       },
       retention: {
         title: "Cuánto tiempo la conservamos",

@@ -27,6 +27,9 @@ export const campuses = [
     phone: "(520) 462-7788",
     phoneHref: "tel:+15204627788",
     image: "/images/tucson.jpg",
+    // Cal.com event type for campus tours. The voice agent books against the
+    // same event type, so the phone and the website cannot double-book a slot.
+    calLink: "capstonequestacademy/30min",
     // Wide (4:1) building shot used as the page banner. Only Tucson has one;
     // the campus page falls back to the overlaid `image` hero without it.
     banner: "/images/tucson-banner.jpg",
@@ -51,6 +54,7 @@ export const campuses = [
     phone: "(928) 977-9318",
     phoneHref: "tel:+19289779318",
     image: "/images/yuma.jpg",
+    calLink: "capstonequestacademy/yuma-tour-for-students-and-parents",
     blurb:
       "A welcoming Yuma campus with a covered drop-off, sun-safe outdoor play, and the same DES-approved Pre-K program families trust across Arizona.",
     hours: "7:00 AM – 6:00 PM",
