@@ -29,7 +29,7 @@ export const campuses = [
     image: "/images/tucson.jpg",
     // Cal.com event type for campus tours. The voice agent books against the
     // same event type, so the phone and the website cannot double-book a slot.
-    calLink: "capstonequestacademy/30min",
+    calLink: "capstonequestacademy/tucson-tour-for-students-and-parents",
     // Wide (4:1) building shot used as the page banner. Only Tucson has one;
     // the campus page falls back to the overlaid `image` hero without it.
     banner: "/images/tucson-banner.jpg",
