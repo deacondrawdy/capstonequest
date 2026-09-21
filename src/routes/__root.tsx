@@ -1,11 +1,11 @@
-import { createRootRoute, HeadContent, Outlet, redirect, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
 import { CAMPUS_BOOT_SCRIPT } from "@/lib/campus";
 import { localizePath, stripLocale, useLocale } from "@/lib/locale";
-import { absoluteUrl, SITE_ORIGIN, shouldRedirectHost } from "@/lib/site-url";
+import { absoluteUrl } from "@/lib/site-url";
 import { pageTitle } from "@/lib/page-title";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
@@ -13,18 +13,6 @@ import { useRouterState } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
-  // One address for the site. The app also answers on its Railway hostname and
-  // on www., and a search engine that finds two copies of every page splits the
-  // site between them. Server-side only: on the client the browser is already
-  // on whatever host it resolved.
-  beforeLoad: async ({ location }) => {
-    if (typeof window !== "undefined") return;
-    const { getRequestHost } = await import("@tanstack/react-start/server");
-    const host = getRequestHost({ xForwardedHost: true });
-    if (shouldRedirectHost(host)) {
-      throw redirect({ href: `${SITE_ORIGIN}${location.href}`, code: 301 });
-    }
-  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },

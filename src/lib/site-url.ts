@@ -1,34 +1,20 @@
 /**
  * Where this site actually lives.
  *
- * The app answers on its Railway hostname as well as the real domain. Left
- * alone, a search engine indexes both and splits the site between two copies of
- * every page, so `canonicalHost` redirects everything to one of them and the
- * `<link rel="alternate">` tags point at absolute URLs on it.
+ * The app answers on its Railway hostname as well as the real domain, so every
+ * page carries a rel=canonical and absolute hreflang links pointing here — that
+ * is what tells a search engine which copy counts.
  *
- * SITE_ORIGIN overrides this for a staging deployment that should not redirect
- * to production.
+ * Redirecting the other hostnames is not done in the app: a route file may not
+ * import server-only modules, so the host is not readable from here. The www
+ * form is redirected by a Cloudflare rule, and the Railway hostname is removed
+ * from the service once the custom domain works.
+ *
+ * SITE_ORIGIN overrides the origin for a staging deployment.
  */
 export const SITE_ORIGIN =
   (typeof process !== "undefined" && process.env?.SITE_ORIGIN?.trim()) ||
   "https://capstonequestacademy.com";
-
-/** "capstonequestacademy.com" */
-export const SITE_HOST = SITE_ORIGIN.replace(/^https?:\/\//, "").replace(/\/$/, "");
-
-/**
- * True for a host that should be redirected to `SITE_HOST`: the Railway
- * hostname, and the www. form of the real domain.
- *
- * Localhost and preview hosts are left alone, so development and Railway's
- * per-deployment preview URLs keep working.
- */
-export function shouldRedirectHost(host: string): boolean {
-  const bare = host.toLowerCase().split(":")[0];
-  if (!bare || bare === SITE_HOST) return false;
-  if (bare === `www.${SITE_HOST}`) return true;
-  return bare.endsWith(".up.railway.app");
-}
 
 /** An absolute URL on the canonical origin, for a path that starts with "/". */
 export function absoluteUrl(path: string): string {
