@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { VideoModal } from "@/components/video-modal";
 import { Button } from "@/components/ui/button";
+import { OwliviaLauncher } from "@/components/owlivia-launcher";
 import { academyColors } from "@/data/school";
 import { cn } from "@/lib/utils";
 
@@ -117,24 +118,28 @@ export function Hero() {
             />
           </div>
 
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-            {c.hero.lede}
-          </p>
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">{c.hero.lede}</p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <Button asChild size="xl">
-              <AppLink to="/tour">
-                <CalendarDays className="size-4" />
-                {c.common.scheduleTour}
-                <span aria-hidden>→</span>
-              </AppLink>
-            </Button>
-            {SHOW_VIDEO ? (
-              <Button variant="outline" size="xl" onClick={() => setVideoOpen(true)}>
-                <Play className="size-4 fill-navy" />
-                {c.hero.watchVideo}
+          {/* A column sized to its widest child, so the Owlivia button below
+              lines up with the tour button rather than ending short of it. */}
+          <div className="mt-7 flex w-fit flex-col items-stretch gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <Button asChild size="xl">
+                <AppLink to="/tour">
+                  <CalendarDays className="size-4" />
+                  {c.common.scheduleTour}
+                  <span aria-hidden>→</span>
+                </AppLink>
               </Button>
-            ) : null}
+              {SHOW_VIDEO ? (
+                <Button variant="outline" size="xl" onClick={() => setVideoOpen(true)}>
+                  <Play className="size-4 fill-navy" />
+                  {c.hero.watchVideo}
+                </Button>
+              ) : null}
+            </div>
+            {/* A parent who is not ready to pick a date can ask a question. */}
+            <OwliviaLauncher className="w-full" />
           </div>
         </div>
 
@@ -150,7 +155,12 @@ export function Hero() {
           <ul className="flex flex-col gap-3.5 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-4 xl:flex xl:gap-3.5">
             {reasons.map((r) => (
               <li key={r.title} className="flex gap-3">
-                <span className={cn("mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full text-paper", r.bg)}>
+                <span
+                  className={cn(
+                    "mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full text-paper",
+                    r.bg,
+                  )}
+                >
                   <r.icon className="size-4" strokeWidth={2.2} />
                 </span>
                 <div>
@@ -172,9 +182,7 @@ export function Hero() {
             </span>
             <div>
               <p className="text-[14px] font-bold text-navy">{c.hero.qualityFirst.title}</p>
-              <p className="text-[13px] leading-snug text-muted">
-                {c.hero.qualityFirst.text}
-              </p>
+              <p className="text-[13px] leading-snug text-muted">{c.hero.qualityFirst.text}</p>
               <span className="sr-only"> {c.common.opensNewTab}</span>
             </div>
           </a>

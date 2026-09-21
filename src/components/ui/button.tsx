@@ -13,6 +13,7 @@ const buttonVariants = cva(
         brand:
           "bg-brand text-paper shadow-[0_8px_18px_-10px_rgb(26_77_184_/_0.6)] hover:bg-navy",
         gold: "bg-gold text-ink hover:bg-gold-deep",
+        owl: "bg-owl text-paper shadow-[0_8px_18px_-10px_rgb(46_125_50_/_0.7)] hover:bg-owl-deep",
         outline:
           "border-2 border-navy bg-paper text-navy hover:bg-paper-soft",
         ghost: "text-navy hover:bg-paper-soft",

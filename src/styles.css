@@ -168,6 +168,11 @@
   --color-rainbow-a: #2b7de9;
   --color-rainbow-c: #e53935;
   --color-rainbow-a2: #43a047;
+  /* The Ask Owlivia button, the same green as the second A in ACADEMY but
+     darkened: #43a047 behind white text is 3.30:1, under the 4.5:1 WCAG 1.4.3
+     asks for button text. #2e7d32 is 5.13:1 and reads as the same green. */
+  --color-owl: #2e7d32;
+  --color-owl-deep: #266a29;
   /* D, M and Y were #ff9800, #f4c400 and #f9a825: 2.16, 1.65 and 1.97 on
      white, under the 3:1 WCAG 1.4.3 needs for large text. These are the nearest
      shades of the same hue that clear it (3.10, 3.08, 3.08). Automated checkers

@@ -1,4 +1,3 @@
-import { OwliviaLauncher } from "@/components/owlivia-launcher";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader, TopBanner } from "@/components/site-header";
 import { useContent } from "@/lib/locale";
@@ -24,7 +23,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <SiteFooter />
-      <OwliviaLauncher />
     </div>
   );
 }
