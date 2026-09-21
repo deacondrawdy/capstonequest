@@ -1,10 +1,11 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Outlet, redirect, Scripts } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
 import { CAMPUS_BOOT_SCRIPT } from "@/lib/campus";
 import { localizePath, stripLocale, useLocale } from "@/lib/locale";
+import { absoluteUrl, SITE_ORIGIN, shouldRedirectHost } from "@/lib/site-url";
 import { pageTitle } from "@/lib/page-title";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
@@ -12,6 +13,18 @@ import { useRouterState } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
+  // One address for the site. The app also answers on its Railway hostname and
+  // on www., and a search engine that finds two copies of every page splits the
+  // site between them. Server-side only: on the client the browser is already
+  // on whatever host it resolved.
+  beforeLoad: async ({ location }) => {
+    if (typeof window !== "undefined") return;
+    const { getRequestHost } = await import("@tanstack/react-start/server");
+    const host = getRequestHost({ xForwardedHost: true });
+    if (shouldRedirectHost(host)) {
+      throw redirect({ href: `${SITE_ORIGIN}${location.href}`, code: 301 });
+    }
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -72,11 +85,12 @@ function RootDocument() {
             cannot see the active locale. React hoists these into <head>. */}
         <title>{pageTitle(canonical, content)}</title>
         <meta name="description" content={meta.description} />
-        {/* Relative hrefs: the production domain is not configured here yet.
-            Swap for absolute URLs once it is — Google prefers them. */}
-        <link rel="alternate" hrefLang="en" href={localizePath(canonical, "en")} />
-        <link rel="alternate" hrefLang="es" href={localizePath(canonical, "es")} />
-        <link rel="alternate" hrefLang="x-default" href={localizePath(canonical, "en")} />
+        {/* Absolute, on the canonical origin: Google prefers them, and the app
+            answers on more than one hostname. */}
+        <link rel="canonical" href={absoluteUrl(localizePath(canonical, locale))} />
+        <link rel="alternate" hrefLang="en" href={absoluteUrl(localizePath(canonical, "en"))} />
+        <link rel="alternate" hrefLang="es" href={absoluteUrl(localizePath(canonical, "es"))} />
+        <link rel="alternate" hrefLang="x-default" href={absoluteUrl(localizePath(canonical, "en"))} />
         {/* Applies saved accessibility preferences before first paint, so a
             visitor who chose larger text never sees the default size flash. */}
         <script dangerouslySetInnerHTML={{ __html: A11Y_BOOT_SCRIPT }} />
