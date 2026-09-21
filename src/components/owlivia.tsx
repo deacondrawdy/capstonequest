@@ -255,9 +255,13 @@ export function Owlivia({ open, onOpenChange }: { open: boolean; onOpenChange: (
           </Button>
         </form>
 
-        <p className="px-6 pb-5 text-xs text-muted">
+        <p className="px-6 pb-5 text-center text-xs text-balance text-muted">
           {c.owlivia.disclaimer}{" "}
-          <a href={campus.phoneHref} className="font-semibold text-brand underline underline-offset-2">
+          {/* nowrap: the number was breaking after the area code. */}
+          <a
+            href={campus.phoneHref}
+            className="font-semibold whitespace-nowrap text-brand underline underline-offset-2"
+          >
             {campus.phone}
           </a>
         </p>
