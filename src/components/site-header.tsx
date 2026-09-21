@@ -6,6 +6,7 @@ import { SiteSearch } from "@/components/site-search";
 import { AccessibilityMenu } from "@/components/accessibility-menu";
 import { LocaleSwitch } from "@/components/locale-switch";
 import { CampusSwitch } from "@/components/campus-switch";
+import { OwlMark, OwliviaPanel } from "@/components/owlivia-launcher";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -74,6 +75,9 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const c = useContent();
   const headerRef = useRef<HTMLElement>(null);
+  // One panel, opened from the desktop button or the mobile menu, so both
+  // share a conversation instead of starting two chats.
+  const [owlivia, setOwlivia] = useState(false);
 
   // Publishes the header's real height as --header-h, which sets
   // scroll-padding-top in styles.css (WCAG 2.4.11). Measured rather than
@@ -204,6 +208,22 @@ export function SiteHeader() {
           <div className="max-[359px]:hidden sm:hidden">
             <SiteSearch variant="icon" />
           </div>
+          {/* Between Contact and the phone number, and only where the hero is
+              not already offering her: on the homepage that would be twice. */}
+          {path === "/" ? null : (
+            <Button
+              type="button"
+              variant="owl"
+              size="sm"
+              // Icon only between lg and xl: with the label, the longer Spanish
+              // nav ran 109px past 1024px (WCAG 1.4.10).
+              className="hidden shrink-0 lg:inline-flex max-xl:size-11 max-xl:justify-center max-xl:p-0"
+              onClick={() => setOwlivia(true)}
+            >
+              <OwlMark className="size-7 xl:-ml-2" />
+              <span className="max-xl:sr-only">{c.owlivia.open}</span>
+            </Button>
+          )}
           {/* Both numbers are rendered; CSS shows the one matching the
               visitor's campus preference. Choosing in CSS keeps the SSR HTML
               valid for either campus and keeps the hidden number out of the
@@ -266,6 +286,20 @@ export function SiteHeader() {
                     {c.common.enroll}
                   </AppLink>
                 </Button>
+                {/* The sheet closes first: a dialog opened from inside it would
+                    leave two overlays fighting over focus. */}
+                <Button
+                  type="button"
+                  variant="owl"
+                  className="mt-2"
+                  onClick={() => {
+                    setOpen(false);
+                    setOwlivia(true);
+                  }}
+                >
+                  <OwlMark className="-ml-2 size-8" />
+                  {c.owlivia.open}
+                </Button>
                 {campuses.map((entry) => (
                   <a
                     key={`sheet-${entry.slug}`}
@@ -288,6 +322,7 @@ export function SiteHeader() {
           </Sheet>
         </div>
       </div>
+      <OwliviaPanel open={owlivia} onOpenChange={setOwlivia} />
     </header>
   );
 }
