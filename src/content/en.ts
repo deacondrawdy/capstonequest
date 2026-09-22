@@ -479,7 +479,8 @@ export const en = {
   homePage: {
     eyebrow: "Pre-K in Tucson & Yuma",
     title: "Little steps make big dreams come true",
-    welcome: "Welcome to Capstone Quest Academy, where little steps make big dreams come true. Nestled in the heart of Tucson and Yuma since 2013, our nurturing Pre-K programs guide little ones on an adventure of learning and growth.",
+    welcome:
+      "Welcome to Capstone Quest Academy, where little steps make big dreams come true. We are the most affordable Pre-K in the communities we serve. Located in the AmeriSchools campuses nestled in the heart of Tucson and Yuma since 2013, our nurturing Pre-K programs guide little ones on an adventure of learning and growth.",
     body: "Campuses are a home away from home — play, discovery, and a kindergarten-ready year without rushing childhood. Instruction runs five days a week. Doors open 7:00 AM – 6:00 PM, Monday–Friday, with before- and after-care for working families.",
     pills: [
       "Ages 3–5, Tucson and Yuma since 2013",

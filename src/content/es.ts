@@ -476,7 +476,8 @@ export const es: Content = {
   homePage: {
     eyebrow: "Preescolar en Tucson y Yuma",
     title: "Los pequeños pasos hacen realidad los grandes sueños",
-    welcome: "Bienvenido a Capstone Quest Academy, donde los pequeños pasos hacen realidad los grandes sueños. En el corazón de Tucson y Yuma desde 2013, nuestros programas preescolares acompañan a los más pequeños en una aventura de aprendizaje y crecimiento.",
+    welcome:
+      "Bienvenido a Capstone Quest Academy, donde los pequeños pasos hacen realidad los grandes sueños. Somos el preescolar más accesible de las comunidades a las que servimos. Ubicados en los planteles de AmeriSchools, en el corazón de Tucson y Yuma desde 2013, nuestros programas preescolares acompañan a los más pequeños en una aventura de aprendizaje y crecimiento.",
     body: "Los planteles son un hogar fuera de casa: juego, descubrimiento y un año de preparación para el kínder sin apresurar la infancia. Las clases son cinco días a la semana. Abrimos de 7:00 a. m. a 6:00 p. m., de lunes a viernes, con cuidado antes y después de clases para familias trabajadoras.",
     pills: [
       "De 3 a 5 años, en Tucson y Yuma desde 2013",
