@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { FormPrivacyNotice } from "@/components/form-privacy-notice";
 import {
@@ -11,7 +11,7 @@ import {
   ValidatedForm,
 } from "@/components/form-kit";
 import { Button } from "@/components/ui/button";
-import { campuses, school } from "@/data/school";
+import { campuses, school, social } from "@/data/school";
 import { useContent } from "@/lib/locale";
 import { saveContact } from "@/lib/inquiries";
 
@@ -63,6 +63,31 @@ export function ContactPage() {
               </a>
             </li>
           </ul>
+          {/* Someone on this page is looking for a way to reach the school, so
+              the profiles belong here as well as in the footer. */}
+          <div className="mt-8">
+            <h2 className="text-sm font-bold tracking-wide text-navy uppercase">{c.footer.follow}</h2>
+            <ul className="mt-3 flex gap-3">
+              {social.map((profile) => {
+                const Icon = profile.id === "facebook" ? Facebook : Instagram;
+                return (
+                  <li key={profile.id}>
+                    <a
+                      href={profile.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex size-11 items-center justify-center rounded-full border border-line text-brand transition-colors hover:bg-paper-soft focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                    >
+                      <Icon className="size-5" aria-hidden />
+                      <span className="sr-only">
+                        {c.footer.followLabel.replace("{name}", profile.name)} {c.common.opensNewTab}
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
           <div className="mt-8 space-y-4">
             {campuses.map((cam) => (
               <p key={cam.slug} className="flex gap-3 text-sm text-muted">

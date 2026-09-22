@@ -1,6 +1,6 @@
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "@/components/logo";
-import { campuses, school } from "@/data/school";
+import { campuses, school, social } from "@/data/school";
 import { features } from "@/data/features";
 import { AppLink, useContent } from "@/lib/locale";
 
@@ -134,6 +134,30 @@ export function SiteFooter() {
               <Clock className="size-4" />
               {c.common.hoursLine}
             </li>
+          </ul>
+          {/* Footer, not the header: see the note on `social` in data/school.ts. */}
+          <h2 className="mt-6 mb-3 text-sm font-bold tracking-wide uppercase">{c.footer.follow}</h2>
+          <ul className="flex gap-3">
+            {social.map((profile) => {
+              const Icon = profile.id === "facebook" ? Facebook : Instagram;
+              return (
+                <li key={profile.id}>
+                  <a
+                    href={profile.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-paper transition-colors hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                  >
+                    <Icon className="size-5" aria-hidden />
+                    {/* The school's name is in the label, so a screen reader and
+                        a search engine read these as the school's profiles. */}
+                    <span className="sr-only">
+                      {c.footer.followLabel.replace("{name}", profile.name)} {c.common.opensNewTab}
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

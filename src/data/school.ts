@@ -17,6 +17,20 @@ export const school = {
   since: 2013,
 } as const;
 
+/**
+ * The school's social profiles, one account for both campuses.
+ *
+ * Linked from the footer and the Contact page only, never the header: a social
+ * link in the header sits beside Enroll and the phone number and sends a parent
+ * to an app built to keep them. In the footer it does the job it is good at —
+ * showing a family the classrooms and other parents — without competing with
+ * the conversion path.
+ */
+export const social = [
+  { id: "facebook", name: "Facebook", href: "https://www.facebook.com/capstonequestacademy" },
+  { id: "instagram", name: "Instagram", href: "https://www.instagram.com/capstonequestacademy" },
+] as const;
+
 export const campuses = [
   {
     slug: "tucson",
