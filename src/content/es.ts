@@ -631,6 +631,7 @@ export const es: Content = {
     youSaid: "Usted: ",
     noReply: "Disculpe, no entendí eso. ¿Podría decirlo de otra forma?",
     failed: "Disculpe, tengo problemas en este momento. Por favor llame al {phone}.",
+    slow: "Disculpe, esto está tardando más de lo normal. Inténtelo otra vez o llame al {phone}.",
     disclaimer: "Owlivia es una asistente automatizada y puede equivocarse. Para algo importante, llame al",
   },
 

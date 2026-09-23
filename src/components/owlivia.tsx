@@ -44,7 +44,6 @@ export function Owlivia({ open, onOpenChange }: { open: boolean; onOpenChange: (
   const [messages, setMessages] = useState<Message[]>([]);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
-  const [broken, setBroken] = useState(false);
 
   const chatId = useRef<string | null>(null);
   const client = useRef<RetellClient | null>(null);
@@ -131,9 +130,16 @@ export function Owlivia({ open, onOpenChange }: { open: boolean; onOpenChange: (
       }
       const { reply } = await sendMessage({ data: { chatId: chatId.current, content: text } });
       add("agent", reply || c.owlivia.noReply);
-    } catch {
-      setBroken(true);
-      add("agent", c.owlivia.failed.replace("{phone}", campus.phone));
+    } catch (error) {
+      // The input stays usable. A failed turn used to lock the chat for the
+      // rest of the visit, so a parent whose question timed out had to reload
+      // the page to ask anything at all.
+      const slow = error instanceof Error && /timed out|aborted|timeout/i.test(error.message);
+      const template = slow ? c.owlivia.slow : c.owlivia.failed;
+      add("agent", template.replace("{phone}", campus.phone));
+      // A chat Retell has lost is not worth reusing; the next message opens a
+      // fresh one rather than failing against a dead id.
+      if (!slow) chatId.current = null;
     } finally {
       setBusy(false);
       inputRef.current?.focus();
@@ -246,10 +252,9 @@ export function Owlivia({ open, onOpenChange }: { open: boolean; onOpenChange: (
             placeholder={c.owlivia.placeholder}
             autoComplete="off"
             maxLength={1000}
-            disabled={broken}
             className="min-w-0 flex-1 rounded-full border border-input bg-paper px-4 py-2.5 text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-60"
           />
-          <Button type="submit" size="sm" disabled={busy || broken || !draft.trim()}>
+          <Button type="submit" size="sm" disabled={busy || !draft.trim()}>
             <Send className="mr-1.5 size-4" aria-hidden />
             {c.owlivia.send}
           </Button>

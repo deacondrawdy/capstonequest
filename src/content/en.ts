@@ -634,6 +634,7 @@ export const en = {
     youSaid: "You: ",
     noReply: "Sorry, I did not catch that. Could you say it another way?",
     failed: "Sorry, I am having trouble right now. Please call {phone}.",
+    slow: "Sorry, that is taking longer than usual. Try once more, or call {phone}.",
     disclaimer: "Owlivia is an automated assistant and can make mistakes. For anything important, call",
   },
 

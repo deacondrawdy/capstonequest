@@ -21,7 +21,15 @@ export const VOICE_AGENT_ID = "agent_b7f5c03adab996bc139d8c84b8";
 export const CHAT_AGENT_ID = "agent_ac37c7c9f0f1ac4fbc00c8c550";
 
 const API = "https://api.retellai.com";
+/** Opening a chat and minting a call token are single round trips. */
 const TIMEOUT_MS = 15_000;
+/**
+ * A chat turn waits for the model, and for any tool it calls — checking the
+ * calendar, then booking a tour, each its own request to Cal.com. Fifteen
+ * seconds cut those turns off in our own server, which looked to a parent
+ * exactly like the assistant failing.
+ */
+const CHAT_TIMEOUT_MS = 60_000;
 
 function key(): string {
   const raw = typeof process !== "undefined" ? process.env?.RETELL_API_KEY : undefined;
@@ -39,7 +47,7 @@ export function owliviaConfigured(): boolean {
   );
 }
 
-async function post<T>(path: string, body: unknown): Promise<T> {
+async function post<T>(path: string, body: unknown, timeoutMs = TIMEOUT_MS): Promise<T> {
   const res = await fetch(`${API}${path}`, {
     method: "POST",
     headers: {
@@ -47,7 +55,7 @@ async function post<T>(path: string, body: unknown): Promise<T> {
       "content-type": "application/json",
     },
     body: JSON.stringify(body),
-    signal: AbortSignal.timeout(TIMEOUT_MS),
+    signal: AbortSignal.timeout(timeoutMs),
   });
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
@@ -83,10 +91,11 @@ type ChatMessage = { message_id?: string; role?: string; content?: string };
  * rather than an empty bubble.
  */
 export async function sendChatMessage(chatId: string, content: string): Promise<string> {
-  const data = await post<{ messages?: ChatMessage[] }>("/create-chat-completion", {
-    chat_id: chatId,
-    content,
-  });
+  const data = await post<{ messages?: ChatMessage[] }>(
+    "/create-chat-completion",
+    { chat_id: chatId, content },
+    CHAT_TIMEOUT_MS,
+  );
   const reply = (data.messages ?? [])
     .filter((m) => m.role === "agent" || m.role === "assistant")
     .map((m) => (m.content ?? "").trim())
