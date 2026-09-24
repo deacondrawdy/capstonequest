@@ -2,7 +2,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
-import { campuses, dailySchedule, programs, school, testimonials } from "@/data/school";
+import { campuses, dailySchedule, programs, testimonials } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
 
 
@@ -176,7 +176,7 @@ export function Home() {
         <div className="mx-auto flex max-w-[1100px] flex-col items-start justify-between gap-6 px-5 sm:flex-row sm:items-center sm:px-8">
           <div>
             <h2 className="text-2xl font-extrabold text-ink sm:text-3xl">
-              {c.homePage.ctaTitle.replace("{year}", school.year)}
+              {c.homePage.ctaTitle}
             </h2>
             <p className="mt-1 flex items-center gap-2 text-sm text-ink/80">
               <Check className="size-4" /> {c.homePage.ctaNote}

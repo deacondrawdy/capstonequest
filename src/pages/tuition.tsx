@@ -1,11 +1,12 @@
-import { Check, Clock, Info } from "lucide-react";
+import { Check, Clock, Download, Info } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
-import { feeSchedule, school, tuition } from "@/data/school";
+import { feeSchedule, scholarship, school, tuition } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
 
 export function TuitionPage() {
   const c = useContent();
+  const s = c.tuitionPage.scholarship;
 
   return (
     <SiteShell>
@@ -112,6 +113,56 @@ export function TuitionPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Sits under the rates, where a family works out whether they can afford
+          the program at all. */}
+      <section className="border-t border-line bg-paper-soft py-14">
+        <div className="mx-auto max-w-[800px] px-5 sm:px-8">
+          <h2 className="text-3xl font-extrabold text-navy">{s.title}</h2>
+          <p className="mt-2 text-lg font-semibold text-brand">{s.covers}</p>
+          <p className="mt-4 leading-relaxed text-muted">{s.origin}</p>
+
+          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-bold text-navy">{s.whoTitle}</h3>
+              <ul className="mt-3 space-y-3">
+                {s.who.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm text-muted">
+                    <Check className="mt-0.5 size-4 shrink-0 text-icon-green" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-navy">{s.howTitle}</h3>
+              <ol className="mt-3 space-y-3">
+                {s.how.map((item, i) => (
+                  <li key={item} className="flex gap-3 text-sm text-muted">
+                    <span
+                      aria-hidden
+                      className="flex size-6 shrink-0 items-center justify-center rounded-full bg-navy text-xs font-bold text-paper"
+                    >
+                      {i + 1}
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+
+          <p className="mt-8 text-sm leading-relaxed text-muted">{s.decision}</p>
+
+          <Button asChild className="mt-6 h-auto min-h-12 whitespace-normal py-3 text-left">
+            <a href={scholarship.href} download={scholarship.fileName}>
+              <Download className="size-4 shrink-0" aria-hidden />
+              {s.cta}
+              <span className="ml-1 font-normal opacity-80">({c.common.pdf})</span>
+            </a>
+          </Button>
         </div>
       </section>
 

@@ -14,7 +14,7 @@ export const es: Content = {
   meta: {
     title: "Capstone Quest Academy",
     description:
-      "Capstone Quest Academy — Preescolar aprobado por DES en Tucson y Yuma. Aprendizaje a través del juego para niños de 3 a 5 años. Inscripciones abiertas para el ciclo escolar 26–27.",
+      "Capstone Quest Academy — Preescolar aprobado por DES en Tucson y Yuma. Aprendizaje a través del juego para niños de 3 a 5 años. Inscripciones abiertas.",
   },
 
   common: {
@@ -39,7 +39,7 @@ export const es: Content = {
   pageTitles: {
     home: "Preescolar en Tucson y Yuma",
     about: "Nosotros",
-    campuses: "Planteles",
+    campuses: "Centros",
     campus: "{campus}",
     careers: "Empleo",
     clever: "Clever y portales estudiantiles",
@@ -88,12 +88,12 @@ export const es: Content = {
     trigger: "Buscar",
     title: "Buscar en Capstone Quest",
     inputLabel: "Buscar en el sitio",
-    placeholder: "Planteles, programas, empleo…",
+    placeholder: "Centros, programas, empleo…",
     empty: "No hay páginas que coincidan.",
     pages: {
       home: { title: "Inicio", blurb: "Programas preescolares de Capstone Quest Academy en Tucson y Yuma." },
-      tucson: { title: "Plantel de Tucson", blurb: "1150 North Country Club Road, Tucson · (520) 462-7788" },
-      yuma: { title: "Plantel de Yuma", blurb: "1220 South 4th Avenue, Yuma · (928) 977-9318" },
+      tucson: { title: "Centro de Tucson", blurb: "1150 North Country Club Road, Tucson · (520) 462-7788" },
+      yuma: { title: "Centro de Yuma", blurb: "1220 South 4th Avenue, Yuma · (928) 977-9318" },
       programs: { title: "Programas", blurb: "Un solo salón preescolar de edades mixtas para niños de 3 a 5 años, más cuidado antes y después de clases, de 7 a. m. a 6 p. m." },
       info: { title: "Información", blurb: "Nosotros, programas, recursos para familias y calendarios." },
       clever: { title: "Clever", blurb: "Accesos a Clever, PowerSchool, ClassDojo y RAZ Kids." },
@@ -103,7 +103,7 @@ export const es: Content = {
       about: { title: "Nosotros", blurb: "Preescolar aprobado por DES desde 2013. Pasos pequeños, grandes sueños." },
       parents: { title: "Familias", blurb: "Menús, manuales, DES, colegiatura y colaboración con las familias." },
       whyUs: { title: "Por qué elegirnos", blurb: "Grupos pequeños, seguridad, un plan de estudios que prepara para la escuela, aprobado por DES." },
-      enroll: { title: "Inscripción", blurb: "Comience el ciclo escolar 26–27. Muchas veces se completa en un solo día." },
+      enroll: { title: "Inscripción", blurb: "Inscripciones abiertas. Muchas veces se completa en un solo día." },
       tour: { title: "Agende una visita", blurb: "Conozca un salón en Tucson o Yuma una mañana entre semana." },
       handbook: { title: "Manual para padres", blurb: "Admisiones, rutinas diarias, disciplina y la política de prevención de suspensión y expulsión." },
       privacy: { title: "Privacidad", blurb: "Qué recopila este sitio, para qué y quién lo ve." },
@@ -118,8 +118,8 @@ export const es: Content = {
   },
 
   campusSwitch: {
-    label: "Plantel",
-    call: "Llamar al plantel de {campus}",
+    label: "Centro",
+    call: "Llamar al centro de {campus}",
   },
 
   localeSwitch: {
@@ -133,8 +133,8 @@ export const es: Content = {
 
   nav: {
     home: "Inicio",
-    campuses: "Planteles",
-    allCampuses: "Todos los planteles",
+    campuses: "Centros",
+    allCampuses: "Todos los centros",
     info: "Información",
     infoHome: "Información general",
     // "Nosotros" rather than "Quiénes somos": this is now a top-level nav item,
@@ -187,37 +187,37 @@ export const es: Content = {
 
   campuses: {
     tucson: {
-      name: "Plantel de Tucson",
+      name: "Centro de Tucson",
       blurb:
-        "Un plantel luminoso y acogedor cerca del centro de Tucson: jardines desérticos, áreas de juego con toldos y salones diseñados para niños curiosos de tres a cinco años.",
+        "Un centro luminoso y acogedor cerca de midtown, en Tucson: jardines desérticos, áreas de juego con toldos y salones diseñados para niños curiosos de tres a cinco años.",
       feel: "Un hogar fuera de casa, todo el día",
       bannerAlt:
-        "El edificio del plantel de Tucson, con una manta que dice “Inscripciones abiertas para preescolar — Con licencia, aprobado por DES, día completo, tarifas accesibles” junto al letrero de AmeriSchool Academy.",
+        "El edificio del centro de Tucson, con una manta que dice “Inscripciones abiertas para preescolar — Con licencia, aprobado por DES, día completo, tarifas accesibles” junto al letrero de AmeriSchool Academy.",
       imageAlt:
-        "El plantel de Tucson: un edificio largo de ladrillo detrás del césped, con una manta que dice “Inscripciones abiertas para preescolar — Con licencia, aprobado por DES, día completo, tarifas accesibles”.",
+        "El centro de Tucson: un edificio largo de ladrillo detrás del césped, con una manta que dice “Inscripciones abiertas para preescolar — Con licencia, aprobado por DES, día completo, tarifas accesibles”.",
     },
     yuma: {
-      name: "Plantel de Yuma",
+      name: "Centro de Yuma",
       blurb:
-        "Un plantel luminoso y acogedor, de fácil acceso desde cualquier punto de Yuma: jardines desérticos, áreas de juego con toldos y salones diseñados para niños curiosos de tres a cinco años.",
+        "Un centro luminoso y acogedor, de fácil acceso desde cualquier punto de Yuma: jardines desérticos, áreas de juego con toldos y salones diseñados para niños curiosos de tres a cinco años.",
       feel: "Un hogar fuera de casa, todo el día",
       bannerAlt: "",
       imageAlt:
-        "El plantel de Yuma: un edificio largo de una planta con entrada techada y bancas al frente, un patio cercado a un costado y césped abierto enfrente, bajo un cielo despejado de Arizona.",
+        "El centro de Yuma: un edificio largo de una planta con entrada techada y bancas al frente, un patio cercado a un costado y césped abierto enfrente, bajo un cielo despejado de Arizona.",
     },
   },
 
   campusPage: {
-    eyebrow: "Plantel",
+    eyebrow: "Centro",
     tourTitle: "Lo que verá en su visita",
     tourList: [
       "Salones acogedores donde se saluda a cada niño por su nombre",
       "Área de juego con toldos y talleres al aire libre",
       "Entrada segura y registro de firma al recoger",
-      "El mismo plan de estudios aprobado por DES en ambos planteles",
+      "El mismo plan de estudios aprobado por DES en ambos centros",
     ],
     openInMaps: "Abrir en Maps",
-    preferOther: "¿Prefiere el otro plantel?",
+    preferOther: "¿Prefiere el otro centro?",
     compare: "Comparar ubicaciones",
     staffTitle: "Conozca al equipo de {campus}",
     staffLede: "Las maestras que su hijo verá cada mañana, en sus propias palabras.",
@@ -269,7 +269,7 @@ export const es: Content = {
     },
     "student-handbook": {
       title: "Manual del estudiante",
-      blurb: "Manual del plantel que se comparte con las familias de AmeriSchools Academy.",
+      blurb: "Manual que se comparte con las familias de AmeriSchools Academy.",
     },
     wellness: {
       title: "Política de bienestar",
@@ -277,11 +277,11 @@ export const es: Content = {
     },
     breakfast: {
       title: "Menú de desayuno de Tucson",
-      blurb: "Desayunos que se ofrecen actualmente en el plantel de Tucson.",
+      blurb: "Desayunos que se ofrecen actualmente en el centro de Tucson.",
     },
     lunch: {
       title: "Menú de almuerzo de Tucson",
-      blurb: "Almuerzos que se ofrecen actualmente en el plantel de Tucson.",
+      blurb: "Almuerzos que se ofrecen actualmente en el centro de Tucson.",
     },
     supplies: {
       title: "Lista de útiles escolares",
@@ -323,9 +323,9 @@ export const es: Content = {
     lede: "Manuales, menús y los mismos recursos para familias que están en la sección de Información.",
     resources: {
       handbook: { title: "Manual para padres", text: "Admisiones, rutinas diarias, disciplina y la política de prevención de suspensión y expulsión.", cta: "Leer el manual" },
-      tours: { title: "Visitas y calendario", text: "Recorra el plantel, conozca a los maestros y observe una reunión matutina real.", cta: "Agende una visita" },
+      tours: { title: "Visitas y calendario", text: "Recorra los salones, conozca a los maestros y observe una reunión matutina real.", cta: "Agende una visita" },
       packet: { title: "Paquete de inscripción", text: "Formularios de salud, contactos de emergencia y documentación de DES en una sola cita.", cta: "Comenzar la inscripción" },
-      policies: { title: "Políticas", text: "Inscripción, entrega de niños, disciplina y acceso de los padres, tal como están publicadas en ambos planteles.", cta: "Leer las políticas" },
+      policies: { title: "Políticas", text: "Inscripción, entrega de niños, disciplina y acceso de los padres, tal como están publicadas en ambos centros.", cta: "Leer las políticas" },
       partnership: { title: "Alianza con la familia", text: "Conferencias dos veces al año, mañanas de puertas abiertas y maestros que le devuelven la llamada.", cta: "Hable con nosotros" },
     },
     docsTitle: "Manuales, menús y formularios",
@@ -343,10 +343,10 @@ export const es: Content = {
   },
 
   campusesPage: {
-    eyebrow: "Planteles",
+    eyebrow: "Centros",
     title: "Tucson y Yuma",
-    lede: "Dos planteles acogedores y con licencia. Un mismo preescolar basado en el juego. Visite el más cercano a su casa, o los dos.",
-    details: "Detalles del plantel",
+    lede: "Dos centros acogedores y con licencia. Un mismo preescolar basado en el juego. Visite el más cercano a su casa, o los dos.",
+    details: "Detalles del centro",
     exteriorAlt: "fachada",
     bookTour: "Reserve una visita",
   },
@@ -380,7 +380,7 @@ export const es: Content = {
   aboutPage: {
     eyebrow: "Quiénes somos",
     title: "Una aventura para niños curiosos",
-    lede: "Bienvenido a Capstone Quest Academy, donde los pequeños pasos hacen realidad los grandes sueños. Desde 2013, nuestros planteles de Tucson y Yuma han sido un hogar fuera de casa: un preescolar certificado por DES que prepara a niños de tres a cinco años para el kínder sin apresurar la infancia.",
+    lede: "Bienvenido a Capstone Quest Academy, donde los pequeños pasos hacen realidad los grandes sueños. Desde 2013, nuestros centros de Tucson y Yuma han sido un hogar fuera de casa: un preescolar certificado por DES que prepara a niños de tres a cinco años para el kínder sin apresurar la infancia.",
     hours: "La jornada académica es de cinco días a la semana. La llegada temprana (7:00–8:00 a. m.) y la salida tardía (3:30–6:00 p. m.) se ofrecen como servicio con costo adicional, para que las familias trabajadoras aprovechen todo el horario de 7 a. m. a 6 p. m.",
     imageAlt: "Seis niños de preescolar con sombreros de pavo de papel, abrazados, posando en su salón.",
     believeTitle: "En qué creemos",
@@ -444,12 +444,12 @@ export const es: Content = {
 
   faqs: {
     ages: { q: "¿Qué edades atienden?", a: "Niños de 3 a 5 años, juntos en un mismo salón. La mayoría de las familias comienza el año en que su hijo cumple tres y se queda hasta el año en que está listo para el kínder." },
-    des: { q: "¿Están aprobados por DES?", a: "Sí. Ambos planteles están 100% aprobados por el Departamento de Seguridad Económica de Arizona y cuentan con licencia estatal. Aceptamos con gusto los subsidios de cuidado infantil de DES." },
+    des: { q: "¿Están aprobados por DES?", a: "Sí. Ambos centros están 100% aprobados por el Departamento de Seguridad Económica de Arizona y cuentan con licencia estatal. Aceptamos con gusto los subsidios de cuidado infantil de DES." },
     enroll: { q: "¿Qué tan rápido podemos inscribirnos?", a: "Una vez que hacemos la visita y recibimos el paquete completo, muchas familias terminan la inscripción en un solo día, sobre todo cuando hay un lugar disponible para el periodo actual." },
     day: { q: "¿Cómo es un día típico?", a: "Reunión matutina, juego al aire libre, talleres de lectoescritura y matemáticas, almuerzo, descanso, talleres (arte, bloques, ciencia) y círculo de cierre. Los niños de día completo se quedan para el refrigerio y los centros de la tarde." },
-    ratio: { q: "¿Cuál es la proporción de maestros por niño?", a: "Cada salón de preescolar tiene un maestro titular y un asistente, y contamos con el personal que exigen las normas de licencia de Arizona, de modo que los grupos son lo bastante pequeños para que se conozca a cada niño por su nombre. El tamaño de los grupos varía un poco según el plantel y la edad; pregúntenos las cifras actuales en su visita." },
-    checkin: { q: "¿Puedo saber cómo está mi hijo durante el día?", a: "Sí. Llame al plantel cuando quiera y con gusto revisamos cómo está su hijo. Si lo desea, pida a la maestra de su hijo que le tome fotos o videos cortos durante el día y se los envíe." },
-    hours: { q: "¿Cuál es su horario?", a: "El programa académico de preescolar es de cinco días a la semana. Los planteles abren de lunes a viernes, de 7:00 a. m. a 6:00 p. m., con llegada temprana (7:00–8:00 a. m.) y salida tardía (3:30–6:00 p. m.) con costo adicional." },
+    ratio: { q: "¿Cuál es la proporción de maestros por niño?", a: "Cada salón de preescolar tiene un maestro titular y un asistente, y contamos con el personal que exigen las normas de licencia de Arizona, de modo que los grupos son lo bastante pequeños para que se conozca a cada niño por su nombre. El tamaño de los grupos varía un poco según el centro y la edad; pregúntenos las cifras actuales en su visita." },
+    checkin: { q: "¿Puedo saber cómo está mi hijo durante el día?", a: "Sí. Llámenos cuando quiera y con gusto revisamos cómo está su hijo. Si lo desea, pida a la maestra de su hijo que le tome fotos o videos cortos durante el día y se los envíe." },
+    hours: { q: "¿Cuál es su horario?", a: "El programa académico de preescolar es de cinco días a la semana. Los centros abren de lunes a viernes, de 7:00 a. m. a 6:00 p. m., con llegada temprana (7:00–8:00 a. m.) y salida tardía (3:30–6:00 p. m.) con costo adicional." },
   },
 
   testimonials: {
@@ -470,7 +470,7 @@ export const es: Content = {
     },
     playgroundAlt: "Una niña de preescolar sonríe asomada por la parte alta de un juego infantil azul y rojo.",
     desTitle: "Aprobados por DES. Hechos para las familias.",
-    desText: "Ambos planteles están totalmente aprobados por el Departamento de Seguridad Económica de Arizona. Aceptamos subsidios de cuidado infantil, y cada familia, con vale o con pago particular, recibe el mismo salón, los mismos maestros y el mismo día.",
+    desText: "Ambos centros están totalmente aprobados por el Departamento de Seguridad Económica de Arizona. Aceptamos subsidios de cuidado infantil, y cada familia, con vale o con pago particular, recibe el mismo salón, los mismos maestros y el mismo día.",
     dayTitle: "Un día en preescolar",
     wordsTitle: "Las familias en sus propias palabras",
     faqTitle: "Preguntas que escuchamos en cada visita",
@@ -479,27 +479,27 @@ export const es: Content = {
     eyebrow: "Preescolar en Tucson y Yuma",
     title: "Los pequeños pasos hacen realidad los grandes sueños",
     welcome:
-      "Bienvenido a Capstone Quest Academy, donde los pequeños pasos hacen realidad los grandes sueños. Somos el preescolar más accesible de las comunidades a las que servimos. Ubicados en los planteles de AmeriSchools, en el corazón de Tucson y Yuma desde 2013, nuestros programas preescolares acompañan a los más pequeños en una aventura de aprendizaje y crecimiento.",
-    body: "Los planteles son un hogar fuera de casa: juego, descubrimiento y un año de preparación para el kínder sin apresurar la infancia. Las clases son cinco días a la semana. Abrimos de 7:00 a. m. a 6:00 p. m., de lunes a viernes, con cuidado antes y después de clases para familias trabajadoras.",
+      "Bienvenido a Capstone Quest Academy, donde los pequeños pasos hacen realidad los grandes sueños. Somos el preescolar más accesible de las comunidades a las que servimos. Ubicados en los centros de AmeriSchools, en el corazón de Tucson y Yuma desde 2013, nuestros programas preescolares acompañan a los más pequeños en una aventura de aprendizaje y crecimiento.",
+    body: "Los centros son un hogar fuera de casa: juego, descubrimiento y un año de preparación para el kínder sin apresurar la infancia. Las clases son cinco días a la semana. Abrimos de 7:00 a. m. a 6:00 p. m., de lunes a viernes, con cuidado antes y después de clases para familias trabajadoras.",
     pills: [
       "De 3 a 5 años, en Tucson y Yuma desde 2013",
       "Abierto de 7:00 a. m. a 6:00 p. m., de lunes a viernes",
-      "Cuidado antes y después de clases en ambos planteles",
+      "Cuidado antes y después de clases en ambos centros",
       "Aprobado por DES · Con licencia del estado de Arizona",
     ],
     programsEyebrow: "Nuestros programas",
     programsTitle: "Un año de preescolar que se sigue sintiendo como infancia",
     seeProgram: "Ver el programa",
-    campusesEyebrow: "Dos planteles en Arizona",
+    campusesEyebrow: "Dos centros en Arizona",
     campusesTitle: "Cerca de casa en Tucson y Yuma",
-    campusesLede: "El mismo plan de estudios basado en el juego, la misma aprobación de DES y grupos pequeños: elija el plantel que le quede de paso.",
-    visitCampus: "Ver el plantel",
+    campusesLede: "El mismo plan de estudios basado en el juego, la misma aprobación de DES y grupos pequeños: elija el centro que le quede de paso.",
+    visitCampus: "Ver el centro",
     dayEyebrow: "Un día en preescolar",
     dayTitle: "Ritmo, juego y la escuela justa",
     dayNote: "El cuidado antes y después de clases rodea esta jornada, de 7:00 a 8:00 a. m. y de 3:30 a 6:00 p. m.",
     familiesEyebrow: "Nuestras familias",
     familiesTitle: "Listos para el kínder, y siguen siendo ellos mismos",
-    ctaTitle: "Inscripciones abiertas para el ciclo escolar {year}",
+    ctaTitle: "Inscripciones abiertas",
     ctaNote: "Lugares limitados · Aceptamos DES · Visitas casi todos los días hábiles",
     enrollNow: "Inscríbase ahora",
   },
@@ -540,18 +540,39 @@ export const es: Content = {
       "Los días adicionales a su contrato se cobran como visitas sueltas. Firmar un contrato nuevo evita esa tarifa.",
       "Debe haber un contrato firmado y documentos de inscripción vigentes en el archivo antes de que su hijo asista.",
     ],
+    scholarship: {
+      title: "Beca Barr Family Early Learners",
+      origin:
+        "El fondo fue creado en 2023 por la familia Barr, fundadores de AmeriSchools Academy y de Capstone Quest Academy. Vieron familias trabajadoras de Tucson y Yuma cuyos ingresos superaban el límite de DES y que aun así no podían pagar una educación temprana de calidad y trabajar al mismo tiempo. Las becas se otorgan según la necesidad y se revisan cada año.",
+      covers: "Cubre hasta el 50% del costo del preescolar.",
+      whoTitle: "Para quién es",
+      who: [
+        "Familias con un niño de 3 a 5 años que necesitan cuidado y educación temprana.",
+        "Familias que solicitaron DES y no calificaron, o a quienes se les negó.",
+        "No es para familias que ya reciben DES. Si su solicitud de DES sigue en trámite, el formulario le indica con quién comunicarse.",
+      ],
+      howTitle: "Cómo solicitarla",
+      how: [
+        "Descargue y llene la solicitud.",
+        "Adjunte sus dos comprobantes de ingresos más recientes: talones de pago, declaraciones de impuestos, estados de cuenta, cartas de beneficios o similares. Sin comprobante de ingresos, su solicitud se retrasa.",
+        "Entréguela en su centro.",
+      ],
+      decision:
+        "Las solicitudes se revisan según la necesidad de la familia y sus ingresos, por orden de llegada, y se deciden dentro de los 10 días siguientes a recibir la solicitud completa con los documentos financieros. La beca depende de la verificación de ingresos y de que haya fondos disponibles, y llega hasta el 30 de junio de 2027 mientras su cuenta esté al corriente. Avísenos si sus ingresos cambian o si llega a calificar para DES.",
+      cta: "Descargar la solicitud de beca",
+    },
     ctaTitle: "¿Listo para inscribirse?",
-    ctaText: "Llene un formulario de inscripción por niño y entréguelo en la oficina de registro del plantel. Le ayudamos con los trámites de DES si usa un subsidio.",
+    ctaText: "Llene un formulario de inscripción por niño y entréguelo en la oficina de registro del centro. Le ayudamos con los trámites de DES si usa un subsidio.",
     feeScheduleCta: "Descargar la lista de tarifas",
-    effectiveNote: "Las tarifas mostradas provienen de la lista de cuotas vigente desde el 1 de agosto de 2024. Confirme las tarifas actuales con su plantel antes de firmar: llame al {phone} o escriba a",
+    effectiveNote: "Las tarifas mostradas provienen de la lista de cuotas vigente desde el 1 de agosto de 2024. Confirme las tarifas actuales con su centro antes de firmar: llame al {phone} o escriba a",
   },
   policiesPage: {
     handbookLink: "Lea la política completa de prevención en el manual para padres",
     eyebrow: "Políticas",
     title: "Políticas de inscripción, entrega y cuidado",
-    lede: "Las políticas de licencia publicadas en ambos planteles, con las mismas palabras. Pida en la oficina cualquiera de estos documentos impresos.",
+    lede: "Las políticas de licencia publicadas en ambos centros, con las mismas palabras. Pida en la oficina cualquiera de estos documentos impresos.",
     questionsTitle: "¿Tiene preguntas sobre alguna de estas políticas?",
-    questionsText: "Llame al {phone} o pase por la oficina. Las políticas de suspensión y expulsión están disponibles para los padres que las soliciten, y los informes de inspección de licencia pueden consultarse en el plantel.",
+    questionsText: "Llame al {phone} o pase por la oficina. Las políticas de suspensión y expulsión están disponibles para los padres que las soliciten, y los informes de inspección de licencia pueden consultarse en el centro.",
     items: {
       enrollment: {
         title: "Procedimientos de inscripción del niño",
@@ -559,13 +580,13 @@ export const es: Content = {
         list: ["Solicitud de inscripción", "Datos de contacto de emergencia", "Registro de vacunas", "Expedientes de salud exigidos por las normas de licencia"],
         footer: "La inscripción depende de la disponibilidad y de que la edad del niño sea adecuada para el programa de preescolar.",
       },
-      release: { title: "Procedimientos de admisión y entrega del niño", body: "Los niños se entregan únicamente a los padres o a las personas autorizadas por escrito por el padre, la madre o el tutor. Se exige identificación cuando se entrega a un niño a una persona que el personal no conoce. Los niños no pueden salir del plantel sin supervisión autorizada.", list: [], footer: "" },
-      discipline: { title: "Lineamientos de disciplina", body: "El plantel usa técnicas de orientación positivas y apropiadas para la edad, consistentes y adecuadas al desarrollo de los niños de preescolar. La disciplina se centra en la redirección, en modelar la conducta adecuada y en establecer expectativas claras. Nunca se usa el castigo corporal, la humillación ni el lenguaje abusivo.", list: [], footer: "" },
-      disenrollment: { title: "Procedimientos de baja del niño", body: "El padre, la madre o el tutor pueden dar de baja al niño mediante aviso por escrito al plantel. El plantel se reserva el derecho de dar de baja a un niño por motivos que incluyen, entre otros, la falta de pago de cuotas, el incumplimiento de las políticas del plantel o preocupaciones de seguridad, conforme a las normas de licencia y a las políticas del plantel.", list: [], footer: "" },
-      suspension: { title: "Política de suspensión y expulsión", body: "El plantel cuenta con políticas escritas sobre suspensión y expulsión que incluyen estrategias de prevención, expectativas claras y métodos de orientación apropiados para la edad. Estas políticas están disponibles para los padres que las soliciten.", list: [], footer: "" },
-      access: { title: "Acceso de los padres", body: "Los padres tienen acceso a las áreas del plantel donde su hijo inscrito recibe cuidado infantil durante el horario normal de operación.", list: [], footer: "" },
-      pesticide: { title: "Aviso de aplicación de plaguicidas", body: "Se avisa a los padres con al menos 48 horas de anticipación antes de aplicar plaguicidas en las instalaciones del plantel, conforme a los requisitos estatales.", list: [], footer: "" },
-      inspection: { title: "Informes de inspección", body: "Se informa a los padres que los informes de inspección de licencia están disponibles para su consulta en el plantel.", list: [], footer: "" },
+      release: { title: "Procedimientos de admisión y entrega del niño", body: "Los niños se entregan únicamente a los padres o a las personas autorizadas por escrito por el padre, la madre o el tutor. Se exige identificación cuando se entrega a un niño a una persona que el personal no conoce. Los niños no pueden salir del centro sin supervisión autorizada.", list: [], footer: "" },
+      discipline: { title: "Lineamientos de disciplina", body: "El centro usa técnicas de orientación positivas y apropiadas para la edad, consistentes y adecuadas al desarrollo de los niños de preescolar. La disciplina se centra en la redirección, en modelar la conducta adecuada y en establecer expectativas claras. Nunca se usa el castigo corporal, la humillación ni el lenguaje abusivo.", list: [], footer: "" },
+      disenrollment: { title: "Procedimientos de baja del niño", body: "El padre, la madre o el tutor pueden dar de baja al niño mediante aviso por escrito al centro. El centro se reserva el derecho de dar de baja a un niño por motivos que incluyen, entre otros, la falta de pago de cuotas, el incumplimiento de las políticas del centro o preocupaciones de seguridad, conforme a las normas de licencia y a las políticas del centro.", list: [], footer: "" },
+      suspension: { title: "Política de suspensión y expulsión", body: "El centro cuenta con políticas escritas sobre suspensión y expulsión que incluyen estrategias de prevención, expectativas claras y métodos de orientación apropiados para la edad. Estas políticas están disponibles para los padres que las soliciten.", list: [], footer: "" },
+      access: { title: "Acceso de los padres", body: "Los padres tienen acceso a las áreas del centro donde su hijo inscrito recibe cuidado infantil durante el horario normal de operación.", list: [], footer: "" },
+      pesticide: { title: "Aviso de aplicación de plaguicidas", body: "Se avisa a los padres con al menos 48 horas de anticipación antes de aplicar plaguicidas en las instalaciones del centro, conforme a los requisitos estatales.", list: [], footer: "" },
+      inspection: { title: "Informes de inspección", body: "Se informa a los padres que los informes de inspección de licencia están disponibles para su consulta en el centro.", list: [], footer: "" },
     },
   },
   careersPage: {
@@ -576,20 +597,20 @@ export const es: Content = {
       classes: { title: "Grupos pequeños", text: "Enseñe a un grupo, no a una multitud. De verdad conocerá a cada niño y a cada familia." },
       benefits: { title: "Prestaciones reales", text: "Seguro médico, aportaciones para el retiro, reembolso de colegiatura e incentivos de ingreso adicional." },
       invent: { title: "Espacio para crear", text: "Talleres, juego al aire libre y un plan de estudios que todavía deja ser creativos a los maestros." },
-      family: { title: "Un equipo pequeño", text: "Planteles preescolares en Tucson y Yuma con la misma cultura tranquila y aprobada por DES." },
+      family: { title: "Un equipo pequeño", text: "Centros preescolares en Tucson y Yuma con la misma cultura tranquila y aprobada por DES." },
     },
     openTitle: "Vacantes",
     openings: {
       lead: { role: "Maestro titular de preescolar", campus: "Tucson o Yuma", req: "Autorización de huellas digitales, título universitario; se prefiere AEPA o NES." },
       assistant: { role: "Maestro asistente", campus: "Tucson o Yuma", req: "Gusto por los niños de tres a cinco años; la experiencia en el salón es un plus." },
-      care: { role: "Encargado de cuidado antes y después de clases", campus: "Cualquiera de los dos planteles", req: "Entrada a las 7:00 a. m. o cierre de 3:30 a 6:00 p. m. Puntual, cálido y certificado." },
+      care: { role: "Encargado de cuidado antes y después de clases", campus: "Cualquiera de los dos centros", req: "Entrada a las 7:00 a. m. o cierre de 3:30 a 6:00 p. m. Puntual, cálido y certificado." },
     },
     applyTitle: "Postularse",
     thanks: "Gracias. Un director le responderá si hay una vacante que coincida.",
     received: "Recibimos su solicitud.",
     failed: "No pudimos enviar su solicitud de empleo. Por favor llame al {phone}.",
-    fields: { name: "Nombre", email: "Correo electrónico", phone: "Teléfono", role: "Puesto", campus: "Plantel", message: "Por qué le interesa este trabajo" },
-    eitherCampus: "Cualquiera de los dos planteles",
+    fields: { name: "Nombre", email: "Correo electrónico", phone: "Teléfono", role: "Puesto", campus: "Centro", message: "Por qué le interesa este trabajo" },
+    eitherCampus: "Cualquiera de los dos centros",
     sending: "Enviando…",
     submit: "Enviar solicitud",
   },
@@ -616,7 +637,7 @@ export const es: Content = {
     role: "Nuestra asistente: escriba o hable",
     open: "Pregúntele a Owlivia",
     greeting:
-      "Hola, soy Owlivia. Pregúnteme lo que quiera sobre Capstone Quest: el programa, la colegiatura, DES o el día escolar. También puedo agendarle una visita al plantel.",
+      "Hola, soy Owlivia. Pregúnteme lo que quiera sobre Capstone Quest: el programa, la colegiatura, DES o el día escolar. También puedo agendarle una visita al centro.",
     voiceHint: "También puede hablar conmigo en voz alta.",
     liveHint: "Está en línea: puede empezar a hablar.",
     startCall: "Llamar por voz",
@@ -638,17 +659,17 @@ export const es: Content = {
   tourPage: {
     eyebrow: "Visítenos",
     title: "Agende una visita",
-    lede: "Recorra los salones, conozca a una maestra y vea una mañana real. Las visitas duran unos 30 minutos. Elija un plantel y luego cualquier horario disponible.",
-    pickCampus: "¿Qué plantel le gustaría visitar?",
+    lede: "Recorra los salones, conozca a una maestra y vea una mañana real. Las visitas duran unos 30 minutos. Elija un centro y luego cualquier horario disponible.",
+    pickCampus: "¿Qué centro le gustaría visitar?",
     helpTitle: "¿Prefiere hablar con alguien?",
-    helpText: "Llame al plantel y buscamos un horario con usted. Con gusto respondemos preguntas sobre el programa, la colegiatura o DES antes de su visita.",
+    helpText: "Llame al centro y buscamos un horario con usted. Con gusto respondemos preguntas sobre el programa, la colegiatura o DES antes de su visita.",
     bookingNote: "Las reservaciones las maneja Cal.com y ese paso está en inglés. Llámenos si desea reservar en español.",
   },
 
   enrollPage: {
     eyebrow: "Inscripción",
     title: "Inscriba a su hijo",
-    lede: "La inscripción se hace en papel. Descargue el paquete de inscripción, llénelo y entréguelo en la oficina de inscripciones de su plantel.",
+    lede: "La inscripción se hace en papel. Descargue el paquete de inscripción, llénelo y entréguelo en la oficina de inscripciones de su centro.",
     download: "Descargar el paquete de inscripción",
     fileInfo: "PDF · {pages} páginas · {size}",
     languageNote: "El paquete está disponible solo en inglés.",
@@ -656,13 +677,13 @@ export const es: Content = {
     steps: [
       "Descargue e imprima el paquete. Llene un paquete por cada niño.",
       "Llénelo y fírmelo donde se indica. El certificado de vacunas debe llenarlo el médico o la clínica de su hijo, o puede adjuntar una copia del registro oficial de vacunas firmado o sellado por el proveedor.",
-      "Entregue el paquete completo en la oficina de inscripciones de su plantel. Después recibirá una invitación para la aplicación ProCare para padres.",
+      "Entregue el paquete completo en la oficina de inscripciones de su centro. Después recibirá una invitación para la aplicación ProCare para padres.",
     ],
     note: "Todos los niños deben tener un contrato firmado y los documentos de inscripción vigentes en la oficina antes de su primer día.",
     helpTitle: "¿Necesita ayuda o el paquete en otro formato?",
-    help: "Si no puede imprimir el paquete, no puede usar un PDF o le gustaría ayuda para llenarlo, comuníquese con su plantel. Podemos revisarlo con usted por teléfono o en persona, o dárselo en otro formato.",
+    help: "Si no puede imprimir el paquete, no puede usar un PDF o le gustaría ayuda para llenarlo, comuníquese con su centro. Podemos revisarlo con usted por teléfono o en persona, o dárselo en otro formato.",
     emailLabel: "Correo electrónico",
-    campusLabel: "Plantel {campus}",
+    campusLabel: "Centro {campus}",
   },
   accessibilityPage: {
     eyebrow: "Accesibilidad",
@@ -689,14 +710,14 @@ export const es: Content = {
     open: [
       "Estamos revisando los colores de las letras de nuestro nombre en la página de inicio. Cumplen con el contraste exigido en el tamaño en que aparecen, pero con poco margen.",
       "El Manual para Padres en PDF aún no se ha revisado por completo en cuanto a accesibilidad. El manual también está publicado en este sitio como página web, y esa versión sí es accesible.",
-      "Nuestro paquete de inscripción es un PDF escaneado, por lo que un lector de pantalla no puede leerlo y no se puede llenar en la pantalla. Si lo necesita en otro formato, o ayuda para llenarlo, comuníquese con su plantel y lo revisaremos con usted por teléfono o en persona.",
-      "La reservación de visitas en la página Agende una visita la proporciona Cal.com. Esa parte de la página la construyen ellos, no nosotros, y solo está en inglés. Si no le funciona, llame a su plantel y agendamos la visita con usted.",
+      "Nuestro paquete de inscripción es un PDF escaneado, por lo que un lector de pantalla no puede leerlo y no se puede llenar en la pantalla. Si lo necesita en otro formato, o ayuda para llenarlo, comuníquese con su centro y lo revisaremos con usted por teléfono o en persona.",
+      "La reservación de visitas en la página Agende una visita la proporciona Cal.com. Esa parte de la página la construyen ellos, no nosotros, y solo está en inglés. Si no le funciona, llame a su centro y agendamos la visita con usted.",
       "Algunos documentos de la página de Recursos para familias —el manual del estudiante, la política de bienestar, los menús y la lista de útiles— los publica AmeriSchools Academy, no nosotros, y es posible que no sean totalmente accesibles. Le daremos cualquiera de ellos en otro formato si lo solicita.",
     ],
     helpTitle: "Si algo no le funciona",
     helpIntro: "Por favor, díganoslo. No nos molesta en absoluto: nos ayuda a corregirlo para la siguiente familia.",
     emailLabel: "Correo electrónico",
-    campusLabel: "Plantel {campus}",
+    campusLabel: "Centro {campus}",
     hoursLabel: "Horario",
     helpDetails: "Indíquenos en qué página estaba y qué ocurrió. Procuramos responder en un plazo de dos días hábiles.",
     formats: "Si necesita información de este sitio en otro formato —letra grande, texto sencillo o leída por teléfono—, pídanosla y se la proporcionaremos.",
@@ -723,14 +744,14 @@ export const es: Content = {
     sections: {
       who: {
         title: "Quiénes somos",
-        body: "Capstone Quest Academy opera los programas preescolares de nuestros planteles de Tucson y Yuma y es responsable de la información que se recopila en este sitio. Nuestros datos de contacto están al final de esta página.",
+        body: "Capstone Quest Academy opera los programas preescolares de nuestros centros de Tucson y Yuma y es responsable de la información que se recopila en este sitio. Nuestros datos de contacto están al final de esta página.",
       },
       collect: {
         title: "Qué información recopilamos",
         intro: "Solo recopilamos información cuando usted decide enviárnosla por medio de alguno de los formularios del sitio. No se recoge nada en segundo plano.",
         tour: "Reservación de visitas: las visitas se agendan a través de Cal.com, un servicio de programación que actúa por cuenta nuestra. Cal.com le pide su nombre, correo electrónico y teléfono, y le envía una confirmación. Cal.com gestiona esa reservación por cuenta nuestra; nosotros vemos la cita en nuestro calendario.",
         contact: "Formulario de contacto: su nombre, su correo electrónico, el tema que elija y su mensaje.",
-        careers: "Solicitud de empleo: su nombre, correo electrónico y teléfono, el puesto y el plantel que solicita, y su mensaje.",
+        careers: "Solicitud de empleo: su nombre, correo electrónico y teléfono, el puesto y el centro que solicita, y su mensaje.",
         note: "En ninguna parte de este sitio le pedimos número de Seguro Social, datos de pago ni información sobre su situación migratoria.",
       },
       why: {
@@ -756,7 +777,7 @@ export const es: Content = {
       },
       children: {
         title: "Información sobre los niños",
-        body: "Las visitas las agenda un padre, madre o tutor. La inscripción se hace en papel: el paquete de inscripción se descarga de este sitio, pero se llena y se entrega en la oficina de inscripciones del plantel, así que este sitio nunca lo recibe. No recopilamos información directamente de los niños a sabiendas, y este sitio no está dirigido a niños.",
+        body: "Las visitas las agenda un padre, madre o tutor. La inscripción se hace en papel: el paquete de inscripción se descarga de este sitio, pero se llena y se entrega en la oficina de inscripciones del centro, así que este sitio nunca lo recibe. No recopilamos información directamente de los niños a sabiendas, y este sitio no está dirigido a niños.",
       },
       retention: {
         title: "Cuánto tiempo la conservamos",
@@ -776,7 +797,7 @@ export const es: Content = {
       },
       contact: {
         title: "Comuníquese con nosotros",
-        body: "Llámenos, escríbanos o pase a la oficina de cualquiera de los dos planteles. Preferimos responder su pregunta a que se quede con la duda.",
+        body: "Llámenos, escríbanos o pase a la oficina de cualquiera de los dos centros. Preferimos responder su pregunta a que se quede con la duda.",
       },
     },
   },
@@ -788,7 +809,7 @@ export const es: Content = {
     downloadPdf: "Descargar el PDF",
     contentsTitle: "Contenido",
     officesTitle: "Oficinas escolares",
-    officesNote: "Llame directamente al plantel; la oficina contesta durante el horario del programa.",
+    officesNote: "Llame directamente al centro; la oficina contesta durante el horario del programa.",
     foreword: {
       title: "Presentación",
       p1: "Bienvenido a otro año emocionante educando a niños de preescolar, de 3 a 5 años, creando una visión para el aprendizaje en la primera infancia. Como padre o madre, usted nos confía su bien más preciado: un hijo amado.",
@@ -805,9 +826,9 @@ export const es: Content = {
         "La comunidad como laboratorio", "Altos estándares académicos", "Posibilidad de elegir",
       ],
       descriptionTitle: "Descripción del programa",
-      description: "Capstone Quest Academy ofrece un programa preescolar de escuela privada para familias y niños de 3 a 5 años que aún no tienen edad para el kínder. Cada centro de aprendizaje se ubica dentro de un plantel de la escuela chárter AmeriSchools Academy.",
+      description: "Capstone Quest Academy ofrece un programa preescolar de escuela privada para familias y niños de 3 a 5 años que aún no tienen edad para el kínder. Cada centro de aprendizaje se ubica dentro de un centro de la escuela chárter AmeriSchools Academy.",
       datesTitle: "Fechas y horario de servicio",
-      dates: "El programa académico de preescolar es de cinco días a la semana. Capstone Quest se ofrece durante los recesos escolares si la participación lo permite, excepto en Año Nuevo, el Día de Martin Luther King, el Día de los Presidentes, el Día de los Caídos, el Día de la Independencia, el Día del Trabajo, el Día de la Raza, el Día de los Veteranos, el Día de Acción de Gracias y la Navidad. El programa de llegada temprana (a. m.) o salida tardía (p. m.) se ofrece como cuidado infantil con costo adicional donde el plantel cuenta con licencia para ello.",
+      dates: "El programa académico de preescolar es de cinco días a la semana. Capstone Quest se ofrece durante los recesos escolares si la participación lo permite, excepto en Año Nuevo, el Día de Martin Luther King, el Día de los Presidentes, el Día de los Caídos, el Día de la Independencia, el Día del Trabajo, el Día de la Raza, el Día de los Veteranos, el Día de Acción de Gracias y la Navidad. El programa de llegada temprana (a. m.) o salida tardía (p. m.) se ofrece como cuidado infantil con costo adicional donde el centro cuenta con licencia para ello.",
       curriculumTitle: "Plan de estudios",
       curriculum: "Este programa es un ambiente cálido, afectuoso y seguro que ofrece una experiencia apropiada para el desarrollo. El niño pequeño vive reglas de autocontrol y resuelve problemas en situaciones desafiantes, ya sea en la comunidad, la escuela o la familia. El salón es una comunidad de niños pequeños que empiezan a aceptar, o a rechazar razonablemente, las reglas de conducta. Esa experiencia ofrece límites claros y ayuda a crear recursos personales para el crecimiento y la madurez.",
       centersTitle: "Centros temáticos para el aprendizaje infantil",
@@ -911,7 +932,7 @@ export const es: Content = {
       },
       pesticide: {
         title: "Aplicación de plaguicidas",
-        body: "Se informa a las familias, los alumnos y el personal cuando se aplican plaguicidas en la propiedad escolar, actualmente con al menos 48 horas de anticipación, como exige la ley estatal. El aviso incluye notificación oral a alumnos y personal, aviso por escrito a los padres o tutores, y letreros que señalan las áreas de aplicación. Cada plantel conserva registros escritos de estos avisos. Esto no incluye desinfectantes, sanitizantes ni desodorantes de uso no restringido.",
+        body: "Se informa a las familias, los alumnos y el personal cuando se aplican plaguicidas en la propiedad escolar, actualmente con al menos 48 horas de anticipación, como exige la ley estatal. El aviso incluye notificación oral a alumnos y personal, aviso por escrito a los padres o tutores, y letreros que señalan las áreas de aplicación. Cada centro conserva registros escritos de estos avisos. Esto no incluye desinfectantes, sanitizantes ni desodorantes de uso no restringido.",
       },
     },
     suspension: {

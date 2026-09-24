@@ -1,7 +1,7 @@
 import { Download, Mail, Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
-import { campuses, enrollmentPacket, school } from "@/data/school";
+import { campuses, enrollmentPackets, school } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
 
 /**
@@ -16,9 +16,6 @@ import { AppLink, useContent } from "@/lib/locale";
 export function EnrollPage() {
   const c = useContent();
   const e = c.enrollPage;
-  const fileInfo = e.fileInfo
-    .replace("{pages}", String(enrollmentPacket.pages))
-    .replace("{size}", enrollmentPacket.size);
 
   return (
     <SiteShell>
@@ -27,23 +24,37 @@ export function EnrollPage() {
         <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-navy">{e.title}</h1>
         <p className="mt-3 text-lg leading-relaxed text-muted">{e.lede}</p>
 
-        <div className="mt-8 rounded-[28px] bg-paper-soft p-6 sm:p-8">
-          {/* Buttons don't wrap by default; this label is long enough in Spanish
-              to push a 320px screen sideways (WCAG 1.4.10). */}
-          <Button asChild size="lg" className="h-auto min-h-12 whitespace-normal py-3 text-left">
-            <a
-              href={enrollmentPacket.href}
-              download={enrollmentPacket.fileName}
-              aria-describedby="packet-info"
-            >
-              <Download className="size-4" aria-hidden />
-              {e.download}
-            </a>
-          </Button>
-          <p id="packet-info" className="mt-3 text-sm text-muted">
-            {fileInfo}
-            {e.languageNote ? <> · {e.languageNote}</> : null}
-          </p>
+        {/* One packet per site: each carries its own site's name, so a family
+            must download the one they are enrolling at. */}
+        <div className="mt-8 grid gap-4 rounded-[28px] bg-paper-soft p-6 sm:grid-cols-2 sm:p-8">
+          {enrollmentPackets.map((packet) => {
+            const campus = campuses.find((cam) => cam.slug === packet.campus) ?? campuses[0];
+            const infoId = `packet-info-${packet.campus}`;
+            return (
+              <div key={packet.campus} className="min-w-0">
+                <h2 className="text-lg font-bold text-navy">{c.campuses[campus.slug].name}</h2>
+                {/* Buttons don't wrap by default; this label is long enough in
+                    Spanish to push a 320px screen sideways (WCAG 1.4.10). */}
+                <Button
+                  asChild
+                  size="lg"
+                  className="mt-3 h-auto min-h-12 w-full whitespace-normal py-3 text-left"
+                >
+                  <a href={packet.href} download={packet.fileName} aria-describedby={infoId}>
+                    <Download className="size-4 shrink-0" aria-hidden />
+                    {e.download}
+                    <span className="sr-only"> — {c.campuses[campus.slug].name}</span>
+                  </a>
+                </Button>
+                <p id={infoId} className="mt-3 text-sm text-muted">
+                  {e.fileInfo.replace("{pages}", String(packet.pages)).replace("{size}", packet.size)}
+                </p>
+              </div>
+            );
+          })}
+          {e.languageNote ? (
+            <p className="text-sm text-muted sm:col-span-2">{e.languageNote}</p>
+          ) : null}
         </div>
 
         <section className="mt-10">

@@ -114,25 +114,48 @@ export const programs = [
 ] as const;
 
 /**
- * The enrollment packet families print, complete and return to the registrar.
+ * The enrollment packets families print, complete and return to the registrar.
  * Enrollment is on paper; the site no longer has an online enrollment form.
  *
- * It is a 13-page scan from the office copier: image-only, untagged, not
- * fillable. A screen reader cannot read it, so /enroll offers help by phone or
- * in person and the accessibility statement lists it as a known limitation.
- * Replace it with a tagged or fillable PDF when the school has one, and update
- * `pages` and `size` if the file changes.
+ * One per site: the forms carry the site's own name, so a Yuma family
+ * returning the Tucson packet has filled in the wrong header. Both are scans
+ * from the office copier — image-only, untagged, not fillable. A screen reader
+ * cannot read them, so /enroll offers help by phone or in person and the
+ * accessibility statement lists that as a known limitation. Replace either with
+ * a tagged or fillable PDF when the school has one, and update `pages` and
+ * `size` to match the file.
  */
-export const enrollmentPacket = {
-  href: "/documents/capstone-quest-prek-enrollment-packet.pdf",
-  fileName: "capstone-quest-prek-enrollment-packet.pdf",
-  pages: 13,
-  size: "3.6 MB",
-} as const;
+export const enrollmentPackets = [
+  {
+    campus: "tucson",
+    href: "/documents/capstone-quest-prek-enrollment-packet.pdf",
+    fileName: "capstone-quest-prek-enrollment-packet-tucson.pdf",
+    pages: 13,
+    size: "3.6 MB",
+  },
+  {
+    campus: "yuma",
+    href: "/documents/capstone-quest-prek-enrollment-packet-yuma.pdf",
+    fileName: "capstone-quest-prek-enrollment-packet-yuma.pdf",
+    pages: 13,
+    size: "766 KB",
+  },
+] as const;
 
 /** The rate sheet families sign, served from public/documents. */
 export const feeSchedule = {
   href: "/documents/capstone-quest-prek-fee-schedule.pdf",
+} as const;
+
+/**
+ * The Barr Family Early Learners Scholarship application.
+ *
+ * Linked from /tuition beside the rates, which is where a family works out
+ * whether they can afford the program at all.
+ */
+export const scholarship = {
+  href: "/documents/barr-family-early-learners-scholarship-application.pdf",
+  fileName: "barr-family-early-learners-scholarship-application.pdf",
 } as const;
 
 export const parentDocuments = [

@@ -12,7 +12,7 @@ export const en = {
   meta: {
     title: "Capstone Quest Academy",
     description:
-      "Capstone Quest Academy — DES-approved Pre-K in Tucson and Yuma. Play-based learning for ages 3–5. Now enrolling the 26–27 school year.",
+      "Capstone Quest Academy — DES-approved Pre-K in Tucson and Yuma. Play-based learning for ages 3–5. Now enrolling.",
   },
 
   common: {
@@ -38,7 +38,7 @@ export const en = {
   pageTitles: {
     home: "Pre-K in Tucson and Yuma",
     about: "About us",
-    campuses: "Campuses",
+    campuses: "Sites",
     campus: "{campus}",
     careers: "Careers",
     clever: "Clever & student portals",
@@ -88,13 +88,13 @@ export const en = {
     trigger: "Search",
     title: "Search Capstone Quest",
     inputLabel: "Search the site",
-    placeholder: "Campuses, programs, careers…",
+    placeholder: "Sites, programs, careers…",
     empty: "No matching pages.",
     /** Keyed by the entry `id` in src/data/search.ts. */
     pages: {
       home: { title: "Home", blurb: "Pre-K programs at Capstone Quest Academy in Tucson and Yuma." },
-      tucson: { title: "Tucson Campus", blurb: "1150 North Country Club Road, Tucson · (520) 462-7788" },
-      yuma: { title: "Yuma Campus", blurb: "1220 South 4th Avenue, Yuma · (928) 977-9318" },
+      tucson: { title: "Tucson Site", blurb: "1150 North Country Club Road, Tucson · (520) 462-7788" },
+      yuma: { title: "Yuma Site", blurb: "1220 South 4th Avenue, Yuma · (928) 977-9318" },
       programs: { title: "Programs", blurb: "One mixed-age Pre-K classroom for ages 3–5, plus before & after care, 7 AM–6 PM." },
       info: { title: "Info", blurb: "About us, programs, parent resources, and calendars." },
       clever: { title: "Clever", blurb: "Clever, PowerSchool, ClassDojo, and RAZ Kids sign-ins." },
@@ -104,7 +104,7 @@ export const en = {
       about: { title: "About", blurb: "DES-approved Pre-K since 2013. Little steps, big dreams." },
       parents: { title: "Parents", blurb: "Menus, handbooks, DES, tuition, and family partnership." },
       whyUs: { title: "Why Us", blurb: "Small classes, safety, school-ready curriculum, DES approved." },
-      enroll: { title: "Enroll", blurb: "Start the 26–27 school year. Often complete in one day." },
+      enroll: { title: "Enroll", blurb: "Now enrolling. Often complete in one day." },
       tour: { title: "Schedule a tour", blurb: "Walk a Tucson or Yuma classroom on a weekday morning." },
       handbook: { title: "Parent handbook", blurb: "Admissions, daily routines, discipline, and the suspension and expulsion prevention policy." },
       privacy: { title: "Privacy", blurb: "What this site collects, why, and who sees it." },
@@ -120,8 +120,8 @@ export const en = {
   },
 
   campusSwitch: {
-    label: "Campus",
-    call: "Call the {campus} campus",
+    label: "Site",
+    call: "Call the {campus} site",
   },
 
   localeSwitch: {
@@ -136,8 +136,8 @@ export const en = {
 
   nav: {
     home: "Home",
-    campuses: "Campuses",
-    allCampuses: "All campuses",
+    campuses: "Sites",
+    allCampuses: "All sites",
     info: "Info",
     infoHome: "Info home",
     about: "About us",
@@ -188,37 +188,37 @@ export const en = {
   /** Keyed by the campus slug in src/data/school.ts. */
   campuses: {
     tucson: {
-      name: "Tucson Campus",
+      name: "Tucson Site",
       blurb:
-        "A bright, home-away-from-home campus near midtown Tucson — desert gardens, shade-sail playgrounds, and classrooms built for curious three-to-five-year-olds.",
+        "A bright, home-away-from-home site near midtown Tucson — desert gardens, shade-sail playgrounds, and classrooms built for curious three-to-five-year-olds.",
       feel: "A home away from home, all day",
       bannerAlt:
-        "The Tucson campus building, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates” beside the AmeriSchool Academy sign.",
+        "The building at the Tucson site, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates” beside the AmeriSchool Academy sign.",
       imageAlt:
-        "The Tucson campus: a long brick building behind a lawn, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates”.",
+        "The Tucson site: a long brick building behind a lawn, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates”.",
     },
     yuma: {
-      name: "Yuma Campus",
+      name: "Yuma Site",
       blurb:
-        "A bright, home-away-from-home campus easily accessible throughout Yuma — desert gardens, shade-sail playgrounds, and classrooms built for curious three-to-five-year-olds.",
+        "A bright, home-away-from-home site easily accessible throughout Yuma — desert gardens, shade-sail playgrounds, and classrooms built for curious three-to-five-year-olds.",
       feel: "A home away from home, all day",
       bannerAlt: "",
       imageAlt:
-        "The Yuma campus: a long single-story building with a covered entrance and benches along the front, a fenced yard to one side, and open lawn in front, under a clear Arizona sky.",
+        "The Yuma site: a long single-story building with a covered entrance and benches along the front, a fenced yard to one side, and open lawn in front, under a clear Arizona sky.",
     },
   },
 
   campusPage: {
-    eyebrow: "Campus",
+    eyebrow: "Site",
     tourTitle: "What you’ll see on a tour",
     tourList: [
       "Cozy classrooms where every child is greeted by name",
       "Shade-sail playground and outdoor studios",
       "Secure entry and signed-in pickup",
-      "The same DES-approved curriculum on both campuses",
+      "The same DES-approved curriculum on both sites",
     ],
     openInMaps: "Open in Maps",
-    preferOther: "Prefer the other campus?",
+    preferOther: "Prefer the other site?",
     compare: "Compare locations",
     // Only rendered for a campus that has staff listed; {campus} is the city.
     staffTitle: "Meet the {campus} team",
@@ -273,7 +273,7 @@ export const en = {
     },
     "student-handbook": {
       title: "Student Handbook",
-      blurb: "Campus handbook shared with AmeriSchools Academy families.",
+      blurb: "Handbook shared with AmeriSchools Academy families.",
     },
     wellness: {
       title: "Wellness Policy",
@@ -281,11 +281,11 @@ export const en = {
     },
     breakfast: {
       title: "Tucson breakfast menu",
-      blurb: "Current breakfast offerings at the Tucson campus.",
+      blurb: "Current breakfast offerings at the Tucson site.",
     },
     lunch: {
       title: "Tucson lunch menu",
-      blurb: "Current lunch offerings at the Tucson campus.",
+      blurb: "Current lunch offerings at the Tucson site.",
     },
     supplies: {
       title: "School supplies",
@@ -324,9 +324,9 @@ export const en = {
     lede: "Handbooks, menus, and the same family resources that live under Info on the current site.",
     resources: {
       handbook: { title: "Parent handbook", text: "Admissions, daily routines, discipline, and the suspension and expulsion prevention policy.", cta: "Read the handbook" },
-      tours: { title: "Tours & calendar", text: "Walk the campus, meet teachers, and peek at a real morning meeting.", cta: "Schedule a tour" },
+      tours: { title: "Tours & calendar", text: "Walk the classrooms, meet teachers, and peek at a real morning meeting.", cta: "Schedule a tour" },
       packet: { title: "Enrollment packet", text: "Health forms, emergency contacts, and DES paperwork in one sitting.", cta: "Start enrollment" },
-      policies: { title: "Policies", text: "Enrollment, release, discipline, and parent access — as posted at both campuses.", cta: "Read the policies" },
+      policies: { title: "Policies", text: "Enrollment, release, discipline, and parent access — as posted at both sites.", cta: "Read the policies" },
       partnership: { title: "Family partnership", text: "Conferences twice a year, open-door mornings, and teachers who call back.", cta: "Talk with us" },
     },
     docsTitle: "Handbooks, menus & forms",
@@ -344,10 +344,10 @@ export const en = {
   },
 
   campusesPage: {
-    eyebrow: "Campuses",
+    eyebrow: "Sites",
     title: "Tucson & Yuma",
-    lede: "Two warm, licensed campuses. One play-based Pre-K. Tour the one closest to home — or both.",
-    details: "Campus details",
+    lede: "Two warm, licensed sites. One play-based Pre-K. Tour the one closest to home — or both.",
+    details: "Site details",
     exteriorAlt: "exterior",
     bookTour: "Book a tour",
   },
@@ -381,7 +381,7 @@ export const en = {
   aboutPage: {
     eyebrow: "About",
     title: "A quest for curious kids",
-    lede: "Welcome to Capstone Quest Academy, where little steps make big dreams come true. Since 2013 our Tucson and Yuma campuses have been a home away from home — a DES-certified Pre-K that prepares children aged three to five for kindergarten without rushing childhood.",
+    lede: "Welcome to Capstone Quest Academy, where little steps make big dreams come true. Since 2013 our Tucson and Yuma sites have been a home away from home — a DES-certified Pre-K that prepares children aged three to five for kindergarten without rushing childhood.",
     hours: "The instructional day runs five days a week. Early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM) are offered as fee-for-service care so working families can use the full 7 AM–6 PM window.",
     imageAlt: "Six preschoolers in paper turkey hats, arms around each other, posing in their classroom.",
     believeTitle: "What we believe",
@@ -447,12 +447,12 @@ export const en = {
 
   faqs: {
     ages: { q: "What ages do you serve?", a: "Children ages 3 through 5, together in one classroom. Most families start the year their child turns three and stay through the kindergarten-ready year." },
-    des: { q: "Are you DES approved?", a: "Yes. Both campuses are 100% approved by the Arizona Department of Economic Security and state-licensed. We gladly accept DES child care subsidies." },
+    des: { q: "Are you DES approved?", a: "Yes. Both sites are 100% approved by the Arizona Department of Economic Security and state-licensed. We gladly accept DES child care subsidies." },
     enroll: { q: "How quickly can we enroll?", a: "Once we have a tour and a completed packet, many families finish enrollment in as little as one day — especially when a seat is open for the current session." },
     day: { q: "What does a typical day look like?", a: "Morning meeting, outdoor play, literacy and math workshops, lunch, rest, studios (art, blocks, science), and a closing circle. Full-day children stay for snack and afternoon centers." },
-    ratio: { q: "What is the teacher-to-child ratio?", a: "Every Pre-K room has a lead teacher and an assistant, and we staff to Arizona licensing requirements so groups stay small enough that each child is known by name. Class sizes shift a little by campus and age group — ask for current numbers on your tour." },
-    checkin: { q: "Can I see how my child is doing during the day?", a: "Yes. Call the campus any time and we will check on your child. If you would like, ask your child's teacher to take photos or short videos during the day and send them to you." },
-    hours: { q: "What are your hours?", a: "The instructional Pre-K program runs five days a week. Campuses are open Monday–Friday, 7:00 AM to 6:00 PM, with fee-for-service early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM)." },
+    ratio: { q: "What is the teacher-to-child ratio?", a: "Every Pre-K room has a lead teacher and an assistant, and we staff to Arizona licensing requirements so groups stay small enough that each child is known by name. Class sizes shift a little by site and age group — ask for current numbers on your tour." },
+    checkin: { q: "Can I see how my child is doing during the day?", a: "Yes. Call us any time and we will check on your child. If you would like, ask your child's teacher to take photos or short videos during the day and send them to you." },
+    hours: { q: "What are your hours?", a: "The instructional Pre-K program runs five days a week. Sites are open Monday–Friday, 7:00 AM to 6:00 PM, with fee-for-service early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM)." },
   },
 
   testimonials: {
@@ -473,7 +473,7 @@ export const en = {
     },
     playgroundAlt: "A grinning preschooler looking out through the top of a blue and red playground climber.",
     desTitle: "Approved by DES. Built for families.",
-    desText: "Both campuses are fully approved by the Arizona Department of Economic Security. We accept child care subsidies, and every family — voucher or private pay — gets the same classroom, the same teachers, the same day.",
+    desText: "Both sites are fully approved by the Arizona Department of Economic Security. We accept child care subsidies, and every family — voucher or private pay — gets the same classroom, the same teachers, the same day.",
     dayTitle: "A day in Pre-K",
     wordsTitle: "Families in their own words",
     faqTitle: "Questions we hear on every tour",
@@ -482,27 +482,27 @@ export const en = {
     eyebrow: "Pre-K in Tucson & Yuma",
     title: "Little steps make big dreams come true",
     welcome:
-      "Welcome to Capstone Quest Academy, where little steps make big dreams come true. We are the most affordable Pre-K in the communities we serve. Located in the AmeriSchools campuses nestled in the heart of Tucson and Yuma since 2013, our nurturing Pre-K programs guide little ones on an adventure of learning and growth.",
-    body: "Campuses are a home away from home — play, discovery, and a kindergarten-ready year without rushing childhood. Instruction runs five days a week. Doors open 7:00 AM – 6:00 PM, Monday–Friday, with before- and after-care for working families.",
+      "Welcome to Capstone Quest Academy, where little steps make big dreams come true. We are the most affordable Pre-K in the communities we serve. Located in the AmeriSchools sites nestled in the heart of Tucson and Yuma since 2013, our nurturing Pre-K programs guide little ones on an adventure of learning and growth.",
+    body: "Sites are a home away from home — play, discovery, and a kindergarten-ready year without rushing childhood. Instruction runs five days a week. Doors open 7:00 AM – 6:00 PM, Monday–Friday, with before- and after-care for working families.",
     pills: [
       "Ages 3–5, Tucson and Yuma since 2013",
       "Open 7:00 AM – 6:00 PM, Monday–Friday",
-      "Before- and after-school care on both campuses",
+      "Before- and after-school care on both sites",
       "DES-approved · State of Arizona licensed",
     ],
     programsEyebrow: "Our programs",
     programsTitle: "A Pre-K year that still feels like childhood",
     seeProgram: "See the program",
-    campusesEyebrow: "Two Arizona campuses",
+    campusesEyebrow: "Two Arizona sites",
     campusesTitle: "Close to home in Tucson and Yuma",
-    campusesLede: "The same play-based curriculum, DES approval, and small class sizes — pick the campus that fits your morning drive.",
-    visitCampus: "Visit campus",
+    campusesLede: "The same play-based curriculum, DES approval, and small class sizes — pick the site that fits your morning drive.",
+    visitCampus: "Visit site",
     dayEyebrow: "A day in Pre-K",
     dayTitle: "Rhythm, play, and just enough school",
     dayNote: "Before- and after-care wraps around this day, 7:00–8:00 AM and 3:30–6:00 PM.",
     familiesEyebrow: "From our families",
     familiesTitle: "Kindergarten-ready, still themselves",
-    ctaTitle: "Now enrolling the {year} school year",
+    ctaTitle: "Now enrolling",
     ctaNote: "Limited seats · DES welcome · Tours most weekdays",
     enrollNow: "Enroll Now",
   },
@@ -543,16 +543,37 @@ export const en = {
       "Extra days beyond your contract are billed as drop-ins. Filing a new contract avoids the drop-in rate.",
       "A signed contract and current registration documents must be on file before your child attends.",
     ],
+    scholarship: {
+      title: "Barr Family Early Learners Scholarship",
+      origin:
+        "The fund was established in 2023 by the Barr family, founders of AmeriSchools Academy and Capstone Quest Academy. They saw working families in Tucson and Yuma whose income was above the DES limit but who still could not afford quality early learning and work at the same time. Awards are based on need and reviewed every year.",
+      covers: "Covers up to 50% of preschool costs.",
+      whoTitle: "Who it is for",
+      who: [
+        "Families with a child aged 3 to 5 who need early learning care.",
+        "Families who applied to DES and did not qualify, or were denied.",
+        "Not for families already receiving DES. If your DES application is still in progress, the application form tells you who to contact.",
+      ],
+      howTitle: "How to apply",
+      how: [
+        "Download and complete the application.",
+        "Attach your two most recent proofs of income — pay stubs, tax returns, bank statements, benefit statements or similar. Applications without proof of income are delayed.",
+        "Return it to your site.",
+      ],
+      decision:
+        "Applications are reviewed on family need and income, first come first served, and decided within 10 days of a complete application with financial documents. Awards depend on income verification and on funding being available, and run to June 30, 2027 while your account stays current. Tell us if your income changes or you become eligible for DES.",
+      cta: "Download the scholarship application",
+    },
     ctaTitle: "Ready to enroll?",
-    ctaText: "Complete one registration form per child and return it to the campus registrar. We will walk through the DES paperwork with you if you are using a subsidy.",
+    ctaText: "Complete one registration form per child and return it to the site registrar. We will walk through the DES paperwork with you if you are using a subsidy.",
     feeScheduleCta: "Download the fee schedule",
-    effectiveNote: "Rates shown are from the fee schedule effective August 1, 2024. Confirm current rates with your campus before signing — call {phone} or email",
+    effectiveNote: "Rates shown are from the fee schedule effective August 1, 2024. Confirm current rates with your site before signing — call {phone} or email",
   },
   policiesPage: {
     handbookLink: "Read the full prevention policy in the parent handbook",
     eyebrow: "Policies",
     title: "Enrollment, release, and care policies",
-    lede: "The licensing policies posted at both campuses, in the same words. Ask the front office for anything here in print.",
+    lede: "The licensing policies posted at both sites, in the same words. Ask the front office for anything here in print.",
     questionsTitle: "Questions about any of this?",
     questionsText: "Call {phone} or stop by the front office. Suspension and expulsion policies are available to parents on request, and licensing inspection reports can be reviewed on the premises.",
     items: {
@@ -579,20 +600,20 @@ export const en = {
       classes: { title: "Small classes", text: "Teach a class, not a crowd. You will actually know every child and every family." },
       benefits: { title: "Real benefits", text: "Insurance, retirement contributions, tuition reimbursement, extra-income incentives." },
       invent: { title: "Room to invent", text: "Studios, outdoor play, and a curriculum that still lets teachers be creative." },
-      family: { title: "A family shop", text: "Pre-K campuses in Tucson and Yuma with the same calm, DES-approved culture." },
+      family: { title: "A family shop", text: "Pre-K sites in Tucson and Yuma with the same calm, DES-approved culture." },
     },
     openTitle: "Open roles",
     openings: {
       lead: { role: "Lead Pre-K Teacher", campus: "Tucson or Yuma", req: "Fingerprint clearance, bachelor’s degree, AEPA or NES preferred." },
       assistant: { role: "Assistant Teacher", campus: "Tucson or Yuma", req: "Love of three-to-five-year-olds, classroom experience a plus." },
-      care: { role: "Before & After Care Lead", campus: "Either campus", req: "7:00 AM start or 3:30–6:00 PM close. Reliable, warm, certified." },
+      care: { role: "Before & After Care Lead", campus: "Either site", req: "7:00 AM start or 3:30–6:00 PM close. Reliable, warm, certified." },
     },
     applyTitle: "Apply",
     thanks: "Thank you — a director will write back if there’s a match.",
     received: "Application received.",
     failed: "We could not send your application. Please call {phone}.",
-    fields: { name: "Name", email: "Email", phone: "Phone", role: "Role", campus: "Campus", message: "Why this work" },
-    eitherCampus: "Either campus",
+    fields: { name: "Name", email: "Email", phone: "Phone", role: "Role", campus: "Site", message: "Why this work" },
+    eitherCampus: "Either site",
     sending: "Sending…",
     submit: "Submit application",
   },
@@ -619,7 +640,7 @@ export const en = {
     role: "Our assistant — type or talk",
     open: "Ask Owlivia",
     greeting:
-      "Hi, I'm Owlivia. Ask me anything about Capstone Quest — our program, tuition, DES, or the school day. I can book a campus tour for you too.",
+      "Hi, I'm Owlivia. Ask me anything about Capstone Quest — our program, tuition, DES, or the school day. I can book a site tour for you too.",
     voiceHint: "You can also talk to me out loud.",
     liveHint: "You're live — just start talking.",
     startCall: "Start voice call",
@@ -641,10 +662,10 @@ export const en = {
   tourPage: {
     eyebrow: "Visit",
     title: "Schedule a tour",
-    lede: "Walk the classrooms, meet a lead teacher, and see a real morning. Tours last about 30 minutes. Pick a campus, then choose any open time below.",
-    pickCampus: "Which campus would you like to visit?",
+    lede: "Walk the classrooms, meet a lead teacher, and see a real morning. Tours last about 30 minutes. Pick a site, then choose any open time below.",
+    pickCampus: "Which site would you like to visit?",
     helpTitle: "Rather talk to someone?",
-    helpText: "Call the campus and we will find a time with you. We are happy to answer questions about the program, tuition, or DES before you visit.",
+    helpText: "Call the site and we will find a time with you. We are happy to answer questions about the program, tuition, or DES before you visit.",
     bookingNote: "Booking is handled by Cal.com, and that step is in English. Call us if you would like to book in Spanish.",
   },
 
@@ -652,7 +673,7 @@ export const en = {
   enrollPage: {
     eyebrow: "Enroll",
     title: "Enroll your child",
-    lede: "Enrollment is done on paper. Download the enrollment packet, fill it in, and return it to your campus registrar.",
+    lede: "Enrollment is done on paper. Download the enrollment packet, fill it in, and return it to your site registrar.",
     download: "Download the enrollment packet",
     /** {pages} and {size} come from enrollmentPacket in src/data/school.ts. */
     fileInfo: "PDF · {pages} pages · {size}",
@@ -662,13 +683,13 @@ export const en = {
     steps: [
       "Download and print the packet. Complete one packet for each child.",
       "Fill it in and sign where marked. The immunization certificate must be completed by your child’s doctor or clinic, or you can attach a copy of the official immunization record signed or stamped by the provider.",
-      "Return the completed packet to the registrar at your campus. You will then receive an invitation to the ProCare parent app.",
+      "Return the completed packet to the registrar at your site. You will then receive an invitation to the ProCare parent app.",
     ],
     note: "Every child needs a signed contract and current registration documents on file in the office before their first day.",
     helpTitle: "Need help, or the packet in another format?",
-    help: "If you can’t print the packet, can’t use a PDF, or would like help filling it in, contact your campus. We can go through it with you by phone or in person, or provide it in another format.",
+    help: "If you can’t print the packet, can’t use a PDF, or would like help filling it in, contact your site. We can go through it with you by phone or in person, or provide it in another format.",
     emailLabel: "Email",
-    campusLabel: "{campus} campus",
+    campusLabel: "{campus} site",
   },
   /**
    * The accessibility statement, from the draft prepared for the school
@@ -702,14 +723,14 @@ export const en = {
     open: [
       "We are reviewing the colors of the lettering of our name on the homepage. They meet the required contrast at the size shown, but with little margin.",
       "Our downloadable Parent Handbook PDF has not been fully checked for accessibility. The handbook is also published on this site as a web page, and that version is accessible.",
-      "Our enrollment packet is a scanned PDF, so a screen reader cannot read it and it cannot be filled in on screen. If you need it in another format, or help completing it, contact your campus and we will go through it with you by phone or in person.",
-      "Tour booking on our Schedule a tour page is provided by Cal.com. That part of the page is built by them, not by us, and it is only in English. If it does not work for you, call your campus and we will book the tour with you.",
+      "Our enrollment packet is a scanned PDF, so a screen reader cannot read it and it cannot be filled in on screen. If you need it in another format, or help completing it, contact your site and we will go through it with you by phone or in person.",
+      "Tour booking on our Schedule a tour page is provided by Cal.com. That part of the page is built by them, not by us, and it is only in English. If it does not work for you, call your site and we will book the tour with you.",
       "Some documents on our Parent resources page — the student handbook, wellness policy, meal menus and supply list — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
     ],
     helpTitle: "If something does not work for you",
     helpIntro: "Please tell us. You will not be putting us out — it helps us fix it for the next family.",
     emailLabel: "Email",
-    campusLabel: "{campus} campus",
+    campusLabel: "{campus} site",
     hoursLabel: "Hours",
     helpDetails: "Please tell us the page you were on and what happened. We aim to respond within two business days.",
     formats: "If you need information from this site in another format — large print, plain text, or read aloud over the phone — ask us and we will provide it.",
@@ -736,14 +757,14 @@ export const en = {
     sections: {
       who: {
         title: "Who we are",
-        body: "Capstone Quest Academy operates the Pre-K programs at our Tucson and Yuma campuses and is responsible for the information collected through this website. Our contact details are at the bottom of this page.",
+        body: "Capstone Quest Academy operates the Pre-K programs at our Tucson and Yuma sites and is responsible for the information collected through this website. Our contact details are at the bottom of this page.",
       },
       collect: {
         title: "What we collect",
         intro: "We collect information only when you choose to send it to us using one of the forms on this site. Nothing is gathered in the background.",
         tour: "Tour booking: tours are booked through Cal.com, a scheduling service acting on our behalf. Cal.com asks for your name, email address and phone number, and emails you a confirmation. Cal.com handles that booking on our behalf; we see the booking in our calendar.",
         contact: "Contact form: your name, email address, the topic you pick, and your message.",
-        careers: "Job application: your name, email address, phone number, the role and campus you are applying for, and your message.",
+        careers: "Job application: your name, email address, phone number, the role and site you are applying for, and your message.",
         note: "We do not ask for a Social Security number, payment details, or immigration status anywhere on this site.",
       },
       why: {
@@ -769,7 +790,7 @@ export const en = {
       },
       children: {
         title: "Information about children",
-        body: "Tour bookings are made by a parent or guardian. We use it only to respond to your request. Enrollment itself is done on paper: the enrollment packet is downloaded from this site but completed and returned to the campus registrar, so this site never receives it. We do not knowingly collect information directly from children, and this site is not directed at children.",
+        body: "Tour bookings are made by a parent or guardian. We use it only to respond to your request. Enrollment itself is done on paper: the enrollment packet is downloaded from this site but completed and returned to the site registrar, so this site never receives it. We do not knowingly collect information directly from children, and this site is not directed at children.",
       },
       retention: {
         title: "How long we keep it",
@@ -789,7 +810,7 @@ export const en = {
       },
       contact: {
         title: "Contact us",
-        body: "Call us, email us, or speak to the front office at either campus. We would rather answer a question about this than have you wonder.",
+        body: "Call us, email us, or speak to the front office at either site. We would rather answer a question about this than have you wonder.",
       },
     },
   },
@@ -801,7 +822,7 @@ export const en = {
     downloadPdf: "Download the PDF",
     contentsTitle: "Contents",
     officesTitle: "School offices",
-    officesNote: "Call the campus directly — the front office answers during program hours.",
+    officesNote: "Call the site directly — the front office answers during program hours.",
     foreword: {
       title: "Foreword",
       p1: "Welcome to another exciting year educating Pre-Kindergarten children, ages 3 to 5, creating a vision for early childhood learning. As a parent, you are entrusting us with your most valued possession, a loving child.",
