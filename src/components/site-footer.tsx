@@ -89,6 +89,11 @@ export function SiteFooter() {
               </li>
             ) : null}
             <li>
+              <AppLink to="/faq" className="hover:text-gold">
+                {c.footer.links.faq}
+              </AppLink>
+            </li>
+            <li>
               <AppLink to="/info" className="hover:text-gold">
                 {c.footer.links.info}
               </AppLink>

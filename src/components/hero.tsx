@@ -81,12 +81,18 @@ export function Hero() {
             <Star className="size-4 fill-gold text-gold" />
           </p>
 
-          <h1 className="mt-2 font-display text-[2.15rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.35rem]">
+          {/* aria-label names the heading once, for screen readers and for
+              crawlers. It replaces an sr-only " Academy" that sat beside the
+              coloured letters: assistive technology read the word once, but a
+              crawler ignores aria-hidden and read both, so the page's only h1
+              indexed as "CAPSTONE QUEST Academy A C A D E M Y". */}
+          <h1
+            aria-label={c.hero.wordmark}
+            className="mt-2 font-display text-[2.15rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.35rem]"
+          >
             CAPSTONE QUEST
             {/* Each letter is its own coloured span, which some screen readers
-                spell out as "A, C, A, D, E, M, Y". The letters are hidden from
-                them and the word is given once, in full. */}
-            <span className="sr-only"> Academy</span>
+                spell out as "A, C, A, D, E, M, Y". aria-label above covers it. */}
             <span
               aria-hidden
               className="mt-1 flex flex-wrap text-[2.45rem] tracking-[-0.04em] sm:text-6xl lg:text-[3.9rem]"

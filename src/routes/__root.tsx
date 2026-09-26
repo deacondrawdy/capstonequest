@@ -7,6 +7,7 @@ import { CAMPUS_BOOT_SCRIPT } from "@/lib/campus";
 import { localizePath, stripLocale, useLocale } from "@/lib/locale";
 import { absoluteUrl } from "@/lib/site-url";
 import { pageTitle } from "@/lib/page-title";
+import { structuredData } from "@/lib/structured-data";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
 import { useRouterState } from "@tanstack/react-router";
@@ -79,6 +80,12 @@ function RootDocument() {
         <link rel="alternate" hrefLang="en" href={absoluteUrl(localizePath(canonical, "en"))} />
         <link rel="alternate" hrefLang="es" href={absoluteUrl(localizePath(canonical, "es"))} />
         <link rel="alternate" hrefLang="x-default" href={absoluteUrl(localizePath(canonical, "en"))} />
+        {/* Every fact here is also stated in prose on the page. Search engines
+            treat marked-up content that is not visible as a violation. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: structuredData(canonical, content, locale) }}
+        />
         {/* Applies saved accessibility preferences before first paint, so a
             visitor who chose larger text never sees the default size flash. */}
         <script dangerouslySetInnerHTML={{ __html: A11Y_BOOT_SCRIPT }} />

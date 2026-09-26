@@ -10,7 +10,10 @@ export const school = {
   // Revisit this once the 928 is connected.
   phone: "(520) 462-7788",
   phoneHref: "tel:+15204627788",
-  email: "info@capstonequestacademy.com",
+  // The address the site shows parents and the one website forms deliver to
+  // are the same on purpose: two addresses meant a parent wrote to one inbox
+  // while their form landed in another.
+  email: "admin@capstonequestacademy.com",
   hours: "Monday–Friday, 7:00 AM – 6:00 PM",
   ages: "3–5 years",
   year: "26–27",
@@ -235,6 +238,16 @@ export const testimonials = [
   { id: "priya", name: "Priya Chen" },
   { id: "marcus", name: "Marcus Alvarez" },
   { id: "danielle", name: "Danielle Ortiz" },
+] as const;
+
+/**
+ * The /faq page's questions, in publication order. The copy lives in the
+ * content files; this is the order and the join key, like `faqs` below.
+ */
+export const faqPageItems = [
+  "cost", "ages", "hours", "where", "toilet", "des", "desStart", "noDes",
+  "fees", "meals", "ratio", "licensed", "spanish", "tour", "summer",
+  "discounts", "amerischools",
 ] as const;
 
 export const faqs = [

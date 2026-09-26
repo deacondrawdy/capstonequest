@@ -15,6 +15,7 @@ const PATH_TITLES: Record<string, TitleKey> = {
   ...(features.clever ? { "/clever": "clever" as const } : {}),
   "/contact": "contact",
   "/enroll": "enroll",
+  "/faq": "faq",
   "/handbook": "handbook",
   "/info": "info",
   "/parents": "parents",

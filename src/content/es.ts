@@ -45,6 +45,7 @@ export const es: Content = {
     clever: "Clever y portales estudiantiles",
     contact: "Contacto",
     enroll: "Inscripción",
+    faq: "Preguntas frecuentes",
     info: "Información",
     parents: "Recursos para familias",
     handbook: "Manual para padres",
@@ -97,6 +98,7 @@ export const es: Content = {
       programs: { title: "Programas", blurb: "Un solo salón preescolar de edades mixtas para niños de 3 a 5 años, más cuidado antes y después de clases, de 7 a. m. a 6 p. m." },
       info: { title: "Información", blurb: "Nosotros, programas, recursos para familias y calendarios." },
       clever: { title: "Clever", blurb: "Accesos a Clever, PowerSchool, ClassDojo y RAZ Kids." },
+      faq: { title: "Preguntas frecuentes", blurb: "Costo, horarios, edades, DES, comidas, proporciones y visitas, con respuestas claras." },
       tuition: { title: "Colegiatura y cuotas", blurb: "Tarifas semanales de preescolar, cuidado antes y después de clases, descuentos para hermanos y condiciones de pago." },
       policies: { title: "Políticas", blurb: "Inscripción, entrega de niños, disciplina, acceso de los padres e informes de inspección." },
       careers: { title: "Empleo", blurb: "Enseñe preescolar en Tucson o Yuma. Grupos pequeños, prestaciones y un ambiente familiar." },
@@ -107,7 +109,7 @@ export const es: Content = {
       tour: { title: "Agende una visita", blurb: "Conozca un salón en Tucson o Yuma una mañana entre semana." },
       handbook: { title: "Manual para padres", blurb: "Admisiones, rutinas diarias, disciplina y la política de prevención de suspensión y expulsión." },
       privacy: { title: "Privacidad", blurb: "Qué recopila este sitio, para qué y quién lo ve." },
-      contact: { title: "Contacto", blurb: "(520) 462-7788 · info@capstonequestacademy.com" },
+      contact: { title: "Contacto", blurb: "(520) 462-7788 · admin@capstonequestacademy.com" },
       accessibility: { title: "Accesibilidad", blurb: "Cómo está hecho este sitio para que todos puedan usarlo, y cómo avisarnos de una barrera." },
     },
   },
@@ -147,6 +149,7 @@ export const es: Content = {
     policies: "Políticas",
     tuition: "Colegiatura",
     tuitionFees: "Colegiatura y cuotas",
+    faq: "Preguntas frecuentes",
     careers: "Empleo",
     contact: "Contacto",
     menu: "Menú",
@@ -175,6 +178,7 @@ export const es: Content = {
       info: "Información",
       tour: "Agende una visita",
       privacy: "Privacidad",
+      faq: "Preguntas frecuentes",
       handbook: "Manual para padres",
       accessibility: "Accesibilidad",
     },
@@ -289,6 +293,8 @@ export const es: Content = {
     },
   },
   hero: {
+    /** Names the homepage h1, whose letters are decorative spans. */
+    wordmark: "Capstone Quest Academy",
     eyebrow: "Programas preescolares en",
     // Kept to roughly the English length so it sits on one line in the hero's
     // 32rem column; the gold rule under it spans the sentence, and a line that
@@ -503,6 +509,88 @@ export const es: Content = {
     ctaNote: "Lugares limitados · Aceptamos DES · Visitas casi todos los días hábiles",
     enrollNow: "Inscríbase ahora",
   },
+  /** Etiquetas usadas solo dentro de los datos estructurados. */
+  schema: {
+    audience: "Niños de 3 a 5 años",
+    licence: "Licencia de cuidado infantil de Arizona",
+  },
+
+  faqPage: {
+    eyebrow: "Preguntas",
+    title: "Preguntas frecuentes",
+    lede: "Capstone Quest Academy es un preescolar para niños de 3 a 5 años, con centros en Tucson y Yuma, Arizona. Operamos desde 2013. Abajo están las preguntas que más nos hacen las familias, respondidas con claridad.",
+    items: {
+      cost: {
+        q: "¿Cuánto cuesta el preescolar en Capstone Quest Academy?",
+        a: "Capstone Quest Academy cobra por semana. El preescolar de cinco días por semana, de 8:00 a. m. a 3:30 p. m., cuesta $130 por semana. Tres días por semana cuesta $120 por semana. El preescolar con cuidado antes y después de clases, de 7:00 a. m. a 6:00 p. m. cinco días por semana, cuesta $160 por semana. No hay cuota de inscripción, ni cuota de materiales, ni depósito. Las tarifas completas del cuidado antes y después de clases están en la página de colegiatura.",
+      },
+      ages: {
+        q: "¿Qué edades acepta Capstone Quest Academy?",
+        a: "Capstone Quest Academy atiende a niños de 3 a 5 años en su programa de preescolar. No podemos aceptar niños menores de 3 años. Hay campamentos de verano disponibles para niños de edad escolar, de 6 a 12 años.",
+      },
+      hours: {
+        q: "¿Cuál es el horario de Capstone Quest Academy?",
+        a: "Ambos centros abren de lunes a viernes, de 7:00 a. m. a 6:00 p. m. El día de instrucción es de 8:00 a. m. a 3:30 p. m. El cuidado matutino es de 7:00 a 8:00 a. m. y el cuidado vespertino de 3:30 a 6:00 p. m.",
+      },
+      where: {
+        q: "¿Dónde están los centros de Capstone Quest Academy?",
+        a: "Capstone Quest Academy tiene dos centros en Arizona. El centro de Tucson está en 1150 North Country Club Road, Tucson, AZ 85716, cerca de Speedway y Country Club, y su teléfono es (520) 462-7788. El centro de Yuma está en 1220 South 4th Avenue, Yuma, AZ 85364, y su teléfono es (928) 977-9318.",
+      },
+      toilet: {
+        q: "¿Mi hijo necesita saber usar el baño para asistir?",
+        a: "Sí. Los niños deben usar el baño de forma independiente antes de su primer día en Capstone Quest Academy. Esto significa avisarle a un maestro cuando necesitan ir, manejar su propia ropa y usar ropa interior regular en lugar de pañales o pull-ups. Los accidentes son normales y los manejamos con calma; las familias dejan una muda de ropa en el cubículo de su hijo. Si un niño tiene una discapacidad o condición médica que afecte el uso del baño, la familia debe hablar con el director del centro antes de inscribirlo.",
+      },
+      des: {
+        q: "¿Capstone Quest Academy acepta la asistencia de cuidado infantil de DES?",
+        a: "Sí. Capstone Quest Academy está aprobada por el Departamento de Seguridad Económica de Arizona (DES). Las familias solicitan directamente ante DES, no ante la escuela, a través del portal A-to-Z Arizona o llamando al 1-833-947-6396. Por lo general se requiere un ingreso familiar igual o menor al 165 por ciento del Nivel Federal de Pobreza y que el padre o madre trabaje o estudie. Actualmente Arizona tiene una lista de espera para la mayoría de los solicitantes, y el trámite puede tardar hasta 30 días.",
+      },
+      desStart: {
+        q: "¿Mi hijo puede empezar antes de que se apruebe DES?",
+        a: "Sí. Una familia puede empezar de inmediato pagando la tarifa semanal completa mientras su solicitud de DES está en trámite. Una vez que DES aprueba a la familia, Capstone Quest Academy reembolsa todos los pagos realizados, de forma retroactiva a la fecha de vigencia de esa aprobación. Las familias no pierden el dinero pagado durante la espera.",
+      },
+      noDes: {
+        q: "¿Qué pasa si no calificamos para DES?",
+        a: "Capstone Quest Academy ofrece la Beca Familiar Barr, que cubre hasta el 50 por ciento de las cuotas de preescolar del año en curso. Está dirigida a familias con un niño de 3 a 5 años que no calificaron para DES, o fueron rechazadas, y que de otro modo no pueden obtener servicios de cuidado infantil. Se requiere una solicitud y una revisión de elegibilidad por ingresos. No está dirigida a familias que ya reciben servicios de DES.",
+      },
+      fees: {
+        q: "¿Hay cuotas de inscripción o depósitos?",
+        a: "No. Capstone Quest Academy no cobra cuota de inscripción, ni cuota de matrícula, ni cuota de materiales, ni depósito para apartar un lugar. La colegiatura se paga cada lunes. Se aplica un cargo de $10 por pago tardío si no se paga antes del miércoles, y la recogida tardía después de las 6:00 p. m. cuesta $1 por minuto.",
+      },
+      meals: {
+        q: "¿Capstone Quest Academy proporciona comidas?",
+        a: "El desayuno y los refrigerios están incluidos en la tarifa semanal. Las familias mandan el almuerzo de su hijo. El campamento de verano para niños mayores incluye desayuno y almuerzo. Las familias informan a la escuela sobre cualquier alergia a alimentos o medicamentos durante la inscripción.",
+      },
+      ratio: {
+        q: "¿Cuál es la proporción de maestros por niño?",
+        a: "Capstone Quest Academy mantiene una proporción de un adulto por cada trece niños, tanto en los salones de tres años como en los de cuatro y cinco años. Las licencias de Arizona exigen un adulto por cada trece niños de tres años, uno por cada quince de cuatro años y uno por cada veinte de cinco años, por lo que esta proporción cumple el requisito estatal para los de tres años y lo supera para los de cuatro y cinco.",
+      },
+      licensed: {
+        q: "¿Capstone Quest Academy tiene licencia?",
+        a: "Sí. Capstone Quest Academy tiene licencia del estado de Arizona en ambos centros — Tucson con la licencia CDC-17293 y Yuma con la licencia CDC-17301 — y está aprobada por el Departamento de Seguridad Económica de Arizona. Ambos centros participan en Quality First, el programa de mejora de calidad de la educación temprana de Arizona administrado por First Things First. Todo el personal completa una Tarjeta de Autorización de Huellas Digitales de Nivel Uno, una verificación del Registro Central y verificaciones en bases de datos criminales nacionales antes de su primer día.",
+      },
+      spanish: {
+        q: "¿Capstone Quest Academy tiene personal que habla español?",
+        a: "Sí. Hay personal que habla español en los centros de Tucson y Yuma de 7:00 a. m. a 6:00 p. m. Las familias pueden hacer la visita, preguntar y hablar con el personal en español en cualquiera de los dos centros, y todo el sitio web está disponible en español.",
+      },
+      tour: {
+        q: "¿Cómo programo una visita?",
+        a: "Las visitas son de lunes a viernes, entre las 9:00 a. m. y las 3:30 p. m. en ambos centros, y duran unos 30 minutos. Capstone Quest Academy pide al menos 24 horas de anticipación. Los niños son bienvenidos y los animamos a acompañarlos. Solicite un horario en la página de visitas o llame directamente al plantel.",
+      },
+      summer: {
+        q: "¿Capstone Quest Academy abre durante el verano?",
+        a: "Sí. El programa de preescolar para niños de 3 a 5 años funciona todo el año con las mismas tarifas semanales, el mismo programa y las mismas comidas. Capstone Quest Academy también ofrece campamentos de verano por separado para niños de edad escolar, de 6 a 12 años.",
+      },
+      discounts: {
+        q: "¿Capstone Quest Academy ofrece descuentos?",
+        a: "Sí. Las familias que inscriben a más de un niño reciben un descuento del 10 por ciento por un hermano adicional, aplicable tanto al preescolar como al cuidado antes y después de clases. El personal de Capstone Quest Academy recibe un descuento del 50 por ciento. No hay descuento por pagar por mes o por año por adelantado.",
+      },
+      amerischools: {
+        q: "¿Capstone Quest Academy forma parte de AmeriSchools Academy?",
+        a: "No. Capstone Quest Academy es un negocio independiente y de propiedad privada, y no es una división, plantel ni programa de AmeriSchools Academy. Capstone Quest Academy ha estado alojada en instalaciones de AmeriSchools Academy desde 2013, y ambas organizaciones comparten un edificio y el compromiso de cuidar y enseñar a los niños, pero son entidades separadas. Una familia que se inscribe en Capstone Quest Academy se inscribe con Capstone Quest Academy.",
+      },
+    },
+  },
+
   tuitionPage: {
     eyebrow: "Colegiatura",
     title: "Preescolar de día completo, con tarifa semanal",

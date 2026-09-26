@@ -17,6 +17,7 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CleverRouteImport } from './routes/clever'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EnrollRouteImport } from './routes/enroll'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as HandbookRouteImport } from './routes/handbook'
 import { Route as InfoRouteImport } from './routes/info'
 import { Route as ParentsRouteImport } from './routes/parents'
@@ -36,6 +37,7 @@ import { Route as EsCareersRouteImport } from './routes/es.careers'
 import { Route as EsCleverRouteImport } from './routes/es.clever'
 import { Route as EsContactRouteImport } from './routes/es.contact'
 import { Route as EsEnrollRouteImport } from './routes/es.enroll'
+import { Route as EsFaqRouteImport } from './routes/es.faq'
 import { Route as EsHandbookRouteImport } from './routes/es.handbook'
 import { Route as EsInfoRouteImport } from './routes/es.info'
 import { Route as EsParentsRouteImport } from './routes/es.parents'
@@ -86,6 +88,11 @@ const ContactRoute = ContactRouteImport.update({
 const EnrollRoute = EnrollRouteImport.update({
   id: '/enroll',
   path: '/enroll',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HandbookRoute = HandbookRouteImport.update({
@@ -183,6 +190,11 @@ const EsEnrollRoute = EsEnrollRouteImport.update({
   path: '/es/enroll',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsFaqRoute = EsFaqRouteImport.update({
+  id: '/es/faq',
+  path: '/es/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsHandbookRoute = EsHandbookRouteImport.update({
   id: '/es/handbook',
   path: '/es/handbook',
@@ -248,6 +260,7 @@ export interface FileRoutesByFullPath {
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
   '/enroll': typeof EnrollRoute
+  '/faq': typeof FaqRoute
   '/handbook': typeof HandbookRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
@@ -265,6 +278,7 @@ export interface FileRoutesByFullPath {
   '/es/clever': typeof EsCleverRoute
   '/es/contact': typeof EsContactRoute
   '/es/enroll': typeof EsEnrollRoute
+  '/es/faq': typeof EsFaqRoute
   '/es/handbook': typeof EsHandbookRoute
   '/es/info': typeof EsInfoRoute
   '/es/parents': typeof EsParentsRoute
@@ -287,6 +301,7 @@ export interface FileRoutesByTo {
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
   '/enroll': typeof EnrollRoute
+  '/faq': typeof FaqRoute
   '/handbook': typeof HandbookRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
@@ -303,6 +318,7 @@ export interface FileRoutesByTo {
   '/es/clever': typeof EsCleverRoute
   '/es/contact': typeof EsContactRoute
   '/es/enroll': typeof EsEnrollRoute
+  '/es/faq': typeof EsFaqRoute
   '/es/handbook': typeof EsHandbookRoute
   '/es/info': typeof EsInfoRoute
   '/es/parents': typeof EsParentsRoute
@@ -327,6 +343,7 @@ export interface FileRoutesById {
   '/clever': typeof CleverRoute
   '/contact': typeof ContactRoute
   '/enroll': typeof EnrollRoute
+  '/faq': typeof FaqRoute
   '/handbook': typeof HandbookRoute
   '/info': typeof InfoRoute
   '/parents': typeof ParentsRoute
@@ -344,6 +361,7 @@ export interface FileRoutesById {
   '/es/clever': typeof EsCleverRoute
   '/es/contact': typeof EsContactRoute
   '/es/enroll': typeof EsEnrollRoute
+  '/es/faq': typeof EsFaqRoute
   '/es/handbook': typeof EsHandbookRoute
   '/es/info': typeof EsInfoRoute
   '/es/parents': typeof EsParentsRoute
@@ -369,6 +387,7 @@ export interface FileRouteTypes {
     | '/clever'
     | '/contact'
     | '/enroll'
+    | '/faq'
     | '/handbook'
     | '/info'
     | '/parents'
@@ -386,6 +405,7 @@ export interface FileRouteTypes {
     | '/es/clever'
     | '/es/contact'
     | '/es/enroll'
+    | '/es/faq'
     | '/es/handbook'
     | '/es/info'
     | '/es/parents'
@@ -408,6 +428,7 @@ export interface FileRouteTypes {
     | '/clever'
     | '/contact'
     | '/enroll'
+    | '/faq'
     | '/handbook'
     | '/info'
     | '/parents'
@@ -424,6 +445,7 @@ export interface FileRouteTypes {
     | '/es/clever'
     | '/es/contact'
     | '/es/enroll'
+    | '/es/faq'
     | '/es/handbook'
     | '/es/info'
     | '/es/parents'
@@ -447,6 +469,7 @@ export interface FileRouteTypes {
     | '/clever'
     | '/contact'
     | '/enroll'
+    | '/faq'
     | '/handbook'
     | '/info'
     | '/parents'
@@ -464,6 +487,7 @@ export interface FileRouteTypes {
     | '/es/clever'
     | '/es/contact'
     | '/es/enroll'
+    | '/es/faq'
     | '/es/handbook'
     | '/es/info'
     | '/es/parents'
@@ -488,6 +512,7 @@ export interface RootRouteChildren {
   CleverRoute: typeof CleverRoute
   ContactRoute: typeof ContactRoute
   EnrollRoute: typeof EnrollRoute
+  FaqRoute: typeof FaqRoute
   HandbookRoute: typeof HandbookRoute
   InfoRoute: typeof InfoRoute
   ParentsRoute: typeof ParentsRoute
@@ -504,6 +529,7 @@ export interface RootRouteChildren {
   EsCleverRoute: typeof EsCleverRoute
   EsContactRoute: typeof EsContactRoute
   EsEnrollRoute: typeof EsEnrollRoute
+  EsFaqRoute: typeof EsFaqRoute
   EsHandbookRoute: typeof EsHandbookRoute
   EsInfoRoute: typeof EsInfoRoute
   EsParentsRoute: typeof EsParentsRoute
@@ -572,6 +598,13 @@ declare module '@tanstack/react-router' {
       path: '/enroll'
       fullPath: '/enroll'
       preLoaderRoute: typeof EnrollRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/handbook': {
@@ -707,6 +740,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsEnrollRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/faq': {
+      id: '/es/faq'
+      path: '/es/faq'
+      fullPath: '/es/faq'
+      preLoaderRoute: typeof EsFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/handbook': {
       id: '/es/handbook'
       path: '/es/handbook'
@@ -824,6 +864,7 @@ const rootRouteChildren: RootRouteChildren = {
   CleverRoute: CleverRoute,
   ContactRoute: ContactRoute,
   EnrollRoute: EnrollRoute,
+  FaqRoute: FaqRoute,
   HandbookRoute: HandbookRoute,
   InfoRoute: InfoRoute,
   ParentsRoute: ParentsRoute,
@@ -840,6 +881,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsCleverRoute: EsCleverRoute,
   EsContactRoute: EsContactRoute,
   EsEnrollRoute: EsEnrollRoute,
+  EsFaqRoute: EsFaqRoute,
   EsHandbookRoute: EsHandbookRoute,
   EsInfoRoute: EsInfoRoute,
   EsParentsRoute: EsParentsRoute,

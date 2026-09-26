@@ -18,6 +18,7 @@ export type AppPath =
   | "/clever"
   | "/contact"
   | "/enroll"
+  | "/faq"
   | "/info"
   | "/parents"
   | "/handbook"

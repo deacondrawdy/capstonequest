@@ -103,6 +103,7 @@ export function SiteHeader() {
     { to: "/programs", label: c.nav.programs },
     { to: "/tuition", label: c.nav.tuitionFees },
     { to: "/policies", label: c.nav.policies },
+    { to: "/faq", label: c.nav.faq },
     ...(features.careers ? [{ to: "/careers" as const, label: c.nav.careers }] : []),
     { to: "/contact", label: c.nav.contact },
     { to: "/parents", label: c.nav.parents },
@@ -183,6 +184,9 @@ export function SiteHeader() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <AppLink to="/policies">{c.nav.policies}</AppLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <AppLink to="/faq">{c.nav.faq}</AppLink>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

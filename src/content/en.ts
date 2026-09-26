@@ -44,6 +44,7 @@ export const en = {
     clever: "Clever & student portals",
     contact: "Contact",
     enroll: "Enroll",
+    faq: "Frequently asked questions",
     info: "Info",
     parents: "Parent resources",
     handbook: "Parent handbook",
@@ -98,6 +99,7 @@ export const en = {
       programs: { title: "Programs", blurb: "One mixed-age Pre-K classroom for ages 3–5, plus before & after care, 7 AM–6 PM." },
       info: { title: "Info", blurb: "About us, programs, parent resources, and calendars." },
       clever: { title: "Clever", blurb: "Clever, PowerSchool, ClassDojo, and RAZ Kids sign-ins." },
+      faq: { title: "Frequently asked questions", blurb: "Cost, hours, ages, DES, meals, ratios and tours — answered directly." },
       tuition: { title: "Tuition & fees", blurb: "Weekly Pre-K rates, before & after care, sibling discounts, billing terms." },
       policies: { title: "Policies", blurb: "Enrollment, release, discipline, parent access, inspection reports." },
       careers: { title: "Careers", blurb: "Teach Pre-K in Tucson or Yuma. Small classes, benefits, family culture." },
@@ -108,7 +110,7 @@ export const en = {
       tour: { title: "Schedule a tour", blurb: "Walk a Tucson or Yuma classroom on a weekday morning." },
       handbook: { title: "Parent handbook", blurb: "Admissions, daily routines, discipline, and the suspension and expulsion prevention policy." },
       privacy: { title: "Privacy", blurb: "What this site collects, why, and who sees it." },
-      contact: { title: "Contact", blurb: "(520) 462-7788 · info@capstonequestacademy.com" },
+      contact: { title: "Contact", blurb: "(520) 462-7788 · admin@capstonequestacademy.com" },
       accessibility: { title: "Accessibility", blurb: "How this site is built to be usable by everyone, and how to report a barrier." },
     },
   },
@@ -147,6 +149,7 @@ export const en = {
     policies: "Policies",
     tuition: "Tuition",
     tuitionFees: "Tuition & fees",
+    faq: "FAQ",
     careers: "Careers",
     contact: "Contact",
     menu: "Menu",
@@ -175,6 +178,7 @@ export const en = {
       info: "Info",
       tour: "Schedule a tour",
       privacy: "Privacy",
+      faq: "FAQ",
       handbook: "Parent handbook",
       accessibility: "Accessibility",
     },
@@ -293,6 +297,8 @@ export const en = {
     },
   },
   hero: {
+    /** Names the homepage h1, whose letters are decorative spans. */
+    wordmark: "Capstone Quest Academy",
     eyebrow: "Pre-K Programs at",
     tagline: "Where curiosity grows and bright futures begin.",
     lede: "A nurturing, play-based learning environment that helps your child build confidence, friendships, and foundational skills for lifelong success.",
@@ -506,6 +512,88 @@ export const en = {
     ctaNote: "Limited seats · DES welcome · Tours most weekdays",
     enrollNow: "Enroll Now",
   },
+  /** Labels used only inside the structured data (src/lib/structured-data.ts). */
+  schema: {
+    audience: "Children ages 3 to 5",
+    licence: "Arizona child care facility license",
+  },
+
+  faqPage: {
+    eyebrow: "Questions",
+    title: "Frequently asked questions",
+    lede: "Capstone Quest Academy is a Pre-Kindergarten for children ages 3 to 5, with sites in Tucson and Yuma, Arizona. We have operated since 2013. Below are the questions families ask most, answered plainly.",
+    items: {
+      cost: {
+        q: "How much does preschool cost at Capstone Quest Academy?",
+        a: "Capstone Quest Academy charges by the week. Pre-K five days a week, 8:00 AM to 3:30 PM, is $130 per week. Three days a week is $120 per week. Pre-K with before and after care, 7:00 AM to 6:00 PM five days a week, is $160 per week. There is no registration fee, no supply fee and no deposit. Full rates for before- and after-care on their own are on the tuition page.",
+      },
+      ages: {
+        q: "What ages does Capstone Quest Academy accept?",
+        a: "Capstone Quest Academy serves children ages 3 to 5 in its Pre-Kindergarten program. Children under 3 cannot be accepted. Summer camps are available for elementary school-aged children ages 6 to 12.",
+      },
+      hours: {
+        q: "What are Capstone Quest Academy's hours?",
+        a: "Both sites are open Monday to Friday, 7:00 AM to 6:00 PM. The instructional day runs 8:00 AM to 3:30 PM. Before care runs 7:00 to 8:00 AM and after care runs 3:30 to 6:00 PM.",
+      },
+      where: {
+        q: "Where are Capstone Quest Academy's sites?",
+        a: "Capstone Quest Academy has two sites in Arizona. The Tucson site is at 1150 North Country Club Road, Tucson, AZ 85716, near Speedway and Country Club, reachable at (520) 462-7788. The Yuma site is at 1220 South 4th Avenue, Yuma, AZ 85364, reachable at (928) 977-9318.",
+      },
+      toilet: {
+        q: "Does my child need to be potty trained to attend?",
+        a: "Yes. Children need to be independently toilet trained before their first day at Capstone Quest Academy. That means telling a teacher when they need to go, managing their own clothing, and wearing regular underwear rather than diapers or pull-ups. Accidents are normal and handled kindly; families keep a change of clothes in their child's cubby. If a child has a disability or medical condition affecting toileting, families should speak with the site director before enrolling.",
+      },
+      des: {
+        q: "Does Capstone Quest Academy accept DES child care assistance?",
+        a: "Yes. Capstone Quest Academy is approved by the Arizona Department of Economic Security. Families apply directly to DES, not to the school, through the A-to-Z Arizona portal or by calling 1-833-947-6396. DES eligibility generally requires household income at or below 165 percent of the Federal Poverty Level and a parent working or in school. Arizona currently operates a waiting list for most applicants, and applications can take up to 30 days.",
+      },
+      desStart: {
+        q: "Can my child start before DES approval comes through?",
+        a: "Yes. A family may start immediately by paying the full weekly rate while a DES application is pending. Once DES approves the family, Capstone Quest Academy refunds every payment made, retroactive to the effective date of that approval. Families do not lose money paid while waiting.",
+      },
+      noDes: {
+        q: "What if we do not qualify for DES assistance?",
+        a: "Capstone Quest Academy offers the Barr Family Scholarship, which covers up to 50 percent of the current year's preschool fees. It is intended for families with a child aged 3 to 5 who did not qualify for DES, or were denied, and are otherwise unable to obtain childcare. An application and income eligibility review are required. It is not intended for families already receiving DES assistance.",
+      },
+      fees: {
+        q: "Are there registration fees or deposits?",
+        a: "No. Capstone Quest Academy charges no registration fee, no enrollment fee, no supply fee and no deposit to hold a place. Tuition is due every Monday. A $10 late charge applies if tuition is not paid by Wednesday, and late pick-up after 6:00 PM is $1 per minute.",
+      },
+      meals: {
+        q: "Does Capstone Quest Academy provide meals?",
+        a: "Breakfast and snacks are provided and included in the weekly rate. Families pack their child's lunch. Summer camp for older children includes both breakfast and lunch. Families notify the school of any food or medication allergies during enrollment.",
+      },
+      ratio: {
+        q: "What is the teacher-to-child ratio?",
+        a: "Capstone Quest Academy maintains a ratio of one adult to thirteen children in both the three-year-old and the four- and five-year-old classrooms. Arizona licensing requires one adult per thirteen three-year-olds, one per fifteen four-year-olds and one per twenty five-year-olds, so this ratio meets the state requirement for three-year-olds and exceeds it for four- and five-year-olds.",
+      },
+      licensed: {
+        q: "Is Capstone Quest Academy licensed?",
+        a: "Yes. Capstone Quest Academy is licensed by the State of Arizona at both sites — Tucson under licence CDC-17293 and Yuma under licence CDC-17301 — and is approved by the Arizona Department of Economic Security. Both sites participate in Quality First, Arizona's early learning quality improvement programme administered by First Things First. All staff complete a Level One Fingerprint Clearance Card, a Central Registry check and national criminal database checks before their start date.",
+      },
+      spanish: {
+        q: "Does Capstone Quest Academy have Spanish-speaking staff?",
+        a: "Yes. Spanish-speaking staff are on site at both the Tucson and Yuma sites from 7:00 AM to 6:00 PM. Families can tour, ask questions and speak with staff in Spanish at either site, and the entire website is available in Spanish.",
+      },
+      tour: {
+        q: "How do I schedule a tour?",
+        a: "Tours run Monday to Friday between 9:00 AM and 3:30 PM at both sites and take about 30 minutes. Capstone Quest Academy asks for at least 24 hours notice. Children are welcome and encouraged to come along. Request a time on the tour page or call the site directly.",
+      },
+      summer: {
+        q: "Is Capstone Quest Academy open during the summer?",
+        a: "Yes. The Pre-K program for ages 3 to 5 runs year round at the same weekly rates, with the same program and the same meals. Capstone Quest Academy also runs separate summer camps for elementary school-aged children ages 6 to 12.",
+      },
+      discounts: {
+        q: "Does Capstone Quest Academy offer discounts?",
+        a: "Yes. Families enrolling more than one child receive a 10 percent sibling discount on one additional sibling, applied to both Pre-K and before- and after-care. Staff of Capstone Quest Academy receive a 50 percent discount. There is no discount for paying monthly or annually in advance.",
+      },
+      amerischools: {
+        q: "Is Capstone Quest Academy part of AmeriSchools Academy?",
+        a: "No. Capstone Quest Academy is an independent, privately owned business and is not a division, campus or program of AmeriSchools Academy. Capstone Quest Academy has been housed in AmeriSchools Academy facilities since 2013, and the two organisations share a building and a commitment to caring for and teaching children, but they are separate entities. A family enrolling at Capstone Quest Academy is enrolling with Capstone Quest Academy.",
+      },
+    },
+  },
+
   tuitionPage: {
     eyebrow: "Tuition",
     title: "Full-day Pre-K, priced by the week",

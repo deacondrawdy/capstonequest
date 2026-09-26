@@ -110,9 +110,14 @@ export function HandbookPage() {
               </li>
             ))}
           </ul>
+          {/* break-all: the address is one long word and pushed a 320px screen
+              sideways (WCAG 1.4.10), the same fix /enroll already carries. */}
           <p className="mt-5 flex items-center gap-2 text-sm">
             <Mail className="size-4 shrink-0 text-brand" />
-            <a href={`mailto:${school.email}`} className="font-semibold text-navy hover:underline">
+            <a
+              href={`mailto:${school.email}`}
+              className="font-semibold break-all text-navy hover:underline"
+            >
               {school.email}
             </a>
           </p>

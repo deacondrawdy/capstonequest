@@ -47,6 +47,7 @@ const PATHS = [
   // "/clever" is hidden for now (src/data/features.ts) and returns 404.
   "/contact",
   "/enroll",
+  "/faq",
   "/handbook",
   "/info",
   "/parents",

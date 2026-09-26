@@ -14,6 +14,7 @@ const allPages = [
   { id: "info", path: "/info" },
   { id: "clever", path: "/clever" },
   { id: "tuition", path: "/tuition" },
+  { id: "faq", path: "/faq" },
   { id: "policies", path: "/policies" },
   { id: "careers", path: "/careers" },
   { id: "about", path: "/about" },

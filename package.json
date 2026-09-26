@@ -18,7 +18,8 @@
     "a11y": "node scripts/a11y-check.mjs",
     "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sitemap": "node scripts/build-sitemap.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
