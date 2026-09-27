@@ -59,6 +59,30 @@ export const es: Content = {
     notFound: "Página no encontrada",
   },
 
+  /** La <meta name="description"> de cada página, con las mismas claves. */
+  pageDescriptions: {
+    home: "Preescolar aprobado por DES para niños de 3 a 5 años en Tucson y Yuma, Arizona. Aprendizaje por medio del juego, de 7:00 a. m. a 6:00 p. m., desde 2013.",
+    about: "Capstone Quest Academy ofrece preescolar aprobado por DES en Tucson y Yuma desde 2013: grupos pequeños, aprendizaje por medio del juego y maestras constantes.",
+    campuses: "Dos centros en Arizona y un mismo preescolar basado en el juego: Tucson y Yuma. Direcciones, teléfonos y reservación de visitas.",
+    campus: "{campus}: dirección, teléfono, horario y el equipo, además de la reservación de visitas al preescolar de Capstone Quest Academy.",
+    careers: "Enseñe preescolar en Tucson o Yuma. Grupos pequeños, prestaciones y una cultura familiar en Capstone Quest Academy.",
+    clever: "Accesos a Clever, PowerSchool, ClassDojo y RAZ Kids para las familias de Capstone Quest Academy.",
+    contact: "Llame, escriba o envíe un mensaje a Capstone Quest Academy. Teléfonos y direcciones de nuestros centros de Tucson y Yuma.",
+    enroll: "La inscripción es en papel. Descargue el paquete de su centro, llene uno por niño y entréguelo en la oficina de registro. Le ayudamos por teléfono o en persona.",
+    faq: "Costo, horarios, edades, uso del baño, asistencia de DES, comidas, proporciones y visitas: las preguntas que más nos hacen, con respuestas claras.",
+    info: "Todo en un solo lugar: programas, recursos para familias, colegiatura, políticas, visitas y el manual de Capstone Quest Academy.",
+    parents: "Manuales, menús, derechos de los padres, la política de bienestar y la lista de útiles para las familias de Capstone Quest Academy.",
+    handbook: "El manual completo para padres de Capstone Quest Academy: admisiones, rutinas diarias, salud y medicamentos, emergencias y disciplina.",
+    policies: "Políticas de inscripción, entrega de los niños, disciplina y acceso de los padres de Capstone Quest Academy, como se publican en ambos centros.",
+    privacy: "Qué recopila este sitio, por qué, quién lo ve y cómo pedir que lo borremos. Sin rastreo, sin publicidad y sin cookies.",
+    programs: "Un salón de preescolar de edades mixtas para niños de 3 a 5 años, más cuidado antes y después de clases, de 7:00 a. m. a 6:00 p. m.",
+    tour: "Reserve una visita de 30 minutos a nuestro centro de Tucson o Yuma en un calendario real. Recorra los salones y conozca a una maestra.",
+    tuition: "Tarifas semanales completas: $130 por cinco días, $120 por tres, $160 con cuidado antes y después. Sin cuota de inscripción ni depósito. DES bienvenido.",
+    whyUs: "Grupos pequeños, seguridad que se siente, un plan de estudios que prepara para el kínder y aprobación de DES: por qué las familias nos eligen.",
+    accessibility: "Cómo está construido este sitio para que cualquiera pueda usarlo, qué sabemos que aún no es perfecto y cómo avisarnos de una barrera.",
+    notFound: "Esa página no está en el mapa de Capstone Quest. Vuelva al inicio o use el menú para encontrar lo que busca.",
+  },
+
   forms: {
     requiredNote: "Los campos marcados con * son obligatorios.",
     required: "Este campo es obligatorio.",

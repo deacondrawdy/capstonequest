@@ -58,6 +58,36 @@ export const en = {
     notFound: "Page not found",
   },
 
+  /**
+   * The <meta name="description"> for each page, keyed like pageTitles.
+   *
+   * Each page had the site-wide description, so all 36 pages looked identical
+   * to a search engine and none of them described what the page actually says.
+   * Roughly 150 characters: longer is truncated in a result.
+   */
+  pageDescriptions: {
+    home: "DES-approved Pre-K for ages 3 to 5 in Tucson and Yuma, Arizona. Play-based days, 7:00 AM to 6:00 PM, since 2013. Book a tour or see this week's rates.",
+    about: "Capstone Quest Academy has run DES-approved Pre-K in Tucson and Yuma since 2013 — small groups, play-based learning, and teachers who stay with your child.",
+    campuses: "Two Arizona locations, one play-based Pre-K: Tucson on North Country Club Road and Yuma on South 4th Avenue. Addresses, phone numbers and tour booking.",
+    campus: "{campus} — address, phone number, hours and the team, plus tour booking for Capstone Quest Academy Pre-K.",
+    careers: "Teach Pre-K in Tucson or Yuma. Small classes, benefits and a family culture at Capstone Quest Academy.",
+    clever: "Clever, PowerSchool, ClassDojo and RAZ Kids sign-ins for Capstone Quest Academy families.",
+    contact: "Call, write or send a note to Capstone Quest Academy. Phone numbers and addresses for both our Tucson and Yuma locations.",
+    enroll: "Enrollment is on paper. Download the packet for your location, complete one per child, and return it to the registrar. Help available by phone or in person.",
+    faq: "Cost, hours, ages, toilet training, DES assistance, meals, ratios and tours — the questions families ask Capstone Quest Academy, answered directly.",
+    info: "Everything in one place: programs, parent resources, tuition, policies, tours and the Capstone Quest Academy handbook.",
+    parents: "Handbooks, menus, parent rights, the wellness policy and the supply list for Capstone Quest Academy families in Tucson and Yuma.",
+    handbook: "The full Capstone Quest Academy parent handbook: admissions, daily routines, health and medication, emergencies, discipline and the prevention policy.",
+    policies: "Enrollment, release, discipline and parent access policies for Capstone Quest Academy, as posted at both locations.",
+    privacy: "What this website collects, why, who sees it and how to ask us to delete it. No tracking, no advertising and no cookies.",
+    programs: "One mixed-age Pre-K classroom for ages 3 to 5, plus before and after care from 7:00 AM to 6:00 PM at Capstone Quest Academy.",
+    tour: "Book a 30-minute tour of our Tucson or Yuma location on a real calendar. Walk the classrooms and meet a lead teacher.",
+    tuition: "Full weekly Pre-K rates: $130 five days, $120 three days, $160 with before and after care. No registration fee, no deposit. DES welcome.",
+    whyUs: "Small classes, safety you can feel, a school-ready curriculum and DES approval — why Tucson and Yuma families choose Capstone Quest Academy.",
+    accessibility: "How this site is built to be usable by everyone, what we know is not perfect yet, and how to tell us about a barrier.",
+    notFound: "That page is not on the Capstone Quest map. Head back to the homepage or use the menu to find what you need.",
+  },
+
   /** Shared by every form. Replaces the browser's own validation bubbles. */
   forms: {
     requiredNote: "Fields marked * are required.",

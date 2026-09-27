@@ -45,3 +45,23 @@ export function pageTitle(path: string, c: Content): string {
 
   return `${c.pageTitles.notFound} · ${site}`;
 }
+
+/**
+ * The `<meta name="description">` for a page.
+ *
+ * Every page used to carry the site-wide description, so all 36 looked
+ * identical to a search engine and none of them described what the page says.
+ * Same keys and same fallback as the title above.
+ */
+export function pageDescription(path: string, c: Content): string {
+  const key = PATH_TITLES[path.length > 1 ? path.replace(/\/$/, "") : path];
+  if (key) return c.pageDescriptions[key];
+
+  const slug = path.match(/^\/campuses\/([^/]+)\/?$/)?.[1];
+  const campus = campuses.find((entry) => entry.slug === slug);
+  if (campus) {
+    return c.pageDescriptions.campus.replace("{campus}", c.campuses[campus.slug].name);
+  }
+
+  return c.pageDescriptions.notFound;
+}

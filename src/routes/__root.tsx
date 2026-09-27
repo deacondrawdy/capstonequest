@@ -6,7 +6,7 @@ import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
 import { CAMPUS_BOOT_SCRIPT } from "@/lib/campus";
 import { localizePath, stripLocale, useLocale } from "@/lib/locale";
 import { absoluteUrl } from "@/lib/site-url";
-import { pageTitle } from "@/lib/page-title";
+import { pageDescription, pageTitle } from "@/lib/page-title";
 import { structuredData } from "@/lib/structured-data";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
@@ -65,6 +65,8 @@ function RootDocument() {
   const canonical = useRouterState({ select: (s) => stripLocale(s.location.pathname) });
   const content = locale === "es" ? es : en;
   const meta = content.meta;
+  const description = pageDescription(canonical, content);
+  const url = absoluteUrl(localizePath(canonical, locale));
 
   return (
     <html lang={locale} className="antialiased" suppressHydrationWarning>
@@ -73,10 +75,21 @@ function RootDocument() {
         {/* Rendered here rather than in `head`, which is evaluated once and
             cannot see the active locale. React hoists these into <head>. */}
         <title>{pageTitle(canonical, content)}</title>
-        <meta name="description" content={meta.description} />
+        <meta name="description" content={description} />
+        {/* Open Graph: what a parent sees when they paste a link into Facebook,
+            iMessage or WhatsApp. The platform injects og:title and og:image
+            ahead of these, so only the tags it does not set are added here. */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={meta.title} />
+        <meta property="og:url" content={url} />
+        <meta property="og:description" content={description} />
+        <meta property="og:locale" content={locale === "es" ? "es_US" : "en_US"} />
+        <meta property="og:locale:alternate" content={locale === "es" ? "en_US" : "es_US"} />
+        <meta name="twitter:title" content={pageTitle(canonical, content)} />
+        <meta name="twitter:description" content={description} />
         {/* Absolute, on the canonical origin: Google prefers them, and the app
             answers on more than one hostname. */}
-        <link rel="canonical" href={absoluteUrl(localizePath(canonical, locale))} />
+        <link rel="canonical" href={url} />
         <link rel="alternate" hrefLang="en" href={absoluteUrl(localizePath(canonical, "en"))} />
         <link rel="alternate" hrefLang="es" href={absoluteUrl(localizePath(canonical, "es"))} />
         <link rel="alternate" hrefLang="x-default" href={absoluteUrl(localizePath(canonical, "en"))} />
