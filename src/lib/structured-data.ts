@@ -30,13 +30,6 @@ const LICENCES: Record<string, string> = {
   yuma: "CDC-17301",
 };
 
-const GEO: Record<string, { lat: string; lon: string } | undefined> = {
-  // Deliberately absent until someone reads them off the map. A guessed
-  // coordinate puts the pin on the wrong building, which is worse than no pin.
-  tucson: undefined,
-  yuma: undefined,
-};
-
 type Json = Record<string, unknown>;
 
 function organization(c: Content): Json {
@@ -69,7 +62,10 @@ function organization(c: Content): Json {
 function preschool(slug: string, c: Content): Json | null {
   const campus = campuses.find((entry) => entry.slug === slug);
   if (!campus) return null;
-  const geo = GEO[slug];
+  // Present only where the school's own Google profile gave them. A guessed
+  // coordinate puts the pin on the wrong building, which is worse than no pin.
+  const geo = "geo" in campus ? campus.geo : undefined;
+  const profile = "googleProfile" in campus ? campus.googleProfile : undefined;
   const money = (value: string) => Number(value.replace(/[^0-9.]/g, ""));
   const rates = tuition.programs.map((p) => money(p.price)).filter(Boolean);
   // The "bundle" program already includes before- and after-care, so care is
@@ -98,6 +94,9 @@ function preschool(slug: string, c: Content): Json | null {
       addressCountry: "US",
     },
     ...(geo ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lon } } : {}),
+    // Ties this page to the Google Business Profile for the same place, which
+    // is where the reviews, photos and map pin live.
+    ...(profile ? { sameAs: [profile], hasMap: profile } : {}),
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

@@ -61,6 +61,11 @@ export const campuses = [
     feel: "A home away from home, all day",
     mapUrl:
       "https://www.google.com/maps/search/?api=1&query=1150+North+Country+Club+Road+Tucson+AZ+85716",
+    // The Google Business Profile, and the coordinates Google itself holds for
+    // the building (read off the profile's share link, not guessed). Both feed
+    // the structured data, which is how Google ties this site to that profile.
+    googleProfile: "https://maps.app.goo.gl/5xD4Vn32WUwKduF27",
+    geo: { lat: "32.2375266", lon: "-110.9263739" },
   },
   {
     slug: "yuma",
