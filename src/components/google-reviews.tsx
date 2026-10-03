@@ -56,7 +56,7 @@ export function GoogleReviews({ cardClassName }: { cardClassName?: string }) {
               <h3 className="text-xl font-bold text-navy">{name}</h3>
               <Stars rating={place.rating} label={r.stars.replace("{n}", place.rating.toFixed(1))} />
               <p className="text-sm font-semibold text-muted">
-                {r.summary
+                {(place.count === 1 ? r.summaryOne : r.summary)
                   .replace("{rating}", place.rating.toFixed(1))
                   .replace("{count}", String(place.count))}
               </p>
@@ -93,7 +93,7 @@ export function GoogleReviews({ cardClassName }: { cardClassName?: string }) {
               rel="noreferrer"
               className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand hover:underline"
             >
-              {r.seeAll.replace("{count}", String(place.count)).replace("{campus}", name)}
+              {(place.count === 1 ? r.seeAllOne : r.seeAll).replace("{count}", String(place.count)).replace("{campus}", name)}
               <ExternalLink aria-hidden className="size-3.5" />
               <span className="sr-only"> {c.common.opensNewTab}</span>
             </a>

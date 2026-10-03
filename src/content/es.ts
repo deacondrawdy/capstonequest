@@ -488,7 +488,9 @@ export const es: Content = {
     stars: "{n} de 5 estrellas",
     source: "Reseña de Google",
     summary: "{rating} de 5 · {count} reseñas en Google",
+    summaryOne: "{rating} de 5 · 1 reseña en Google",
     seeAll: "Ver las {count} reseñas del {campus} en Google",
+    seeAllOne: "Ver la reseña del {campus} en Google",
     attribution: "Reseñas de Google. Se muestran tal como fueron escritas, en el orden de Google.",
   },
 

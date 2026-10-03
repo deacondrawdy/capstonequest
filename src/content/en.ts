@@ -497,7 +497,9 @@ export const en = {
     stars: "{n} out of 5 stars",
     source: "Google review",
     summary: "{rating} out of 5 · {count} Google reviews",
+    summaryOne: "{rating} out of 5 · 1 Google review",
     seeAll: "See all {count} {campus} reviews on Google",
+    seeAllOne: "See the {campus} review on Google",
     attribution: "Reviews from Google. Shown as written, in the order Google lists them.",
   },
 
