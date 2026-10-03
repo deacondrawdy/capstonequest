@@ -447,11 +447,10 @@ export function injectGrokPwaHead(html, ctx = {}) {
     grokOgHeadTags({ host, appName, site, documentTitle, cwd }).join(""),
   );
 
-  if (!next.includes("/grok-app-builder/extensions.js")) {
-    missing.push(...grokExtensionsHeadTags(projectId));
-  } else if (projectId && !next.includes('name="grok-project-id"')) {
-    missing.push(`<meta name="grok-project-id" content="${escapeHtml(projectId)}">`);
-  }
+  // The "Created with Grok" banner script (grokExtensionsHeadTags) is no longer
+  // injected. The site runs on Railway under the school's own domain, and the
+  // owner asked for the banner removed (October 3, 2026): it also set a
+  // third-party cookie the privacy policy says this site does not set.
   if (
     projectId &&
     !next.includes('property="grok:app_id"') &&
