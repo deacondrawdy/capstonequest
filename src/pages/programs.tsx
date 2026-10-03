@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { programs } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
+import { Photo } from "@/components/photo";
 
 
 export function ProgramsPage() {
@@ -26,8 +27,9 @@ export function ProgramsPage() {
             key={p.slug}
             className="grid items-center gap-8 lg:grid-cols-2"
           >
-            <img
+            <Photo
               src={p.image}
+              sizes="(min-width: 1024px) 50vw, 100vw"
               alt={c.programs[p.slug].imageAlt}
               className={`h-72 w-full rounded-[28px] object-cover object-top ${i % 2 ? "lg:order-2" : ""}`}
             />

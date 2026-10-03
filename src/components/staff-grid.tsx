@@ -1,5 +1,6 @@
 import { staff } from "@/data/school";
 import { useContent } from "@/lib/locale";
+import { Photo } from "@/components/photo";
 
 type Member = (typeof staff)[number];
 
@@ -20,8 +21,9 @@ export function StaffGrid({ members }: { members: readonly Member[] }) {
           <div className="flex items-center gap-4">
             {/* Empty alt: the name is the heading right beside it, and repeating
                 it makes a screen reader say every name twice. */}
-            <img
+            <Photo
               src={s.image}
+              sizes="96px"
               alt=""
               width={640}
               height={640}

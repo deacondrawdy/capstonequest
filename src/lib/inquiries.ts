@@ -38,6 +38,21 @@ export type EnrollRequest = {
   start: string;
 };
 
+/**
+ * "Reserve a spot" on the Enroll page: enough for the office to call back, and
+ * no more. It asks for the child's age, not their name or date of birth; the
+ * paper packet collects those once the family is enrolling.
+ */
+export type SpotRequest = {
+  parentName: string;
+  phone: string;
+  email: string;
+  campus: string;
+  childAge: string;
+  start: string;
+  des: string;
+};
+
 export type ContactRequest = {
   name: string;
   email: string;
@@ -57,6 +72,7 @@ export type JobApp = {
 type LeadInput =
   | { kind: "tour"; data: TourRequest }
   | { kind: "enroll"; data: EnrollRequest }
+  | { kind: "reserve"; data: SpotRequest }
   | { kind: "contact"; data: ContactRequest }
   | { kind: "job"; data: JobApp };
 
@@ -83,6 +99,15 @@ const LABELS: Record<LeadKind, Record<string, string>> = {
     des: "DES subsidy",
     start: "Requested start",
   },
+  reserve: {
+    parentName: "Parent name",
+    phone: "Phone",
+    email: "Email",
+    campus: "Site",
+    childAge: "Child's age",
+    start: "Hoped-for start",
+    des: "DES assistance",
+  },
   contact: { name: "Name", email: "Email", topic: "Topic", message: "Message" },
   job: {
     name: "Applicant",
@@ -97,6 +122,7 @@ const LABELS: Record<LeadKind, Record<string, string>> = {
 const SUBJECTS: Record<LeadKind, string> = {
   tour: "Tour request",
   enroll: "Enrollment application",
+  reserve: "Spot request",
   contact: "Contact form message",
   job: "Job application",
 };
@@ -150,6 +176,10 @@ export function saveTour(data: TourRequest) {
 
 export function saveEnroll(data: EnrollRequest) {
   return submitLead({ data: { kind: "enroll", data } });
+}
+
+export function saveSpot(data: SpotRequest) {
+  return submitLead({ data: { kind: "reserve", data } });
 }
 
 export function saveContact(data: ContactRequest) {

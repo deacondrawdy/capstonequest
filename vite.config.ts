@@ -182,6 +182,12 @@ export default defineConfig(({ command, isPreview }) => ({
             // manifest + head-tag middleware). Nitro v3 defaults serverDir to
             // false, so removing this silently unwires /?install=1 on deploys.
             serverDir: "./server",
+            // Photos were going out with a 4-hour lifetime, so a returning
+            // parent re-downloaded every one. Thirty days, not immutable: the
+            // filenames carry no hash, and a replaced photo should show up.
+            routeRules: {
+              "/images/**": { headers: { "cache-control": "public, max-age=2592000" } },
+            },
           }),
         ]
       : []),

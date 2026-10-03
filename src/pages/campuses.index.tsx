@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { campuses } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
+import { Photo } from "@/components/photo";
 
 
 export function CampusesPage() {
@@ -20,8 +21,9 @@ export function CampusesPage() {
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             {campuses.map((c) => (
               <article key={c.slug} className="overflow-hidden rounded-[28px] bg-paper shadow-card">
-                <img
+                <Photo
                   src={c.image}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   alt={`${cc.campuses[c.slug].name} ${cc.campusesPage.exteriorAlt}`}
                   className="h-56 w-full object-cover"
                 />

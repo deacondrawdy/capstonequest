@@ -5,6 +5,7 @@ import { CalBooker } from "@/components/cal-booker";
 import { campuses } from "@/data/school";
 import { useContent } from "@/lib/locale";
 import { CAMPUS_DEFAULT, type CampusPref } from "@/lib/campus";
+import { Photo } from "@/components/photo";
 
 function isCampus(value: string | undefined): value is CampusPref {
   return value === "tucson" || value === "yuma";
@@ -84,8 +85,9 @@ export function TourPage({ preset }: { preset?: string }) {
                   before they meet it, not after. */}
               <p className="mt-4 text-sm text-muted">{c.tourPage.bookingNote}</p>
             </div>
-            <img
+            <Photo
               src="/images/classroom-morning.jpg"
+              sizes="(min-width: 1024px) 40vw, 1px"
               alt=""
               className="mt-6 hidden h-56 w-full rounded-[28px] object-cover lg:block"
             />

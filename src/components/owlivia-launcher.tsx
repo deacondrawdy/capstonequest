@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
+import { Photo } from "@/components/photo";
 
 /**
  * The buttons that open Owlivia, and the panel itself.
@@ -37,8 +38,10 @@ export function OwliviaPanel({
 /** The owl, at the size each button wants it. */
 export function OwlMark({ className }: { className?: string }) {
   return (
-    <img
+    <Photo
       src="/images/owl.png"
+      sizes="40px"
+      loading="eager"
       alt=""
       width={40}
       height={40}

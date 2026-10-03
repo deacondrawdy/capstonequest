@@ -1,8 +1,10 @@
 import { Heart, Shield, GraduationCap, Users } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { dailySchedule, faqs, testimonials } from "@/data/school";
+import { dailySchedule, faqs } from "@/data/school";
+import { GoogleReviews } from "@/components/google-reviews";
 import { useContent } from "@/lib/locale";
+import { Photo } from "@/components/photo";
 
 
 
@@ -42,7 +44,7 @@ export function WhyUsPage() {
 
       <section id="safety" className="bg-paper-soft py-14">
         <div className="mx-auto grid max-w-[1100px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-2">
-          <img src="/images/playground-smile.jpg" alt={c.whyUsPage.playgroundAlt} className="h-72 w-full rounded-[28px] object-cover" />
+          <Photo src="/images/playground-smile.jpg" sizes="(min-width: 1024px) 50vw, 100vw" alt={c.whyUsPage.playgroundAlt} className="h-72 w-full rounded-[28px] object-cover" />
           <div>
             <h2 className="text-3xl font-extrabold text-navy">{c.whyUsPage.desTitle}</h2>
             <p className="mt-3 text-muted">
@@ -69,17 +71,7 @@ export function WhyUsPage() {
       <section className="bg-paper-soft py-14">
         <div className="mx-auto max-w-[1100px] px-5 sm:px-8">
           <h2 className="text-3xl font-extrabold text-navy">{c.whyUsPage.wordsTitle}</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <blockquote key={t.id} className="rounded-[28px] bg-paper p-6 shadow-card">
-                <p className="text-sm leading-relaxed">“{c.testimonials[t.id].quote}”</p>
-                <footer className="mt-4 text-sm font-bold text-navy">
-                  {t.name}
-                  <span className="block font-medium text-muted">{c.testimonials[t.id].role}</span>
-                </footer>
-              </blockquote>
-            ))}
-          </div>
+          <GoogleReviews cardClassName="bg-paper shadow-card" />
         </div>
       </section>
 

@@ -58,7 +58,7 @@ export function PrivacyPage() {
           <p className="mt-3 leading-relaxed text-muted">{s.collect.intro}</p>
           <ul className="mt-4 space-y-3">
             {/* The job application form is only listed while Careers is switched on. */}
-            {[s.collect.tour, s.collect.contact, ...(features.careers ? [s.collect.careers] : [])].map(
+            {[s.collect.tour, s.collect.reserve, s.collect.contact, ...(features.careers ? [s.collect.careers] : [])].map(
               (item) => (
                 <li key={item} className="flex gap-3 leading-relaxed text-muted">
                   <span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-brand" />

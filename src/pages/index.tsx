@@ -2,8 +2,10 @@ import { ArrowRight, Check } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
-import { campuses, dailySchedule, programs, testimonials } from "@/data/school";
+import { campuses, dailySchedule, programs } from "@/data/school";
+import { GoogleReviews } from "@/components/google-reviews";
 import { AppLink, useContent } from "@/lib/locale";
+import { Photo } from "@/components/photo";
 
 
 export function Home() {
@@ -64,8 +66,9 @@ export function Home() {
                 key={p.slug}
                 className="overflow-hidden rounded-[28px] bg-paper shadow-card transition-[box-shadow,transform] duration-200 hover:shadow-card-hover"
               >
-                <img
+                <Photo
                   src={p.image}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   alt={c.programs[p.slug].imageAlt}
                   className="h-44 w-full object-cover object-top"
                 />
@@ -121,8 +124,8 @@ export function Home() {
           {/* Landscape tiles: both campus photos are wide building shots, and a
               tall crop cut the Tucson enrolment banner mid-word. */}
           <div className="grid grid-cols-2 gap-3">
-            <img src="/images/tucson.jpg" alt={c.campuses.tucson.imageAlt} className="h-44 w-full rounded-[24px] object-cover sm:h-52" />
-            <img src="/images/yuma.jpg" alt={c.campuses.yuma.imageAlt} className="mt-8 h-44 w-full rounded-[24px] object-cover sm:h-52" />
+            <Photo src="/images/tucson.jpg" sizes="(min-width: 1024px) 33vw, 50vw" alt={c.campuses.tucson.imageAlt} className="h-44 w-full rounded-[24px] object-cover sm:h-52" />
+            <Photo src="/images/yuma.jpg" sizes="(min-width: 1024px) 33vw, 50vw" alt={c.campuses.yuma.imageAlt} className="mt-8 h-44 w-full rounded-[24px] object-cover sm:h-52" />
           </div>
         </div>
       </section>
@@ -158,17 +161,7 @@ export function Home() {
           <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">
             {c.homePage.familiesTitle}
           </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <blockquote key={t.id} className="rounded-[28px] bg-paper-soft p-6">
-                <p className="text-[15px] leading-relaxed text-ink">“{c.testimonials[t.id].quote}”</p>
-                <footer className="mt-4 text-sm font-bold text-navy">
-                  {t.name}
-                  <span className="block font-medium text-muted">{c.testimonials[t.id].role}</span>
-                </footer>
-              </blockquote>
-            ))}
-          </div>
+          <GoogleReviews cardClassName="bg-paper-soft" />
         </div>
       </section>
 

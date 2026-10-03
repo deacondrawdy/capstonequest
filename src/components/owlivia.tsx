@@ -6,6 +6,7 @@ import { openChat, sendMessage, startVoiceCall } from "@/lib/owlivia/client";
 import { useContent } from "@/lib/locale";
 import { CAMPUS_DEFAULT, readCampusPref, type CampusPref } from "@/lib/campus";
 import { campuses } from "@/data/school";
+import { Photo } from "@/components/photo";
 
 /**
  * Owlivia: the school's assistant, as a chat box with a voice call inside it.
@@ -158,8 +159,9 @@ export function Owlivia({ open, onOpenChange }: { open: boolean; onOpenChange: (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-xl gap-0 p-0">
         <div className="flex items-center gap-4 rounded-t-[28px] bg-navy px-6 py-5 text-paper">
-          <img
+          <Photo
             src="/images/owl.png"
+            sizes="56px"
             alt=""
             width={56}
             height={56}

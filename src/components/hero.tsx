@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { OwliviaLauncher } from "@/components/owlivia-launcher";
 import { academyColors } from "@/data/school";
 import { cn } from "@/lib/utils";
+import { Photo } from "@/components/photo";
 
 /**
  * The classroom video is hidden until a better-produced one replaces it.
@@ -65,8 +66,10 @@ export function Hero() {
           badge bar, so both sit on the photo rather than flush against its cut
           edge. */}
       <div className="pointer-events-none absolute inset-y-0 left-[max(38%,calc(50%-168px))] right-[max(0px,calc(50%-700px))] hidden overflow-hidden xl:block">
-        <img
+        <Photo
           src="/images/hero.jpg"
+          sizes="(min-width: 1280px) 55vw, 1px"
+          priority
           alt={c.hero.imageAlt}
           className="h-full w-full object-cover object-[50%_22%] outline-none"
         />
@@ -75,21 +78,23 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-[1400px] px-5 pt-8 pb-8 sm:px-8 lg:px-10 lg:pt-10 lg:pb-40 xl:flex xl:items-start xl:justify-between xl:gap-8 xl:pb-32">
         <div className="hero-stagger relative z-10 max-w-xl lg:max-w-none xl:max-w-[32rem]">
-          <p className="flex items-center gap-2 text-[13px] font-bold tracking-[0.14em] text-brand uppercase">
-            {c.hero.eyebrow}
-            <Star className="size-3.5 fill-icon-blue text-icon-blue" />
-            <Star className="size-4 fill-gold text-gold" />
-          </p>
-
           {/* aria-label names the heading once, for screen readers and for
               crawlers. It replaces an sr-only " Academy" that sat beside the
               coloured letters: assistive technology read the word once, but a
               crawler ignores aria-hidden and read both, so the page's only h1
               indexed as "CAPSTONE QUEST Academy A C A D E M Y". */}
+          {/* The eyebrow is part of the h1 so the page's main heading carries
+              what parents search for ("Pre-K in Tucson & Yuma"), not only the
+              school's name. It keeps its small-caps eyebrow look. */}
           <h1
-            aria-label={c.hero.wordmark}
-            className="mt-2 font-display text-[2.15rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.35rem]"
+            aria-label={`${c.hero.eyebrow} ${c.hero.wordmark}`}
+            className="font-display text-[2.15rem] leading-[0.95] font-extrabold tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.35rem]"
           >
+            <span className="mb-2 flex items-center gap-2 font-sans text-[13px] leading-normal font-bold tracking-[0.14em] text-brand uppercase">
+              {c.hero.eyebrow}
+              <Star aria-hidden className="size-3.5 fill-icon-blue text-icon-blue" />
+              <Star aria-hidden className="size-4 fill-gold text-gold" />
+            </span>
             CAPSTONE QUEST
             {/* Each letter is its own coloured span, which some screen readers
                 spell out as "A, C, A, D, E, M, Y". aria-label above covers it. */}
@@ -116,9 +121,11 @@ export function Hero() {
             <span className="mt-1 block h-1 rounded-full bg-gold/90" />
           </div>
 
-          <div className="mt-5 overflow-hidden rounded-[24px] xl:hidden">
-            <img
+          <div className="hero-photo mt-5 overflow-hidden rounded-[24px] xl:hidden">
+            <Photo
               src="/images/hero.jpg"
+              sizes="(min-width: 1280px) 1px, (min-width: 1024px) 100vw, (min-width: 640px) 576px, 100vw"
+              priority
               alt={c.hero.imageAlt}
               className="h-56 w-full object-cover object-[18%_18%] outline-none sm:h-72 lg:h-[22rem]"
             />

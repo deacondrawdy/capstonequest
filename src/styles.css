@@ -336,6 +336,14 @@
 .hero-stagger > *:nth-child(7) {
   animation-delay: 340ms;
 }
+/* The phone-width hero photo is the largest thing on the first screen, so it is
+   what Google times as "Largest Contentful Paint". Fading it in from opacity 0
+   held that measurement until the animation ran, seconds late on a throttled
+   phone. It shows at once; the text around it still staggers in. */
+.hero-stagger > .hero-photo {
+  opacity: 1;
+  animation: none;
+}
 
 /* ---------------------------------------------------------------------------
    Accessibility preferences (see src/lib/a11y.ts)

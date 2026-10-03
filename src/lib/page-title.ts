@@ -41,7 +41,7 @@ export function pageTitle(path: string, c: Content): string {
 
   const slug = path.match(/^\/campuses\/([^/]+)\/?$/)?.[1];
   const campus = campuses.find((entry) => entry.slug === slug);
-  if (campus) return `${c.pageTitles.campus.replace("{campus}", c.campuses[campus.slug].name)} · ${site}`;
+  if (campus) return `${fillCampus(c.pageTitles.campus, campus.slug, campus.city, c)} · ${site}`;
 
   return `${c.pageTitles.notFound} · ${site}`;
 }
@@ -60,8 +60,16 @@ export function pageDescription(path: string, c: Content): string {
   const slug = path.match(/^\/campuses\/([^/]+)\/?$/)?.[1];
   const campus = campuses.find((entry) => entry.slug === slug);
   if (campus) {
-    return c.pageDescriptions.campus.replace("{campus}", c.campuses[campus.slug].name);
+    return fillCampus(c.pageDescriptions.campus, campus.slug, campus.city, c);
   }
 
   return c.pageDescriptions.notFound;
+}
+
+/**
+ * A campus title or description. `{city}` puts the town in the title, which is
+ * what a parent searches ("pre-k tucson"); `{campus}` is the site's own name.
+ */
+function fillCampus(template: string, slug: (typeof campuses)[number]["slug"], city: string, c: Content) {
+  return template.replace("{city}", city).replace("{campus}", c.campuses[slug].name);
 }

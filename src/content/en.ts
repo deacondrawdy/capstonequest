@@ -38,8 +38,8 @@ export const en = {
   pageTitles: {
     home: "Pre-K in Tucson and Yuma",
     about: "About us",
-    campuses: "Sites",
-    campus: "{campus}",
+    campuses: "Pre-K locations in Tucson & Yuma",
+    campus: "Pre-K & preschool in {city}, AZ",
     careers: "Careers",
     clever: "Clever & student portals",
     contact: "Contact",
@@ -50,8 +50,8 @@ export const en = {
     handbook: "Parent handbook",
     policies: "Policies",
     privacy: "Privacy policy",
-    programs: "Programs",
-    tour: "Schedule a tour",
+    programs: "Pre-K & before/after care",
+    tour: "Schedule a Pre-K tour",
     tuition: "Tuition & fees",
     whyUs: "Why us",
     accessibility: "Accessibility",
@@ -69,11 +69,11 @@ export const en = {
     home: "DES-approved Pre-K for ages 3 to 5 in Tucson and Yuma, Arizona. Play-based days, 7:00 AM to 6:00 PM, since 2013. Book a tour or see this week's rates.",
     about: "Capstone Quest Academy has run DES-approved Pre-K in Tucson and Yuma since 2013 — small groups, play-based learning, and teachers who stay with your child.",
     campuses: "Two Arizona locations, one play-based Pre-K: Tucson on North Country Club Road and Yuma on South 4th Avenue. Addresses, phone numbers and tour booking.",
-    campus: "{campus} — address, phone number, hours and the team, plus tour booking for Capstone Quest Academy Pre-K.",
+    campus: "DES-approved Pre-K for ages 3 to 5 in {city}, AZ. Address, phone, hours 7:00 AM to 6:00 PM, the teaching team, and tour booking for our {campus}.",
     careers: "Teach Pre-K in Tucson or Yuma. Small classes, benefits and a family culture at Capstone Quest Academy.",
     clever: "Clever, PowerSchool, ClassDojo and RAZ Kids sign-ins for Capstone Quest Academy families.",
     contact: "Call, write or send a note to Capstone Quest Academy. Phone numbers and addresses for both our Tucson and Yuma locations.",
-    enroll: "Enrollment is on paper. Download the packet for your location, complete one per child, and return it to the registrar. Help available by phone or in person.",
+    enroll: "Reserve a Pre-K spot online in a minute, then download the enrollment packet for your Tucson or Yuma site. Help available by phone or in person.",
     faq: "Cost, hours, ages, toilet training, DES assistance, meals, ratios and tours — the questions families ask Capstone Quest Academy, answered directly.",
     info: "Everything in one place: programs, parent resources, tuition, policies, tours and the Capstone Quest Academy handbook.",
     parents: "Handbooks, menus, parent rights, the wellness policy and the supply list for Capstone Quest Academy families in Tucson and Yuma.",
@@ -329,7 +329,7 @@ export const en = {
   hero: {
     /** Names the homepage h1, whose letters are decorative spans. */
     wordmark: "Capstone Quest Academy",
-    eyebrow: "Pre-K Programs at",
+    eyebrow: "Tucson & Yuma Pre-K at",
     tagline: "Where curiosity grows and bright futures begin.",
     lede: "A nurturing, play-based learning environment that helps your child build confidence, friendships, and foundational skills for lifelong success.",
     imageAlt: "A preschooler coloring at a classroom table",
@@ -491,10 +491,11 @@ export const en = {
     hours: { q: "What are your hours?", a: "The instructional Pre-K program runs five days a week. Sites are open Monday–Friday, 7:00 AM to 6:00 PM, with fee-for-service early arrival (7:00–8:00 AM) and late dismissal (3:30–6:00 PM)." },
   },
 
-  testimonials: {
-    priya: { quote: "Maya skipped into kindergarten already knowing how to wait her turn, write her name, and ask a great question. Capstone Quest made that look easy.", role: "Tucson parent" },
-    marcus: { quote: "The teachers actually know my son. Not just his allergies — his favorite dump truck, the way he warms up slowly, the songs that calm him.", role: "Yuma parent" },
-    danielle: { quote: "We used a DES voucher and never felt like a second-class family. The program is the same beautiful experience for every child in the room.", role: "Tucson parent" },
+  reviews: {
+    lede: "Real reviews from Tucson and Yuma families, on our Google profiles.",
+    read: "Read {campus} reviews on Google",
+    stars: "{n} out of 5 stars",
+    source: "Google review",
   },
 
   whyUsPage: {
@@ -511,7 +512,7 @@ export const en = {
     desTitle: "Approved by DES. Built for families.",
     desText: "Both sites are fully approved by the Arizona Department of Economic Security. We accept child care subsidies, and every family — voucher or private pay — gets the same classroom, the same teachers, the same day.",
     dayTitle: "A day in Pre-K",
-    wordsTitle: "Families in their own words",
+    wordsTitle: "What families say on Google",
     faqTitle: "Questions we hear on every tour",
   },
   homePage: {
@@ -536,8 +537,8 @@ export const en = {
     dayEyebrow: "A day in Pre-K",
     dayTitle: "Rhythm, play, and just enough school",
     dayNote: "Before- and after-care wraps around this day, 7:00–8:00 AM and 3:30–6:00 PM.",
-    familiesEyebrow: "From our families",
-    familiesTitle: "Kindergarten-ready, still themselves",
+    familiesEyebrow: "Google reviews",
+    familiesTitle: "What families say about us",
     ctaTitle: "Now enrolling",
     ctaNote: "Limited seats · DES welcome · Tours most weekdays",
     enrollNow: "Enroll Now",
@@ -791,7 +792,7 @@ export const en = {
   enrollPage: {
     eyebrow: "Enroll",
     title: "Enroll your child",
-    lede: "Enrollment is done on paper. Download the enrollment packet, fill it in, and return it to your site registrar.",
+    lede: "Reserve a spot online in about a minute and the office will call you. Enrollment itself is on paper: download the packet, fill it in, and return it to your site registrar.",
     download: "Download the enrollment packet",
     /** {pages} and {size} come from enrollmentPacket in src/data/school.ts. */
     fileInfo: "PDF · {pages} pages · {size}",
@@ -808,6 +809,29 @@ export const en = {
     help: "If you can’t print the packet, can’t use a PDF, or would like help filling it in, contact your site. We can go through it with you by phone or in person, or provide it in another format.",
     emailLabel: "Email",
     campusLabel: "{campus} site",
+    reserve: {
+      title: "Reserve a spot online",
+      lede: "Takes about a minute. The office will call you about an opening at your site and can walk you through the packet.",
+      fields: {
+        parentName: "Your name",
+        phone: "Phone",
+        email: "Email",
+        campus: "Site",
+        chooseCampus: "Choose a site",
+        childAge: "Child’s age",
+        chooseAge: "Choose an age",
+        ages: ["3", "4", "5"],
+        start: "When would you like to start?",
+        startHint: "January, or as soon as possible",
+        des: "Using DES child care assistance?",
+        desOptions: ["Not sure", "Yes", "No"],
+      },
+      submit: "Reserve my spot",
+      sending: "Sending…",
+      thanks: "Thank you — we have your request. The office will call you soon. In the meantime you can download the packet below.",
+      failed: "We could not send this. Please call {phone}.",
+      or: "Ready to fill in the paperwork now? Download the packet below.",
+    },
   },
   /**
    * The accessibility statement, from the draft prepared for the school
@@ -881,13 +905,14 @@ export const en = {
         title: "What we collect",
         intro: "We collect information only when you choose to send it to us using one of the forms on this site. Nothing is gathered in the background.",
         tour: "Tour booking: tours are booked through Cal.com, a scheduling service acting on our behalf. Cal.com asks for your name, email address and phone number, and emails you a confirmation. Cal.com handles that booking on our behalf; we see the booking in our calendar.",
+        reserve: "Reserve a spot (Enroll page): your name, phone number, email address, the site, your child’s age, when you hope to start, and whether you use DES assistance. We do not ask for your child’s name or date of birth here.",
         contact: "Contact form: your name, email address, the topic you pick, and your message.",
         careers: "Job application: your name, email address, phone number, the role and site you are applying for, and your message.",
         note: "We do not ask for a Social Security number, payment details, or immigration status anywhere on this site.",
       },
       why: {
         title: "Why we collect it",
-        body: "To answer your question, schedule your tour, or consider your job application. We do not use it to advertise to you, and we do not add you to a mailing list.",
+        body: "To answer your question, schedule your tour, call you about an opening, or consider your job application. We do not use it to advertise to you, and we do not add you to a mailing list.",
       },
       recipients: {
         title: "Who else sees it",

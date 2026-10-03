@@ -1,5 +1,6 @@
 import { AppLink, useContent } from "@/lib/locale";
 import { cn } from "@/lib/utils";
+import { Photo } from "@/components/photo";
 
 export function Logo({
   className,
@@ -21,8 +22,10 @@ export function Logo({
         className,
       )}
     >
-      <img
+      <Photo
         src="/images/logo.png"
+        sizes="100px"
+        loading="eager"
         alt=""
         width={512}
         height={512}

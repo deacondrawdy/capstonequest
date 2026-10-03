@@ -4,6 +4,7 @@ import { StaffGrid } from "@/components/staff-grid";
 import { Button } from "@/components/ui/button";
 import { AppLink, useContent } from "@/lib/locale";
 import { staffForCampus, type Campus } from "@/data/school";
+import { Photo } from "@/components/photo";
 
 /** `campus` is resolved in the route's beforeLoad so an unknown slug 404s. */
 export function CampusDetail({ campus }: { campus: Campus }) {
@@ -19,8 +20,10 @@ export function CampusDetail({ campus }: { campus: Campus }) {
         // photo. So it runs at its own aspect ratio and the title sits under it.
         <>
           <div className="bg-navy-deep">
-            <img
+            <Photo
               src={campus.banner}
+              sizes="100vw"
+              priority
               alt={c.campuses[campus.slug].bannerAlt}
               width={1145}
               height={283}
@@ -36,8 +39,10 @@ export function CampusDetail({ campus }: { campus: Campus }) {
         </>
       ) : (
         <div className="relative h-64 overflow-hidden sm:h-80">
-          <img
+          <Photo
             src={campus.image}
+            sizes="100vw"
+            priority
             alt={c.campuses[campus.slug].imageAlt}
             className="h-full w-full object-cover"
           />

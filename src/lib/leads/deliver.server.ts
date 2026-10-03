@@ -22,7 +22,7 @@ if (typeof window !== "undefined") {
   );
 }
 
-export type LeadKind = "tour" | "enroll" | "contact" | "job";
+export type LeadKind = "tour" | "enroll" | "reserve" | "contact" | "job";
 
 export type LeadEnvelope = {
   kind: LeadKind;

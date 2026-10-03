@@ -39,8 +39,8 @@ export const es: Content = {
   pageTitles: {
     home: "Preescolar en Tucson y Yuma",
     about: "Nosotros",
-    campuses: "Centros",
-    campus: "{campus}",
+    campuses: "Preescolar en Tucson y Yuma: centros",
+    campus: "Preescolar en {city}, AZ",
     careers: "Empleo",
     clever: "Clever y portales estudiantiles",
     contact: "Contacto",
@@ -51,8 +51,8 @@ export const es: Content = {
     handbook: "Manual para padres",
     policies: "Políticas",
     privacy: "Aviso de privacidad",
-    programs: "Programas",
-    tour: "Agende una visita",
+    programs: "Preescolar y cuidado extendido",
+    tour: "Agende una visita al preescolar",
     tuition: "Colegiatura y cuotas",
     whyUs: "Por qué elegirnos",
     accessibility: "Accesibilidad",
@@ -64,11 +64,11 @@ export const es: Content = {
     home: "Preescolar aprobado por DES para niños de 3 a 5 años en Tucson y Yuma, Arizona. Aprendizaje por medio del juego, de 7:00 a. m. a 6:00 p. m., desde 2013.",
     about: "Capstone Quest Academy ofrece preescolar aprobado por DES en Tucson y Yuma desde 2013: grupos pequeños, aprendizaje por medio del juego y maestras constantes.",
     campuses: "Dos centros en Arizona y un mismo preescolar basado en el juego: Tucson y Yuma. Direcciones, teléfonos y reservación de visitas.",
-    campus: "{campus}: dirección, teléfono, horario y el equipo, además de la reservación de visitas al preescolar de Capstone Quest Academy.",
+    campus: "Preescolar aprobado por DES para niños de 3 a 5 años en {city}, AZ. Dirección, teléfono, horario de 7:00 a. m. a 6:00 p. m., el equipo y reservación de visitas a nuestro {campus}.",
     careers: "Enseñe preescolar en Tucson o Yuma. Grupos pequeños, prestaciones y una cultura familiar en Capstone Quest Academy.",
     clever: "Accesos a Clever, PowerSchool, ClassDojo y RAZ Kids para las familias de Capstone Quest Academy.",
     contact: "Llame, escriba o envíe un mensaje a Capstone Quest Academy. Teléfonos y direcciones de nuestros centros de Tucson y Yuma.",
-    enroll: "La inscripción es en papel. Descargue el paquete de su centro, llene uno por niño y entréguelo en la oficina de registro. Le ayudamos por teléfono o en persona.",
+    enroll: "Reserve un lugar en el preescolar en línea en un minuto y luego descargue el paquete de inscripción de su centro en Tucson o Yuma. Le ayudamos por teléfono o en persona.",
     faq: "Costo, horarios, edades, uso del baño, asistencia de DES, comidas, proporciones y visitas: las preguntas que más nos hacen, con respuestas claras.",
     info: "Todo en un solo lugar: programas, recursos para familias, colegiatura, políticas, visitas y el manual de Capstone Quest Academy.",
     parents: "Manuales, menús, derechos de los padres, la política de bienestar y la lista de útiles para las familias de Capstone Quest Academy.",
@@ -319,7 +319,7 @@ export const es: Content = {
   hero: {
     /** Names the homepage h1, whose letters are decorative spans. */
     wordmark: "Capstone Quest Academy",
-    eyebrow: "Programas preescolares en",
+    eyebrow: "Preescolar de Tucson y Yuma en",
     // Kept to roughly the English length so it sits on one line in the hero's
     // 32rem column; the gold rule under it spans the sentence, and a line that
     // wraps leaves the rule running past the end of the text.
@@ -482,10 +482,11 @@ export const es: Content = {
     hours: { q: "¿Cuál es su horario?", a: "El programa académico de preescolar es de cinco días a la semana. Los centros abren de lunes a viernes, de 7:00 a. m. a 6:00 p. m., con llegada temprana (7:00–8:00 a. m.) y salida tardía (3:30–6:00 p. m.) con costo adicional." },
   },
 
-  testimonials: {
-    priya: { quote: "Maya entró al kínder feliz y ya sabía esperar su turno, escribir su nombre y hacer buenas preguntas. Capstone Quest hizo que se viera fácil.", role: "Madre de Tucson" },
-    marcus: { quote: "Los maestros de verdad conocen a mi hijo. No solo sus alergias: también su camión favorito, lo despacio que agarra confianza y las canciones que lo calman.", role: "Padre de Yuma" },
-    danielle: { quote: "Usamos un vale de DES y nunca nos sentimos una familia de segunda. El programa es la misma hermosa experiencia para cada niño del salón.", role: "Madre de Tucson" },
+  reviews: {
+    lede: "Reseñas reales de familias de Tucson y Yuma en nuestros perfiles de Google.",
+    read: "Leer las reseñas del {campus} en Google",
+    stars: "{n} de 5 estrellas",
+    source: "Reseña de Google",
   },
 
   whyUsPage: {
@@ -502,7 +503,7 @@ export const es: Content = {
     desTitle: "Aprobados por DES. Hechos para las familias.",
     desText: "Ambos centros están totalmente aprobados por el Departamento de Seguridad Económica de Arizona. Aceptamos subsidios de cuidado infantil, y cada familia, con vale o con pago particular, recibe el mismo salón, los mismos maestros y el mismo día.",
     dayTitle: "Un día en preescolar",
-    wordsTitle: "Las familias en sus propias palabras",
+    wordsTitle: "Lo que dicen las familias en Google",
     faqTitle: "Preguntas que escuchamos en cada visita",
   },
   homePage: {
@@ -527,8 +528,8 @@ export const es: Content = {
     dayEyebrow: "Un día en preescolar",
     dayTitle: "Ritmo, juego y la escuela justa",
     dayNote: "El cuidado antes y después de clases rodea esta jornada, de 7:00 a 8:00 a. m. y de 3:30 a 6:00 p. m.",
-    familiesEyebrow: "Nuestras familias",
-    familiesTitle: "Listos para el kínder, y siguen siendo ellos mismos",
+    familiesEyebrow: "Reseñas de Google",
+    familiesTitle: "Lo que dicen las familias",
     ctaTitle: "Inscripciones abiertas",
     ctaNote: "Lugares limitados · Aceptamos DES · Visitas casi todos los días hábiles",
     enrollNow: "Inscríbase ahora",
@@ -781,7 +782,7 @@ export const es: Content = {
   enrollPage: {
     eyebrow: "Inscripción",
     title: "Inscriba a su hijo",
-    lede: "La inscripción se hace en papel. Descargue el paquete de inscripción, llénelo y entréguelo en la oficina de inscripciones de su centro.",
+    lede: "Reserve un lugar en línea en un minuto y la oficina le llamará. La inscripción en sí se hace en papel: descargue el paquete, llénelo y entréguelo en la oficina de inscripciones de su centro.",
     download: "Descargar el paquete de inscripción",
     fileInfo: "PDF · {pages} páginas · {size}",
     languageNote: "El paquete está disponible solo en inglés.",
@@ -796,6 +797,29 @@ export const es: Content = {
     help: "Si no puede imprimir el paquete, no puede usar un PDF o le gustaría ayuda para llenarlo, comuníquese con su centro. Podemos revisarlo con usted por teléfono o en persona, o dárselo en otro formato.",
     emailLabel: "Correo electrónico",
     campusLabel: "Centro {campus}",
+    reserve: {
+      title: "Reserve un lugar en línea",
+      lede: "Toma alrededor de un minuto. La oficina le llamará sobre un lugar disponible en su centro y puede ayudarle con el paquete.",
+      fields: {
+        parentName: "Su nombre",
+        phone: "Teléfono",
+        email: "Correo electrónico",
+        campus: "Centro",
+        chooseCampus: "Elija un centro",
+        childAge: "Edad del niño",
+        chooseAge: "Elija una edad",
+        ages: ["3", "4", "5"],
+        start: "¿Cuándo le gustaría empezar?",
+        startHint: "Enero, o lo antes posible",
+        des: "¿Usa ayuda de DES para el cuidado infantil?",
+        desOptions: ["No estoy seguro", "Sí", "No"],
+      },
+      submit: "Reservar mi lugar",
+      sending: "Enviando…",
+      thanks: "Gracias, recibimos su solicitud. La oficina le llamará pronto. Mientras tanto, puede descargar el paquete abajo.",
+      failed: "No pudimos enviar esto. Por favor llame al {phone}.",
+      or: "¿Listo para llenar los documentos ahora? Descargue el paquete abajo.",
+    },
   },
   accessibilityPage: {
     eyebrow: "Accesibilidad",
@@ -862,13 +886,14 @@ export const es: Content = {
         title: "Qué información recopilamos",
         intro: "Solo recopilamos información cuando usted decide enviárnosla por medio de alguno de los formularios del sitio. No se recoge nada en segundo plano.",
         tour: "Reservación de visitas: las visitas se agendan a través de Cal.com, un servicio de programación que actúa por cuenta nuestra. Cal.com le pide su nombre, correo electrónico y teléfono, y le envía una confirmación. Cal.com gestiona esa reservación por cuenta nuestra; nosotros vemos la cita en nuestro calendario.",
+        reserve: "Reservar un lugar (página de inscripción): su nombre, teléfono, correo electrónico, el centro, la edad de su hijo, cuándo desea empezar y si usa ayuda de DES. Aquí no le pedimos el nombre ni la fecha de nacimiento de su hijo.",
         contact: "Formulario de contacto: su nombre, su correo electrónico, el tema que elija y su mensaje.",
         careers: "Solicitud de empleo: su nombre, correo electrónico y teléfono, el puesto y el centro que solicita, y su mensaje.",
         note: "En ninguna parte de este sitio le pedimos número de Seguro Social, datos de pago ni información sobre su situación migratoria.",
       },
       why: {
         title: "Para qué la usamos",
-        body: "Para responder su pregunta, agendar su visita o considerar su solicitud de empleo. No la usamos para enviarle publicidad ni lo agregamos a una lista de correos.",
+        body: "Para responder su pregunta, agendar su visita, llamarle sobre un lugar disponible o considerar su solicitud de empleo. No la usamos para enviarle publicidad ni lo agregamos a una lista de correos.",
       },
       recipients: {
         title: "Quién más la ve",

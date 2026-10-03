@@ -82,6 +82,12 @@ export const campuses = [
     hours: "7:00 AM – 6:00 PM",
     feel: "A home away from home, all day",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=1220+South+4th+Avenue+Yuma+AZ+85364",
+    // The Google Business Profile, addressed by its knowledge-graph ID
+    // (/g/11ks2y06z0), which stays stable where a pasted search URL does not.
+    // No `geo` yet: Tucson's came off the profile's Maps share link, and Yuma's
+    // should too rather than be geocoded from the street address. Swapping in
+    // that share link (maps.app.goo.gl/…) here would match Tucson.
+    googleProfile: "https://www.google.com/search?kgmid=/g/11ks2y06z0",
   },
 ] as const;
 
@@ -239,11 +245,22 @@ export function staffForCampus(slug: string) {
   return staff.filter((member) => (member.campuses as readonly string[]).includes(slug));
 }
 
-export const testimonials = [
-  { id: "priya", name: "Priya Chen" },
-  { id: "marcus", name: "Marcus Alvarez" },
-  { id: "danielle", name: "Danielle Ortiz" },
-] as const;
+/**
+ * Reviews featured on the home and Why Us pages, copied word for word from the
+ * school's Google Business Profiles, with the reviewer's name as Google shows
+ * it. Never paraphrase, translate or invent one: these are presented as real
+ * reviews, and a made-up review is a deceptive endorsement.
+ *
+ * The site launched with three placeholder testimonials that were not real
+ * parents; they were removed October 3, 2026. Until the school picks reviews
+ * to feature, this stays empty and the section links to both profiles instead.
+ */
+export const googleReviews: ReadonlyArray<{
+  name: string;
+  campus: "tucson" | "yuma";
+  rating: 1 | 2 | 3 | 4 | 5;
+  text: string;
+}> = [];
 
 /**
  * The /faq page's questions, in publication order. The copy lives in the
