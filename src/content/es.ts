@@ -487,6 +487,9 @@ export const es: Content = {
     read: "Leer las reseñas del {campus} en Google",
     stars: "{n} de 5 estrellas",
     source: "Reseña de Google",
+    summary: "{rating} de 5 · {count} reseñas en Google",
+    seeAll: "Ver las {count} reseñas del {campus} en Google",
+    attribution: "Reseñas de Google. Se muestran tal como fueron escritas, en el orden de Google.",
   },
 
   whyUsPage: {

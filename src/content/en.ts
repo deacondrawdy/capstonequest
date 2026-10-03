@@ -496,6 +496,9 @@ export const en = {
     read: "Read {campus} reviews on Google",
     stars: "{n} out of 5 stars",
     source: "Google review",
+    summary: "{rating} out of 5 · {count} Google reviews",
+    seeAll: "See all {count} {campus} reviews on Google",
+    attribution: "Reviews from Google. Shown as written, in the order Google lists them.",
   },
 
   whyUsPage: {

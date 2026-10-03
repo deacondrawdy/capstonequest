@@ -245,22 +245,6 @@ export function staffForCampus(slug: string) {
   return staff.filter((member) => (member.campuses as readonly string[]).includes(slug));
 }
 
-/**
- * Reviews featured on the home and Why Us pages, copied word for word from the
- * school's Google Business Profiles, with the reviewer's name as Google shows
- * it. Never paraphrase, translate or invent one: these are presented as real
- * reviews, and a made-up review is a deceptive endorsement.
- *
- * The site launched with three placeholder testimonials that were not real
- * parents; they were removed October 3, 2026. Until the school picks reviews
- * to feature, this stays empty and the section links to both profiles instead.
- */
-export const googleReviews: ReadonlyArray<{
-  name: string;
-  campus: "tucson" | "yuma";
-  rating: 1 | 2 | 3 | 4 | 5;
-  text: string;
-}> = [];
 
 /**
  * The /faq page's questions, in publication order. The copy lives in the
