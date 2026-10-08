@@ -196,6 +196,7 @@ export const en = {
     followLabel: "{name} — Capstone Quest Academy",
     rights: "All rights reserved.",
     badges: "Arizona DES approved · State licensed · Ages 3–5",
+    createdBy: "Website created by",
     links: {
       programs: "Programs",
       whyUs: "Why Us",

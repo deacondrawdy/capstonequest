@@ -190,6 +190,7 @@ export const es: Content = {
     followLabel: "{name} — Capstone Quest Academy",
     rights: "Todos los derechos reservados.",
     badges: "Aprobado por DES de Arizona · Con licencia estatal · De 3 a 5 años",
+    createdBy: "Sitio web creado por",
     links: {
       programs: "Programas",
       whyUs: "Por qué elegirnos",

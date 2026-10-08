@@ -173,6 +173,25 @@ export function SiteFooter() {
           </p>
           <p>{c.footer.badges}</p>
         </div>
+        <div className="mx-auto flex max-w-[1400px] justify-center px-6 pb-5 sm:px-8">
+          <a
+            href="https://tucsonaiexpert.com"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-3 rounded-md text-xs text-paper/55 transition-colors hover:text-gold focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+          >
+            <span>{c.footer.createdBy}</span>
+            <img
+              src="/images/credit/tucson-ai-expert.webp"
+              alt="Tucson AI Expert"
+              width={310}
+              height={144}
+              loading="lazy"
+              className="h-12 w-auto"
+            />
+            <span className="sr-only">{c.common.opensNewTab}</span>
+          </a>
+        </div>
       </div>
     </footer>
   );
