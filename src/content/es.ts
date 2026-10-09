@@ -71,7 +71,7 @@ export const es: Content = {
     enroll: "Reserve un lugar en el preescolar en línea en un minuto y luego descargue el paquete de inscripción de su centro en Tucson o Yuma. Le ayudamos por teléfono o en persona.",
     faq: "Costo, horarios, edades, uso del baño, asistencia de DES, comidas, proporciones y visitas: las preguntas que más nos hacen, con respuestas claras.",
     info: "Todo en un solo lugar: programas, recursos para familias, colegiatura, políticas, visitas y el manual de Capstone Quest Academy.",
-    parents: "Manuales, menús, derechos de los padres, la política de bienestar y la lista de útiles para las familias de Capstone Quest Academy.",
+    parents: "Manuales, el calendario escolar, el menú de desayuno, derechos de los padres y la política de bienestar para las familias de Capstone Quest Academy.",
     handbook: "El manual completo para padres de Capstone Quest Academy: admisiones, rutinas diarias, salud y medicamentos, emergencias y disciplina.",
     policies: "Políticas de inscripción, entrega de los niños, disciplina y acceso de los padres de Capstone Quest Academy, como se publican en ambos centros.",
     privacy: "Qué recopila este sitio, por qué, quién lo ve y cómo pedir que lo borremos. Sin rastreo, sin publicidad y sin cookies.",
@@ -288,6 +288,10 @@ export const es: Content = {
       blurb:
         "El manual completo del preescolar Capstone Quest (PDF): admisiones, colegiatura, horario diario, disciplina y la política de prevención de suspensión y expulsión.",
     },
+    calendar: {
+      title: "Calendario escolar 2026–27",
+      blurb: "Cierres, campamentos de vacaciones, días solo para preescolar y eventos familiares en Tucson durante el ciclo 2026–27.",
+    },
     fees: {
       title: "Tarifas de preescolar",
       blurb: "Tarifas de los programas, condiciones de pago y el acuerdo de tarifas que firman las familias. Vigente desde el 1 de agosto de 2024.",
@@ -306,15 +310,7 @@ export const es: Content = {
     },
     breakfast: {
       title: "Menú de desayuno de Tucson",
-      blurb: "Desayunos que se ofrecen actualmente en el centro de Tucson.",
-    },
-    lunch: {
-      title: "Menú de almuerzo de Tucson",
-      blurb: "Almuerzos que se ofrecen actualmente en el centro de Tucson.",
-    },
-    supplies: {
-      title: "Lista de útiles escolares",
-      blurb: "Lo que debe traer para el primer día.",
+      blurb: "El desayuno de este mes en el centro de Tucson.",
     },
   },
   hero: {
@@ -359,8 +355,8 @@ export const es: Content = {
       policies: { title: "Políticas", text: "Inscripción, entrega de niños, disciplina y acceso de los padres, tal como están publicadas en ambos centros.", cta: "Leer las políticas" },
       partnership: { title: "Alianza con la familia", text: "Conferencias dos veces al año, mañanas de puertas abiertas y maestros que le devuelven la llamada.", cta: "Hable con nosotros" },
     },
-    docsTitle: "Manuales, menús y formularios",
-    docsLede: "Los mismos documentos que las familias descargan de la sección de Información de AmeriSchools: derechos de los padres, bienestar, menús y útiles.",
+    docsTitle: "Manuales, calendario y menús",
+    docsLede: "El calendario escolar, el menú de desayuno de este mes y los manuales y políticas que compartimos con AmeriSchools Academy.",
     tuitionTitle: "Colegiatura y DES",
     tuitionText: "El preescolar de día completo cuesta $130.00 por semana con cinco días y $120.00 con tres, y el cuidado antes y después de clases desde $15.00. Hay un 10% de descuento para un hermano adicional. Estamos 100% aprobados por el Departamento de Seguridad Económica de Arizona, y las familias que usan el subsidio de cuidado infantil de DES se inscriben de la misma manera: aplican copagos y le ayudamos con los trámites.",
     tuitionCta: "Ver la lista completa de cuotas",
@@ -388,7 +384,7 @@ export const es: Content = {
     cards: {
       about: { title: "Sobre Capstone Quest", text: "Preescolar aprobado por DES en Tucson y Yuma desde 2013. Pequeños pasos, grandes sueños.", cta: "Nuestra historia" },
       programs: { title: "Programas", text: "Un solo salón preescolar de edades mixtas para niños de 3 a 5 años, más cuidado antes y después de clases, de 7 a. m. a 6 p. m.", cta: "Ver programas" },
-      parents: { title: "Recursos para familias", text: "Manuales, menús, derechos de los padres, política de bienestar y útiles.", cta: "Para las familias" },
+      parents: { title: "Recursos para familias", text: "Manuales, el calendario escolar, el menú de desayuno, derechos de los padres y la política de bienestar.", cta: "Para las familias" },
       clever: { title: "Clever y portales", text: "Clever, PowerSchool, ClassDojo y RAZ Kids: los accesos que las familias ya usan.", cta: "Abrir portales" },
       tour: { title: "Agende una visita", text: "Observe una reunión matutina real. La mayoría de las visitas dura unos 40 minutos.", cta: "Reserve una visita" },
       tuition: { title: "Colegiatura y cuotas", text: "Tarifas semanales, cuidado antes y después de clases, descuentos por hermanos y condiciones de pago.", cta: "Ver colegiatura" },
@@ -854,7 +850,7 @@ export const es: Content = {
       "El Manual para Padres en PDF aún no se ha revisado por completo en cuanto a accesibilidad. El manual también está publicado en este sitio como página web, y esa versión sí es accesible.",
       "Nuestro paquete de inscripción es un PDF escaneado, por lo que un lector de pantalla no puede leerlo y no se puede llenar en la pantalla. Si lo necesita en otro formato, o ayuda para llenarlo, comuníquese con su centro y lo revisaremos con usted por teléfono o en persona.",
       "La reservación de visitas en la página Agende una visita la proporciona Cal.com. Esa parte de la página la construyen ellos, no nosotros, y solo está en inglés. Si no le funciona, llame a su centro y agendamos la visita con usted.",
-      "Algunos documentos de la página de Recursos para familias —el manual del estudiante, la política de bienestar, los menús y la lista de útiles— los publica AmeriSchools Academy, no nosotros, y es posible que no sean totalmente accesibles. Le daremos cualquiera de ellos en otro formato si lo solicita.",
+      "Algunos documentos de la página de Recursos para familias —el manual del estudiante, la política de bienestar y el menú de desayuno— los publica AmeriSchools Academy, no nosotros, y es posible que no sean totalmente accesibles. Le daremos cualquiera de ellos en otro formato si lo solicita.",
     ],
     helpTitle: "Si algo no le funciona",
     helpIntro: "Por favor, díganoslo. No nos molesta en absoluto: nos ayuda a corregirlo para la siguiente familia.",

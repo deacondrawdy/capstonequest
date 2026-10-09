@@ -180,6 +180,10 @@ export const parentDocuments = [
     href: "/documents/capstone-quest-parent-handbook.pdf",
   },
   {
+    id: "calendar",
+    href: "/documents/capstone-quest-2026-27-calendar.pdf",
+  },
+  {
     id: "fees",
     href: feeSchedule.href,
   },
@@ -195,18 +199,12 @@ export const parentDocuments = [
     id: "wellness",
     href: "https://amerischools.org/wp-content/uploads/2025/08/AmeriSchools-Wellness-Policy-1.pdf",
   },
-  // The page shows these in pairs after the handbook; keep the menus adjacent.
+  // Replaced each month with the menu the school sends; the path stays the same
+  // so links to it keep working. The page shows these in pairs after the
+  // handbook, so keep the count after it even.
   {
     id: "breakfast",
-    href: "https://amerischools.org/wp-content/uploads/2026/07/August-Breakfastmenu.pdf",
-  },
-  {
-    id: "lunch",
-    href: "https://amerischools.org/wp-content/uploads/2026/07/August-lunch-menu-copy-4.pdf",
-  },
-  {
-    id: "supplies",
-    href: "https://amerischools.org/wp-content/uploads/2026/07/School-Supplies.pdf",
+    href: "/documents/capstone-quest-breakfast-menu.pdf",
   },
 ] as const;
 

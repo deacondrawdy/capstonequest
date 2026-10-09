@@ -76,7 +76,7 @@ export const en = {
     enroll: "Reserve a Pre-K spot online in a minute, then download the enrollment packet for your Tucson or Yuma site. Help available by phone or in person.",
     faq: "Cost, hours, ages, toilet training, DES assistance, meals, ratios and tours — the questions families ask Capstone Quest Academy, answered directly.",
     info: "Everything in one place: programs, parent resources, tuition, policies, tours and the Capstone Quest Academy handbook.",
-    parents: "Handbooks, menus, parent rights, the wellness policy and the supply list for Capstone Quest Academy families in Tucson and Yuma.",
+    parents: "Handbooks, the school calendar, the breakfast menu, parent rights and the wellness policy for Capstone Quest Academy families in Tucson and Yuma.",
     handbook: "The full Capstone Quest Academy parent handbook: admissions, daily routines, health and medication, emergencies, discipline and the prevention policy.",
     policies: "Enrollment, release, discipline and parent access policies for Capstone Quest Academy, as posted at both locations.",
     privacy: "What this website collects, why, who sees it and how to ask us to delete it. No tracking, no advertising and no cookies.",
@@ -298,6 +298,10 @@ export const en = {
       blurb:
         "The full Capstone Quest Pre-K handbook (PDF): admissions, tuition, daily schedule, discipline, and the suspension and expulsion prevention policy.",
     },
+    calendar: {
+      title: "2026–27 school calendar",
+      blurb: "Tucson closures, break camps, Pre-K-only days and family events for the 2026–27 school year.",
+    },
     fees: {
       title: "Pre-K fee schedule",
       blurb: "Program rates, payment terms, and the fee agreement families sign. Effective August 1, 2024.",
@@ -316,15 +320,7 @@ export const en = {
     },
     breakfast: {
       title: "Tucson breakfast menu",
-      blurb: "Current breakfast offerings at the Tucson site.",
-    },
-    lunch: {
-      title: "Tucson lunch menu",
-      blurb: "Current lunch offerings at the Tucson site.",
-    },
-    supplies: {
-      title: "School supplies",
-      blurb: "What to pack for the first day.",
+      blurb: "This month’s breakfast at the Tucson site.",
     },
   },
   hero: {
@@ -366,8 +362,8 @@ export const en = {
       policies: { title: "Policies", text: "Enrollment, release, discipline, and parent access — as posted at both sites.", cta: "Read the policies" },
       partnership: { title: "Family partnership", text: "Conferences twice a year, open-door mornings, and teachers who call back.", cta: "Talk with us" },
     },
-    docsTitle: "Handbooks, menus & forms",
-    docsLede: "The same documents families download from AmeriSchools Info — parent rights, wellness, menus, and supplies.",
+    docsTitle: "Handbooks, calendar & menus",
+    docsLede: "The school calendar, this month’s breakfast menu, and the handbooks and policies families share with AmeriSchools Academy.",
     tuitionTitle: "Tuition & DES",
     tuitionText: "Full-day Pre-K runs $130.00 a week for five days and $120.00 for three, with before- and after-care from $15.00. There is a 10% discount for one additional sibling. We are 100% approved by the Arizona Department of Economic Security, and families using a DES child care subsidy enroll the same way — copays apply, and we will walk through the paperwork with you.",
     tuitionCta: "See the full fee schedule",
@@ -395,7 +391,7 @@ export const en = {
     cards: {
       about: { title: "About Capstone Quest", text: "DES-approved Pre-K in Tucson and Yuma since 2013. Little steps, big dreams.", cta: "Our story" },
       programs: { title: "Programs", text: "One mixed-age Pre-K classroom for ages 3–5, plus before & after care, 7 AM–6 PM.", cta: "See programs" },
-      parents: { title: "Parent resources", text: "Handbooks, menus, parent rights, wellness policy, and supplies.", cta: "For parents" },
+      parents: { title: "Parent resources", text: "Handbooks, the school calendar, the breakfast menu, parent rights, and the wellness policy.", cta: "For parents" },
       clever: { title: "Clever & portals", text: "Clever, PowerSchool, ClassDojo, and RAZ Kids — the sign-ins families already use.", cta: "Open portals" },
       tour: { title: "Schedule a tour", text: "Walk a real morning meeting. Most tours last about 40 minutes.", cta: "Book a tour" },
       tuition: { title: "Tuition & fees", text: "Weekly Pre-K rates, before & after care, sibling discounts, and billing terms.", cta: "See tuition" },
@@ -873,7 +869,7 @@ export const en = {
       "Our downloadable Parent Handbook PDF has not been fully checked for accessibility. The handbook is also published on this site as a web page, and that version is accessible.",
       "Our enrollment packet is a scanned PDF, so a screen reader cannot read it and it cannot be filled in on screen. If you need it in another format, or help completing it, contact your site and we will go through it with you by phone or in person.",
       "Tour booking on our Schedule a tour page is provided by Cal.com. That part of the page is built by them, not by us, and it is only in English. If it does not work for you, call your site and we will book the tour with you.",
-      "Some documents on our Parent resources page — the student handbook, wellness policy, meal menus and supply list — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
+      "Some documents on our Parent resources page — the student handbook, wellness policy and breakfast menu — are published by AmeriSchools Academy, not by us, and may not be fully accessible. We will provide any of them in another format on request.",
     ],
     helpTitle: "If something does not work for you",
     helpIntro: "Please tell us. You will not be putting us out — it helps us fix it for the next family.",
