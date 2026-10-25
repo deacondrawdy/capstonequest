@@ -15,19 +15,8 @@ Disallow: /*?*utm_
 Disallow: /*?*gclid
 Disallow: /*?*fbclid
 
-# ---------------------------------------------------------------
-# Content signals — an explicit, deliberate choice by the school.
-# search    = may index and link
-# ai-input  = may be used to ground / answer live AI questions
-# ai-train  = may be used to train or fine-tune models
-#
-# The school is a local business that benefits from being cited by
-# AI assistants when parents ask about preschools in Tucson and Yuma.
-# ai-input is therefore YES. ai-train is set to yes as well; change
-# the line below to ai-train=no if the school prefers to opt out of
-# model training while remaining answerable in live AI results.
-# ---------------------------------------------------------------
-
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
+# No Content-Signal line: Google's Lighthouse SEO audit reports it as an
+# invalid directive, and "Allow: /" above already lets search engines and AI
+# assistants read and cite every page.
 
 Sitemap: https://capstonequestacademy.com/sitemap.xml

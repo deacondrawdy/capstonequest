@@ -1,5 +1,7 @@
 import type { ComponentProps } from "react";
 import variants from "@/data/image-variants.json";
+import { siteFileWidths } from "@/data/site-files";
+import { useResolveSiteFile } from "@/lib/site-files/context";
 
 type PhotoProps = Omit<ComponentProps<"img">, "src" | "srcSet" | "sizes"> & {
   /** The original file under /images. The WebP variants are looked up from it. */
@@ -23,15 +25,20 @@ const table = variants as Record<string, number[]>;
  *
  * The variants come from `scripts/optimize-images.mjs`. An image that has not
  * been through it yet falls back to its original file, so a new photo still
- * shows before anyone runs the script.
+ * shows before anyone runs the script. Staff-replaceable photos (/files/…)
+ * resolve first: to the original under /images, or to the upload, whose
+ * widths come from data/site-files.ts and carry its ?v= version.
  */
 export function Photo({ src, sizes, priority = false, ...rest }: PhotoProps) {
-  const widths = table[src];
-  const stem = src.replace(/\.[^.]+$/, "");
-  const srcSet = widths?.map((w) => `${stem}-${w}.webp ${w}w`).join(", ");
+  const resolved = useResolveSiteFile()(src);
+  const [path, query = ""] = resolved.split("?");
+  const version = query ? `?${query}` : "";
+  const widths = table[path] ?? siteFileWidths(path);
+  const stem = path.replace(/\.[^.]+$/, "");
+  const srcSet = widths?.map((w) => `${stem}-${w}.webp${version} ${w}w`).join(", ");
   // The middle variant is the fallback for the rare browser that ignores
   // srcset; the original stays as the fallback for an unprocessed image.
-  const fallback = widths ? `${stem}-${widths[Math.min(1, widths.length - 1)]}.webp` : src;
+  const fallback = widths ? `${stem}-${widths[Math.min(1, widths.length - 1)]}.webp${version}` : resolved;
 
   return (
     <img

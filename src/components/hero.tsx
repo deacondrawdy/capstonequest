@@ -19,6 +19,7 @@ import { OwliviaLauncher } from "@/components/owlivia-launcher";
 import { academyColors } from "@/data/school";
 import { cn } from "@/lib/utils";
 import { Photo } from "@/components/photo";
+import { siteFileUrl } from "@/data/site-files";
 
 /**
  * The classroom video is hidden until a better-produced one replaces it.
@@ -67,7 +68,7 @@ export function Hero() {
           edge. */}
       <div className="pointer-events-none absolute inset-y-0 left-[max(38%,calc(50%-168px))] right-[max(0px,calc(50%-700px))] hidden overflow-hidden xl:block">
         <Photo
-          src="/images/hero.jpg"
+          src={siteFileUrl("home-hero")}
           sizes="(min-width: 1280px) 55vw, 1px"
           priority
           alt={c.hero.imageAlt}
@@ -123,7 +124,7 @@ export function Hero() {
 
           <div className="hero-photo mt-5 overflow-hidden rounded-[24px] xl:hidden">
             <Photo
-              src="/images/hero.jpg"
+              src={siteFileUrl("home-hero")}
               sizes="(min-width: 1280px) 1px, (min-width: 1024px) 100vw, (min-width: 640px) 576px, 100vw"
               priority
               alt={c.hero.imageAlt}

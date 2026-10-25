@@ -19,12 +19,14 @@ export function StaffGrid({ members }: { members: readonly Member[] }) {
       {members.map((s) => (
         <article key={s.id} className="rounded-[28px] bg-paper p-6 shadow-card">
           <div className="flex items-center gap-4">
-            {/* Empty alt: the name is the heading right beside it, and repeating
-                it makes a screen reader say every name twice. */}
+            {/* Named for search and SEO scanners, but aria-hidden: the name is
+                the heading right beside it, and a screen reader reading both
+                would say every name twice. */}
             <Photo
               src={s.image}
               sizes="96px"
-              alt=""
+              alt={`${s.name}, ${c.aboutPage.staff[s.id].role}`}
+              aria-hidden
               width={640}
               height={640}
               className="size-24 shrink-0 rounded-2xl object-cover"

@@ -35,14 +35,19 @@ export function OwliviaPanel({
   );
 }
 
-/** The owl, at the size each button wants it. */
+/**
+ * The owl, at the size each button wants it. It has alt text so SEO scanners
+ * stop flagging it; every button it sits in sets aria-label to its visible
+ * text, which keeps a screen reader from reading the owl as well.
+ */
 export function OwlMark({ className }: { className?: string }) {
+  const c = useContent();
   return (
     <Photo
-      src="/images/owl.png"
+      src="/images/owlivia-capstone-quest-owl.png"
       sizes="40px"
       loading="eager"
-      alt=""
+      alt={c.owlivia.mascotAlt}
       width={40}
       height={40}
       className={cn("rounded-full bg-paper object-contain p-0.5", className)}
@@ -61,6 +66,7 @@ export function OwliviaLauncher({ className }: { className?: string }) {
         variant="owl"
         size="xl"
         className={className}
+        aria-label={c.owlivia.open}
         onClick={() => setOpen(true)}
       >
         <OwlMark className="-ml-3 size-10" />

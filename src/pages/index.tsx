@@ -6,6 +6,7 @@ import { campuses, dailySchedule, programs } from "@/data/school";
 import { GoogleReviews } from "@/components/google-reviews";
 import { AppLink, useContent } from "@/lib/locale";
 import { Photo } from "@/components/photo";
+import { siteFileUrl } from "@/data/site-files";
 
 
 export function Home() {
@@ -124,8 +125,8 @@ export function Home() {
           {/* Landscape tiles: both campus photos are wide building shots, and a
               tall crop cut the Tucson enrolment banner mid-word. */}
           <div className="grid grid-cols-2 gap-3">
-            <Photo src="/images/tucson.jpg" sizes="(min-width: 1024px) 33vw, 50vw" alt={c.campuses.tucson.imageAlt} className="h-44 w-full rounded-[24px] object-cover sm:h-52" />
-            <Photo src="/images/yuma.jpg" sizes="(min-width: 1024px) 33vw, 50vw" alt={c.campuses.yuma.imageAlt} className="mt-8 h-44 w-full rounded-[24px] object-cover sm:h-52" />
+            <Photo src={siteFileUrl("campus-tucson")} sizes="(min-width: 1024px) 33vw, 50vw" alt={c.campuses.tucson.imageAlt} className="h-44 w-full rounded-[24px] object-cover sm:h-52" />
+            <Photo src={siteFileUrl("campus-yuma")} sizes="(min-width: 1024px) 33vw, 50vw" alt={c.campuses.yuma.imageAlt} className="mt-8 h-44 w-full rounded-[24px] object-cover sm:h-52" />
           </div>
         </div>
       </section>

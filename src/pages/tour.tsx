@@ -86,9 +86,9 @@ export function TourPage({ preset }: { preset?: string }) {
               <p className="mt-4 text-sm text-muted">{c.tourPage.bookingNote}</p>
             </div>
             <Photo
-              src="/images/classroom-morning.jpg"
+              src="/images/pre-k-classroom-wooden-blocks-learning-centers.jpg"
               sizes="(min-width: 1024px) 40vw, 1px"
-              alt=""
+              alt={c.tourPage.imageAlt}
               className="mt-6 hidden h-56 w-full rounded-[28px] object-cover lg:block"
             />
           </div>

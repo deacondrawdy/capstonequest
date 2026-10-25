@@ -222,6 +222,7 @@ export function SiteHeader() {
               // Icon only between lg and xl: with the label, the longer Spanish
               // nav ran 109px past 1024px (WCAG 1.4.10).
               className="hidden shrink-0 lg:inline-flex max-xl:size-11 max-xl:justify-center max-xl:p-0"
+              aria-label={c.owlivia.open}
               onClick={() => setOwlivia(true)}
             >
               <OwlMark className="size-7 xl:-ml-2" />
@@ -296,6 +297,7 @@ export function SiteHeader() {
                   type="button"
                   variant="owl"
                   className="mt-2"
+                  aria-label={c.owlivia.open}
                   onClick={() => {
                     setOpen(false);
                     setOwlivia(true);

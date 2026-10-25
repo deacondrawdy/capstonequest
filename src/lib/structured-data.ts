@@ -32,6 +32,17 @@ const LICENCES: Record<string, string> = {
 
 type Json = Record<string, unknown>;
 
+function postalAddress(campus: (typeof campuses)[number]): Json {
+  return {
+    "@type": "PostalAddress",
+    streetAddress: campus.address,
+    addressLocality: campus.city,
+    addressRegion: "AZ",
+    postalCode: campus.cityState.split(" ").pop(),
+    addressCountry: "US",
+  };
+}
+
 function organization(c: Content): Json {
   return {
     "@type": "EducationalOrganization",
@@ -41,13 +52,17 @@ function organization(c: Content): Json {
     url: SITE_ORIGIN,
     logo: {
       "@type": "ImageObject",
-      url: absoluteUrl("/images/logo.png"),
+      url: absoluteUrl("/images/capstone-quest-academy-logo.png"),
       caption: school.name,
     },
     description: c.meta.description,
     foundingDate: String(school.since),
     email: school.email,
     telephone: school.phone,
+    // Both campus addresses, on the organization itself. They also sit on the
+    // campus nodes, but a crawler reading the homepage only looked here and
+    // reported the business address as not machine-readable.
+    address: campuses.map(postalAddress),
     knowsLanguage: ["en-US", "es"],
     areaServed: campuses.map((campus) => ({
       "@type": "City",
@@ -85,14 +100,7 @@ function preschool(slug: string, c: Content): Json | null {
     image: absoluteUrl(campus.image),
     telephone: campus.phone,
     email: school.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: campus.address,
-      addressLocality: campus.city,
-      addressRegion: "AZ",
-      postalCode: campus.cityState.split(" ").pop(),
-      addressCountry: "US",
-    },
+    address: postalAddress(campus),
     ...(geo ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lon } } : {}),
     // Ties this page to the Google Business Profile for the same place, which
     // is where the reviews, photos and map pin live.
@@ -220,15 +228,17 @@ function crumbName(path: string, c: Content): string {
  * the canonical tag and the page title are built from.
  */
 export function structuredData(path: string, c: Content, locale: Locale): string {
+  // Both campuses on every page: every page's footer shows both addresses,
+  // and the organization's `location` points at these nodes. The rest of each
+  // node (hours, rates, licence) restates what its campus page says, which is
+  // the usual sitewide LocalBusiness pattern.
   const graph: Json[] = [organization(c)];
-
-  if (path === "/") graph.push(website());
-
-  const campusMatch = path.match(/^\/campuses\/([^/]+)$/);
-  if (campusMatch) {
-    const node = preschool(campusMatch[1], c);
+  for (const campus of campuses) {
+    const node = preschool(campus.slug, c);
     if (node) graph.push(node);
   }
+
+  if (path === "/") graph.push(website());
 
   if (path === "/tuition") graph.push(offers(c));
   if (path === "/faq") graph.push(faqPage(c, locale));

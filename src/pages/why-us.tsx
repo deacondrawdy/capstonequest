@@ -44,7 +44,7 @@ export function WhyUsPage() {
 
       <section id="safety" className="bg-paper-soft py-14">
         <div className="mx-auto grid max-w-[1100px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-2">
-          <Photo src="/images/playground-smile.jpg" sizes="(min-width: 1024px) 50vw, 100vw" alt={c.whyUsPage.playgroundAlt} className="h-72 w-full rounded-[28px] object-cover" />
+          <Photo src="/images/preschooler-smiling-playground-climber.jpg" sizes="(min-width: 1024px) 50vw, 100vw" alt={c.whyUsPage.playgroundAlt} className="h-72 w-full rounded-[28px] object-cover" />
           <div>
             <h2 className="text-3xl font-extrabold text-navy">{c.whyUsPage.desTitle}</h2>
             <p className="mt-3 text-muted">

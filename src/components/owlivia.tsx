@@ -160,7 +160,7 @@ export function Owlivia({ open, onOpenChange }: { open: boolean; onOpenChange: (
       <DialogContent className="max-w-xl gap-0 p-0">
         <div className="flex items-center gap-4 rounded-t-[28px] bg-navy px-6 py-5 text-paper">
           <Photo
-            src="/images/owl.png"
+            src="/images/owlivia-capstone-quest-owl.png"
             sizes="56px"
             alt=""
             width={56}
