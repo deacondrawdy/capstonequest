@@ -1,10 +1,9 @@
 /**
  * Server-only delivery of a captured lead.
  *
- * Deliberately does NOT touch the database. Auth is off in this workspace, and
- * `.grok/references/data-and-auth.md` is explicit that unowned rows must never
- * hold personal data — a lead carries a parent's name, email, phone and a
- * child's date of birth. So leads are forwarded and never stored at rest here.
+ * Deliberately does NOT store anything. A lead carries a parent's name,
+ * email, phone and a child's date of birth, and the site has no database or
+ * accounts to protect it with, so leads are forwarded and never kept here.
  *
  * Two independent channels, both optional, at least one required:
  *   LEAD_WEBHOOK_URL  POST the raw JSON. Point it at Zapier/Make/n8n today and

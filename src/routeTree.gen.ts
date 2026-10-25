@@ -24,11 +24,14 @@ import { Route as ParentsRouteImport } from './routes/parents'
 import { Route as PoliciesRouteImport } from './routes/policies'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as StaffRouteImport } from './routes/staff'
 import { Route as TourRouteImport } from './routes/tour'
 import { Route as TuitionRouteImport } from './routes/tuition'
 import { Route as WhyUsRouteImport } from './routes/why-us'
+import { Route as ApiStaffUploadRouteImport } from './routes/api/staff-upload'
 import { Route as CampusesIndexRouteImport } from './routes/campuses.index'
 import { Route as CampusesSlugRouteImport } from './routes/campuses.$slug'
+import { Route as DocumentsFileRouteImport } from './routes/documents.$file'
 import { Route as EsIndexRouteImport } from './routes/es.index'
 import { Route as EsAboutRouteImport } from './routes/es.about'
 import { Route as EsAccessibilityRouteImport } from './routes/es.accessibility'
@@ -47,6 +50,8 @@ import { Route as EsProgramsRouteImport } from './routes/es.programs'
 import { Route as EsTourRouteImport } from './routes/es.tour'
 import { Route as EsTuitionRouteImport } from './routes/es.tuition'
 import { Route as EsWhyUsRouteImport } from './routes/es.why-us'
+import { Route as FilesNameRouteImport } from './routes/files.$name'
+import { Route as ImagesFileRouteImport } from './routes/images.$file'
 import { Route as EsCampusesIndexRouteImport } from './routes/es.campuses.index'
 import { Route as EsCampusesSlugRouteImport } from './routes/es.campuses.$slug'
 
@@ -125,6 +130,11 @@ const ProgramsRoute = ProgramsRouteImport.update({
   path: '/programs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TourRoute = TourRouteImport.update({
   id: '/tour',
   path: '/tour',
@@ -140,6 +150,11 @@ const WhyUsRoute = WhyUsRouteImport.update({
   path: '/why-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiStaffUploadRoute = ApiStaffUploadRouteImport.update({
+  id: '/api/staff-upload',
+  path: '/api/staff-upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CampusesIndexRoute = CampusesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -149,6 +164,11 @@ const CampusesSlugRoute = CampusesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => CampusesRoute,
+} as any)
+const DocumentsFileRoute = DocumentsFileRouteImport.update({
+  id: '/documents/$file',
+  path: '/documents/$file',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EsIndexRoute = EsIndexRouteImport.update({
   id: '/es/',
@@ -240,6 +260,16 @@ const EsWhyUsRoute = EsWhyUsRouteImport.update({
   path: '/es/why-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FilesNameRoute = FilesNameRouteImport.update({
+  id: '/files/$name',
+  path: '/files/$name',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImagesFileRoute = ImagesFileRouteImport.update({
+  id: '/images/$file',
+  path: '/images/$file',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsCampusesIndexRoute = EsCampusesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -267,10 +297,13 @@ export interface FileRoutesByFullPath {
   '/policies': typeof PoliciesRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
+  '/staff': typeof StaffRoute
   '/tour': typeof TourRoute
   '/tuition': typeof TuitionRoute
   '/why-us': typeof WhyUsRoute
+  '/api/staff-upload': typeof ApiStaffUploadRoute
   '/campuses/$slug': typeof CampusesSlugRoute
+  '/documents/$file': typeof DocumentsFileRoute
   '/es/about': typeof EsAboutRoute
   '/es/accessibility': typeof EsAccessibilityRoute
   '/es/campuses': typeof EsCampusesRouteWithChildren
@@ -288,6 +321,8 @@ export interface FileRoutesByFullPath {
   '/es/tour': typeof EsTourRoute
   '/es/tuition': typeof EsTuitionRoute
   '/es/why-us': typeof EsWhyUsRoute
+  '/files/$name': typeof FilesNameRoute
+  '/images/$file': typeof ImagesFileRoute
   '/campuses/': typeof CampusesIndexRoute
   '/es/': typeof EsIndexRoute
   '/es/campuses/$slug': typeof EsCampusesSlugRoute
@@ -308,10 +343,13 @@ export interface FileRoutesByTo {
   '/policies': typeof PoliciesRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
+  '/staff': typeof StaffRoute
   '/tour': typeof TourRoute
   '/tuition': typeof TuitionRoute
   '/why-us': typeof WhyUsRoute
+  '/api/staff-upload': typeof ApiStaffUploadRoute
   '/campuses/$slug': typeof CampusesSlugRoute
+  '/documents/$file': typeof DocumentsFileRoute
   '/es/about': typeof EsAboutRoute
   '/es/accessibility': typeof EsAccessibilityRoute
   '/es/careers': typeof EsCareersRoute
@@ -328,6 +366,8 @@ export interface FileRoutesByTo {
   '/es/tour': typeof EsTourRoute
   '/es/tuition': typeof EsTuitionRoute
   '/es/why-us': typeof EsWhyUsRoute
+  '/files/$name': typeof FilesNameRoute
+  '/images/$file': typeof ImagesFileRoute
   '/campuses': typeof CampusesIndexRoute
   '/es': typeof EsIndexRoute
   '/es/campuses/$slug': typeof EsCampusesSlugRoute
@@ -350,10 +390,13 @@ export interface FileRoutesById {
   '/policies': typeof PoliciesRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
+  '/staff': typeof StaffRoute
   '/tour': typeof TourRoute
   '/tuition': typeof TuitionRoute
   '/why-us': typeof WhyUsRoute
+  '/api/staff-upload': typeof ApiStaffUploadRoute
   '/campuses/$slug': typeof CampusesSlugRoute
+  '/documents/$file': typeof DocumentsFileRoute
   '/es/about': typeof EsAboutRoute
   '/es/accessibility': typeof EsAccessibilityRoute
   '/es/campuses': typeof EsCampusesRouteWithChildren
@@ -371,6 +414,8 @@ export interface FileRoutesById {
   '/es/tour': typeof EsTourRoute
   '/es/tuition': typeof EsTuitionRoute
   '/es/why-us': typeof EsWhyUsRoute
+  '/files/$name': typeof FilesNameRoute
+  '/images/$file': typeof ImagesFileRoute
   '/campuses/': typeof CampusesIndexRoute
   '/es/': typeof EsIndexRoute
   '/es/campuses/$slug': typeof EsCampusesSlugRoute
@@ -394,10 +439,13 @@ export interface FileRouteTypes {
     | '/policies'
     | '/privacy'
     | '/programs'
+    | '/staff'
     | '/tour'
     | '/tuition'
     | '/why-us'
+    | '/api/staff-upload'
     | '/campuses/$slug'
+    | '/documents/$file'
     | '/es/about'
     | '/es/accessibility'
     | '/es/campuses'
@@ -415,6 +463,8 @@ export interface FileRouteTypes {
     | '/es/tour'
     | '/es/tuition'
     | '/es/why-us'
+    | '/files/$name'
+    | '/images/$file'
     | '/campuses/'
     | '/es/'
     | '/es/campuses/$slug'
@@ -435,10 +485,13 @@ export interface FileRouteTypes {
     | '/policies'
     | '/privacy'
     | '/programs'
+    | '/staff'
     | '/tour'
     | '/tuition'
     | '/why-us'
+    | '/api/staff-upload'
     | '/campuses/$slug'
+    | '/documents/$file'
     | '/es/about'
     | '/es/accessibility'
     | '/es/careers'
@@ -455,6 +508,8 @@ export interface FileRouteTypes {
     | '/es/tour'
     | '/es/tuition'
     | '/es/why-us'
+    | '/files/$name'
+    | '/images/$file'
     | '/campuses'
     | '/es'
     | '/es/campuses/$slug'
@@ -476,10 +531,13 @@ export interface FileRouteTypes {
     | '/policies'
     | '/privacy'
     | '/programs'
+    | '/staff'
     | '/tour'
     | '/tuition'
     | '/why-us'
+    | '/api/staff-upload'
     | '/campuses/$slug'
+    | '/documents/$file'
     | '/es/about'
     | '/es/accessibility'
     | '/es/campuses'
@@ -497,6 +555,8 @@ export interface FileRouteTypes {
     | '/es/tour'
     | '/es/tuition'
     | '/es/why-us'
+    | '/files/$name'
+    | '/images/$file'
     | '/campuses/'
     | '/es/'
     | '/es/campuses/$slug'
@@ -519,9 +579,12 @@ export interface RootRouteChildren {
   PoliciesRoute: typeof PoliciesRoute
   PrivacyRoute: typeof PrivacyRoute
   ProgramsRoute: typeof ProgramsRoute
+  StaffRoute: typeof StaffRoute
   TourRoute: typeof TourRoute
   TuitionRoute: typeof TuitionRoute
   WhyUsRoute: typeof WhyUsRoute
+  ApiStaffUploadRoute: typeof ApiStaffUploadRoute
+  DocumentsFileRoute: typeof DocumentsFileRoute
   EsAboutRoute: typeof EsAboutRoute
   EsAccessibilityRoute: typeof EsAccessibilityRoute
   EsCampusesRoute: typeof EsCampusesRouteWithChildren
@@ -539,6 +602,8 @@ export interface RootRouteChildren {
   EsTourRoute: typeof EsTourRoute
   EsTuitionRoute: typeof EsTuitionRoute
   EsWhyUsRoute: typeof EsWhyUsRoute
+  FilesNameRoute: typeof FilesNameRoute
+  ImagesFileRoute: typeof ImagesFileRoute
   EsIndexRoute: typeof EsIndexRoute
 }
 
@@ -649,6 +714,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tour': {
       id: '/tour'
       path: '/tour'
@@ -670,6 +742,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhyUsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/staff-upload': {
+      id: '/api/staff-upload'
+      path: '/api/staff-upload'
+      fullPath: '/api/staff-upload'
+      preLoaderRoute: typeof ApiStaffUploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/campuses/': {
       id: '/campuses/'
       path: '/'
@@ -683,6 +762,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/campuses/$slug'
       preLoaderRoute: typeof CampusesSlugRouteImport
       parentRoute: typeof CampusesRoute
+    }
+    '/documents/$file': {
+      id: '/documents/$file'
+      path: '/documents/$file'
+      fullPath: '/documents/$file'
+      preLoaderRoute: typeof DocumentsFileRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/es/': {
       id: '/es/'
@@ -810,6 +896,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsWhyUsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/files/$name': {
+      id: '/files/$name'
+      path: '/files/$name'
+      fullPath: '/files/$name'
+      preLoaderRoute: typeof FilesNameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/images/$file': {
+      id: '/images/$file'
+      path: '/images/$file'
+      fullPath: '/images/$file'
+      preLoaderRoute: typeof ImagesFileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/campuses/': {
       id: '/es/campuses/'
       path: '/'
@@ -871,9 +971,12 @@ const rootRouteChildren: RootRouteChildren = {
   PoliciesRoute: PoliciesRoute,
   PrivacyRoute: PrivacyRoute,
   ProgramsRoute: ProgramsRoute,
+  StaffRoute: StaffRoute,
   TourRoute: TourRoute,
   TuitionRoute: TuitionRoute,
   WhyUsRoute: WhyUsRoute,
+  ApiStaffUploadRoute: ApiStaffUploadRoute,
+  DocumentsFileRoute: DocumentsFileRoute,
   EsAboutRoute: EsAboutRoute,
   EsAccessibilityRoute: EsAccessibilityRoute,
   EsCampusesRoute: EsCampusesRouteWithChildren,
@@ -891,6 +994,8 @@ const rootRouteChildren: RootRouteChildren = {
   EsTourRoute: EsTourRoute,
   EsTuitionRoute: EsTuitionRoute,
   EsWhyUsRoute: EsWhyUsRoute,
+  FilesNameRoute: FilesNameRoute,
+  ImagesFileRoute: ImagesFileRoute,
   EsIndexRoute: EsIndexRoute,
 }
 export const routeTree = rootRouteImport

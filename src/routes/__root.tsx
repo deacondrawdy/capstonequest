@@ -1,13 +1,13 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { Toaster } from "sonner";
-import { AuthProvider } from "@/lib/auth/provider";
-import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { A11Y_BOOT_SCRIPT } from "@/lib/a11y";
 import { CAMPUS_BOOT_SCRIPT } from "@/lib/campus";
 import { localizePath, stripLocale, useLocale } from "@/lib/locale";
 import { absoluteUrl } from "@/lib/site-url";
 import { pageDescription, pageTitle } from "@/lib/page-title";
 import { structuredData } from "@/lib/structured-data";
+import { getReplacedFiles } from "@/lib/site-files";
+import { SiteFilesProvider } from "@/lib/site-files/context";
 import { en } from "@/content/en";
 import { es } from "@/content/es";
 import { useRouterState } from "@tanstack/react-router";
@@ -22,12 +22,13 @@ export const Route = createRootRoute({
       // is evaluated once and cannot vary by locale, so a static entry here
       // would win over the Spanish one and ship English metadata on /es pages.
       { name: "theme-color", content: "#0D2C6B" },
+      { name: "apple-mobile-web-app-title", content: "Capstone Quest" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "stylesheet", href: appCss },
-      { rel: "manifest", href: "/__grok/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       // Fonts are self-hosted (see the @font-face block in src/styles.css).
       // They used to come from fonts.googleapis.com, which handed Google every
       // visitor's IP on every page view.
@@ -57,6 +58,10 @@ export const Route = createRootRoute({
       },
     ],
   }),
+  // Which staff files are replaced (see SiteFilesProvider). Fetched once;
+  // /staff invalidates the router after an upload, which refetches it.
+  loader: () => getReplacedFiles(),
+  staleTime: Infinity,
   component: RootDocument,
 });
 
@@ -77,9 +82,15 @@ function RootDocument() {
         <title>{pageTitle(canonical, content)}</title>
         <meta name="description" content={description} />
         {/* Open Graph: what a parent sees when they paste a link into Facebook,
-            iMessage or WhatsApp. The platform injects og:title and og:image
-            ahead of these, so only the tags it does not set are added here. */}
+            iMessage or WhatsApp. og.jpg is the 1200x630 share card. */}
         <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle(canonical, content)} />
+        <meta property="og:image" content={absoluteUrl("/og.jpg")} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={meta.title} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={absoluteUrl("/og.jpg")} />
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:url" content={url} />
         <meta property="og:description" content={description} />
@@ -106,11 +117,10 @@ function RootDocument() {
         <script dangerouslySetInnerHTML={{ __html: CAMPUS_BOOT_SCRIPT }} />
       </head>
       <body>
-        <PreviewHostBridge />
-        <AuthProvider>
+        <SiteFilesProvider versions={Route.useLoaderData()}>
           <Outlet />
-          <Toaster richColors position="top-right" />
-        </AuthProvider>
+        </SiteFilesProvider>
+        <Toaster richColors position="top-right" />
         <Scripts />
       </body>
     </html>
