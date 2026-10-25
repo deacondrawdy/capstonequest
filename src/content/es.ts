@@ -751,6 +751,7 @@ export const es: Content = {
     name: "Owlivia",
     role: "Nuestra asistente: escriba o hable",
     open: "Pregúntele a Owlivia",
+    mascotAlt: "Owlivia, la lechuza de Capstone Quest",
     greeting:
       "Hola, soy Owlivia. Pregúnteme lo que quiera sobre Capstone Quest: el programa, la colegiatura, DES o el día escolar. También puedo agendarle una visita al centro.",
     voiceHint: "También puede hablar conmigo en voz alta.",
@@ -772,6 +773,7 @@ export const es: Content = {
   },
 
   tourPage: {
+    imageAlt: "Niños de preescolar construyendo con bloques de madera y jugando en los centros de aprendizaje de un salón de Capstone Quest",
     eyebrow: "Visítenos",
     title: "Agende una visita",
     lede: "Recorra los salones, conozca a una maestra y vea una mañana real. Las visitas duran unos 30 minutos. Elija un centro y luego cualquier horario disponible.",
@@ -787,6 +789,7 @@ export const es: Content = {
     lede: "Reserve un lugar en línea en un minuto y la oficina le llamará. La inscripción en sí se hace en papel: descargue el paquete, llénelo y entréguelo en la oficina de inscripciones de su centro.",
     download: "Descargar el paquete de inscripción",
     fileInfo: "PDF · {pages} páginas · {size}",
+    fileInfoSizeOnly: "PDF · {size}",
     languageNote: "El paquete está disponible solo en inglés.",
     stepsTitle: "Cómo inscribirse",
     steps: [

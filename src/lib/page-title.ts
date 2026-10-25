@@ -38,6 +38,8 @@ export function pageTitle(path: string, c: Content): string {
   const site = c.meta.title;
   const key = PATH_TITLES[path.length > 1 ? path.replace(/\/$/, "") : path];
   if (key) return `${c.pageTitles[key]} · ${site}`;
+  // English-only office page, so it has no content key.
+  if (path === "/staff") return `Staff updates · ${site}`;
 
   const slug = path.match(/^\/campuses\/([^/]+)\/?$/)?.[1];
   const campus = campuses.find((entry) => entry.slug === slug);

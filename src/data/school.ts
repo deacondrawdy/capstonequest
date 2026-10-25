@@ -1,3 +1,5 @@
+import { siteFileUrl } from "@/data/site-files";
+
 export const school = {
   name: "Capstone Quest Academy",
   shortName: "Capstone Quest",
@@ -43,13 +45,13 @@ export const campuses = [
     cityState: "Tucson, AZ 85716",
     phone: "(520) 462-7788",
     phoneHref: "tel:+15204627788",
-    image: "/images/tucson.jpg",
+    image: siteFileUrl("campus-tucson"),
     // Cal.com event type for campus tours. The voice agent books against the
     // same event type, so the phone and the website cannot double-book a slot.
     calLink: "capstonequestacademy/tucson-tour-for-students-and-parents",
     // Wide (4:1) building shot used as the page banner. Only Tucson has one;
     // the campus page falls back to the overlaid `image` hero without it.
-    banner: "/images/tucson-banner.jpg",
+    banner: siteFileUrl("campus-tucson-banner"),
     bannerAlt:
       "The Tucson campus building, with a banner reading “Now Enrolling Pre-Kindergarten — Fully Licensed, DES Approved, Full Day, Low Rates” beside the AmeriSchool Academy sign.",
     blurb:
@@ -75,7 +77,7 @@ export const campuses = [
     cityState: "Yuma, AZ 85364",
     phone: "(928) 977-9318",
     phoneHref: "tel:+19289779318",
-    image: "/images/yuma.jpg",
+    image: siteFileUrl("campus-yuma"),
     calLink: "capstonequestacademy/yuma-tour-for-students-and-parents",
     blurb:
       "A welcoming Yuma campus with a covered drop-off, sun-safe outdoor play, and the same DES-approved Pre-K program families trust across Arizona.",
@@ -101,7 +103,7 @@ export const programs = [
     name: "Pre-K",
     ages: "Ages 3–5",
     hours: "Full-day, 3 or 5 days",
-    image: "/images/binoculars.jpg",
+    image: "/images/preschoolers-toy-binoculars-pre-k-classroom.jpg",
     summary:
       "One mixed-age classroom where threes, fours and fives learn together — sharing, speaking up, and exploring through play, and leaving ready for kindergarten.",
     points: [
@@ -116,7 +118,7 @@ export const programs = [
     name: "Before & After Care",
     ages: "Ages 3–5",
     hours: "7:00–8:00 AM · 3:30–6:00 PM",
-    image: "/images/bubbles.jpg",
+    image: "/images/preschooler-blowing-bubbles-after-care.jpg",
     summary:
       "Fee-for-service wraparound care used by working families since 2013 — early arrival and late dismissal with the same trusted teachers.",
     points: [
@@ -136,29 +138,29 @@ export const programs = [
  * from the office copier — image-only, untagged, not fillable. A screen reader
  * cannot read them, so /enroll offers help by phone or in person and the
  * accessibility statement lists that as a known limitation. Replace either with
- * a tagged or fillable PDF when the school has one, and update `pages` and
- * `size` to match the file.
+ * a tagged or fillable PDF when the school has one. `pages` and `size` describe
+ * the originals; once staff upload a replacement, /enroll reads both from it.
  */
 export const enrollmentPackets = [
   {
     campus: "tucson",
-    href: "/documents/capstone-quest-prek-enrollment-packet.pdf",
+    href: siteFileUrl("enrollment-packet-tucson"),
     fileName: "capstone-quest-prek-enrollment-packet-tucson.pdf",
     pages: 13,
     size: "3.6 MB",
   },
   {
     campus: "yuma",
-    href: "/documents/capstone-quest-prek-enrollment-packet-yuma.pdf",
+    href: siteFileUrl("enrollment-packet-yuma"),
     fileName: "capstone-quest-prek-enrollment-packet-yuma.pdf",
     pages: 13,
     size: "766 KB",
   },
 ] as const;
 
-/** The rate sheet families sign, served from public/documents. */
+/** The rate sheet families sign. Staff replace it from /staff. */
 export const feeSchedule = {
-  href: "/documents/capstone-quest-prek-fee-schedule.pdf",
+  href: siteFileUrl("fee-schedule"),
 } as const;
 
 /**
@@ -168,20 +170,20 @@ export const feeSchedule = {
  * whether they can afford the program at all.
  */
 export const scholarship = {
-  href: "/documents/barr-family-early-learners-scholarship-application.pdf",
+  href: siteFileUrl("scholarship-application"),
   fileName: "barr-family-early-learners-scholarship-application.pdf",
 } as const;
 
 export const parentDocuments = [
   {
-    // Served from public/documents rather than an outside host, so it cannot
+    // Served by this site (see data/site-files.ts) rather than an outside host, so it cannot
     // rot when AmeriSchools reorganises their uploads directory.
     id: "handbook",
-    href: "/documents/capstone-quest-parent-handbook.pdf",
+    href: siteFileUrl("parent-handbook"),
   },
   {
     id: "calendar",
-    href: "/documents/capstone-quest-2026-27-calendar.pdf",
+    href: siteFileUrl("school-calendar"),
   },
   {
     id: "fees",
@@ -199,12 +201,12 @@ export const parentDocuments = [
     id: "wellness",
     href: "https://amerischools.org/wp-content/uploads/2025/08/AmeriSchools-Wellness-Policy-1.pdf",
   },
-  // Replaced each month with the menu the school sends; the path stays the same
-  // so links to it keep working. The page shows these in pairs after the
+  // Staff replace it each month from /staff; the URL stays the same so links
+  // to it keep working. The page shows these in pairs after the
   // handbook, so keep the count after it even.
   {
     id: "breakfast",
-    href: "/documents/capstone-quest-breakfast-menu.pdf",
+    href: siteFileUrl("breakfast-menu"),
   },
 ] as const;
 
@@ -215,25 +217,25 @@ export const staff = [
   {
     id: "zoe",
     name: "Zoe Cordova",
-    image: "/images/zoe.jpg",
+    image: siteFileUrl("staff-zoe"),
     campuses: ["tucson"],
   },
   {
     id: "juridia",
     name: "Juridia Hernandez",
-    image: "/images/juridia.jpg",
+    image: siteFileUrl("staff-juridia"),
     campuses: ["tucson"],
   },
   {
     id: "sidney",
     name: "Sidney Quinn",
-    image: "/images/sidney.jpg",
+    image: siteFileUrl("staff-sidney"),
     campuses: ["yuma"],
   },
   {
     id: "tianna",
     name: "Tianna Garcia",
-    image: "/images/tianna.jpg",
+    image: siteFileUrl("staff-tianna"),
     campuses: ["yuma"],
   },
 ] as const;

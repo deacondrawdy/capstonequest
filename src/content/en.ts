@@ -760,6 +760,8 @@ export const en = {
     name: "Owlivia",
     role: "Our assistant — type or talk",
     open: "Ask Owlivia",
+    /** Alt text for the owl on the buttons. The buttons carry their own name. */
+    mascotAlt: "Owlivia, the Capstone Quest owl",
     greeting:
       "Hi, I'm Owlivia. Ask me anything about Capstone Quest — our program, tuition, DES, or the school day. I can book a site tour for you too.",
     voiceHint: "You can also talk to me out loud.",
@@ -781,6 +783,7 @@ export const en = {
   },
 
   tourPage: {
+    imageAlt: "Preschoolers building with wooden blocks and playing at learning centers in a Capstone Quest classroom",
     eyebrow: "Visit",
     title: "Schedule a tour",
     lede: "Walk the classrooms, meet a lead teacher, and see a real morning. Tours last about 30 minutes. Pick a site, then choose any open time below.",
@@ -796,8 +799,10 @@ export const en = {
     title: "Enroll your child",
     lede: "Reserve a spot online in about a minute and the office will call you. Enrollment itself is on paper: download the packet, fill it in, and return it to your site registrar.",
     download: "Download the enrollment packet",
-    /** {pages} and {size} come from enrollmentPacket in src/data/school.ts. */
+    /** {pages} and {size} come from enrollmentPackets in src/data/school.ts, or from the uploaded replacement. */
     fileInfo: "PDF · {pages} pages · {size}",
+    /** For a replaced packet whose page count could not be read. */
+    fileInfoSizeOnly: "PDF · {size}",
     /** Shown only when the packet is not in the page's language. */
     languageNote: "",
     stepsTitle: "How to enroll",

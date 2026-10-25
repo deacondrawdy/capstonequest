@@ -6,3 +6,5 @@ node_modules/
 .gstack/
 .output/
 .tanstack/
+.data/
+.vercel/

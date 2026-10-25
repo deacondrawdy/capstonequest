@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { campuses, enrollmentPackets, school } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
 import { saveSpot } from "@/lib/inquiries";
+import { formatBytes, type PacketInfo } from "@/lib/site-files";
 
 /**
  * Enrollment is on paper. This page hands out the packet and explains what to
@@ -22,9 +23,18 @@ import { saveSpot } from "@/lib/inquiries";
  * immunization form, return it to the registrar), and the packet is a scan a
  * screen reader cannot read, so the help offer below has to sit next to it.
  */
-export function EnrollPage() {
+export function EnrollPage({ packetInfo = {} }: { packetInfo?: PacketInfo }) {
   const c = useContent();
   const e = c.enrollPage;
+
+  const fileInfo = (packet: (typeof enrollmentPackets)[number]) => {
+    const replaced = packetInfo[`enrollment-packet-${packet.campus}`];
+    if (!replaced) return e.fileInfo.replace("{pages}", String(packet.pages)).replace("{size}", packet.size);
+    const size = formatBytes(replaced.size);
+    return replaced.pages
+      ? e.fileInfo.replace("{pages}", String(replaced.pages)).replace("{size}", size)
+      : e.fileInfoSizeOnly.replace("{size}", size);
+  };
 
   return (
     <SiteShell>
@@ -59,7 +69,7 @@ export function EnrollPage() {
                   </a>
                 </Button>
                 <p id={infoId} className="mt-3 text-sm text-muted">
-                  {e.fileInfo.replace("{pages}", String(packet.pages)).replace("{size}", packet.size)}
+                  {fileInfo(packet)}
                 </p>
               </div>
             );

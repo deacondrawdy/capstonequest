@@ -3,8 +3,9 @@ import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { campuses, dailySchedule, school } from "@/data/school";
 import { AppLink, useContent } from "@/lib/locale";
+import { siteFileUrl } from "@/data/site-files";
 
-const PDF_HREF = "/documents/capstone-quest-parent-handbook.pdf";
+const PDF_HREF = siteFileUrl("parent-handbook");
 
 function Section({
   id,
