@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useLoaderData } from "@tanstack/react-router";
 import { ExternalLink, Star } from "lucide-react";
 import { campuses } from "@/data/school";
-import { fetchGoogleReviews, type PlaceReviews } from "@/lib/google-reviews";
+import type { PlaceReviews } from "@/lib/google-reviews";
 import { useContent, useLocale } from "@/lib/locale";
 import { cn } from "@/lib/utils";
 
@@ -13,25 +13,19 @@ const PER_SITE = 3;
  * Places API (see `@/lib/google-reviews.server`), with a link to read the rest
  * on Google.
  *
- * Fetched after the page loads, so a slow answer from Google never holds up
- * the page. Until it arrives, or when the API key is not set, the section is
- * just the links to each site's Google profile.
+ * The page's route loader supplies them (see `reviewsLoader`), from a server
+ * cache that never makes the page wait more than briefly on Google. With no
+ * reviews to hand, or no API key, the section is just the links to each
+ * site's Google profile.
  */
 export function GoogleReviews({ cardClassName }: { cardClassName?: string }) {
   const c = useContent();
   const r = c.reviews;
   const locale = useLocale();
-  const [places, setPlaces] = useState<PlaceReviews[]>([]);
-
-  useEffect(() => {
-    let live = true;
-    fetchGoogleReviews()
-      .then((data) => live && setPlaces(data))
-      .catch(() => {});
-    return () => {
-      live = false;
-    };
-  }, []);
+  // The nearest route's loader data: the reviews on the four pages that set
+  // `reviewsLoader`, anything else (treated as none) on a page that does not.
+  const loaded: unknown = useLoaderData({ strict: false });
+  const places: PlaceReviews[] = Array.isArray(loaded) ? loaded : [];
 
   const withReviews = places.filter((p) => p.reviews.length > 0);
 

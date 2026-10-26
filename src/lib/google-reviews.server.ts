@@ -122,6 +122,22 @@ async function load(campus: string): Promise<PlaceReviews | null> {
   };
 }
 
+/**
+ * For page loaders: whatever is cached, at once. A stale copy is served while
+ * a refresh runs in the background. With nothing cached (the first request
+ * after a restart) it waits up to 1.5 s for Google, then renders without
+ * reviews rather than hold the page; the next visitor gets them.
+ */
+export async function getCachedPlaceReviews(): Promise<PlaceReviews[]> {
+  if (!key()) return [];
+  if (cache) {
+    if (Date.now() - cache.at >= TTL_MS) void getPlaceReviews();
+    return cache.data;
+  }
+  const timeout = new Promise<PlaceReviews[]>((resolve) => setTimeout(() => resolve([]), 1500));
+  return Promise.race([getPlaceReviews(), timeout]);
+}
+
 /** Both sites' reviews, or an empty list when the key is missing or Google fails. */
 export async function getPlaceReviews(): Promise<PlaceReviews[]> {
   if (!key()) return [];
