@@ -32,7 +32,9 @@ export const getReplacedFiles = createServerFn({ method: "GET" }).handler(async 
 });
 
 export const staffLogin = createServerFn({ method: "POST" })
-  .validator((input: { password: string }) => ({ password: String(input?.password ?? "").slice(0, 200) }))
+  // Trimmed like STAFF_PASSWORD itself: a phone keyboard's trailing space
+  // should not make the right password fail.
+  .validator((input: { password: string }) => ({ password: String(input?.password ?? "").trim().slice(0, 200) }))
   .handler(async ({ data }) => {
     const { tryLogin } = await import("@/lib/site-files/session.server");
     return { result: tryLogin(data.password) };
